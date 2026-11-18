@@ -1,0 +1,499 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+<head>
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="Hexo">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="theme-version" content="1.0.0">
+    <meta name="root" content="/">
+    <link rel="dns-prefetch" href="https://cxx001.github.io">
+    <!--SEO-->
+
+<meta name="keywords" content="电力" />
+
+
+<meta name="description" content="电力机理：四象限与能量流向一、四象限到底是什么把电压 u 放横轴、电流 i 放纵轴，两者各可正可负，于是平面被切成四块。真正决定能量去向的是 p &#x3D; u × i：
+
+
+
+象限
+u
+i
+..." />
+
+
+<meta name="robots" content="all" />
+<meta name="google" content="all" />
+<meta name="googlebot" content="all" />
+<meta name="verify" content="all" />
+    <!--Title-->
+
+<title>
+    
+    电力机理：四象限与能量流向 |
+    
+    Hexo
+</title>
+
+<link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+
+
+<link rel="icon" href="/favicon.ico">
+
+    
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7.css">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.7.0.css">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash.css">
+
+    
+
+<meta name="generator" content="Hexo 6.2.0"></head>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+<body>
+    <header class="main-header"  style="background-image:url(
+    /img/banner.jpg)"
+     >
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title='cxx'>
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+            <!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+            <img src="/img/branding.png" alt="Snippet 博客主题" class="img-responsive center-block">
+            
+        </div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                        <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="https://cxx001.github.io">
+                        Hexo</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/"><i class="fa "></i>
+                                首页</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/archives/"><i class="fa "></i>
+                                时间轴</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/guestbook/"><i class="fa "></i>
+                                留言</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="电力机理：四象限与能量流向">
+            
+            电力机理：四象限与能量流向
+            
+        </h1>
+        <div class="post-meta">
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a class="category-link" href="/categories/electric/">electric</a>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+            <a class="tag-none-link" href="/tags/%E7%94%B5%E5%8A%9B/" rel="tag">电力</a>
+            
+        </span>
+    </span>
+    
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-clock-o"></i>
+        <span class="date-meta">
+            2026/11/18</span>
+    </span>
+    
+    <span class="fa-wrap">
+        <i class="fa fa-eye"></i>
+        <span id="busuanzi_value_page_pv"></span>
+    </span>
+    
+    
+</div>
+        
+        
+    </div>
+    
+    <div class="post-body post-content">
+        <h1 id="电力机理：四象限与能量流向"><a href="#电力机理：四象限与能量流向" class="headerlink" title="电力机理：四象限与能量流向"></a>电力机理：四象限与能量流向</h1><h2 id="一、四象限到底是什么"><a href="#一、四象限到底是什么" class="headerlink" title="一、四象限到底是什么"></a>一、四象限到底是什么</h2><p>把电压 u 放横轴、电流 i 放纵轴，两者各可正可负，于是平面被切成四块。真正决定能量去向的是 <strong>p &#x3D; u × i</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>象限</th>
+<th>u</th>
+<th>i</th>
+<th>p &#x3D; u·i</th>
+<th>装置在做什么</th>
+<th>常见工况</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>I</td>
+<td>+</td>
+<td>+</td>
+<td>+</td>
+<td>向外送功率</td>
+<td>正向加载、电动</td>
+</tr>
+<tr>
+<td>II</td>
+<td>+</td>
+<td>−</td>
+<td>−</td>
+<td>吸收反送回来的功率</td>
+<td>发电、回馈、卸载</td>
+</tr>
+<tr>
+<td>III</td>
+<td>−</td>
+<td>−</td>
+<td>+</td>
+<td>极性反转，仍在送功率</td>
+<td>反向加载</td>
+</tr>
+<tr>
+<td>IV</td>
+<td>−</td>
+<td>+</td>
+<td>−</td>
+<td>极性反转，仍在吸收 &#x2F; 回馈</td>
+<td>反向发电</td>
+</tr>
+</tbody></table>
+<p>关键一句：<strong>「四象限」说的不是四种工况，而是「电压和电流都能双向、功率可正可负」这个能力</strong>。只能单向输出电压电流、只能往外送功率的电源，是一象限设备。I &#x2F; III 象限 p 为正，装置是源；II &#x2F; IV 象限 p 为负，装置是负载（在吃回能量）。</p>
+<blockquote>
+<p><strong>类比：带能量回收的车</strong> — 踩油门相当于向外送功率（I &#x2F; III），踩刹车并回充相当于能量倒灌回来（II &#x2F; IV）。</p>
+<p><strong>类比在哪失效</strong>：电里没有惯性质量，回馈是瞬时电磁过程，不存在「车速慢慢降」；而且<strong>能不能真的把能量送回电网，取决于前端变流器有没有回馈能力</strong>——没有的话只能靠制动电阻把能量变成热耗掉。这一条现场极常见，也最容易被仿真漏掉。</p>
+</blockquote>
+<blockquote>
+<p><strong>别误会（一个真实的歧义）</strong>：「四象限」在两套语境里指的不是同一个平面。功放 &#x2F; 电机拖动侧多指 <strong>u-i 平面</strong>（电压电流方向）；电网 &#x2F; 变流器侧常指 <strong>P-Q 平面</strong>（有功无功方向，对应整流 &#x2F; 逆变、容性 &#x2F; 感性）。两者都叫四象限，讨论前先确认对方说哪个。</p>
+</blockquote>
+<h2 id="二、为什么「功率放大器」不是普通放大器"><a href="#二、为什么「功率放大器」不是普通放大器" class="headerlink" title="二、为什么「功率放大器」不是普通放大器"></a>二、为什么「功率放大器」不是普通放大器</h2><p>普通信号放大器放大的是<strong>电压波形</strong>，负载几乎不取功率；功率放大器接的是<strong>真实装置</strong>（保护装置、继电器、逆变器、电机模拟器……），它必须：</p>
+<ul>
+<li>既能当<strong>电压 &#x2F; 电流源</strong>向外送能量（source）</li>
+<li>也能当<strong>负载</strong>把装置反送回来的能量吃掉（sink）</li>
+</ul>
+<p>软件侧给定的是波形，装置会响应、会反送能量，功放必须「吃得下」。这就是四象限能力的由来，也是仿真里最容易出问题的接口：</p>
+<table>
+<thead>
+<tr>
+<th>环节</th>
+<th>软件侧看到</th>
+<th>真实装置侧</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>给定</td>
+<td>一段电压 &#x2F; 电流波形</td>
+<td>经 D&#x2F;A、PWM、功放、滤波才到装置，带延迟与带宽限制</td>
+</tr>
+<tr>
+<td>响应</td>
+<td>采集回来的波形</td>
+<td>装置可能反送能量、可能非线性、可能触发保护</td>
+</tr>
+<tr>
+<td>边界</td>
+<td>波形数值</td>
+<td>电压 &#x2F; 电流 &#x2F; 功率额定、母线电压、散热、保护阈值</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>别误会</strong>：把功放当理想电压源建模，在装置纯吸收时也许对得上；一旦装置进入回馈工况，理想源会「无条件吃下」任意反送能量，仿真得到一条完美波形，真实功放却母线电压抬升、限幅或保护动作。<strong>结果看着合理，物理上不成立</strong>——这类错误最贵：测试没断言可写，现场却按它做了判断。</p>
+</blockquote>
+<h2 id="三、有功、无功、功率因数"><a href="#三、有功、无功、功率因数" class="headerlink" title="三、有功、无功、功率因数"></a>三、有功、无功、功率因数</h2><p>直流里 p &#x3D; u·i 一目了然；交流里 u 和 i 都是正弦、还可能差一个相位 φ，瞬时功率 p(t) &#x3D; u(t)·i(t) 随时间波动（含两倍频分量），一个周期平均下来才是真正被消耗 &#x2F; 转换掉的 <strong>有功 P</strong>。</p>
+<p>把功率拆成两部分：</p>
+<ul>
+<li><strong>P（有功）</strong>：真正转成热、机械功或被送走的平均功率，单位 W</li>
+<li><strong>Q（无功）</strong>：在电源与负载的磁场 &#x2F; 电场之间<strong>来回借还</strong>、一个周期净额为零的部分，单位 var</li>
+<li><strong>S（视在功率）</strong> &#x3D; √(P² + Q²)，单位 VA；<strong>cos φ &#x3D; P &#x2F; S</strong> 即功率因数</li>
+</ul>
+<blockquote>
+<p><strong>类比：来回搬运但不卸货</strong> — Q 像一批货在仓库和车间之间来回运，一个周期下来车间没多收到货，但<strong>车（线路电流）和仓库容量（设备容量）实打实被占了</strong>。</p>
+<p><strong>类比在哪失效</strong>：Q 不是「浪费」也不是「损耗」——建立磁场 &#x2F; 电场必须要它，感性负载没有它转不起来；而且它照样产生电流、压降和发热，设备容量按 S 选，不按 P。仿真里把 u、i 画成同相位，等于把整块无功抹掉了。</p>
+</blockquote>
+<p>对四象限功放的意义：同一个 P，感性负载和容性负载下电流大小、相位、峰值完全不同；装置往回送的也可能是无功为主。<strong>只按有功算，波形和电流额定都会算错</strong>。</p>
+<h2 id="四、仿真里最容易「看着合理却错」的地方"><a href="#四、仿真里最容易「看着合理却错」的地方" class="headerlink" title="四、仿真里最容易「看着合理却错」的地方"></a>四、仿真里最容易「看着合理却错」的地方</h2><p>模型通常假设的条件，以及它们在四象限切换处如何露馅：</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>常见假设</th>
+<th>真实约束</th>
+<th>露馅的工况</th>
+<th>结果长什么样</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>理想电压源，内阻 0</td>
+<td>输出阻抗 + 闭环带宽</td>
+<td>带载突变、回馈瞬间</td>
+<td>端电压被拉低 &#x2F; 抬升，仿真却是平的</td>
+</tr>
+<tr>
+<td>2</td>
+<td>带宽无限、无延迟</td>
+<td>采样 + 计算 + PWM + 滤波都有延迟</td>
+<td>陡沿、过零切换、高频</td>
+<td>波形边沿过于干净，相位偏小</td>
+</tr>
+<tr>
+<td>3</td>
+<td>功率 &#x2F; 电压无上限</td>
+<td>额定值、限幅、保护</td>
+<td>大功率或冲击</td>
+<td>数值超铭牌却无限幅、无告警</td>
+</tr>
+<tr>
+<td>4</td>
+<td>能量可任意双向吸收</td>
+<td>回馈能力取决于前端；否则制动电阻耗散</td>
+<td>持续发电 &#x2F; 回馈</td>
+<td>母线电压毫无变化</td>
+</tr>
+<tr>
+<td>5</td>
+<td>线性、无死区</td>
+<td>开关死区、纹波、饱和</td>
+<td>小信号、过零附近</td>
+<td>过零点平滑无台阶、无畸变</td>
+</tr>
+<tr>
+<td>6</td>
+<td>采样与输出严格同步</td>
+<td>链路延迟、多机不同步</td>
+<td>多机并机、闭环</td>
+<td>相位对不上，均流算不出来</td>
+</tr>
+</tbody></table>
+<p><strong>判据清单</strong></p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>看到什么</th>
+<th>物理上哪里不成立</th>
+<th>该查哪一段</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>装置处于发电 &#x2F; 回馈工况，母线电压、前端电流毫无变化</td>
+<td>能量没被建模，或回馈通道被当成理想吸收</td>
+<td>模型假设、前端变流器</td>
+</tr>
+<tr>
+<td>2</td>
+<td>电压电流瞬时值符号与功率符号对不上（p &#x3D; u·i）</td>
+<td>象限判断错 &#x2F; 符号约定不一致</td>
+<td>采集通道极性、坐标定义</td>
+</tr>
+<tr>
+<td>3</td>
+<td>感性或容性负载下，u 与 i 波形完全同相位</td>
+<td>无功被整块漏掉</td>
+<td>负载模型、相位建模</td>
+</tr>
+<tr>
+<td>4</td>
+<td>输出波形过零切换处平滑连续、无死区无台阶</td>
+<td>用了理想源，没有开关 &#x2F; 死区模型</td>
+<td>功放模型</td>
+</tr>
+<tr>
+<td>5</td>
+<td>输出功率超过设备铭牌额定，结果仍「正常」</td>
+<td>边界与保护没建模</td>
+<td>额定值、限幅环节</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>边界提示</strong>：这类判据只负责「看出结果不对」，不负责定位是模型错、参数错还是代码错；定位需结合模型、参数与代码逐层排查。</p>
+</blockquote>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><ul>
+<li>四象限说的是<strong>电压电流双向、功率可正可负</strong>的能力，不是四种工况名；u-i 平面与 P-Q 平面同名不同物，先确认再说。</li>
+<li>功放既能送能量也要能吃回能量，这个接口是仿真最易失真处。</li>
+<li>无功不是损耗，但它占电流和设备容量；把 u、i 画成同相位 &#x3D; 整块漏掉。</li>
+<li>象限切换瞬间与持续回馈两段最容易失真，理想源假设是首要嫌疑。</li>
+</ul>
+
+    </div>
+    
+    <div class="post-footer">
+        <div>
+            
+            转载声明：
+            商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">cxx</a>
+            
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+<div class="article-nav prev-next-wrap clearfix">
+    
+    
+    <a href="/2026/11/18/electric/%E7%94%B5%E5%8A%9B%E5%B8%B8%E7%94%A8%E6%9C%AF%E8%AF%AD%E9%80%9A%E4%BF%97%E5%AF%B9%E7%85%A7%E8%A1%A8/" class="next-post btn btn-default" title='电力常用术语通俗对照表'>
+        <span class="hidden-lg">下一篇</span>
+        <span class="hidden-xs">
+            电力常用术语通俗对照表</span><i class="fa fa-angle-right fa-fw"></i>
+    </a>
+    
+</div>
+
+<div id="comments">
+    
+    <script src="https://giscus.app/client.js"
+        data-repo="cxx001/myblog-comment"
+        data-repo-id="R_kgDOHvvgeg"
+        data-category="General"
+        data-category-id="DIC_kwDOHvvges4CZehr"
+        data-mapping="title"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="light"
+        data-lang="zh-CN"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+    </script>
+
+</div>
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">
+            文章目录
+        </h3>
+        
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%94%B5%E5%8A%9B%E6%9C%BA%E7%90%86%EF%BC%9A%E5%9B%9B%E8%B1%A1%E9%99%90%E4%B8%8E%E8%83%BD%E9%87%8F%E6%B5%81%E5%90%91"><span class="toc-text">电力机理：四象限与能量流向</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E5%9B%9B%E8%B1%A1%E9%99%90%E5%88%B0%E5%BA%95%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-text">一、四象限到底是什么</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E4%B8%BA%E4%BB%80%E4%B9%88%E3%80%8C%E5%8A%9F%E7%8E%87%E6%94%BE%E5%A4%A7%E5%99%A8%E3%80%8D%E4%B8%8D%E6%98%AF%E6%99%AE%E9%80%9A%E6%94%BE%E5%A4%A7%E5%99%A8"><span class="toc-text">二、为什么「功率放大器」不是普通放大器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E6%9C%89%E5%8A%9F%E3%80%81%E6%97%A0%E5%8A%9F%E3%80%81%E5%8A%9F%E7%8E%87%E5%9B%A0%E6%95%B0"><span class="toc-text">三、有功、无功、功率因数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E4%BB%BF%E7%9C%9F%E9%87%8C%E6%9C%80%E5%AE%B9%E6%98%93%E3%80%8C%E7%9C%8B%E7%9D%80%E5%90%88%E7%90%86%E5%8D%B4%E9%94%99%E3%80%8D%E7%9A%84%E5%9C%B0%E6%96%B9"><span class="toc-text">四、仿真里最容易「看着合理却错」的地方</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%8F%E7%BB%93"><span class="toc-text">小结</span></a></li></ol></li></ol>
+        
+    </div>
+</aside>
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+<a id="back-to-top" class="icon-btn hide">
+    <i class="fa fa-chevron-up"></i>
+</a>
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+    访问量:
+    <strong id="busuanzi_value_site_pv">
+        <i class="fa fa-spinner fa-spin"></i>
+    </strong>
+    &nbsp; | &nbsp;
+    访客数:
+    <strong id="busuanzi_value_site_uv">
+        <i class="fa fa-spinner fa-spin"></i>
+    </strong>
+    
+</div>
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy;
+                    2022
+                    
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+<script src="/js/app.js?rev=@@hash.js"></script>
+
+
+<div class="hide">
+    <script type="text/javascript">
+    var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+    document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+</div>
+
+
+
+
+</body>
+</html>

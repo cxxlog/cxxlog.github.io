@@ -52,17 +52,6 @@
 <link rel="stylesheet" href="/css/style.css?rev=@@hash.css">
 
     
-<div class="hide">
-    <script type="text/javascript">
-    var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
-    document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
-    </script>
-</div>
-
-
-
-
-    
 
 <meta name="generator" content="Hexo 6.2.0"></head>
 <!--[if lte IE 8]>
@@ -75,10 +64,10 @@
 <![endif]-->
 <body>
     <header class="main-header"  style="background-image:url(
-    https://hexo-theme-snippet-1251680922.cos.ap-beijing.myqcloud.com/img/banner.jpg)"
+    /img/banner.jpg)"
      >
     <div class="main-header-box">
-        <a class="header-avatar" href="/" title='John Doe'>
+        <a class="header-avatar" href="/" title='cxx'>
             <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
         </a>
         <div class="branding">
@@ -259,7 +248,7 @@
 <h1 id="8-tuple元组"><a href="#8-tuple元组" class="headerlink" title="8. tuple元组"></a>8. tuple元组</h1><p>C++11标准新引入了一种类模板，命名为 tuple（中文可直译为元组）。tuple 最大的特点是：实例化的对象可以存储任意数量、任意类型的数据。tuple 的应用场景很广泛，例如当需要存储多个不同类型的元素时，可以使用 tuple；当函数需要返回多个数据时，可以将这些数据存储在 tuple 中，函数只需返回一个 tuple 对象即可。</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;tuple&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> std::tuple;</span><br></pre></td></tr></table></figure>
 
-<p>tuple 本质是一个以可变模板参数定义的类模板，它定义在 <tuple> 头文件并位于 std 命名空间中。</tuple></p>
+<p>tuple 本质是一个以可变模板参数定义的类模板，它定义在 <tuple> 头文件并位于 std 命名空间中。</p>
 <p>实例化 tuple 模板类对象常用的方法有两种，一种是借助该类的构造函数，另一种是借助 make_tuple() 函数。</p>
 <blockquote>
 <p>一、类构造函数</p>
@@ -287,20 +276,20 @@
 </tr>
 </thead>
 <tbody><tr>
-<td>tup1.swap(tup2)<br>swap(tup1, tup2)</td>
-<td>tup1 和 tup2 表示类型相同的两个 tuple 对象，tuple 模板类中定义有一个 swap() 成员函数，<tuple> 头文件还提供了一个同名的 swap() 全局函数。swap() 函数的功能是交换两个 tuple 对象存储的内容。</tuple></td>
+<td>tup1.swap(tup2)<br/>swap(tup1, tup2)</td>
+<td>tup1 和 tup2 表示类型相同的两个 tuple 对象，tuple 模板类中定义有一个 swap() 成员函数，<tuple> 头文件还提供了一个同名的 swap() 全局函数。swap() 函数的功能是交换两个 tuple 对象存储的内容。</td>
 </tr>
 <tr>
-<td>get<num>(tup)</num></td>
-<td>tup 表示某个 tuple 对象，num 是一个整数，get() 是 <tuple> 头文件提供的全局函数，功能是返回 tup 对象中第 num+1 个元素。</tuple></td>
+<td>get<num>(tup)</td>
+<td>tup 表示某个 tuple 对象，num 是一个整数，get() 是 <tuple> 头文件提供的全局函数，功能是返回 tup 对象中第 num+1 个元素。</td>
 </tr>
 <tr>
-<td>tuple_size<type>::value</type></td>
-<td>tuple_size 是定义在 <tuple> 头文件的类模板，它只有一个成员变量 value，功能是获取某个 tuple 对象中元素的个数，type 为该tuple 对象的类型。</tuple></td>
+<td>tuple_size<type>::value</td>
+<td>tuple_size 是定义在 <tuple> 头文件的类模板，它只有一个成员变量 value，功能是获取某个 tuple 对象中元素的个数，type 为该tuple 对象的类型。</td>
 </tr>
 <tr>
 <td>tuple_element&lt;I,type&gt;::type</td>
-<td>tuple_element 是定义在 <tuple> 头文件的类模板，它只有一个成员变量 type，功能是获取某个 tuple 对象第 I+1 个元素的类型。</tuple></td>
+<td>tuple_element 是定义在 <tuple> 头文件的类模板，它只有一个成员变量 type，功能是获取某个 tuple 对象第 I+1 个元素的类型。</td>
 </tr>
 <tr>
 <td>forward_as_tuple&lt;args…&gt;</td>
@@ -308,11 +297,11 @@
 </tr>
 <tr>
 <td>tie(args…) &#x3D; tup</td>
-<td>tup 表示某个 tuple 对象，tie() 是 <tuple> 头文件提供的，功能是将 tup 内存储的元素逐一赋值给 args… 指定的左值变量。</tuple></td>
+<td>tup 表示某个 tuple 对象，tie() 是 <tuple> 头文件提供的，功能是将 tup 内存储的元素逐一赋值给 args… 指定的左值变量。</td>
 </tr>
 <tr>
 <td>tuple_cat(args…)</td>
-<td>args… 表示多个 tuple 对象，该函数是 <tuple> 头文件提供的，功能是创建一个 tuple 对象，此对象包含 args… 指定的所有 tuple 对象内的元素。</tuple></td>
+<td>args… 表示多个 tuple 对象，该函数是 <tuple> 头文件提供的，功能是创建一个 tuple 对象，此对象包含 args… 指定的所有 tuple 对象内的元素。</td>
 </tr>
 </tbody></table>
 <p>下面是演示示例：</p>
@@ -445,7 +434,7 @@
 
 
 <h1 id="14-long-long超长整形"><a href="#14-long-long超长整形" class="headerlink" title="14. long long超长整形"></a>14. long long超长整形</h1><p>C++11加入了long long超长整形，整数后一般添加<code>ll/ull</code>表示。</p>
-<p><img src="https://cxx001.github.io/2023/07/19/c++/c++11%E6%96%B0%E7%89%B9%E6%80%A7/image-20230718142025000.png"></p>
+<p><img src="/2023/07/19/c++/c++11%E6%96%B0%E7%89%B9%E6%80%A7/image-20230718142025000.png"></p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;climits&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iomanip&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;long long最小值：&quot;</span> &lt;&lt; LLONG_MIN &lt;&lt; <span class="string">&quot; &quot;</span> &lt;&lt; hex &lt;&lt; LLONG_MIN &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">    cout &lt;&lt; dec &lt;&lt; <span class="string">&quot;long long最大值：&quot;</span> &lt;&lt; LLONG_MAX &lt;&lt; <span class="string">&quot; &quot;</span> &lt;&lt; hex &lt;&lt; LLONG_MAX &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">    cout &lt;&lt; dec &lt;&lt; <span class="string">&quot;unsigned long long最大值：&quot;</span> &lt;&lt; ULLONG_MAX &lt;&lt; <span class="string">&quot; &quot;</span> &lt;&lt; hex &lt;&lt; ULLONG_MAX &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;long long int当前平台所占字节数:&quot;</span> &lt;&lt; <span class="built_in">sizeof</span>(<span class="type">long</span> <span class="type">long</span> <span class="type">int</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">long long最小值：-9223372036854775808 8000000000000000</span><br><span class="line">long long最大值：9223372036854775807 7fffffffffffffff</span><br><span class="line">unsigned long long最大值：18446744073709551615 ffffffffffffffff</span><br><span class="line">long long int当前平台所占字节数:8</span><br></pre></td></tr></table></figure>
@@ -658,6 +647,17 @@
 
 
 <script src="/js/app.js?rev=@@hash.js"></script>
+
+
+<div class="hide">
+    <script type="text/javascript">
+    var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+    document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+</div>
+
+
+
 
 </body>
 </html>
