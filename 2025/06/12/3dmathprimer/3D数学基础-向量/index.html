@@ -1,0 +1,310 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+<head>
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="Hexo">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="theme-version" content="1.0.0">
+    <meta name="root" content="/">
+    <link rel="dns-prefetch" href="https://cxxlog.github.io">
+    <!--SEO-->
+
+<meta name="keywords" content="3D数学基础" />
+
+
+<meta name="description" content="理论基础
+向量：它看起来就像一支箭，有大小和方向，没有位置。它的几何意义是表示一段位移，如(1, -2, 3)表示的位移是：向右平移1个单位，向下平移2个单位，向前平移3个单位。它们的执行顺序无..." />
+
+
+<meta name="robots" content="all" />
+<meta name="google" content="all" />
+<meta name="googlebot" content="all" />
+<meta name="verify" content="all" />
+    <!--Title-->
+
+<title>
+    
+    3D数学基础-向量 |
+    
+    Hexo
+</title>
+
+<link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+
+
+<link rel="icon" href="/favicon.ico">
+
+    
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7.css">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.7.0.css">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash.css">
+
+    
+
+<meta name="generator" content="Hexo 6.2.0"></head>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+<body>
+    <header class="main-header"  style="background-image:url(
+    /img/banner.jpg)"
+     >
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title='cxx'>
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+            <!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+            <img src="/img/branding.png" alt="Snippet 博客主题" class="img-responsive center-block">
+            
+        </div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                        <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="https://cxxlog.github.io">
+                        Hexo</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/"><i class="fa "></i>
+                                首页</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/archives/"><i class="fa "></i>
+                                时间轴</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/guestbook/"><i class="fa "></i>
+                                留言</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="3D数学基础-向量">
+            
+            3D数学基础-向量
+            
+        </h1>
+        <div class="post-meta">
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a class="category-link" href="/categories/3dmathprimer/">3dmathprimer</a>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+            <a class="tag-none-link" href="/tags/3D%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/" rel="tag">3D数学基础</a>
+            
+        </span>
+    </span>
+    
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-clock-o"></i>
+        <span class="date-meta">
+            2025/06/12</span>
+    </span>
+    
+    <span class="fa-wrap">
+        <i class="fa fa-eye"></i>
+        <span id="busuanzi_value_page_pv"></span>
+    </span>
+    
+    
+</div>
+        
+        
+    </div>
+    
+    <div class="post-body post-content">
+        <h2 id="理论基础"><a href="#理论基础" class="headerlink" title="理论基础"></a>理论基础</h2><ul>
+<li><p><strong>向量</strong>：它看起来就像一支箭，有大小和方向，没有位置。它的几何意义是表示一段位移，如(1, -2, 3)表示的位移是：向右平移1个单位，向下平移2个单位，向前平移3个单位。它们的执行顺序无关紧要。</p>
+</li>
+<li><p><strong>向量运算与几何意义</strong><br> <strong>零向量</strong>：数学表示(0，0，0)，表示没有位移，就像标量0表示没有数量一样。</p>
+<p> <strong>负向量</strong>：几何意义是将得到和原来大小相等，方向相反的向量。</p>
+<p> <strong>向量的大小</strong>：即向量的模，数学表示sqrtf(x<em>x + y</em>y + z<em>z)，其几何描述就是勾股定理，直角三角形的临边的平方和等于斜边的平方(x</em>x + y<em>y &#x3D; s</em>s)。</p>
+<p> <strong>标量与向量相乘</strong>：得到的还是向量，就是将向量的每个分量都与标量相乘即可(除以标量就是乘以它的倒数)。其几何意义是：对向量的长度进行缩放，如果标量小于0则方向也被倒转。</p>
+<p> <strong>标准化向量</strong>：将向量转换为单位向量，即大小为1的向量。这主要用于我们只关心对象方向而对大小并不关心的情况，如：法线。数学计算就是向量除以它的大小(模)即可。</p>
+<p> <strong>向量与向量加减法</strong>：两个向量相加减，将对应分量相加减即可。其几何含义类似前面说的向量表示一段位移含义一样。如某个向量加上这个向量(1, -2, 3)表示将它向右平移1个单位，向下平移2个单位，向前平移3个单位得到的向量(减就是加上方向相反的向量)。</p>
+<p> <strong>向量点乘</strong>：即向量与向量相乘，数学计算是对应分量乘积的和，其结果是一个标量。另一种几何计算是：点乘等于向量大小与向量夹角的cos值的积(这里通过这个夹角就可以判断两向量的方向关系了，如垂直，平行，方向相同，相反)。点乘我们常用还有一个：投影，即将向量分解为平行和垂直于其他向量的两个分量。</p>
+<p> <strong>向量叉乘</strong>：仅用于3D向量，数学计算是交叉相乘，得到的结果是向量，这个向量垂直于原来的两个向量。所以叉乘最重要的应用是用于创建垂直于平面，三角形或多边形的向量。叉乘的长度等于向量的大小与向量夹角sin值的积。</p>
+</li>
+</ul>
+<hr>
+<h2 id="向量类"><a href="#向量类" class="headerlink" title="向量类"></a>向量类</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br></pre></td><td class="code"><pre><span class="line">//</span><br><span class="line">//  Vector3.h</span><br><span class="line">//  hello</span><br><span class="line">//</span><br><span class="line">//  Created by app05 on 15-6-15.</span><br><span class="line">//  Copyright (c) 2015年 app05. All rights reserved.</span><br><span class="line">/*注释：</span><br><span class="line">--是否需要const修饰就是分析其数据是否需要修改，不需要修改就加const，安全性</span><br><span class="line">--一般有两个地方需要考虑是否加const：1，成员函数参数处 2，成员函数本身，即类本身数据不允许修改(修饰的是this)</span><br><span class="line">*/</span><br><span class="line"> </span><br><span class="line">#ifndef hello_Vector3_h</span><br><span class="line">#define hello_Vector3_h</span><br><span class="line">#include &lt;math.h&gt;</span><br><span class="line"></span><br><span class="line">class Vector3</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">    float x, y, z;</span><br><span class="line">    //构造函数</span><br><span class="line">    Vector3() &#123;&#125;</span><br><span class="line">    Vector3(const Vector3 &amp;a) : x(a.x), y(a.y), z(a.z) &#123;&#125;</span><br><span class="line">    Vector3(float nx, float ny, float nz) : x(nx), y(ny), z(nz) &#123;&#125;</span><br><span class="line">    //重载 &#x27;=&#x27;</span><br><span class="line">    Vector3 &amp;operator =(const Vector3 &amp;a)</span><br><span class="line">    &#123;</span><br><span class="line">        x = a.x; y = a.y; z = a.z;</span><br><span class="line">        return *this;</span><br><span class="line">    &#125;</span><br><span class="line">    //重载 &#x27;==&#x27;</span><br><span class="line">    bool operator ==(const Vector3 &amp;a) const</span><br><span class="line">    &#123;</span><br><span class="line">        return x == a.x &amp;&amp; y == a.y &amp;&amp; z == a.z;</span><br><span class="line">    &#125;</span><br><span class="line">    //重载 &#x27;!=&#x27;</span><br><span class="line">    bool operator !=(const Vector3 &amp;a) const</span><br><span class="line">    &#123;</span><br><span class="line">        return x != a.x || y != a.y || z != a.z;</span><br><span class="line">    &#125;</span><br><span class="line">    //置为零向量</span><br><span class="line">    void zero() &#123;x = y = z = 0.0f;&#125;</span><br><span class="line">    //重载一元 &#x27;-&#x27; (即负号)</span><br><span class="line">    Vector3 operator -() const &#123;return Vector3(-x, -y, -z);&#125;</span><br><span class="line">    //重载二元 &#x27;+&#x27; &#x27;-&#x27;(即加，减)</span><br><span class="line">    Vector3 operator +(const Vector3 &amp;a) const</span><br><span class="line">    &#123;</span><br><span class="line">        return Vector3(x + a.z, y + a.y, z + a.z);</span><br><span class="line">    &#125;</span><br><span class="line">    Vector3 operator -(const Vector3 &amp;a) const</span><br><span class="line">    &#123;</span><br><span class="line">        return Vector3(x - a.x, y - a.y, z - a.z);</span><br><span class="line">    &#125;</span><br><span class="line">    //与标量的乘，除法</span><br><span class="line">    Vector3 operator *(float a) const</span><br><span class="line">    &#123;</span><br><span class="line">        return Vector3(x * a, y * a, z * a);</span><br><span class="line">    &#125;</span><br><span class="line">    Vector3 operator /(float a) const</span><br><span class="line">    &#123;</span><br><span class="line">        float val = 1.0f / a;  /*这里没有对除数为零进行检查*/</span><br><span class="line">        return Vector3(x * val, y * val, z * val);</span><br><span class="line">    &#125;</span><br><span class="line">    //重载自反运算符</span><br><span class="line">    Vector3 operator +=(const Vector3 &amp;a)</span><br><span class="line">    &#123;</span><br><span class="line">        x += a.x; y += a.y; z += a.z;</span><br><span class="line">        return *this;</span><br><span class="line">    &#125;</span><br><span class="line">    Vector3 operator -=(const Vector3 &amp;a)</span><br><span class="line">    &#123;</span><br><span class="line">        x -= a.x; y -= a.y; z -= a.z;</span><br><span class="line">        return *this;</span><br><span class="line">    &#125;</span><br><span class="line">    Vector3 operator *=(float a)</span><br><span class="line">    &#123;</span><br><span class="line">        x *= a; y *= a; z *= a;</span><br><span class="line">        return *this;</span><br><span class="line">    &#125;</span><br><span class="line">    Vector3 operator /=(float a)</span><br><span class="line">    &#123;</span><br><span class="line">        float val = 1.0f / a;</span><br><span class="line">        x *= val; y *= val; z *= val;</span><br><span class="line">        return *this;</span><br><span class="line">    &#125;</span><br><span class="line">    //向量标准化</span><br><span class="line">    void normalize()</span><br><span class="line">    &#123;</span><br><span class="line">        float magSq = x * x + y * y + z * z;</span><br><span class="line">        if (magSq &gt; 0)</span><br><span class="line">        &#123;</span><br><span class="line">            float val = 1.0f / sqrt(magSq);</span><br><span class="line">            x *= val;</span><br><span class="line">            y *= val;</span><br><span class="line">            z *= val;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    //向量点乘</span><br><span class="line">    float operator *(const Vector3 &amp;a) const</span><br><span class="line">    &#123;</span><br><span class="line">        return x * a.x + y * a.y + z * a.z;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">///////////////////////////////////////////////////////////////////////</span><br><span class="line">//</span><br><span class="line">//非成员函数：有些函数写类外面更易懂</span><br><span class="line">//</span><br><span class="line">///////////////////////////////////////////////////////////////////////</span><br><span class="line">/*加inline 可以防止函数重定义，因为内联直接在调用处展开，不会编译成全局的函数调用*/</span><br><span class="line"></span><br><span class="line">//求向量的模</span><br><span class="line">inline float vectorMag(const Vector3 &amp;a)</span><br><span class="line">&#123;</span><br><span class="line">    return sqrt(a.x * a.x + a.y * a.y + a.z * a.z);</span><br><span class="line">&#125;</span><br><span class="line">//计算向量的叉乘</span><br><span class="line">inline Vector3 crossProduct(const Vector3 &amp;a, const Vector3 &amp;b)</span><br><span class="line">&#123;</span><br><span class="line">    return Vector3(</span><br><span class="line">        a.y * b.z - a.z * b.y,</span><br><span class="line">        a.z * b.x - a.x * b.z,</span><br><span class="line">        a.x * b.y - a.y * b.x</span><br><span class="line">    );</span><br><span class="line">&#125;</span><br><span class="line">//实现标量左乘</span><br><span class="line">inline Vector3 operator *(float k, const Vector3 &amp;v)</span><br><span class="line">&#123;</span><br><span class="line">    return Vector3(k * v.x, k * v.y, k * v.z);</span><br><span class="line">&#125;</span><br><span class="line">//计算两点间的距离</span><br><span class="line">inline float distance(const Vector3 &amp;a, const Vector3 &amp;b)</span><br><span class="line">&#123;</span><br><span class="line">    float dx = a.x - b.x;</span><br><span class="line">    float dy = a.y - b.y;</span><br><span class="line">    float dz = a.z - b.z;</span><br><span class="line">    return sqrt(dx * dx + dy * dy + dz * dz);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//提供一个全局零向量</span><br><span class="line">extern const Vector3 kZeroVector;</span><br><span class="line"></span><br><span class="line">#endif</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+    </div>
+    
+    <div class="post-footer">
+        <div>
+            
+            转载声明：
+            商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">cxx</a>
+            
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+<div class="article-nav prev-next-wrap clearfix">
+    
+    <a href="/2025/06/18/3dmathprimer/3D%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80-%E7%9F%A9%E9%98%B5%E5%9F%BA%E7%A1%80/" class="pre-post btn btn-default" title='3D数学基础-矩阵基础'>
+        <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+        <span class="hidden-xs">
+            3D数学基础-矩阵基础</span>
+    </a>
+    
+    
+    <a href="/2025/06/06/3dmathprimer/3D%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80-%E5%9D%90%E6%A0%87%E7%B3%BB/" class="next-post btn btn-default" title='3D数学基础-坐标系'>
+        <span class="hidden-lg">下一篇</span>
+        <span class="hidden-xs">
+            3D数学基础-坐标系</span><i class="fa fa-angle-right fa-fw"></i>
+    </a>
+    
+</div>
+
+<div id="comments">
+    
+    <script src="https://giscus.app/client.js"
+        data-repo="cxxlog/myblog-comment"
+        data-repo-id="R_kgDOVzxsBw"
+        data-category="Announcements"
+        data-category-id="DIC_kwDOVzxsB84DLdxb"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="bottom"
+        data-theme="light"
+        data-lang="zh-CN"
+        crossorigin="anonymous"
+        async>
+    </script>
+
+</div>
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">
+            文章目录
+        </h3>
+        
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%90%86%E8%AE%BA%E5%9F%BA%E7%A1%80"><span class="toc-text">理论基础</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%91%E9%87%8F%E7%B1%BB"><span class="toc-text">向量类</span></a></li></ol>
+        
+    </div>
+</aside>
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+<a id="back-to-top" class="icon-btn hide">
+    <i class="fa fa-chevron-up"></i>
+</a>
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+    访问量:
+    <strong id="busuanzi_value_site_pv">
+        <i class="fa fa-spinner fa-spin"></i>
+    </strong>
+    &nbsp; | &nbsp;
+    访客数:
+    <strong id="busuanzi_value_site_uv">
+        <i class="fa fa-spinner fa-spin"></i>
+    </strong>
+    
+</div>
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy;
+                    2022
+                    
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script async src="//vercount.one/js"></script>
+
+
+<script src="/js/app.js?rev=@@hash.js"></script>
+
+
+<div class="hide">
+    <script type="text/javascript">
+    var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+    document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+</div>
+
+
+
+
+</body>
+</html>

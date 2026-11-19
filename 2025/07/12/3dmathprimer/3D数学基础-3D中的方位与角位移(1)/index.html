@@ -1,0 +1,333 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+<head>
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="Hexo">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="theme-version" content="1.0.0">
+    <meta name="root" content="/">
+    <link rel="dns-prefetch" href="https://cxxlog.github.io">
+    <!--SEO-->
+
+<meta name="keywords" content="3D数学基础" />
+
+
+<meta name="description" content="方位基本概念介绍1，什么是方位？直观地说，方位主要描述的是物体的朝向。比如：我们知道的向量，它就只有方向但没有方位，因为它只有大小，而没有厚度和宽度，所以让向量自转其属性是不会发生任何变化的。然..." />
+
+
+<meta name="robots" content="all" />
+<meta name="google" content="all" />
+<meta name="googlebot" content="all" />
+<meta name="verify" content="all" />
+    <!--Title-->
+
+<title>
+    
+    3D数学基础-3D中的方位与角位移(1) |
+    
+    Hexo
+</title>
+
+<link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+
+
+<link rel="icon" href="/favicon.ico">
+
+    
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7.css">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.7.0.css">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash.css">
+
+    
+
+<meta name="generator" content="Hexo 6.2.0"></head>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+<body>
+    <header class="main-header"  style="background-image:url(
+    /img/banner.jpg)"
+     >
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title='cxx'>
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+            <!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+            <img src="/img/branding.png" alt="Snippet 博客主题" class="img-responsive center-block">
+            
+        </div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                        <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="https://cxxlog.github.io">
+                        Hexo</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/"><i class="fa "></i>
+                                首页</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/archives/"><i class="fa "></i>
+                                时间轴</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/guestbook/"><i class="fa "></i>
+                                留言</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="3D数学基础-3D中的方位与角位移(1)">
+            
+            3D数学基础-3D中的方位与角位移(1)
+            
+        </h1>
+        <div class="post-meta">
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a class="category-link" href="/categories/3dmathprimer/">3dmathprimer</a>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+            <a class="tag-none-link" href="/tags/3D%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/" rel="tag">3D数学基础</a>
+            
+        </span>
+    </span>
+    
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-clock-o"></i>
+        <span class="date-meta">
+            2025/07/12</span>
+    </span>
+    
+    <span class="fa-wrap">
+        <i class="fa fa-eye"></i>
+        <span id="busuanzi_value_page_pv"></span>
+    </span>
+    
+    
+</div>
+        
+        
+    </div>
+    
+    <div class="post-body post-content">
+        <h2 id="方位基本概念介绍"><a href="#方位基本概念介绍" class="headerlink" title="方位基本概念介绍"></a>方位基本概念介绍</h2><p>1，什么是方位？直观地说，方位主要描述的是物体的<strong>朝向</strong>。比如：我们知道的向量，它就只有方向但没有方位，因为它只有大小，而没有厚度和宽度，所以让向量自转其属性是不会发生任何变化的。然而，如果是一个物体，让它和向量一样自转，你会发现物体的朝向改变了，即方位发生了变化。示意图如下：</p>
+<p><img decoding="async" src="/2025/07/12/3dmathprimer/3D%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80-3D%E4%B8%AD%E7%9A%84%E6%96%B9%E4%BD%8D%E4%B8%8E%E8%A7%92%E4%BD%8D%E7%A7%BB(1)/20150629113627702.png" alt="这里写图片描述"><br><img loading="lazy" decoding="async" src="/2025/07/12/3dmathprimer/3D%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80-3D%E4%B8%AD%E7%9A%84%E6%96%B9%E4%BD%8D%E4%B8%8E%E8%A7%92%E4%BD%8D%E7%A7%BB(1)/20150629113637215.png" alt="这里写图片描述"></p>
+<p>2，方位和角位移关系：我们知道不能用绝对坐标来描述物体的位置，要描述物体位置，必须把物体放在特定的参考系中(参考点)。同样，描述物体方位时，也不能使用绝对量，方位是通过相对已知方位的<strong>旋转</strong>来描述的。而这个旋转的量就称作<strong>角位移</strong>。在数学上，方位和角位移是等价的。但在概念上它们是有区别的，方位和角位移的区别就类似点和向量的区别一样。方位就只是直观地描述了方位，而角位移不仅描述了方位还描述了从源方位到新方位变换的过程(例如，从旧方位到新方位的角位移，或者从惯性坐标系到物体坐标系的角位移)。</p>
+<p>3，总的来说，3D中描述物体方位的方法一般有3种：矩阵，欧拉角，四元数。而我们用矩阵和四元数来描述角位移，用欧拉角来描述方位。下面我们就来分别讲下矩阵，欧拉角，四元数的具体实现以及使用它们的优缺点。</p>
+<h2 id="矩阵形式"><a href="#矩阵形式" class="headerlink" title="矩阵形式"></a>矩阵形式</h2><p>1，用矩阵描述方位其实就是用一个3 × 3的旋转矩阵来表示，这个矩阵的三行必须是基向量(单位向量且互相垂直)，对应着新坐标系的三个轴。</p>
+<p>2，矩阵形式的优点：</p>
+<ul>
+<li>可以立即进行向量的旋转(相乘即可)。</li>
+<li>现在的图形API接口一般也是用的矩阵形式，所以如果你用的其他方式表示方位，在渲染管线的某处也要将其转换为矩阵形式。</li>
+<li>多个角位移连接，如知道A相对于B的方位，又知道B相对于C的方位，可以直接使用矩阵表示出A相对于C的方位，即前面章节讲的矩阵的连接方法。</li>
+<li>矩阵形式表示方位，很容易求它的逆矩阵，因为旋转矩阵是正交的，其逆矩阵只要简单的矩阵转置运算即可。</li>
+</ul>
+<p>3，矩阵形式的缺点：</p>
+<ul>
+<li>矩阵占用了更多的内存，3 × 3矩阵用9个数来保存方位，而实际上只需要3个数就能够确定了，特别是一些动画系统中，如骨骼动画就是通过控制父块和子块的相对方位来实现动作的，该模型假设被分解为15个块，每一帧为每一块保存一个方位，动画频率是15Hz，这就意味着每秒需要保存15×15&#x3D;225个方位。使用矩阵形式，则每秒需要4×9×225&#x3D;8100字节，而使用欧拉角，同样的数据只需4×3×225&#x3D;2700字节。所以对于30s的动画数据，矩阵就比欧拉角多占用162K字节。</li>
+<li>难于使用，不直观。人类考虑方位最直接的方式是角度，而矩阵使用的是向量。</li>
+<li>矩阵可能是病态的，就是前面章节讲的正交矩阵，矩阵可能接受到坏数据。</li>
+</ul>
+<h2 id="欧拉角"><a href="#欧拉角" class="headerlink" title="欧拉角"></a>欧拉角</h2><p>1，什么是欧拉角？欧拉角将方位分解为绕三个互相垂直轴的旋转，只需三个角度值数据确定一个方位。而至于是绕哪三个轴，按什么顺序，旋转正方向等其实都是可以我们自己任意设定的，但一般有意义的设定是使用笛卡尔坐标系作为三个轴，旋转顺序使用“heading-pitch-bank”，即heading为绕y轴的旋转量，经过heading旋转后，pitch为绕x轴的旋转量，最后，经过了heading和pitch，bank为绕z轴的旋转量(绕的轴是物体坐标系轴而不是惯性坐标系轴)。旋转正方向一般使用左手法则确定。注意，上面说的“heading-pitch-bank”旋转顺序是针对物体从惯性坐标系到物体坐标系的变换(世界坐标系到物体坐标系的变换)，这种形式的变换开始时惯性坐标系和物体坐标系是重合的。而对于从物体坐标系到惯性坐标系的变换，这个旋转顺序是相反的，称作“roll-pitch-yaw”，roll类似bank，yaw类似heading。</p>
+<p>2，欧拉角的优点：</p>
+<ul>
+<li>欧拉角对于我们来说很容易使用，最为直观，数据就是角度值。</li>
+<li>最为简洁，内存开销最小，只用三个数来表达方位。</li>
+<li>任意三个数都是合法的，即没有不合法的欧拉角，当然数值可能不对，但至少它们是合法的。可矩阵和四元数就不一定是这样了。</li>
+</ul>
+<p>3，欧拉角的缺点：</p>
+<ul>
+<li>给定方位的表达方式不唯一，我们把其称为别名问题，具体原因是：1，角度天生存在周期性，将一个角度加上360°的倍数时，方位不会改变。2，三个角度不互相独立，如，pitch 135度等价于heading 180°，pitch 45°，然后bank 180°。所以为了解决上面说的同一个方位表达方式不唯一的情况，我们可以限定角度范围，即heading和bank限定在-180°到+180°之间，pitch限定在-90°到+90°之间。这样，在限定范围内，就只存在一个欧拉角描述某个方位了。事实上，还存在一个违反唯一性的情况：先heading 45°再pitch 90°，这与先pitch 90°再bank 45°是等价的。即只要pitch &#x3D; ±90°时，heading-pitch与pitch-bank等效，我们称这种为<strong>万向锁</strong>。为了消除这个别名问题，我们一般规定如果pitch &#x3D; ±90°时，则bank为零。</li>
+<li>两个角度间求插值非常困难，先来说说什么是插值，插值其实就是指给你一个起点A和终点B，那么从A运动到B的轨迹是需要计算的，即A,B之间临时点的计算就是插值。再来看下书上的解释：</li>
+</ul>
+<p> <img loading="lazy" decoding="async" src="/2025/07/12/3dmathprimer/3D%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80-3D%E4%B8%AD%E7%9A%84%E6%96%B9%E4%BD%8D%E4%B8%8E%E8%A7%92%E4%BD%8D%E7%A7%BB(1)/20150630150542154.png" alt="这里写图片描述"></p>
+<p> 其实上面的插值计算就还有很多问题：第一，如果没有限制欧拉角，将得到很大的角度差。如下面A,B两个方位，其实它们只相差45°，但插值会在错误的方向上绕将近两周。</p>
+<p> <img loading="lazy" decoding="async" src="/2025/07/12/3dmathprimer/3D%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80-3D%E4%B8%AD%E7%9A%84%E6%96%B9%E4%BD%8D%E4%B8%8E%E8%A7%92%E4%BD%8D%E7%A7%BB(1)/20150630151151742.png" alt="这里写图片描述"></p>
+<p> 当然这种问题只要限制欧拉角范围就可以避免了。但插值还会有另外一个问题，这个问题是由于旋转角度的周期性引起的。如A的heading为-170°，B的heading为170°。这两个值只相差20°，但插值操作会错误的走’长弧’，绕了340°而不是更短的20°。如下图所示：</p>
+<p> <img loading="lazy" decoding="async" src="/2025/07/12/3dmathprimer/3D%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80-3D%E4%B8%AD%E7%9A%84%E6%96%B9%E4%BD%8D%E4%B8%8E%E8%A7%92%E4%BD%8D%E7%A7%BB(1)/20150630151908788.png" alt="这里写图片描述"></p>
+<p> 当然这个问题也是可以解决的，我们可以自己求得最短的弧，公式如下：</p>
+<p> <img loading="lazy" decoding="async" src="/2025/07/12/3dmathprimer/3D%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80-3D%E4%B8%AD%E7%9A%84%E6%96%B9%E4%BD%8D%E4%B8%8E%E8%A7%92%E4%BD%8D%E7%A7%BB(1)/20150630152139434.png" alt="这里写图片描述"></p>
+<p>上面的两类问题，我们都可以解决，不过插值还有一个最坑的问题，是属于底层问题，至今都没有简单的解决方案–<strong>万向锁问题</strong>。这个问题会导致抖动，路径错误等现象，根本原因是由于插值过程中角速度不是恒定的。这是一个用三个数表达3D方位的方法与生俱来的问题，我们可以改变问题，但不能消灭它，任何使用三个数来表达3D方位的系统，如能保证空间的唯一性，就都会遇到这些问题。<strong>我们将在下一章节讲怎么用四元数解决这些问题</strong>。</p>
+
+    </div>
+    
+    <div class="post-footer">
+        <div>
+            
+            转载声明：
+            商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">cxx</a>
+            
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+<div class="article-nav prev-next-wrap clearfix">
+    
+    <a href="/2025/07/18/3dmathprimer/3D%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80-3D%E4%B8%AD%E7%9A%84%E6%96%B9%E4%BD%8D%E4%B8%8E%E8%A7%92%E4%BD%8D%E7%A7%BB(2)/" class="pre-post btn btn-default" title='3D数学基础-3D中的方位与角位移(2)'>
+        <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+        <span class="hidden-xs">
+            3D数学基础-3D中的方位与角位移(2)</span>
+    </a>
+    
+    
+    <a href="/2025/07/06/3dmathprimer/3D%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80-%E7%9F%A9%E9%98%B5%E6%89%A9%E5%B1%95/" class="next-post btn btn-default" title='3D数学基础-矩阵扩展'>
+        <span class="hidden-lg">下一篇</span>
+        <span class="hidden-xs">
+            3D数学基础-矩阵扩展</span><i class="fa fa-angle-right fa-fw"></i>
+    </a>
+    
+</div>
+
+<div id="comments">
+    
+    <script src="https://giscus.app/client.js"
+        data-repo="cxxlog/myblog-comment"
+        data-repo-id="R_kgDOVzxsBw"
+        data-category="Announcements"
+        data-category-id="DIC_kwDOVzxsB84DLdxb"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="bottom"
+        data-theme="light"
+        data-lang="zh-CN"
+        crossorigin="anonymous"
+        async>
+    </script>
+
+</div>
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">
+            文章目录
+        </h3>
+        
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B9%E4%BD%8D%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5%E4%BB%8B%E7%BB%8D"><span class="toc-text">方位基本概念介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9F%A9%E9%98%B5%E5%BD%A2%E5%BC%8F"><span class="toc-text">矩阵形式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AC%A7%E6%8B%89%E8%A7%92"><span class="toc-text">欧拉角</span></a></li></ol>
+        
+    </div>
+</aside>
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+<a id="back-to-top" class="icon-btn hide">
+    <i class="fa fa-chevron-up"></i>
+</a>
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+    访问量:
+    <strong id="busuanzi_value_site_pv">
+        <i class="fa fa-spinner fa-spin"></i>
+    </strong>
+    &nbsp; | &nbsp;
+    访客数:
+    <strong id="busuanzi_value_site_uv">
+        <i class="fa fa-spinner fa-spin"></i>
+    </strong>
+    
+</div>
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy;
+                    2022
+                    
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script async src="//vercount.one/js"></script>
+
+
+<script src="/js/app.js?rev=@@hash.js"></script>
+
+
+<div class="hide">
+    <script type="text/javascript">
+    var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+    document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+</div>
+
+
+
+
+</body>
+</html>

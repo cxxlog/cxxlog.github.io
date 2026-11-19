@@ -1,0 +1,331 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+<head>
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="Hexo">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="theme-version" content="1.0.0">
+    <meta name="root" content="/">
+    <link rel="dns-prefetch" href="https://cxxlog.github.io">
+    <!--SEO-->
+
+<meta name="keywords" content="设计模式" />
+
+
+<meta name="description" content="理论要点
+什么是原型模式：用原型实例指定创建对象的种类，并且通过拷贝这些原型创建新的对象。通俗的讲就是指定一个对象作为模板，然后用这个模板克隆出新对象。
+
+注意点： 1 ，使用原型模式拷贝对象时..." />
+
+
+<meta name="robots" content="all" />
+<meta name="google" content="all" />
+<meta name="googlebot" content="all" />
+<meta name="verify" content="all" />
+    <!--Title-->
+
+<title>
+    
+    重返设计模式-原型模式 |
+    
+    Hexo
+</title>
+
+<link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+
+
+<link rel="icon" href="/favicon.ico">
+
+    
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7.css">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.7.0.css">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash.css">
+
+    
+
+<meta name="generator" content="Hexo 6.2.0"></head>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+<body>
+    <header class="main-header"  style="background-image:url(
+    /img/banner.jpg)"
+     >
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title='cxx'>
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+            <!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+            <img src="/img/branding.png" alt="Snippet 博客主题" class="img-responsive center-block">
+            
+        </div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                        <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="https://cxxlog.github.io">
+                        Hexo</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/"><i class="fa "></i>
+                                首页</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/archives/"><i class="fa "></i>
+                                时间轴</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/guestbook/"><i class="fa "></i>
+                                留言</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="重返设计模式-原型模式">
+            
+            重返设计模式-原型模式
+            
+        </h1>
+        <div class="post-meta">
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a class="category-link" href="/categories/designpatterns/">designpatterns</a>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+            <a class="tag-none-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a>
+            
+        </span>
+    </span>
+    
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-clock-o"></i>
+        <span class="date-meta">
+            2024/01/24</span>
+    </span>
+    
+    <span class="fa-wrap">
+        <i class="fa fa-eye"></i>
+        <span id="busuanzi_value_page_pv"></span>
+    </span>
+    
+    
+</div>
+        
+        
+    </div>
+    
+    <div class="post-body post-content">
+        <h2 id="理论要点"><a href="#理论要点" class="headerlink" title="理论要点"></a>理论要点</h2><ul>
+<li><p>什么是原型模式：用原型实例指定创建对象的种类，并且通过拷贝这些原型创建新的对象。<strong>通俗的讲就是指定一个对象作为模板，然后用这个模板克隆出新对象。</strong></p>
+</li>
+<li><p>注意点：<br> 1 ，使用原型模式拷贝对象时，需注意浅拷贝与深拷贝的区别。<br> 2，原型模式可以结合JSON等数据交换格式，为数据模型构建原型。<br> 3，有时原型模式庞杂的类层次管理起来很痛苦， 这就是我们为什么用<strong>组件模式和类型对象</strong>为不同的实体建模，这样无需一一建构自己的类。</p>
+</li>
+<li><p>使用场合：<br> 1，产生对象过程比较复杂，初始化需要许多资源时。<br> 2，希望框架原型和产生对象分开时。<br> 3，同一个对象可能会供其他调用者同时调用访问时。</p>
+</li>
+</ul>
+<h2 id="代码分析"><a href="#代码分析" class="headerlink" title="代码分析"></a>代码分析</h2><p>想想MMO游戏场景中各种各样的怪物是怎么产生的呢？假设我们游戏中每种怪物都有不同的类：Ghost(鬼)，Demon(恶魔)，Sorcerer(巫师)等，像这样：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">class Monster</span><br><span class="line">&#123;</span><br><span class="line">	//怪物基类...</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">class Ghost : public Monster</span><br><span class="line">&#123;</span><br><span class="line">	//鬼派生类...</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">class Demon : public Monster</span><br><span class="line">&#123;</span><br><span class="line">	//恶魔派生类...</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">class Sorcerer : public Monster</span><br><span class="line">&#123;</span><br><span class="line">	//巫师派生类...</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>然后我们用最简单粗暴的方式为每种怪物定义生产者：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">class Spawner</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">  virtual ~Spawner() &#123;&#125;</span><br><span class="line">  virtual Monster* spawnMonster() = 0;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">class GhostSpawner : public Spawner</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">  virtual Monster* spawnMonster()</span><br><span class="line">  &#123;</span><br><span class="line">    return new Ghost();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">class DemonSpawner : public Spawner</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">  virtual Monster* spawnMonster()</span><br><span class="line">  &#123;</span><br><span class="line">    return new Demon();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p>除非你是在十几年前会根据代码数量来获得工资， 否则像上面的实现方式很明显不是好方法。 众多类，众多引用，众多冗余，众多副本，众多重复自我…</p>
+<p>原型模式提供了一个解决方案。 如果你有一个恶灵，你可以制造更多恶灵。 如果你有一个恶魔，你可以制造其他恶魔。 任何怪物都可以被视为原型怪物，产出其他版本的自己。</p>
+<p>为了实现这个功能，我们给基类Monster一个抽象方法clone()：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">class Monster</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">  virtual ~Monster() &#123;&#125;</span><br><span class="line">  virtual Monster* clone() = 0;</span><br><span class="line"></span><br><span class="line">  // 其他代码……</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>那么每种怪物子类就改成类似这样实现了：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">class Ghost : public Monster &#123;</span><br><span class="line">public:</span><br><span class="line">  Ghost(int health, int speed)</span><br><span class="line">  : _health(health),</span><br><span class="line">    _speed(speed)</span><br><span class="line">  &#123;&#125;</span><br><span class="line"></span><br><span class="line">  virtual Monster* clone()</span><br><span class="line">  &#123;</span><br><span class="line">    return new Ghost(_health, _speed);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">private:</span><br><span class="line">  int _health;</span><br><span class="line">  int _speed;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>现在我们再来看看改写后的生产者就只需一个类了：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">class Spawner</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">  Spawner(Monster* prototype)</span><br><span class="line">  : _prototype(prototype)</span><br><span class="line">  &#123;&#125;</span><br><span class="line"></span><br><span class="line">  Monster* spawnMonster()</span><br><span class="line">  &#123;</span><br><span class="line">    return _prototype-&gt;clone();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">private:</span><br><span class="line">  Monster* _prototype;  //原型(怪物模板)</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>好，到此我们原型模式已经实现了。现在我们来使用一把看看效果：假设我们要生产鬼：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">//鬼模板原型</span><br><span class="line">Monster* ghostPrototype = new Ghost(15, 3);</span><br><span class="line"></span><br><span class="line">//生产者</span><br><span class="line">Spawner* ghostSpawner = new Spawner(ghostPrototype);</span><br><span class="line">Monster* ghost = ghostSpawner-&gt;spawnMonster();</span><br></pre></td></tr></table></figure>
+<p>这里是不是感觉怪怪的，生产一种怪物要先new个模板，而且每种怪物派生类都要实现clone函数，这比起最开始的粗暴实现方式感觉也没节约什么代码量。好，我们现在优化下，把模板创建封装进函数中，类似如下这样：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Monster* spawnGhost()</span><br><span class="line">&#123;</span><br><span class="line">	return new Ghost();</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>现在生产者类只需简单地存储一个函数指针：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">typedef Monster* (*SpawnCallback)(int health, int speed);</span><br><span class="line"></span><br><span class="line">class Spawner</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">  Spawner(SpawnCallback spawn)</span><br><span class="line">  : _spawn(spawn)</span><br><span class="line">  &#123;&#125;</span><br><span class="line"></span><br><span class="line">  Monster* spawnMonster()</span><br><span class="line">  &#123;</span><br><span class="line">    return _spawn();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">private:</span><br><span class="line">  SpawnCallback _spawn;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>现在我们再生产鬼就更加简洁了：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Spawner* ghostSpawner = new Spawner(spawnGhost);</span><br><span class="line">Monster* ghost = ghostSpawner-&gt;spawnMonster();</span><br></pre></td></tr></table></figure>
+
+<p>貌似为每种怪写生产函数也不是很友好，如果你对C++很熟悉，这种情况你应该还可以想到用模板了：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">class Spawner</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">  virtual ~Spawner() &#123;&#125;</span><br><span class="line">  virtual Monster* spawnMonster() = 0;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">template &lt;class T&gt;</span><br><span class="line">class SpawnerFor : public Spawner</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">  virtual Monster* spawnMonster() &#123; return new T(); &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>生产鬼就可以优雅的写成这样了：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Spawner* ghostSpawner = new SpawnerFor&lt;Ghost&gt;();</span><br><span class="line">Monster* ghost = ghostSpawner-&gt;spawnMonster();</span><br></pre></td></tr></table></figure>
+
+    </div>
+    
+    <div class="post-footer">
+        <div>
+            
+            转载声明：
+            商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">cxx</a>
+            
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+<div class="article-nav prev-next-wrap clearfix">
+    
+    <a href="/2024/01/28/designpatterns/%E9%87%8D%E8%BF%94%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/" class="pre-post btn btn-default" title='重返设计模式-单例模式'>
+        <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+        <span class="hidden-xs">
+            重返设计模式-单例模式</span>
+    </a>
+    
+    
+    <a href="/2024/01/20/designpatterns/%E9%87%8D%E8%BF%94%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F/" class="next-post btn btn-default" title='重返设计模式-观察者模式'>
+        <span class="hidden-lg">下一篇</span>
+        <span class="hidden-xs">
+            重返设计模式-观察者模式</span><i class="fa fa-angle-right fa-fw"></i>
+    </a>
+    
+</div>
+
+<div id="comments">
+    
+    <script src="https://giscus.app/client.js"
+        data-repo="cxxlog/myblog-comment"
+        data-repo-id="R_kgDOVzxsBw"
+        data-category="Announcements"
+        data-category-id="DIC_kwDOVzxsB84DLdxb"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="bottom"
+        data-theme="light"
+        data-lang="zh-CN"
+        crossorigin="anonymous"
+        async>
+    </script>
+
+</div>
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">
+            文章目录
+        </h3>
+        
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%90%86%E8%AE%BA%E8%A6%81%E7%82%B9"><span class="toc-text">理论要点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E5%88%86%E6%9E%90"><span class="toc-text">代码分析</span></a></li></ol>
+        
+    </div>
+</aside>
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+<a id="back-to-top" class="icon-btn hide">
+    <i class="fa fa-chevron-up"></i>
+</a>
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+    访问量:
+    <strong id="busuanzi_value_site_pv">
+        <i class="fa fa-spinner fa-spin"></i>
+    </strong>
+    &nbsp; | &nbsp;
+    访客数:
+    <strong id="busuanzi_value_site_uv">
+        <i class="fa fa-spinner fa-spin"></i>
+    </strong>
+    
+</div>
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy;
+                    2022
+                    
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script async src="//vercount.one/js"></script>
+
+
+<script src="/js/app.js?rev=@@hash.js"></script>
+
+
+<div class="hide">
+    <script type="text/javascript">
+    var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+    document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+</div>
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,337 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+<head>
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="Hexo">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="theme-version" content="1.0.0">
+    <meta name="root" content="/">
+    <link rel="dns-prefetch" href="https://cxxlog.github.io">
+    <!--SEO-->
+
+<meta name="keywords" content="设计模式" />
+
+
+<meta name="description" content="理论要点
+什么是双缓冲模式：用序列的操作模拟瞬间或者同时发生的事情。通俗地讲就是一个后台缓冲来接受数据，当填充完整后交换给前台缓冲，这样就保证了前台缓冲里的数据都是完整的。
+
+要点： 1，一个双..." />
+
+
+<meta name="robots" content="all" />
+<meta name="google" content="all" />
+<meta name="googlebot" content="all" />
+<meta name="verify" content="all" />
+    <!--Title-->
+
+<title>
+    
+    序列模式-双缓冲模式 |
+    
+    Hexo
+</title>
+
+<link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+
+
+<link rel="icon" href="/favicon.ico">
+
+    
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7.css">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.7.0.css">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash.css">
+
+    
+
+<meta name="generator" content="Hexo 6.2.0"></head>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+<body>
+    <header class="main-header"  style="background-image:url(
+    /img/banner.jpg)"
+     >
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title='cxx'>
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+            <!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+            <img src="/img/branding.png" alt="Snippet 博客主题" class="img-responsive center-block">
+            
+        </div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                        <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="https://cxxlog.github.io">
+                        Hexo</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/"><i class="fa "></i>
+                                首页</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/archives/"><i class="fa "></i>
+                                时间轴</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/guestbook/"><i class="fa "></i>
+                                留言</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="序列模式-双缓冲模式">
+            
+            序列模式-双缓冲模式
+            
+        </h1>
+        <div class="post-meta">
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a class="category-link" href="/categories/designpatterns/">designpatterns</a>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+            <a class="tag-none-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a>
+            
+        </span>
+    </span>
+    
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-clock-o"></i>
+        <span class="date-meta">
+            2024/02/12</span>
+    </span>
+    
+    <span class="fa-wrap">
+        <i class="fa fa-eye"></i>
+        <span id="busuanzi_value_page_pv"></span>
+    </span>
+    
+    
+</div>
+        
+        
+    </div>
+    
+    <div class="post-body post-content">
+        <h2 id="理论要点"><a href="#理论要点" class="headerlink" title="理论要点"></a>理论要点</h2><ul>
+<li><p>什么是双缓冲模式：用序列的操作模拟瞬间或者同时发生的事情。<strong>通俗地讲就是一个后台缓冲来接受数据，当填充完整后交换给前台缓冲，这样就保证了前台缓冲里的数据都是完整的。</strong></p>
+</li>
+<li><p>要点：<br> 1，一个双缓冲类封装了一个缓冲：一段可改变的状态。这个缓冲被增量的修改，但我们想要外部的代码将其视为单一的元素修改。 为了实现这点，双缓冲类需保存两个缓冲的实例：下一缓存和当前缓存。</p>
+<p> 2，当信息从缓冲区中读取，我们总是去读取当前的缓冲区。当信息需要写到缓存，我们总是在下一缓冲区上操作。 当改变完成后，一个交换操作会立刻将当前缓冲区和下一缓冲区交换， 这样新缓冲区就是公共可见的了。旧的缓冲区则成为了下一个重用的缓冲区。</p>
+<p> 3，双缓冲模式两点警示：一，交换本身需要时间，我们一般是通过指针操作，如果交换消耗的时间过长，那么就毫无裨益了。二，我们得保存两个缓冲区，在内存受限的设备上，你可能要付出惨痛的代价。 如果你不能接受使用两份内存，你需要使用别的方法保证状态在修改时不会被请求。</p>
+<p> 4，双缓冲模式常用来做帧缓冲区交换。我们几乎可以在任何一个图形API中找到双缓冲模式的应用。如OpenGl中的 swapBuffers() 函数, Direct3D中的“swap chains”,微软XNA框架的 endDraw() 方法。</p>
+</li>
+<li><p>使用场合：<br> <strong>一般使用情形是在类似同一块内存数据多个对象同时访问的情况</strong>，最常用在帧缓冲区交换。大多数主机和电脑上，显卡驱动提供了这种底层的图形系统支持，我们实际中基本不需要关心，这里讲讲原理帮助我们理解，具体看下面代码分析。</p>
+</li>
+</ul>
+<h2 id="代码分析"><a href="#代码分析" class="headerlink" title="代码分析"></a>代码分析</h2><p>1，上面理论部分提到了双缓冲模式主要用在帧缓冲区交换，为什么我们图形渲染需要这样的工作模式呢？下面我们就先来分析下计算机图形系统是如何工作的：<br>首先需要介绍的是帧缓冲，可以这么理解，它是个二维数组，对应着我们看到的窗口，保存着整张屏幕像素数据，GPU就是从这里面取数据渲染的。想想这么个流程：写入数据—&gt;帧缓冲—&gt;读取数据渲染。写入和读取都是序列操作，一般是从屏幕左上角到右下角依次填充渲染的。这里写入和读取两个行为是异步进行的，这样会出现什么问题呢？就是写入和读取很可能不同步，有可能读取到还没来得及写入的数据，这样就是导致我们看到的屏幕画面撕裂，抖动，bug暴露无遗。这有点类似我们多线程中常见问题了，同一块内存数据多个对象同时访问问题。<br>好，现在情形我们讲完了，那么具体怎么用双缓冲解决上面问题呢？其实原理很简单：我们用两个缓冲区，一个前台缓冲，一个后台缓冲。写入操作往后台缓冲写入数据，当整个屏幕数据全部写完，然后再让其一次性交换到前台缓冲进行渲染显示。这样我们就不会再出现撕裂、抖动情况了，看到的永远都是完整的整屏图像。</p>
+<p>理论讲完了，下面我们试着简单地实现下双缓冲模式，首先是缓冲区本身：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">class Framebuffer</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">  Framebuffer() &#123; clear(); &#125;</span><br><span class="line"></span><br><span class="line">  /*整个缓冲区默认清理成白色*/</span><br><span class="line">  void clear()</span><br><span class="line">  &#123;</span><br><span class="line">    for (int i = 0; i &lt; WIDTH * HEIGHT; i++)</span><br><span class="line">    &#123;</span><br><span class="line">      pixels_[i] = WHITE;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  /*指定位置的像素颜色值进行设置*/</span><br><span class="line">  void draw(int x, int y)</span><br><span class="line">  &#123;</span><br><span class="line">    pixels_[(WIDTH * y) + x] = BLACK;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  /*用于暴露给外部访问缓冲区持有的整个原始像素数组*/</span><br><span class="line">  const char* getPixels()</span><br><span class="line">  &#123;</span><br><span class="line">    return pixels_;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">private:</span><br><span class="line">  /*屏幕宽高*/</span><br><span class="line">  static const int WIDTH = 160;    </span><br><span class="line">  static const int HEIGHT = 120;</span><br><span class="line"></span><br><span class="line">  char pixels_[WIDTH * HEIGHT];</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>然后就是场景渲染中双缓冲使用了：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">class Scene</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">  Scene()</span><br><span class="line">  : current_(&amp;buffers_[0]),</span><br><span class="line">    next_(&amp;buffers_[1])</span><br><span class="line">  &#123;&#125;</span><br><span class="line"></span><br><span class="line">  void draw()</span><br><span class="line">  &#123;</span><br><span class="line">    //将数据写入到后台缓冲区</span><br><span class="line">    next_-&gt;clear();</span><br><span class="line"></span><br><span class="line">    next_-&gt;draw(1, 1);</span><br><span class="line">    // ...</span><br><span class="line">    next_-&gt;draw(4, 3);</span><br><span class="line"></span><br><span class="line">    swap();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  Framebuffer&amp; getBuffer() &#123; return *current_; &#125;</span><br><span class="line"></span><br><span class="line">private:</span><br><span class="line">  void swap()</span><br><span class="line">  &#123;</span><br><span class="line">    //将后台缓冲数据交换到前台</span><br><span class="line">    Framebuffer* temp = current_;</span><br><span class="line">    current_ = next_;</span><br><span class="line">    next_ = temp;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  Framebuffer  buffers_[2];   //双缓冲</span><br><span class="line">  Framebuffer* current_;      //前台缓冲</span><br><span class="line">  Framebuffer* next_;         //后台缓冲</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>这样我们再也不会有图形撕裂和不美观的问题了。</p>
+<p>2，上面示例讲的是图形渲染上面的应用，我们再来看一个它在其它领域的使用：<br>首先，假设遇到过年，我们游戏为了渲染氛围，需要在主城中添加很多NPC，它们之间可以做很多交互AI，如：打闹(这里假设是互相扇对方巴掌)。下面是我们基础的角色基类：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">class Actor</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">  Actor() : slapped_(false) &#123;&#125;</span><br><span class="line"></span><br><span class="line">  virtual ~Actor() &#123;&#125;</span><br><span class="line">  virtual void update() = 0;                //每帧调用更新自身行为</span><br><span class="line"></span><br><span class="line">  void reset()      &#123; slapped_ = false; &#125;   //重置扇巴掌状态</span><br><span class="line">  void slap()       &#123; slapped_ = true; &#125;    //被扇巴掌中</span><br><span class="line">  bool wasSlapped() &#123; return slapped_; &#125;    //是否被扇巴掌</span><br><span class="line"></span><br><span class="line">private:</span><br><span class="line">  bool slapped_;   //是否已经被扇巴掌</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>角色的交互舞台，我们通过以下代码构建它：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">class Stage</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">  //添加角色</span><br><span class="line">  void add(Actor* actor, int index)</span><br><span class="line">  &#123;</span><br><span class="line">    actors_[index] = actor;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  //更新所有角色，但从内部看，一个时刻仅有一个角色被更新</span><br><span class="line">  void update()</span><br><span class="line">  &#123;</span><br><span class="line">    for (int i = 0; i &lt; NUM_ACTORS; i++)</span><br><span class="line">    &#123;</span><br><span class="line">      actors_[i]-&gt;update();</span><br><span class="line">      actors_[i]-&gt;reset();</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">private:</span><br><span class="line">  static const int NUM_ACTORS = 3;</span><br><span class="line"></span><br><span class="line">  Actor* actors_[NUM_ACTORS];</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>好，接下来我们实现个具体的角色子类。他假设有这么耿直，面朝一个指定角色，不论谁给了他一巴掌，他就冲着他所面对的角色扇巴掌。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">class Comedian : public Actor</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">  //面朝的角色</span><br><span class="line">  void face(Actor* actor) &#123; facing_ = actor; &#125;</span><br><span class="line"></span><br><span class="line">  //只要检查到自己被扇，马上扇对面角色一巴掌</span><br><span class="line">  virtual void update()</span><br><span class="line">  &#123;</span><br><span class="line">    if (wasSlapped()) facing_-&gt;slap();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">private:</span><br><span class="line">  Actor* facing_;   //面朝的角色对象</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>现在，我们初始化场景，往舞台中多放几个这样的角色，使他们每个都面对着下一个，而最后一个面向第一个，形成一个圈，来进行互相扇巴掌游戏~</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">Stage stage;</span><br><span class="line"></span><br><span class="line">Comedian* actor_1 = new Comedian();</span><br><span class="line">Comedian* actor_2 = new Comedian();</span><br><span class="line">Comedian* actor_3 = new Comedian();</span><br><span class="line"></span><br><span class="line">actor_1-&gt;face(actor_2);</span><br><span class="line">actor_2-&gt;face(actor_3);</span><br><span class="line">actor_3-&gt;face(actor_1);</span><br><span class="line"></span><br><span class="line">stage.add(actor_1, 0);</span><br><span class="line">stage.add(actor_2, 1);</span><br><span class="line">stage.add(actor_3, 2);</span><br></pre></td></tr></table></figure>
+<p>好，现在我们让actor_1来开启游戏序幕：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">actor_1-&gt;slap();   //被扇开始</span><br><span class="line">stage.update();    //更新所有角色，开启互扇模式</span><br></pre></td></tr></table></figure>
+<p>让我们分析下代码的执行流程，stage中的update是序列更新每个角色对象，也就是这么个顺序：actor_1被扇—&gt;actor_1扇actor_2—&gt;actor_2扇actor_3—&gt;actor_3扇actor_1—&gt;end。</p>
+<p>我们不是要讲双缓冲的另一个应用么？貌似目前讲地和这个还没半毛线关系~~既然是这样，肯定上面示例写法是个反例啥，套路都是用来带入问题的。好，既然这样上面的示例代码有什么问题呢？<br>我们试着修改下角色添加进舞台的顺序：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">stage.add(actor_1, 2);</span><br><span class="line">stage.add(actor_2, 1);</span><br><span class="line">stage.add(actor_3, 0);</span><br></pre></td></tr></table></figure>
+<p>如果这样，再来分析下代码的执行流程：actor_1被扇—&gt;actor_3无反应—&gt;actor_2无反应—&gt;actor_1扇actor_2—&gt;end。<br>哦不！完全不一样了。添加角色到舞台的顺序影响了我们游戏的进行。这该怎么办了？现在就是我们使用双缓冲的时候了~<br>首先我们把每个角色的“被扇巴掌”状态缓存起来：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">class Actor</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">  Actor() : currentSlapped_(false) &#123;&#125;</span><br><span class="line"></span><br><span class="line">  virtual ~Actor() &#123;&#125;</span><br><span class="line">  virtual void update() = 0;</span><br><span class="line"></span><br><span class="line">  void swap()</span><br><span class="line">  &#123;</span><br><span class="line">    // Swap the buffer.</span><br><span class="line">    currentSlapped_ = nextSlapped_;</span><br><span class="line"></span><br><span class="line">    // Clear the new &quot;next&quot; buffer.</span><br><span class="line">    nextSlapped_ = false;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  void slap()       &#123; nextSlapped_ = true; &#125;</span><br><span class="line">  bool wasSlapped() &#123; return currentSlapped_; &#125;</span><br><span class="line"></span><br><span class="line">private:</span><br><span class="line">  bool currentSlapped_;</span><br><span class="line">  bool nextSlapped_;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>现在每个角色有两个是否被扇状态字段，当前状态用于读取，下一个状态用于写入。这里还有Stage类中也得做下小修改：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">void Stage::update()</span><br><span class="line">&#123;</span><br><span class="line">  for (int i = 0; i &lt; NUM_ACTORS; i++)</span><br><span class="line">  &#123;</span><br><span class="line">    actors_[i]-&gt;update();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  for (int i = 0; i &lt; NUM_ACTORS; i++)</span><br><span class="line">  &#123;</span><br><span class="line">    actors_[i]-&gt;swap();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>现在我们再来分析下双缓冲状态下代码的执行流程：actor_1被扇—&gt;actor_3无反应—&gt;actor_2无反应—&gt;actor_1扇actor_2—&gt;actor_3前后缓冲交换无变化—&gt;actor_2交换变为被扇状态—&gt;actor_1交换变为重置状态—&gt;然后update到第二帧开始actor_2扇actor_3，再到下一帧actor_3扇actor_1，如此依次循环。<br>每个角色在其被扇巴掌的那一帧中仅会看到一个巴掌，这样一来，交互的动作就不会再受添加到舞台的顺序影响了。对于用户和外部代码而言，这些角色在一帧中就是同步更新的。</p>
+<p>嗯，另一种双缓冲应用算是讲完了，最后我们来分析下上面的实现方式，看看能不能再优化一波，它是对每个角色都保存着两个状态字段，为了交换，我们需要遍历整个对象集合，通知每个对象交换。而且我们这个互扇巴掌的游戏其实只与相邻的两个人相关，我们不需要把所有的角色状态都缓冲下来。<br>既然是这样，我们可以这样分析，首先，只与相邻两个角色相关，我们只需保存一个只有两个元素的数组状态字段就行了。然后，不需要所有角色都保存各自缓冲，这就可以用静态字段实现共享。<br>下面是优化后的实现参考：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">class Actor</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">  static void init() &#123; current_ = 0; &#125;</span><br><span class="line">  static void swap() &#123; current_ = next(); &#125;</span><br><span class="line"></span><br><span class="line">  void slap()        &#123; slapped_[next()] = true; &#125;</span><br><span class="line">  bool wasSlapped()  &#123; return slapped_[current_]; &#125;</span><br><span class="line"></span><br><span class="line">private:</span><br><span class="line">  static int current_;</span><br><span class="line">  static int next()  &#123; return 1 - current_; &#125;</span><br><span class="line"></span><br><span class="line">  bool slapped_[2];</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>双缓冲模式是那种你需要它时自然会想起来的模式。一般是出现在某些数据的访问和计算机执行顺序相关，不同步访问而出现异常的情况。这时就应该自然想到双缓冲，一个后台缓冲写入新数据，一个前台缓冲通过交换后台数据更新表现。</p>
+
+    </div>
+    
+    <div class="post-footer">
+        <div>
+            
+            转载声明：
+            商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">cxx</a>
+            
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+<div class="article-nav prev-next-wrap clearfix">
+    
+    <a href="/2024/02/16/designpatterns/%E5%BA%8F%E5%88%97%E6%A8%A1%E5%BC%8F-%E6%B8%B8%E6%88%8F%E5%BE%AA%E7%8E%AF%E6%A8%A1%E5%BC%8F/" class="pre-post btn btn-default" title='序列模式-游戏循环模式'>
+        <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+        <span class="hidden-xs">
+            序列模式-游戏循环模式</span>
+    </a>
+    
+    
+    <a href="/2024/02/08/designpatterns/%E9%87%8D%E8%BF%94%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E7%8A%B6%E6%80%81%E6%A8%A1%E5%BC%8F/" class="next-post btn btn-default" title='重返设计模式-状态模式'>
+        <span class="hidden-lg">下一篇</span>
+        <span class="hidden-xs">
+            重返设计模式-状态模式</span><i class="fa fa-angle-right fa-fw"></i>
+    </a>
+    
+</div>
+
+<div id="comments">
+    
+    <script src="https://giscus.app/client.js"
+        data-repo="cxxlog/myblog-comment"
+        data-repo-id="R_kgDOVzxsBw"
+        data-category="Announcements"
+        data-category-id="DIC_kwDOVzxsB84DLdxb"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="bottom"
+        data-theme="light"
+        data-lang="zh-CN"
+        crossorigin="anonymous"
+        async>
+    </script>
+
+</div>
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">
+            文章目录
+        </h3>
+        
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%90%86%E8%AE%BA%E8%A6%81%E7%82%B9"><span class="toc-text">理论要点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E5%88%86%E6%9E%90"><span class="toc-text">代码分析</span></a></li></ol>
+        
+    </div>
+</aside>
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+<a id="back-to-top" class="icon-btn hide">
+    <i class="fa fa-chevron-up"></i>
+</a>
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+    访问量:
+    <strong id="busuanzi_value_site_pv">
+        <i class="fa fa-spinner fa-spin"></i>
+    </strong>
+    &nbsp; | &nbsp;
+    访客数:
+    <strong id="busuanzi_value_site_uv">
+        <i class="fa fa-spinner fa-spin"></i>
+    </strong>
+    
+</div>
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy;
+                    2022
+                    
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script async src="//vercount.one/js"></script>
+
+
+<script src="/js/app.js?rev=@@hash.js"></script>
+
+
+<div class="hide">
+    <script type="text/javascript">
+    var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+    document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+</div>
+
+
+
+
+</body>
+</html>

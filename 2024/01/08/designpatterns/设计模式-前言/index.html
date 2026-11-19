@@ -1,0 +1,331 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+<head>
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="Hexo">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="theme-version" content="1.0.0">
+    <meta name="root" content="/">
+    <link rel="dns-prefetch" href="https://cxxlog.github.io">
+    <!--SEO-->
+
+<meta name="keywords" content="设计模式" />
+
+
+<meta name="description" content="什么是设计模式
+设计模式归根结底就是因为你使用的程序语言的抽象能力不足才发明出来的。譬如说那个Listener模式，在C#里面就是一个event关键字搞定，它已经帮你把这个设计模式做进了语法，你..." />
+
+
+<meta name="robots" content="all" />
+<meta name="google" content="all" />
+<meta name="googlebot" content="all" />
+<meta name="verify" content="all" />
+    <!--Title-->
+
+<title>
+    
+    设计模式-前言 |
+    
+    Hexo
+</title>
+
+<link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+
+
+<link rel="icon" href="/favicon.ico">
+
+    
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7.css">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.7.0.css">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash.css">
+
+    
+
+<meta name="generator" content="Hexo 6.2.0"></head>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+<body>
+    <header class="main-header"  style="background-image:url(
+    /img/banner.jpg)"
+     >
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title='cxx'>
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+            <!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+            <img src="/img/branding.png" alt="Snippet 博客主题" class="img-responsive center-block">
+            
+        </div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                        <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="https://cxxlog.github.io">
+                        Hexo</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/"><i class="fa "></i>
+                                首页</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/archives/"><i class="fa "></i>
+                                时间轴</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/guestbook/"><i class="fa "></i>
+                                留言</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="设计模式-前言">
+            
+            设计模式-前言
+            
+        </h1>
+        <div class="post-meta">
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a class="category-link" href="/categories/designpatterns/">designpatterns</a>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+            <a class="tag-none-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a>
+            
+        </span>
+    </span>
+    
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-clock-o"></i>
+        <span class="date-meta">
+            2024/01/08</span>
+    </span>
+    
+    <span class="fa-wrap">
+        <i class="fa fa-eye"></i>
+        <span id="busuanzi_value_page_pv"></span>
+    </span>
+    
+    
+</div>
+        
+        
+    </div>
+    
+    <div class="post-body post-content">
+        <h1 id="什么是设计模式"><a href="#什么是设计模式" class="headerlink" title="什么是设计模式"></a>什么是设计模式</h1><ul>
+<li><p>设计模式归根结底就是因为你使用的程序语言的抽象能力不足才发明出来的。譬如说那个Listener模式，在C#里面就是一个event关键字搞定，它已经帮你把这个设计模式做进了语法，你不需要痛苦地写一大堆框架代码就可以用了，这种东西就叫语法糖。</p>
+</li>
+<li><p>只有真正理解了设计模式，才知道什么叫面向对象分析和设计。设计模式之于面向对象系统的设计和开发的作用就有如数据结构之于面向过程开发的作用一般，其重要性和必要性自然不需要我赘述。</p>
+</li>
+<li><p>面向对象系统的分析和设计实际上追求的就是两点：<b>一是高内聚，二是低耦合，即对修改封闭，对扩展开放。</b>这也是我们软件设计所准求的,因此无论是对象中的封装、继承、多态, 还是我们的设计模式的原则和实例都是在为了这两个目标努力。</p>
+</li>
+<li><p>设计模式并不是空的理论。就如我们在进行软件开发的过程会很自然用到很多的算法和结构来解决实际的问题，那些其实也就是数据结构中的重要概念和内容。在面向对象系统的设计和开发中，我们已经积累了很多的原则，比如面向对象中的封装、继承和多态、面向接口编程、优先使用组合而不是继承、将抽象和实现分离的思想等等，在设计模式中你总是能看到他们的影子，特别是组合(委托)和继承的差异带来系统在耦合性上的差别，更是在设计模式多次涉及到。而一些设计模式的思想在我们做系统的设计和开发中则是经常要用到的，比如说Template、Strategy模式的思想，Singleton模式的思想，Factory 模式的思想等等，还有很多的模式已经在我们的开发平台中扎根了，比如说Observer(其实 例为Model-Control-View模式)是MFC和Struts中的基本框架，Iterator模式则在C++的STL中有实现等。</p>
+</li>
+<li><p>或许有的人会说,我们不需要设计模式，我们的系统很小，设计模式会束缚我们的实现。我想说的是，设计模式体现的是一种思想，而思想则是指导行为的一切，理解和掌握了设计模式，并不是说记住了这些模式(23种或更多)的设计场景和解决策略(实际上这也是很重要的一笔财富)，实际接受的是一种思想的熏陶和洗礼，等这种思想融入到了你的思想中后，你就会不自觉地使用这种思想去进行你的设计和开发，这一切才是最重要的。</p>
+</li>
+<li><p>好架构的代码往往很少是运行时最快的。 相反，提升性能需要很多的编程时间。 一旦完成，它就会污染代码库：高度优化的代码不灵活，很难改动。在架构和效率上我们只有凭经验去权衡了。</p>
+</li>
+<li><p>最后，我将从游戏开发中挑一些典型场景来讲解设计模式的应用，这样也更有代入感，理解更深刻；</p>
+</li>
+</ul>
+<h1 id="章节目录"><a href="#章节目录" class="headerlink" title="章节目录"></a>章节目录</h1><ol>
+<li><strong>重返设计模式-命令模式</strong></li>
+<li><strong>重返设计模式-享元模式</strong></li>
+<li><strong>重返设计模式-观察者模式</strong></li>
+<li><strong>重返设计模式-原型模式</strong></li>
+<li><strong>重返设计模式-单例模式</strong></li>
+<li><strong>重返设计模式-状态模式</strong></li>
+<li><strong>序列模式-双缓冲模式</strong></li>
+<li><strong>序列模式-游戏循环模式</strong></li>
+<li><strong>序列模式-更新方法</strong></li>
+<li><strong>行为模式-字节码</strong></li>
+<li><strong>行为模式-子类沙箱</strong></li>
+<li><strong>行为模式-类型对象</strong></li>
+<li><strong>解耦模式-组件模式</strong></li>
+<li><strong>解耦模式-事件队列</strong></li>
+<li><strong>解耦模式-服务定位器</strong></li>
+<li><strong>优化模式-数据局部性</strong></li>
+<li><strong>优化模式-脏标记模式</strong></li>
+</ol>
+
+    </div>
+    
+    <div class="post-footer">
+        <div>
+            
+            转载声明：
+            商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">cxx</a>
+            
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+<div class="article-nav prev-next-wrap clearfix">
+    
+    <a href="/2024/01/12/designpatterns/%E9%87%8D%E8%BF%94%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%91%BD%E4%BB%A4%E6%A8%A1%E5%BC%8F/" class="pre-post btn btn-default" title='重返设计模式-命令模式'>
+        <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+        <span class="hidden-xs">
+            重返设计模式-命令模式</span>
+    </a>
+    
+    
+    <a href="/2023/11/21/project/%E8%B8%A9%E5%9D%91%E6%B1%87%E6%80%BB/" class="next-post btn btn-default" title='踩坑汇总'>
+        <span class="hidden-lg">下一篇</span>
+        <span class="hidden-xs">
+            踩坑汇总</span><i class="fa fa-angle-right fa-fw"></i>
+    </a>
+    
+</div>
+
+<div id="comments">
+    
+    <script src="https://giscus.app/client.js"
+        data-repo="cxxlog/myblog-comment"
+        data-repo-id="R_kgDOVzxsBw"
+        data-category="Announcements"
+        data-category-id="DIC_kwDOVzxsB84DLdxb"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="bottom"
+        data-theme="light"
+        data-lang="zh-CN"
+        crossorigin="anonymous"
+        async>
+    </script>
+
+</div>
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">
+            文章目录
+        </h3>
+        
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F"><span class="toc-text">什么是设计模式</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AB%A0%E8%8A%82%E7%9B%AE%E5%BD%95"><span class="toc-text">章节目录</span></a></li></ol>
+        
+    </div>
+</aside>
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+<a id="back-to-top" class="icon-btn hide">
+    <i class="fa fa-chevron-up"></i>
+</a>
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+    访问量:
+    <strong id="busuanzi_value_site_pv">
+        <i class="fa fa-spinner fa-spin"></i>
+    </strong>
+    &nbsp; | &nbsp;
+    访客数:
+    <strong id="busuanzi_value_site_uv">
+        <i class="fa fa-spinner fa-spin"></i>
+    </strong>
+    
+</div>
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy;
+                    2022
+                    
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script async src="//vercount.one/js"></script>
+
+
+<script src="/js/app.js?rev=@@hash.js"></script>
+
+
+<div class="hide">
+    <script type="text/javascript">
+    var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+    document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+</div>
+
+
+
+
+</body>
+</html>

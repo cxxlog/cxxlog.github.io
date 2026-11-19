@@ -1,0 +1,323 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+<head>
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="Hexo">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="theme-version" content="1.0.0">
+    <meta name="root" content="/">
+    <link rel="dns-prefetch" href="https://cxxlog.github.io">
+    <!--SEO-->
+
+<meta name="keywords" content="设计模式" />
+
+
+<meta name="description" content="理论要点
+什么是享元模式：以共享的方式高效地支持大量的细粒度的对象。通过复用内存中已存在的对象，降低系统创建对象实例的性能消耗。通俗的讲就是很多对象共享同一块内存数据。(注意区别单例模式：享元强..." />
+
+
+<meta name="robots" content="all" />
+<meta name="google" content="all" />
+<meta name="googlebot" content="all" />
+<meta name="verify" content="all" />
+    <!--Title-->
+
+<title>
+    
+    重返设计模式-享元模式 |
+    
+    Hexo
+</title>
+
+<link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+
+
+<link rel="icon" href="/favicon.ico">
+
+    
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7.css">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.7.0.css">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash.css">
+
+    
+
+<meta name="generator" content="Hexo 6.2.0"></head>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+<body>
+    <header class="main-header"  style="background-image:url(
+    /img/banner.jpg)"
+     >
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title='cxx'>
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+            <!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+            <img src="/img/branding.png" alt="Snippet 博客主题" class="img-responsive center-block">
+            
+        </div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                        <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="https://cxxlog.github.io">
+                        Hexo</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/"><i class="fa "></i>
+                                首页</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/archives/"><i class="fa "></i>
+                                时间轴</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/guestbook/"><i class="fa "></i>
+                                留言</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="重返设计模式-享元模式">
+            
+            重返设计模式-享元模式
+            
+        </h1>
+        <div class="post-meta">
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a class="category-link" href="/categories/designpatterns/">designpatterns</a>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+            <a class="tag-none-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a>
+            
+        </span>
+    </span>
+    
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-clock-o"></i>
+        <span class="date-meta">
+            2024/01/16</span>
+    </span>
+    
+    <span class="fa-wrap">
+        <i class="fa fa-eye"></i>
+        <span id="busuanzi_value_page_pv"></span>
+    </span>
+    
+    
+</div>
+        
+        
+    </div>
+    
+    <div class="post-body post-content">
+        <h2 id="理论要点"><a href="#理论要点" class="headerlink" title="理论要点"></a>理论要点</h2><ul>
+<li><p>什么是享元模式：以共享的方式高效地支持大量的细粒度的对象。通过复用内存中已存在的对象，降低系统创建对象实例的性能消耗。<strong>通俗的讲就是很多对象共享同一块内存数据。</strong>(注意区别单例模式：享元强调共享内存，单例强调只有一个实例，它是全局的，单例可以说是特殊的享元)</p>
+</li>
+<li><p>享元模式有两种状态：固有状态和变化状态<br> 1，固有状态，是不会随环境改变而改变的，是存储在享元对象内部的状态信息，因此固有状态是可以共享的。对任何一个享元对象而言，固有状态的值是完全相同的。<br> 2，变化状态，是会随着环境的改变而改变的。因此是不可共享的状态，对于不同的享元对象而言，它的值可能是不同的。<br> 3，享元模式原理就是通过共享固有状态，区分变化状态，有效隔离系统中的变化部分和不变部分。通常可以配合对象池来进行操作，它往往不单单是为了节约内存更多的是节省时间。</p>
+</li>
+<li><p>使用场合：<br> 1，当系统中某个对象类型的实例较多的时候。<br> 2，对象的大多数数据都可变为固有状态。<br> 3，在系统设计中，对象实例进行分类后，发现真正有区别的分类很少的时候。</p>
+</li>
+</ul>
+<h2 id="代码分析"><a href="#代码分析" class="headerlink" title="代码分析"></a>代码分析</h2><p>1，迷雾散尽，露出了古朴庄严的森林。古老的铁杉，在头顶编成绿色穹顶。 阳光在树叶间破碎成金色顶棚。从树干间远眺，远处的森林渐渐隐去。</p>
+<p>这是我们游戏开发者梦想的超凡场景，用几句话就能描述一片巨大的森林，但是在实时游戏中做这件事就完全是另外一件事了。 当屏幕上需要显示一整个森林时，图形程序员看到的是每秒需要送到GPU六十次的百万多边形。</p>
+<p>嗯，我们先来看看每棵树都大体有些啥：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">class Tree</span><br><span class="line">&#123;</span><br><span class="line">private:</span><br><span class="line">	Mesh _mesh;        //树干，树枝和树叶形状的多边形网格</span><br><span class="line">	Texture _bark;     //树皮纹理</span><br><span class="line">	Texture _leaves;   //树叶纹理</span><br><span class="line">	Vector _position;  //位置</span><br><span class="line">	double _height;    //树干高度</span><br><span class="line">	double _thickness; //树干厚度</span><br><span class="line">	Color _barkTint;   //树皮颜色</span><br><span class="line">	Color _leafTint;   //树叶颜色</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>现在可以想象下，成千上万的这个对象要在一帧的时间就交给GPU处理这个太过了。关键点在于，这些树大多数长得一模一样，它们使用了相同的网格和纹理。这意味着这些树的实例大部分字段是一样的。<br>这种情况下，我们就应该想到享元模式了，很明显这里包含了固有状态和变化状态两部分：<br>首先来看看分出来的固有状态部分（内存中缓存一份共享）：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">class TreeModel</span><br><span class="line">&#123;</span><br><span class="line">private:</span><br><span class="line">	Mesh _mesh;</span><br><span class="line">	Texture _bark;</span><br><span class="line">	Texture _leaves;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>然后是变化状态部分(每棵树都可能不同的部分)：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">class Tree</span><br><span class="line">&#123;</span><br><span class="line">private:</span><br><span class="line">	TreeModel* _model;</span><br><span class="line"></span><br><span class="line">	Vector _position;</span><br><span class="line">	double _height;</span><br><span class="line">	double _thickness;</span><br><span class="line">	Color _barkTint;</span><br><span class="line">	Color _leafTint;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>如果只是共享内存，把TreeModel缓存到内存，其实对渲染毫无帮助，因为最终渲染是通过GPU处理的，这样我们还是得把数据从内存通过总线输送到GPU，这里才是真真的消耗所在。所以我们应该把数据直接缓存到GPU，好在，现代的图形接口和显卡已经支持这一点了。<br>在这些API中，你需要提供两部分数据流。 第一部分是一块需要渲染多次的共同数据——在例子中是树的网格和纹理。 第二部分是实例的列表以及绘制第一部分时需要使用的参数。 然后调用一次渲染，绘制整个森林。</p>
+<p>2，到这里，享元模式其实已经讲完了。不过我还是想顺便把这个游戏世界给讲完善点。上面我们只描绘了世界中的树，其实游戏世界中还有各种各样的地形，如草，泥土，丘陵，湖泊，河流等。<br>游戏世界中，我们基于区块建立地表，即整个地表由很多区块组成(巨大的网格)，每个区块对应一种地形。讲到这里你就应该敏感的察觉到地形，没错，就是地形对象可以共享。</p>
+<p>先来看看下面这个简单的地形类：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">class Terrain</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">	Terrain(int movementCost, bool isWater, Texture texture)</span><br><span class="line">	: _movementCost(movementCost),</span><br><span class="line">	  _isWater(isWater),</span><br><span class="line">	  _texture(texture)</span><br><span class="line">	&#123;&#125;</span><br><span class="line"></span><br><span class="line">	//const修饰：享元对象共享内存所以不允许修改数据</span><br><span class="line">	int getMovementCost() const &#123;return _movementCost;&#125; </span><br><span class="line">	bool isWater() const &#123;return _isWater;&#125;</span><br><span class="line">	const Texture&amp; getTexture() const &#123;return _texture;&#125;</span><br><span class="line"></span><br><span class="line">private:</span><br><span class="line">	int _movementCost;    //移动开销</span><br><span class="line">	bool _isWater;        //是否是水域</span><br><span class="line">	Texture _texture;     //地形纹理</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>好，现在我们来用地形类构建一个下面这样的简单世界：</p>
+<p><img decoding="async" src="/2024/01/16/designpatterns/%E9%87%8D%E8%BF%94%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E4%BA%AB%E5%85%83%E6%A8%A1%E5%BC%8F/20170208153728717.png" alt="这里写图片描述"></p>
+<p>由于地形实例在很多地方使用，如果你想要动态分配，它们的生命周期会有点复杂。 因此，我们直接在游戏世界中存储它们。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">class World</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">  World()</span><br><span class="line">  : _grassTerrain(1, false, GRASS_TEXTURE),</span><br><span class="line">    _hillTerrain(3, false, HILL_TEXTURE),</span><br><span class="line">    _riverTerrain(2, true, RIVER_TEXTURE)</span><br><span class="line">  &#123;&#125;</span><br><span class="line"></span><br><span class="line">  void generateTerrain();          //生成地表</span><br><span class="line"></span><br><span class="line">private:</span><br><span class="line">  Terrain* _tiles[WIDTH][HEIGHT];  //区块</span><br><span class="line"></span><br><span class="line">  Terrain _grassTerrain;           //草地</span><br><span class="line">  Terrain _hillTerrain;            //丘陵</span><br><span class="line">  Terrain _riverTerrain;           //河流</span><br><span class="line">  </span><br><span class="line">  // 其他代码……</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>然后我们来实现生成地表接口：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">void World::generateTerrain()</span><br><span class="line">&#123;</span><br><span class="line">  // 将地面填满草皮</span><br><span class="line">  for (int x = 0; x &lt; WIDTH; x++)</span><br><span class="line">  &#123;</span><br><span class="line">    for (int y = 0; y &lt; HEIGHT; y++)</span><br><span class="line">    &#123;</span><br><span class="line">      // 加入一些丘陵</span><br><span class="line">      if (random(10) == 0)</span><br><span class="line">      &#123;</span><br><span class="line">        _tiles[x][y] = &amp;_hillTerrain;</span><br><span class="line">      &#125;</span><br><span class="line">      else</span><br><span class="line">      &#123;</span><br><span class="line">        _tiles[x][y] = &amp;_grassTerrain;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  // 放置河流</span><br><span class="line">  int x = random(WIDTH);</span><br><span class="line">  for (int y = 0; y &lt; HEIGHT; y++) &#123;</span><br><span class="line">    _tiles[x][y] = &amp;_riverTerrain;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这样就很好的实现了把世界和地形细节解耦。</p>
+
+    </div>
+    
+    <div class="post-footer">
+        <div>
+            
+            转载声明：
+            商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">cxx</a>
+            
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+<div class="article-nav prev-next-wrap clearfix">
+    
+    <a href="/2024/01/20/designpatterns/%E9%87%8D%E8%BF%94%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F/" class="pre-post btn btn-default" title='重返设计模式-观察者模式'>
+        <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+        <span class="hidden-xs">
+            重返设计模式-观察者模式</span>
+    </a>
+    
+    
+    <a href="/2024/01/12/designpatterns/%E9%87%8D%E8%BF%94%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%91%BD%E4%BB%A4%E6%A8%A1%E5%BC%8F/" class="next-post btn btn-default" title='重返设计模式-命令模式'>
+        <span class="hidden-lg">下一篇</span>
+        <span class="hidden-xs">
+            重返设计模式-命令模式</span><i class="fa fa-angle-right fa-fw"></i>
+    </a>
+    
+</div>
+
+<div id="comments">
+    
+    <script src="https://giscus.app/client.js"
+        data-repo="cxxlog/myblog-comment"
+        data-repo-id="R_kgDOVzxsBw"
+        data-category="Announcements"
+        data-category-id="DIC_kwDOVzxsB84DLdxb"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="bottom"
+        data-theme="light"
+        data-lang="zh-CN"
+        crossorigin="anonymous"
+        async>
+    </script>
+
+</div>
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">
+            文章目录
+        </h3>
+        
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%90%86%E8%AE%BA%E8%A6%81%E7%82%B9"><span class="toc-text">理论要点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E5%88%86%E6%9E%90"><span class="toc-text">代码分析</span></a></li></ol>
+        
+    </div>
+</aside>
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+<a id="back-to-top" class="icon-btn hide">
+    <i class="fa fa-chevron-up"></i>
+</a>
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+    访问量:
+    <strong id="busuanzi_value_site_pv">
+        <i class="fa fa-spinner fa-spin"></i>
+    </strong>
+    &nbsp; | &nbsp;
+    访客数:
+    <strong id="busuanzi_value_site_uv">
+        <i class="fa fa-spinner fa-spin"></i>
+    </strong>
+    
+</div>
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy;
+                    2022
+                    
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script async src="//vercount.one/js"></script>
+
+
+<script src="/js/app.js?rev=@@hash.js"></script>
+
+
+<div class="hide">
+    <script type="text/javascript">
+    var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+    document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+</div>
+
+
+
+
+</body>
+</html>

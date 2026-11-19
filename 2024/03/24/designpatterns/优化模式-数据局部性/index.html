@@ -1,0 +1,356 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+<head>
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="Hexo">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="theme-version" content="1.0.0">
+    <meta name="root" content="/">
+    <link rel="dns-prefetch" href="https://cxxlog.github.io">
+    <!--SEO-->
+
+<meta name="keywords" content="设计模式" />
+
+
+<meta name="description" content="理论要点
+什么是数据局部性模式：合理组织数据，充分使用CPU的缓存来加速内存读取。简单点说就是让数据在内存中连续存储，这样可以加快CPU的访问速度。
+
+要点
+ 1， 现代的CPU有缓存来加速内存..." />
+
+
+<meta name="robots" content="all" />
+<meta name="google" content="all" />
+<meta name="googlebot" content="all" />
+<meta name="verify" content="all" />
+    <!--Title-->
+
+<title>
+    
+    优化模式-数据局部性 |
+    
+    Hexo
+</title>
+
+<link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+
+
+<link rel="icon" href="/favicon.ico">
+
+    
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7.css">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.7.0.css">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash.css">
+
+    
+
+<meta name="generator" content="Hexo 6.2.0"></head>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+<body>
+    <header class="main-header"  style="background-image:url(
+    /img/banner.jpg)"
+     >
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title='cxx'>
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+            <!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+            <img src="/img/branding.png" alt="Snippet 博客主题" class="img-responsive center-block">
+            
+        </div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                        <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="https://cxxlog.github.io">
+                        Hexo</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/"><i class="fa "></i>
+                                首页</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/archives/"><i class="fa "></i>
+                                时间轴</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/guestbook/"><i class="fa "></i>
+                                留言</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="优化模式-数据局部性">
+            
+            优化模式-数据局部性
+            
+        </h1>
+        <div class="post-meta">
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a class="category-link" href="/categories/designpatterns/">designpatterns</a>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+            <a class="tag-none-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a>
+            
+        </span>
+    </span>
+    
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-clock-o"></i>
+        <span class="date-meta">
+            2024/03/24</span>
+    </span>
+    
+    <span class="fa-wrap">
+        <i class="fa fa-eye"></i>
+        <span id="busuanzi_value_page_pv"></span>
+    </span>
+    
+    
+</div>
+        
+        
+    </div>
+    
+    <div class="post-body post-content">
+        <h2 id="理论要点"><a href="#理论要点" class="headerlink" title="理论要点"></a>理论要点</h2><ul>
+<li><p>什么是数据局部性模式：<strong>合理组织数据，充分使用CPU的缓存来加速内存读取。</strong>简单点说就是让数据在内存中连续存储，这样可以加快CPU的访问速度。</p>
+</li>
+<li><p>要点</p>
+<p> 1， 现代的CPU有缓存来加速内存读取，其可以更快地读取最近访问过的内存毗邻的内存。基于这一点，我们通过保证处理的数据排列在连续内存上，以提高内存局部性，从而提高性能。</p>
+<p> 2，为了保证数据局部性，就要避免的缓存不命中。也许你需要牺牲一些宝贵的抽象。你越围绕数据局部性设计程序，就越放弃继承、接口和它们带来的好处。这里并没有高招，只有利弊权衡的挑战。而乐趣便在这里。</p>
+<p> 3，程序指令执行类似这样一个结构：CPU–Cache(L1缓存)–RAM(内存)，从这里可以看出，影响性能的不单单只是代码，由于缓存的存在，数据的组织方式也会直接影响性能。我们的优化策略无非就是要尽量保证CPU要的数据刚好在缓存中，减少缓存未命中次数，因此优化目标就是将你的数据结构进行组织，以使需要处理的数据对象在内存中连续存储。</p>
+</li>
+<li><p>使用场合</p>
+<p> 1，使用数据局部性的第一准则是<strong>在遇到性能问题时使用。</strong>不要将其应用在代码库不经常使用的角落上。 优化代码后其结果往往更加复杂，更加缺乏灵活性。</p>
+<p> 2，就本模式而言，<strong>还得确认你的性能问题确实由缓存不命中而引发的。</strong>如果代码是因为其他原因而缓慢，这个模式自然就不会有帮助。</p>
+<p> 3，简单的性能评估方法是手动添加指令，用计时器检查代码中两点间消耗的时间。而为了找到糟糕的缓存使用情况，知道缓存不命中有多少发生，又是在哪里发生的，则需要使用更加复杂的工具—— profilers。</p>
+<p> 4，组件模式是为缓存优化的最常见例子。而任何需要接触很多数据的关键代码，考虑数据局部性都是很重要的。</p>
+</li>
+</ul>
+<h2 id="代码分析"><a href="#代码分析" class="headerlink" title="代码分析"></a>代码分析</h2><p>1，数据局部性模式一般是运用在性能攸关的地方，那么首先分析的示例当然是我们的游戏主循环处。游戏世界里有很多实体，它们通常可以由AI，物理，渲染等组件组成。我们一般的做法像下面这样定义：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">class GameEntity</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">  GameEntity(AIComponent* ai,</span><br><span class="line">             PhysicsComponent* physics,</span><br><span class="line">             RenderComponent* render)</span><br><span class="line">  : ai_(ai), physics_(physics), render_(render)</span><br><span class="line">  &#123;&#125;</span><br><span class="line"></span><br><span class="line">  AIComponent* ai() &#123; return ai_; &#125;</span><br><span class="line">  PhysicsComponent* physics() &#123; return physics_; &#125;</span><br><span class="line">  RenderComponent* render() &#123; return render_; &#125;</span><br><span class="line"></span><br><span class="line">private:</span><br><span class="line">  AIComponent* ai_;</span><br><span class="line">  PhysicsComponent* physics_;</span><br><span class="line">  RenderComponent* render_;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>而且每个组件都有自己的更新接口：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">class AIComponent</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">  void update() &#123; /* 处理并修改状态…… */ &#125;</span><br><span class="line"></span><br><span class="line">private:</span><br><span class="line">  // 目标，情绪，等等……</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">class PhysicsComponent</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">  void update() &#123; /* 处理并修改状态…… */ &#125;</span><br><span class="line"></span><br><span class="line">private:</span><br><span class="line">  // 刚体，速度，质量，等等……</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">class RenderComponent</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">  void render() &#123; /* 处理并修改状态…… */ &#125;</span><br><span class="line"></span><br><span class="line">private:</span><br><span class="line">  // 网格，纹理，着色器，等等……</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>游戏循环管理游戏世界中一大堆实体的指针数组。每个游戏循环，我们都要做如下事情：</p>
+<p>为每个实体更新他们的AI组件。<br>为每个实体更新他们的物理组件。<br>为每个实体更新他们的渲染组件。<br>很多游戏引擎以这种方式实现：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">while (!gameOver)</span><br><span class="line">&#123;</span><br><span class="line">  // 处理AI</span><br><span class="line">  for (int i = 0; i &lt; numEntities; i++)</span><br><span class="line">  &#123;</span><br><span class="line">    entities[i]-&gt;ai()-&gt;update();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  // 更新物理</span><br><span class="line">  for (int i = 0; i &lt; numEntities; i++)</span><br><span class="line">  &#123;</span><br><span class="line">    entities[i]-&gt;physics()-&gt;update();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  // 绘制屏幕</span><br><span class="line">  for (int i = 0; i &lt; numEntities; i++)</span><br><span class="line">  &#123;</span><br><span class="line">    entities[i]-&gt;render()-&gt;render();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  // 其他和时间有关的游戏循环机制……</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>好，现在我们来分析下这个代码，在你听说CPU缓存之前，这些看上去完全无害。 但是现在，对象内存分布完全不可控，都是指针到处窜。看看它做了什么：</p>
+<p>游戏实体的数组存储的是指针，所以为了获取游戏实体，我们得转换指针。缓存不命中。<br>然后游戏实体有组件的指针。又一次缓存不命中。<br>然后我们更新组件。<br>再然后我们退回第一步，为游戏中的每个实体做这件事。<br>令人害怕的是，我们不知道这些对象是如何在内存中布局的。 我们完全任由内存管理器摆布。 随着实体的分配和释放，堆会组织更加乱。<br>它就像下面这个示意图这样，对象分布得杂乱无章：</p>
+<p><img decoding="async" src="/2024/03/24/designpatterns/%E4%BC%98%E5%8C%96%E6%A8%A1%E5%BC%8F-%E6%95%B0%E6%8D%AE%E5%B1%80%E9%83%A8%E6%80%A7/20170612184241005.jpg" alt="这里写图片描述"></p>
+<p>既然已经知道问题是由指针导致很多缓存不命中引起，那么直接能想到的就是使用数组的形式。其实这里GameEntity本身没有有意义的状态和有用的方法。组件才是游戏循环需要的。我们可以将每种组件存入巨大的数组：一个数组给AI组件，一个给物理，另一个给渲染。<br>就像这样：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">AIComponent* aiComponents =</span><br><span class="line">    new AIComponent[MAX_ENTITIES];</span><br><span class="line">PhysicsComponent* physicsComponents =</span><br><span class="line">    new PhysicsComponent[MAX_ENTITIES];</span><br><span class="line">RenderComponent* renderComponents =</span><br><span class="line">    new RenderComponent[MAX_ENTITIES];</span><br></pre></td></tr></table></figure>
+<p>再来看看我们现在的游戏循环：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">while (!gameOver)</span><br><span class="line">&#123;</span><br><span class="line">  // 处理AI</span><br><span class="line">  for (int i = 0; i &lt; numEntities; i++)</span><br><span class="line">  &#123;</span><br><span class="line">    aiComponents[i].update();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  // 更新物理</span><br><span class="line">  for (int i = 0; i &lt; numEntities; i++)</span><br><span class="line">  &#123;</span><br><span class="line">    physicsComponents[i].update();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  // 绘制屏幕</span><br><span class="line">  for (int i = 0; i &lt; numEntities; i++)</span><br><span class="line">  &#123;</span><br><span class="line">    renderComponents[i].render();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  // 其他和时间有关的游戏循环机制……</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>对象数组在内存中是连续存储的，我们消除了所有的指针追逐。不在内存中跳来跳去，而是直接在三个数组中做直线遍历。就像这样：</p>
+<p><img loading="lazy" decoding="async" src="/2024/03/24/designpatterns/%E4%BC%98%E5%8C%96%E6%A8%A1%E5%BC%8F-%E6%95%B0%E6%8D%AE%E5%B1%80%E9%83%A8%E6%80%A7/20170612184648679.jpg" alt="这里写图片描述"></p>
+<p>这将一股字节流直接泵到了CPU饥饿的肚子里。 在我的测试中，这个改写后的更新循环是之前性能的50倍。</p>
+<p>2，再来看看另一个例子，假设我们在做粒子系统。 根据上节的建议，将所有的粒子放在巨大的连续数组中。让我们用管理类封装它，就像这样：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">class Particle</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">  void update() &#123; /* 重力，等等…… */ &#125;</span><br><span class="line">  // 位置，速度，等等……</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">class ParticleSystem</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">  ParticleSystem()</span><br><span class="line">  : numParticles_(0)</span><br><span class="line">  &#123;&#125;</span><br><span class="line"></span><br><span class="line">  void update();</span><br><span class="line">private:</span><br><span class="line">  static const int MAX_PARTICLES = 100000;</span><br><span class="line"></span><br><span class="line">  int numParticles_;</span><br><span class="line">  Particle particles_[MAX_PARTICLES];</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>那么更新粒子就会是这样：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">void ParticleSystem::update()</span><br><span class="line">&#123;</span><br><span class="line">  for (int i = 0; i &lt; numParticles_; i++)</span><br><span class="line">  &#123;</span><br><span class="line">    particles_[i].update();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>但实际上不需要同时更新所有的粒子。 粒子系统维护固定大小的对象池，而且粒子通常不是同时在屏幕上活跃。 最简单的解决方案是这样的，加一个标志：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">for (int i = 0; i &lt; numParticles_; i++)</span><br><span class="line">&#123;</span><br><span class="line">  if (particles_[i].isActive())</span><br><span class="line">  &#123;</span><br><span class="line">    particles_[i].update();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>我们给Particle一个标志位来追踪其是否在使用状态。 在更新循环时，我们检查每个粒子的这个标志位。 这会将粒子其他部分的数据也加载到缓存中。 如果粒子没有在使用，那么跳过它去检查下一个。 这时粒子加载到内存中的其他数据都是浪费。</p>
+<p>活跃的粒子越少，要在内存中跳过的部分就越多。 越这样做，在两次活跃粒子有效更新之间发生的缓存不命中就越多。 如果数组很大又有很多不活跃的粒子，我们又在颠簸缓存了。</p>
+<p><strong>如果连续数组中的对象不是连续处理的</strong>，实际上这个办法也没有太多效果。 如果有太多不活跃的对象需要跳过，就又回到了问题的起点。</p>
+<p>其实这个很容易解决，我们可以不检测isActive，把数组进行排序，活跃的放数组前面，如果这样循环就可以变成下面这样了：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">for (int i = 0; i &lt; numActive_; i++)</span><br><span class="line">&#123;</span><br><span class="line">  particles[i].update();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>现在没有跳过任何数据。 加载入缓存的每一字节都是需要处理的粒子的一部分。<br>只是这个排序应该怎么写呢？<br>很简单，只有两种状态：激活与未激活，开始所有粒子都处于未激活状态，当哪个粒子激活时，我们让它与数组中第一个未激活的粒子进行交换。同样，当粒子死亡时，我们让它与最后一个激活粒子交换。每次状态改变只是一次交换操作，我们就能把数组排好序。<br>激活粒子接口：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">void ParticleSystem::activateParticle(int index)</span><br><span class="line">&#123;</span><br><span class="line">  // 不应该已被激活！</span><br><span class="line">  assert(index &gt;= numActive_);</span><br><span class="line"></span><br><span class="line">  // 将它和第一个未激活的粒子交换</span><br><span class="line">  Particle temp = particles_[numActive_];</span><br><span class="line">  particles_[numActive_] = particles_[index];</span><br><span class="line">  particles_[index] = temp;</span><br><span class="line"></span><br><span class="line">  // 现在多了一个激活粒子</span><br><span class="line">  numActive_++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>死亡粒子接口：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">void ParticleSystem::deactivateParticle(int index)</span><br><span class="line">&#123;</span><br><span class="line">  // 不应该已被激活！</span><br><span class="line">  assert(index &lt; numActive_);</span><br><span class="line"></span><br><span class="line">  // 现在少了一个激活粒子</span><br><span class="line">  numActive_--;</span><br><span class="line"></span><br><span class="line">  // 将它和最后一个激活粒子交换</span><br><span class="line">  Particle temp = particles_[numActive_];</span><br><span class="line">  particles_[numActive_] = particles_[index];</span><br><span class="line">  particles_[index] = temp;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>很多程序员（包括我在内）已经对于在内存中移动数据过敏了。然而解析指针的代价，往往比内存中移动数据消耗更大。 在有些情况下，如果能够保证缓存命中，在内存中移动数据消耗更小。</p>
+<p>不过也有弊端。 你可以从API看出，我们放弃了一定的面向对象思想。 Particle类不再控制其激活状态了。 你不能在它上面调用activate()，因为它不知道自己的索引。 相反，任何想要激活粒子的代码都需要接触到粒子系统。</p>
+<p>3，我们已经讲了两种不命中情形了：<strong>一，指针导致的不命中，二，连续数组中的对象不是连续处理的不命中。而下面我们来讲最后一种情形：连续数组中的对象里有很多不需要马上使用的数据导致白占缓存线。</strong></p>
+<p>就像一个游戏实体，它有很多状态，如：走向目标位置，能量值，当前播放的动画等，总之这些我们每帧都在检测。然而它也存在一些不需要每帧检测的数据，如死亡掉落数据。这个就只有在实体生命周期结束时才被使用。<br>下面是这个的简单实现：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">class AIComponent</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">  void update() &#123; /* ... */ &#125;</span><br><span class="line"></span><br><span class="line">private:</span><br><span class="line">  Animation* animation_;</span><br><span class="line">  double energy_;</span><br><span class="line">  Vector goalPos_;</span><br><span class="line">	</span><br><span class="line">  //掉落数据	</span><br><span class="line">  LootType drop_;</span><br><span class="line">  int minDrops_;</span><br><span class="line">  int maxDrops_;</span><br><span class="line">  double chanceOfDrop_;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>是不是很明显，把整个对象加载进缓存，然而很多数据又是当前不需要使用的。这样每个对象变得更庞大，也就导致我们在一条缓存线上能放入的对象更少。我们将引发更多的缓存未命中，因为我们遍历的总内存增加了。</p>
+<p>对于这个问题我们其实可以这样解决，无非就是看怎么把它们给分开？我是这么处理的，既然掉落数据不常用，我把它单独封装出去，实体里只保存它的指针对象，就像下面这样：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">class AIComponent</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">  // 方法……</span><br><span class="line">private:</span><br><span class="line">  Animation* animation_;</span><br><span class="line">  double energy_;</span><br><span class="line">  Vector goalPos_;</span><br><span class="line"></span><br><span class="line">  LootDrop* loot_;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">class LootDrop</span><br><span class="line">&#123;</span><br><span class="line">  friend class AIComponent;</span><br><span class="line">  LootType drop_;</span><br><span class="line">  int minDrops_;</span><br><span class="line">  int maxDrops_;</span><br><span class="line">  double chanceOfDrop_;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>现在当我们每帧遍历实体时，载入到缓存中的那些数据就是我们实际要处理的了(指向冷数据的指针例外)。</p>
+<p>实际很多时候我们是没这么容易分清冷热数据的界限的，我们很容易在对数据与速度的测试上花费无尽的时间，但要相信你的努力总会换来收获的。</p>
+
+    </div>
+    
+    <div class="post-footer">
+        <div>
+            
+            转载声明：
+            商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">cxx</a>
+            
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+<div class="article-nav prev-next-wrap clearfix">
+    
+    <a href="/2024/03/28/designpatterns/%E4%BC%98%E5%8C%96%E6%A8%A1%E5%BC%8F-%E8%84%8F%E6%A0%87%E8%AE%B0%E6%A8%A1%E5%BC%8F/" class="pre-post btn btn-default" title='优化模式-脏标记模式'>
+        <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+        <span class="hidden-xs">
+            优化模式-脏标记模式</span>
+    </a>
+    
+    
+    <a href="/2024/03/20/designpatterns/%E8%A7%A3%E8%80%A6%E6%A8%A1%E5%BC%8F-%E6%9C%8D%E5%8A%A1%E5%AE%9A%E4%BD%8D%E5%99%A8/" class="next-post btn btn-default" title='解耦模式-服务定位器'>
+        <span class="hidden-lg">下一篇</span>
+        <span class="hidden-xs">
+            解耦模式-服务定位器</span><i class="fa fa-angle-right fa-fw"></i>
+    </a>
+    
+</div>
+
+<div id="comments">
+    
+    <script src="https://giscus.app/client.js"
+        data-repo="cxxlog/myblog-comment"
+        data-repo-id="R_kgDOVzxsBw"
+        data-category="Announcements"
+        data-category-id="DIC_kwDOVzxsB84DLdxb"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="bottom"
+        data-theme="light"
+        data-lang="zh-CN"
+        crossorigin="anonymous"
+        async>
+    </script>
+
+</div>
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">
+            文章目录
+        </h3>
+        
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%90%86%E8%AE%BA%E8%A6%81%E7%82%B9"><span class="toc-text">理论要点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E5%88%86%E6%9E%90"><span class="toc-text">代码分析</span></a></li></ol>
+        
+    </div>
+</aside>
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+<a id="back-to-top" class="icon-btn hide">
+    <i class="fa fa-chevron-up"></i>
+</a>
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+    访问量:
+    <strong id="busuanzi_value_site_pv">
+        <i class="fa fa-spinner fa-spin"></i>
+    </strong>
+    &nbsp; | &nbsp;
+    访客数:
+    <strong id="busuanzi_value_site_uv">
+        <i class="fa fa-spinner fa-spin"></i>
+    </strong>
+    
+</div>
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy;
+                    2022
+                    
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script async src="//vercount.one/js"></script>
+
+
+<script src="/js/app.js?rev=@@hash.js"></script>
+
+
+<div class="hide">
+    <script type="text/javascript">
+    var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+    document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+</div>
+
+
+
+
+</body>
+</html>

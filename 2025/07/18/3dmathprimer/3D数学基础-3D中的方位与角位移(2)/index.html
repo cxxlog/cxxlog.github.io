@@ -1,0 +1,374 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+<head>
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="Hexo">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="theme-version" content="1.0.0">
+    <meta name="root" content="/">
+    <link rel="dns-prefetch" href="https://cxxlog.github.io">
+    <!--SEO-->
+
+<meta name="keywords" content="3D数学基础" />
+
+
+<meta name="description" content="前言：3D中讨论的四元数都是单位四元数
+四元数记法上一章节讲了用三个数表达3D方位一定会有万向锁这样的问题，它涉及到一些非常高级的数学概念，如“簇”。而四元数通过使用四个数来表达方位，从而可以避..." />
+
+
+<meta name="robots" content="all" />
+<meta name="google" content="all" />
+<meta name="googlebot" content="all" />
+<meta name="verify" content="all" />
+    <!--Title-->
+
+<title>
+    
+    3D数学基础-3D中的方位与角位移(2) |
+    
+    Hexo
+</title>
+
+<link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+
+
+<link rel="icon" href="/favicon.ico">
+
+    
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7.css">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.7.0.css">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash.css">
+
+    
+
+<meta name="generator" content="Hexo 6.2.0"></head>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+<body>
+    <header class="main-header"  style="background-image:url(
+    /img/banner.jpg)"
+     >
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title='cxx'>
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+            <!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+            <img src="/img/branding.png" alt="Snippet 博客主题" class="img-responsive center-block">
+            
+        </div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                        <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="https://cxxlog.github.io">
+                        Hexo</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/"><i class="fa "></i>
+                                首页</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/archives/"><i class="fa "></i>
+                                时间轴</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/guestbook/"><i class="fa "></i>
+                                留言</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="3D数学基础-3D中的方位与角位移(2)">
+            
+            3D数学基础-3D中的方位与角位移(2)
+            
+        </h1>
+        <div class="post-meta">
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a class="category-link" href="/categories/3dmathprimer/">3dmathprimer</a>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+            <a class="tag-none-link" href="/tags/3D%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/" rel="tag">3D数学基础</a>
+            
+        </span>
+    </span>
+    
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-clock-o"></i>
+        <span class="date-meta">
+            2025/07/18</span>
+    </span>
+    
+    <span class="fa-wrap">
+        <i class="fa fa-eye"></i>
+        <span id="busuanzi_value_page_pv"></span>
+    </span>
+    
+    
+</div>
+        
+        
+    </div>
+    
+    <div class="post-body post-content">
+        <p>前言：<strong>3D中讨论的四元数都是单位四元数</strong></p>
+<h2 id="四元数记法"><a href="#四元数记法" class="headerlink" title="四元数记法"></a>四元数记法</h2><p>上一章节讲了用三个数表达3D方位一定会有万向锁这样的问题，它涉及到一些非常高级的数学概念，如“簇”。而四元数通过使用四个数来表达方位，从而可以避免这些问题，下面先来看看它的记法：</p>
+<p><img decoding="async" src="/2025/07/18/3dmathprimer/3D%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80-3D%E4%B8%AD%E7%9A%84%E6%96%B9%E4%BD%8D%E4%B8%8E%E8%A7%92%E4%BD%8D%E7%A7%BB(2)/20150701102525192.png" alt="这里写图片描述"></p>
+<p>注：w：类似复数实部，v：虚数。</p>
+<h2 id="四元数的数学渊源"><a href="#四元数的数学渊源" class="headerlink" title="四元数的数学渊源"></a>四元数的数学渊源</h2><p>四元数其实是由数学里的复数引申而来的，首先来简单说下什么是复数？复数&#x3D;实数+虚数，它扩展了如对一个负数开平方根的问题。下面来看看复数的定义：</p>
+<p><img loading="lazy" decoding="async" src="/2025/07/18/3dmathprimer/3D%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80-3D%E4%B8%AD%E7%9A%84%E6%96%B9%E4%BD%8D%E4%B8%8E%E8%A7%92%E4%BD%8D%E7%A7%BB(2)/20150701105335258.png" alt="这里写图片描述"></p>
+<p>复数集存在于一个2D平面上，这个平面有两个轴：实轴(x)和虚轴(y)。这样，就能将复数(x,y)解释为一个2D向量，好的，现在我们可以这样通俗的理解，<strong>复数&#x3D;向量</strong>。下面再来看看用复数怎么表达平面中的旋转：</p>
+<p><img loading="lazy" decoding="async" src="/2025/07/18/3dmathprimer/3D%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80-3D%E4%B8%AD%E7%9A%84%E6%96%B9%E4%BD%8D%E4%B8%8E%E8%A7%92%E4%BD%8D%E7%A7%BB(2)/20150701111847442.jpg" alt="这里写图片描述"></p>
+<p>从上面可以看出引入复数q和用2×2旋转矩阵达到的效果是一样的，目前为止，我们已经将复数和前面学习的知识联系起来了，而现在我们讲的只是2D平面，那么怎么把复数扩展到3D中呢？它又怎么和四元数联系起来呢？下面我们来看下书上关于它的一个典故：</p>
+<p><img loading="lazy" decoding="async" src="/2025/07/18/3dmathprimer/3D%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80-3D%E4%B8%AD%E7%9A%84%E6%96%B9%E4%BD%8D%E4%B8%8E%E8%A7%92%E4%BD%8D%E7%A7%BB(2)/20150701112806632.png" alt="这里写图片描述"></p>
+<p>四元数扩展复数系统，它使用了三个虚部i, j, k。它们关系如下：</p>
+<p><img loading="lazy" decoding="async" src="/2025/07/18/3dmathprimer/3D%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80-3D%E4%B8%AD%E7%9A%84%E6%96%B9%E4%BD%8D%E4%B8%8E%E8%A7%92%E4%BD%8D%E7%A7%BB(2)/20150701114825680.png" alt="这里写图片描述"></p>
+<h2 id="四元数几何意义"><a href="#四元数几何意义" class="headerlink" title="四元数几何意义"></a>四元数几何意义</h2><p>欧拉证明了一个旋转序列等价于单个旋转，因此，3D中的任意角位移都能表示为绕单一轴的单一旋转。我们记角度为θ，旋转轴为n(向量)，那么绕n轴旋转θ角度，可用复数形式表示为(θ，n)，那么其对应的四元数表示为：</p>
+<p><img loading="lazy" decoding="async" src="/2025/07/18/3dmathprimer/3D%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80-3D%E4%B8%AD%E7%9A%84%E6%96%B9%E4%BD%8D%E4%B8%8E%E8%A7%92%E4%BD%8D%E7%A7%BB(2)/20150701143307698.png" alt="这里写图片描述"></p>
+<p>注释：我们可以近似把一个四元数理解为一个旋转矩阵或角位移。</p>
+<h2 id="四元数的一般数学运算"><a href="#四元数的一般数学运算" class="headerlink" title="四元数的一般数学运算"></a>四元数的一般数学运算</h2><ul>
+<li>负四元数：</li>
+</ul>
+<p> <img loading="lazy" decoding="async" src="/2025/07/18/3dmathprimer/3D%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80-3D%E4%B8%AD%E7%9A%84%E6%96%B9%E4%BD%8D%E4%B8%8E%E8%A7%92%E4%BD%8D%E7%A7%BB(2)/20150701144133730.png" alt="这里写图片描述"></p>
+<p> q和-q代表的角位移是相同的，其实就是相当于将θ加上360°的倍数，对方位没影响。所以负四元数只是在数学上把它的四个分量都变负了，但几何上它们是等效的。即3D中任意角位移都有两种不同的四元数表示方法，它们互相为负。</p>
+<ul>
+<li>没有角位移的单位四元数：</li>
+</ul>
+<p> <img loading="lazy" decoding="async" src="/2025/07/18/3dmathprimer/3D%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80-3D%E4%B8%AD%E7%9A%84%E6%96%B9%E4%BD%8D%E4%B8%8E%E8%A7%92%E4%BD%8D%E7%A7%BB(2)/20150701150004149.png" alt="这里写图片描述"></p>
+<p> 注：代入上面四元数的四个值公式即可得出。</p>
+<ul>
+<li>四元数的模：</li>
+</ul>
+<p> <img loading="lazy" decoding="async" src="/2025/07/18/3dmathprimer/3D%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80-3D%E4%B8%AD%E7%9A%84%E6%96%B9%E4%BD%8D%E4%B8%8E%E8%A7%92%E4%BD%8D%E7%A7%BB(2)/20150701154006092.png" alt="这里写图片描述"></p>
+<p> 而我们3D数学里只使用模为1的四元数(<strong>单位四元数</strong>)，即前面列出的四元数的四个值公式的四元数。</p>
+<ul>
+<li>四元数的共轭和逆：<br> 数学定义我就直接拿书上讲的，如下：</li>
+</ul>
+<p> <img loading="lazy" decoding="async" src="/2025/07/18/3dmathprimer/3D%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80-3D%E4%B8%AD%E7%9A%84%E6%96%B9%E4%BD%8D%E4%B8%8E%E8%A7%92%E4%BD%8D%E7%A7%BB(2)/20150701155546954.png" alt="这里写图片描述"></p>
+<p> 由于我们只使用单位四元数，所以四元数的逆和共轭是相等的。那么，它们有什么几何意义呢？共轭其实就是把四元数的向量部分变负，所以一个四元数的共轭就是代表一个相反的角位移。<br> 注释：其实我们还可以保持四元数向量部分不变，而让角度部分变负，同样能代表一个相反的角位移。但为了和复数的共轭概念一致，所以四元数的共轭用上面那种形式定义。</p>
+<ul>
+<li>四元数的叉乘：<br> 四元数的叉乘不用乘号，而且行与列的形式也没什么区别，下面是四元数乘法的标准定义：</li>
+</ul>
+<p> <img loading="lazy" decoding="async" src="/2025/07/18/3dmathprimer/3D%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80-3D%E4%B8%AD%E7%9A%84%E6%96%B9%E4%BD%8D%E4%B8%8E%E8%A7%92%E4%BD%8D%E7%A7%BB(2)/20150701163135995.png" alt="这里写图片描述"></p>
+<p> 但我们实际不用这种形式，具体原因这里不打算详细讲解，大体是因为这个形式会导致多个变换连接成一个后，变换顺序会颠倒。以后会把这些数学计算封装成一个四元数的类，对于里面的数据我们不再需要管。之所以用叉乘就是执行旋转变换时需要用到它。</p>
+<ul>
+<li>四元数“差”：<br> 四元数的差是指一个方位到另一个方位的角位移。我们用四元数表示是：从a旋转到b的角位移d等于：</li>
+</ul>
+<p> <img loading="lazy" decoding="async" src="/2025/07/18/3dmathprimer/3D%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80-3D%E4%B8%AD%E7%9A%84%E6%96%B9%E4%BD%8D%E4%B8%8E%E8%A7%92%E4%BD%8D%E7%A7%BB(2)/20150701174256061.png" alt="这里写图片描述"></p>
+<ul>
+<li>四元数点乘：<br> 四元数的点乘和向量的点乘很类似，几何原理也类似，a·b的绝对值越大，a和b代表的角位移越“相似”。公式如下：</li>
+</ul>
+<p> <img loading="lazy" decoding="async" src="/2025/07/18/3dmathprimer/3D%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80-3D%E4%B8%AD%E7%9A%84%E6%96%B9%E4%BD%8D%E4%B8%8E%E8%A7%92%E4%BD%8D%E7%A7%BB(2)/20150701175000291.png" alt="这里写图片描述"></p>
+<h2 id="四元数的高级数学运算"><a href="#四元数的高级数学运算" class="headerlink" title="四元数的高级数学运算"></a>四元数的高级数学运算</h2><ul>
+<li>四元数的对数，指数和标量乘运算：<br> 虽然这些运算我们很少直接使用它们，但它们是某些重要四元数运算的基础，下面来分别看看它们的定义：</li>
+</ul>
+<p><img loading="lazy" decoding="async" src="/2025/07/18/3dmathprimer/3D%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80-3D%E4%B8%AD%E7%9A%84%E6%96%B9%E4%BD%8D%E4%B8%8E%E8%A7%92%E4%BD%8D%E7%A7%BB(2)/20150701183942105.png" alt="这里写图片描述"></p>
+<p><img loading="lazy" decoding="async" src="/2025/07/18/3dmathprimer/3D%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80-3D%E4%B8%AD%E7%9A%84%E6%96%B9%E4%BD%8D%E4%B8%8E%E8%A7%92%E4%BD%8D%E7%A7%BB(2)/20150701183954664.png" alt="这里写图片描述"></p>
+<p><img loading="lazy" decoding="async" src="/2025/07/18/3dmathprimer/3D%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80-3D%E4%B8%AD%E7%9A%84%E6%96%B9%E4%BD%8D%E4%B8%8E%E8%A7%92%E4%BD%8D%E7%A7%BB(2)/20150701184009185.png" alt="这里写图片描述"></p>
+<ul>
+<li>四元数求幂：<br> 注意它与上面指数运算的区别，指数运算底数是e，而这里是四元数做底数。所以，指数运算只要一个参数–四元数，而四元数求幂要两个参数–四元数和指数。公式如下：</li>
+</ul>
+<p> <img loading="lazy" decoding="async" src="/2025/07/18/3dmathprimer/3D%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80-3D%E4%B8%AD%E7%9A%84%E6%96%B9%E4%BD%8D%E4%B8%8E%E8%A7%92%E4%BD%8D%E7%A7%BB(2)/20150701185328288.png" alt="这里写图片描述"></p>
+<p> 再来说说它能做什么用？假设，四元数q代表一个角位移，现在想要得到代表1&#x2F;3这个角位移的四元数，其实就是等于这个四元数的1&#x2F;3次幂。即四元数求幂它可以从角位移中抽取一部分。</p>
+<p>四元数求幂代码实例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">//四元数输入和输出</span><br><span class="line">    float w, x, y, z;</span><br><span class="line">    //指数</span><br><span class="line">    float exponent;</span><br><span class="line">    //检查单位四元数，避免除零</span><br><span class="line">    if(fabs(w) &lt; 0.9999f)</span><br><span class="line">    &#123;</span><br><span class="line">        //提取半角</span><br><span class="line">        float alpha = acos(w);</span><br><span class="line">        //计算新的alpha值</span><br><span class="line">        float newAlpha = alpha * exponent;</span><br><span class="line">        //计算新的w值</span><br><span class="line">        w = cos(newAlpha);</span><br><span class="line">        //计算新的x, y, z 值</span><br><span class="line">        float mult = sin(newAlpha) / sin(alpha);</span><br><span class="line">        x *= mult;</span><br><span class="line">        y *= mult;</span><br><span class="line">        z *= mult;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>四元数插值(slerp)：<br> 当今3D数学中四元数之所以存在的理由就是利用它可以在两个四元数间平滑的插值。它避免了欧拉角插值的所有问题。具体的推导过程就不详细解释了，有兴趣的可以自己查阅相关资料(3D数学基础图形与游戏开发)，下面直接贴出公式：</li>
+</ul>
+<p> <img loading="lazy" decoding="async" src="/2025/07/18/3dmathprimer/3D%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80-3D%E4%B8%AD%E7%9A%84%E6%96%B9%E4%BD%8D%E4%B8%8E%E8%A7%92%E4%BD%8D%E7%A7%BB(2)/20150701192454804.png" alt="这里写图片描述"></p>
+<p>slerp代码实例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">//两个输入四元数</span><br><span class="line">    float w0, x0, y0, z0;</span><br><span class="line">    float w1, x1, y1, z1;</span><br><span class="line">    //插值变量</span><br><span class="line">    float t;</span><br><span class="line">    //输出四元数</span><br><span class="line">    float w, x, y, z;</span><br><span class="line">    //用点乘计算两四元数夹角的cos值</span><br><span class="line">    float cosOmega = w0 * w1 + x0 * x1 + y0 * y1 + z0 * z1;</span><br><span class="line">    //如果点乘为负，则反转一个四元数以取得短的4D弧</span><br><span class="line">    if(cosOmega &lt; 0.0f)</span><br><span class="line">    &#123;</span><br><span class="line">        w1 = -w1;</span><br><span class="line">        x1 = -x1;</span><br><span class="line">        y1 = -y1;</span><br><span class="line">        z1 = -z1;</span><br><span class="line">        cosOmega = -cosOmega;</span><br><span class="line">    &#125;</span><br><span class="line">    //检查插值的起点和终点是否过于接近以避免除零</span><br><span class="line">    float k0, k1;</span><br><span class="line">    if(cosOmega &gt; 0.9999f)</span><br><span class="line">    &#123;</span><br><span class="line">        //非常接近，直接用线性插值</span><br><span class="line">        k0 = 1.0 - t;</span><br><span class="line">        k1 = t;</span><br><span class="line">    &#125;</span><br><span class="line">    else</span><br><span class="line">    &#123;</span><br><span class="line">        //用三角公式sin^2(cosOmega) + cos^2(cosOmega) = 1计算出sinw</span><br><span class="line">        float sinOmega = sqrt(1.0f - cosOmega * cosOmega);</span><br><span class="line">        //通过sinw 和 cosw计算w夹角</span><br><span class="line">        float omega = atan2(sinOmega, cosOmega);</span><br><span class="line">        //计算分母的倒数，这样只需要一次除法</span><br><span class="line">        float oneOverSinOmega = 1.0f / sinOmega;</span><br><span class="line">        //计算插值变量</span><br><span class="line">        k0 = sin((1.0f - t) * omega) * oneOverSinOmega;</span><br><span class="line">        k1 = sin(t * omega) * oneOverSinOmega;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    //得到插值</span><br><span class="line">    w = w0 * k0 + w1 * k1;</span><br><span class="line">    x = x0 * k0 + x1 * k1;</span><br><span class="line">    y = y0 * k0 + y1 * k1;</span><br><span class="line">    z = z0 * k0 + z1 * k1;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>四元数样条(squad)：<br> slerp(球面线性插值)只提供了两个方位间的插值，但对于超过两个的方位序列，我们要进行插值就得用到squad。对于其具体数学原理推导这里也不打算讲了。</li>
+</ul>
+<h2 id="四元数的优点和缺点"><a href="#四元数的优点和缺点" class="headerlink" title="四元数的优点和缺点"></a>四元数的优点和缺点</h2><ul>
+<li><p>四元数的一些其他角位移表示方法所没有的优点：<br> 1，平滑插值<br> 2，快速连接和角位移求逆，同样的操作，它要比矩阵快且容易些。<br> 3，能快速转换成矩阵形式。<br> 4，仅用四个数表示。</p>
+</li>
+<li><p>缺点：<br> 1，比欧拉角稍微大一些。<br> 2，四元数可能不合法。因为我们讨论的有意义的四元数必须是单位大小，而输入坏数据或浮点数舍入误差累积都可能使四元数不合法(当然我们可以通过四元数标准化来解决这个问题)。<br> 3，难于使用，在所有三种形式中，四元数是最难直接使用的。</p>
+</li>
+</ul>
+
+    </div>
+    
+    <div class="post-footer">
+        <div>
+            
+            转载声明：
+            商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">cxx</a>
+            
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+<div class="article-nav prev-next-wrap clearfix">
+    
+    <a href="/2025/07/24/3dmathprimer/3D%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80-3D%E4%B8%AD%E7%9A%84%E6%96%B9%E4%BD%8D%E4%B8%8E%E8%A7%92%E4%BD%8D%E7%A7%BB(3)/" class="pre-post btn btn-default" title='3D数学基础-3D中的方位与角位移(3)'>
+        <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+        <span class="hidden-xs">
+            3D数学基础-3D中的方位与角位移(3)</span>
+    </a>
+    
+    
+    <a href="/2025/07/12/3dmathprimer/3D%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80-3D%E4%B8%AD%E7%9A%84%E6%96%B9%E4%BD%8D%E4%B8%8E%E8%A7%92%E4%BD%8D%E7%A7%BB(1)/" class="next-post btn btn-default" title='3D数学基础-3D中的方位与角位移(1)'>
+        <span class="hidden-lg">下一篇</span>
+        <span class="hidden-xs">
+            3D数学基础-3D中的方位与角位移(1)</span><i class="fa fa-angle-right fa-fw"></i>
+    </a>
+    
+</div>
+
+<div id="comments">
+    
+    <script src="https://giscus.app/client.js"
+        data-repo="cxxlog/myblog-comment"
+        data-repo-id="R_kgDOVzxsBw"
+        data-category="Announcements"
+        data-category-id="DIC_kwDOVzxsB84DLdxb"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="bottom"
+        data-theme="light"
+        data-lang="zh-CN"
+        crossorigin="anonymous"
+        async>
+    </script>
+
+</div>
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">
+            文章目录
+        </h3>
+        
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E5%85%83%E6%95%B0%E8%AE%B0%E6%B3%95"><span class="toc-text">四元数记法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E5%85%83%E6%95%B0%E7%9A%84%E6%95%B0%E5%AD%A6%E6%B8%8A%E6%BA%90"><span class="toc-text">四元数的数学渊源</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E5%85%83%E6%95%B0%E5%87%A0%E4%BD%95%E6%84%8F%E4%B9%89"><span class="toc-text">四元数几何意义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E5%85%83%E6%95%B0%E7%9A%84%E4%B8%80%E8%88%AC%E6%95%B0%E5%AD%A6%E8%BF%90%E7%AE%97"><span class="toc-text">四元数的一般数学运算</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E5%85%83%E6%95%B0%E7%9A%84%E9%AB%98%E7%BA%A7%E6%95%B0%E5%AD%A6%E8%BF%90%E7%AE%97"><span class="toc-text">四元数的高级数学运算</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E5%85%83%E6%95%B0%E7%9A%84%E4%BC%98%E7%82%B9%E5%92%8C%E7%BC%BA%E7%82%B9"><span class="toc-text">四元数的优点和缺点</span></a></li></ol>
+        
+    </div>
+</aside>
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+<a id="back-to-top" class="icon-btn hide">
+    <i class="fa fa-chevron-up"></i>
+</a>
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+    访问量:
+    <strong id="busuanzi_value_site_pv">
+        <i class="fa fa-spinner fa-spin"></i>
+    </strong>
+    &nbsp; | &nbsp;
+    访客数:
+    <strong id="busuanzi_value_site_uv">
+        <i class="fa fa-spinner fa-spin"></i>
+    </strong>
+    
+</div>
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy;
+                    2022
+                    
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script async src="//vercount.one/js"></script>
+
+
+<script src="/js/app.js?rev=@@hash.js"></script>
+
+
+<div class="hide">
+    <script type="text/javascript">
+    var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+    document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+</div>
+
+
+
+
+</body>
+</html>

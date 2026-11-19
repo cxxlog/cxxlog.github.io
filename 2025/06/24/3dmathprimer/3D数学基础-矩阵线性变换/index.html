@@ -1,0 +1,347 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+<head>
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="Hexo">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="theme-version" content="1.0.0">
+    <meta name="root" content="/">
+    <link rel="dns-prefetch" href="https://cxxlog.github.io">
+    <!--SEO-->
+
+<meta name="keywords" content="3D数学基础" />
+
+
+<meta name="description" content="前言本章主要讨论用3×3矩阵表达3D线性变换，这个变换不包括平移，包含平移的变换称作仿射变换(就是线性变换后接着平移)，需要用4×4矩阵表达。所以本章所讨论的变换都是基于坐标系原点的变换。
+旋转..." />
+
+
+<meta name="robots" content="all" />
+<meta name="google" content="all" />
+<meta name="googlebot" content="all" />
+<meta name="verify" content="all" />
+    <!--Title-->
+
+<title>
+    
+    3D数学基础-矩阵线性变换 |
+    
+    Hexo
+</title>
+
+<link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+
+
+<link rel="icon" href="/favicon.ico">
+
+    
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7.css">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.7.0.css">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash.css">
+
+    
+
+<meta name="generator" content="Hexo 6.2.0"></head>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+<body>
+    <header class="main-header"  style="background-image:url(
+    /img/banner.jpg)"
+     >
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title='cxx'>
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+            <!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+            <img src="/img/branding.png" alt="Snippet 博客主题" class="img-responsive center-block">
+            
+        </div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                        <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="https://cxxlog.github.io">
+                        Hexo</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/"><i class="fa "></i>
+                                首页</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/archives/"><i class="fa "></i>
+                                时间轴</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/guestbook/"><i class="fa "></i>
+                                留言</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="3D数学基础-矩阵线性变换">
+            
+            3D数学基础-矩阵线性变换
+            
+        </h1>
+        <div class="post-meta">
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a class="category-link" href="/categories/3dmathprimer/">3dmathprimer</a>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+            <a class="tag-none-link" href="/tags/3D%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/" rel="tag">3D数学基础</a>
+            
+        </span>
+    </span>
+    
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-clock-o"></i>
+        <span class="date-meta">
+            2025/06/24</span>
+    </span>
+    
+    <span class="fa-wrap">
+        <i class="fa fa-eye"></i>
+        <span id="busuanzi_value_page_pv"></span>
+    </span>
+    
+    
+</div>
+        
+        
+    </div>
+    
+    <div class="post-body post-content">
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>本章主要讨论用3×3矩阵表达3D线性变换，这个变换不包括平移，包含平移的变换称作仿射变换(就是线性变换后接着平移)，需要用4×4矩阵表达。所以本章所讨论的变换都是基于坐标系原点的变换。</p>
+<h2 id="旋转"><a href="#旋转" class="headerlink" title="旋转"></a>旋转</h2><ul>
+<li>2D中的旋转：因暂不考虑平移，假设物体绕原点旋转，我们通常规定逆时针旋转为正方向，顺时针为负方向(不是必须)。得到的2D旋转矩阵如下图所示：</li>
+</ul>
+<p> <img decoding="async" src="/2025/06/24/3dmathprimer/3D%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80-%E7%9F%A9%E9%98%B5%E7%BA%BF%E6%80%A7%E5%8F%98%E6%8D%A2/20150617110202930.png" alt="这里写图片描述"></p>
+<ul>
+<li>3D中绕坐标轴旋转：同样讨论前需先明确正方向，左手坐标系中定义此方向的规则是左手法则(对应的右手坐标系定义的规则是右手法则)，左手法则是：大拇指指向旋转轴的正方向，此时，四指弯曲的方向就是旋转的正方向。如下图所示：</li>
+</ul>
+<p><img loading="lazy" decoding="async" src="/2025/06/24/3dmathprimer/3D%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80-%E7%9F%A9%E9%98%B5%E7%BA%BF%E6%80%A7%E5%8F%98%E6%8D%A2/20150617111147358.png" alt="这里写图片描述"></p>
+<pre><code>(1)绕x轴旋转：即x轴不变，y,z轴旋转，示意图与公式如下图：
+</code></pre>
+<p><img loading="lazy" decoding="async" src="/2025/06/24/3dmathprimer/3D%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80-%E7%9F%A9%E9%98%B5%E7%BA%BF%E6%80%A7%E5%8F%98%E6%8D%A2/20150617111750656.png" alt="这里写图片描述"></p>
+<pre><code>(2)绕y轴旋转：
+</code></pre>
+<p><img loading="lazy" decoding="async" src="/2025/06/24/3dmathprimer/3D%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80-%E7%9F%A9%E9%98%B5%E7%BA%BF%E6%80%A7%E5%8F%98%E6%8D%A2/20150617112037967.png" alt="这里写图片描述"></p>
+<pre><code>(3)绕z轴旋转：
+</code></pre>
+<p><img loading="lazy" decoding="async" src="/2025/06/24/3dmathprimer/3D%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80-%E7%9F%A9%E9%98%B5%E7%BA%BF%E6%80%A7%E5%8F%98%E6%8D%A2/20150617112104890.png" alt="这里写图片描述"></p>
+<ul>
+<li>3D中绕任意轴旋转：不考虑平移，假定任意轴都穿过原点。用单位向量n描述旋转轴，用θ描述旋转量。公式如下：</li>
+</ul>
+<p><img loading="lazy" decoding="async" src="/2025/06/24/3dmathprimer/3D%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80-%E7%9F%A9%E9%98%B5%E7%BA%BF%E6%80%A7%E5%8F%98%E6%8D%A2/20150617112615523.png" alt="这里写图片描述"></p>
+<h2 id="缩放"><a href="#缩放" class="headerlink" title="缩放"></a>缩放</h2><ul>
+<li><p>我们可以通过让比例因子<strong>k</strong>按比例变大或缩小来缩放物体。如果每个轴上的缩放因子都相等，这样的缩放为均匀缩放(等比例缩放)，否则为非均匀缩放。</p>
+</li>
+<li><p><strong>普通缩放</strong><br> (1)沿坐标轴的2D缩放矩阵示意图与公式如下：</p>
+</li>
+</ul>
+<p> <img loading="lazy" decoding="async" src="/2025/06/24/3dmathprimer/3D%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80-%E7%9F%A9%E9%98%B5%E7%BA%BF%E6%80%A7%E5%8F%98%E6%8D%A2/20150617140502148.png" alt="这里写图片描述"></p>
+<p> (2)同上，沿坐标轴的3D缩放矩阵公式：</p>
+<p> <img loading="lazy" decoding="async" src="/2025/06/24/3dmathprimer/3D%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80-%E7%9F%A9%E9%98%B5%E7%BA%BF%E6%80%A7%E5%8F%98%E6%8D%A2/20150617140749697.png" alt="这里写图片描述"></p>
+<p> (3)沿任意方向的缩放公式：</p>
+<p> <img loading="lazy" decoding="async" src="/2025/06/24/3dmathprimer/3D%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80-%E7%9F%A9%E9%98%B5%E7%BA%BF%E6%80%A7%E5%8F%98%E6%8D%A2/20150617140957478.png" alt="这里写图片描述"></p>
+<ul>
+<li><strong>特殊缩放</strong><br> (1)正交投影：投影其实就是降维操作，有一种投影方法是在某个方向上用零作为缩放因子，这种类型的投影称作正交投影。(还有一种透视投影以后讨论)<br> <strong>向坐标轴或平面上投影</strong>如下图所示：</li>
+</ul>
+<p> <img loading="lazy" decoding="async" src="/2025/06/24/3dmathprimer/3D%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80-%E7%9F%A9%E9%98%B5%E7%BA%BF%E6%80%A7%E5%8F%98%E6%8D%A2/20150617142217403.png" alt="这里写图片描述"></p>
+<p> <img loading="lazy" decoding="async" src="/2025/06/24/3dmathprimer/3D%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80-%E7%9F%A9%E9%98%B5%E7%BA%BF%E6%80%A7%E5%8F%98%E6%8D%A2/20150617142228236.png" alt="这里写图片描述"></p>
+<p><strong>向任意直线或平面投影</strong>：和前面一样，不考虑平移，这些直线或平面都必须通过原点。投影由垂直于直线或平面的单位向量n定义，注意n垂直于投影直接，不是平行。公式如下：</p>
+<p><img loading="lazy" decoding="async" src="/2025/06/24/3dmathprimer/3D%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80-%E7%9F%A9%E9%98%B5%E7%BA%BF%E6%80%A7%E5%8F%98%E6%8D%A2/20150617144848710.png" alt="这里写图片描述"></p>
+<p><img loading="lazy" decoding="async" src="/2025/06/24/3dmathprimer/3D%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80-%E7%9F%A9%E9%98%B5%E7%BA%BF%E6%80%A7%E5%8F%98%E6%8D%A2/20150617144901175.png" alt="这里写图片描述"></p>
+<p><img loading="lazy" decoding="async" src="/2025/06/24/3dmathprimer/3D%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80-%E7%9F%A9%E9%98%B5%E7%BA%BF%E6%80%A7%E5%8F%98%E6%8D%A2/20150617144921348.png" alt="这里写图片描述"></p>
+<p>(2)镜像(反射)：其表现是将物体沿直线或平面翻折，其实就是设置缩放因子为-1实现的。示意图和公式如下：</p>
+<p><img loading="lazy" decoding="async" src="/2025/06/24/3dmathprimer/3D%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80-%E7%9F%A9%E9%98%B5%E7%BA%BF%E6%80%A7%E5%8F%98%E6%8D%A2/20150617151154221.png" alt="这里写图片描述"></p>
+<p><img loading="lazy" decoding="async" src="/2025/06/24/3dmathprimer/3D%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80-%E7%9F%A9%E9%98%B5%E7%BA%BF%E6%80%A7%E5%8F%98%E6%8D%A2/20150617151212100.png" alt="这里写图片描述"></p>
+<p><img loading="lazy" decoding="async" src="/2025/06/24/3dmathprimer/3D%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80-%E7%9F%A9%E9%98%B5%E7%BA%BF%E6%80%A7%E5%8F%98%E6%8D%A2/20150617151235942.png" alt="这里写图片描述"></p>
+<p>(3)切变：是一种坐标系的扭曲变换，非均匀拉伸，角度会发生变化，但面积和体积却保持不变。基本思想是将某一坐标的乘积加到另一个上，例如，2D中，将y乘以某个因子然后加到x上，得到x &#x3D; x + sy。示意图和公式如下：</p>
+<p><img loading="lazy" decoding="async" src="/2025/06/24/3dmathprimer/3D%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80-%E7%9F%A9%E9%98%B5%E7%BA%BF%E6%80%A7%E5%8F%98%E6%8D%A2/20150617153434650.png" alt="这里写图片描述"></p>
+<p><img loading="lazy" decoding="async" src="/2025/06/24/3dmathprimer/3D%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80-%E7%9F%A9%E9%98%B5%E7%BA%BF%E6%80%A7%E5%8F%98%E6%8D%A2/20150617153448810.png" alt="这里写图片描述"></p>
+<p><img loading="lazy" decoding="async" src="/2025/06/24/3dmathprimer/3D%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80-%E7%9F%A9%E9%98%B5%E7%BA%BF%E6%80%A7%E5%8F%98%E6%8D%A2/20150617153502622.png" alt="这里写图片描述"></p>
+<h2 id="变换的组合"><a href="#变换的组合" class="headerlink" title="变换的组合"></a>变换的组合</h2><p>乘一个矩阵就等于对应做了某种变换，而矩阵数学计算满足结合律，所以当一个物体要做一系列变换时，可以先将每个矩阵相乘得到一个矩阵，这个新矩阵就代表依次执行原变换的累加效果。这样还能省几次矩阵乘法，从而提高效率。例如：要渲染一个物体，首先要把物体从物体坐标系变换到世界坐标系(M1矩阵)，然后再从世界坐标系变换到摄像机坐标系(M2矩阵)。一般我们要分别乘以这两个矩阵，现在我们可以先计算M &#x3D; M1 × M2，再只要乘以M一个矩阵就可以了。</p>
+
+    </div>
+    
+    <div class="post-footer">
+        <div>
+            
+            转载声明：
+            商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">cxx</a>
+            
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+<div class="article-nav prev-next-wrap clearfix">
+    
+    <a href="/2025/07/06/3dmathprimer/3D%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80-%E7%9F%A9%E9%98%B5%E6%89%A9%E5%B1%95/" class="pre-post btn btn-default" title='3D数学基础-矩阵扩展'>
+        <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+        <span class="hidden-xs">
+            3D数学基础-矩阵扩展</span>
+    </a>
+    
+    
+    <a href="/2025/06/18/3dmathprimer/3D%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80-%E7%9F%A9%E9%98%B5%E5%9F%BA%E7%A1%80/" class="next-post btn btn-default" title='3D数学基础-矩阵基础'>
+        <span class="hidden-lg">下一篇</span>
+        <span class="hidden-xs">
+            3D数学基础-矩阵基础</span><i class="fa fa-angle-right fa-fw"></i>
+    </a>
+    
+</div>
+
+<div id="comments">
+    
+    <script src="https://giscus.app/client.js"
+        data-repo="cxxlog/myblog-comment"
+        data-repo-id="R_kgDOVzxsBw"
+        data-category="Announcements"
+        data-category-id="DIC_kwDOVzxsB84DLdxb"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="bottom"
+        data-theme="light"
+        data-lang="zh-CN"
+        crossorigin="anonymous"
+        async>
+    </script>
+
+</div>
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">
+            文章目录
+        </h3>
+        
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%97%8B%E8%BD%AC"><span class="toc-text">旋转</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BC%A9%E6%94%BE"><span class="toc-text">缩放</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%98%E6%8D%A2%E7%9A%84%E7%BB%84%E5%90%88"><span class="toc-text">变换的组合</span></a></li></ol>
+        
+    </div>
+</aside>
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+<a id="back-to-top" class="icon-btn hide">
+    <i class="fa fa-chevron-up"></i>
+</a>
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+    访问量:
+    <strong id="busuanzi_value_site_pv">
+        <i class="fa fa-spinner fa-spin"></i>
+    </strong>
+    &nbsp; | &nbsp;
+    访客数:
+    <strong id="busuanzi_value_site_uv">
+        <i class="fa fa-spinner fa-spin"></i>
+    </strong>
+    
+</div>
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy;
+                    2022
+                    
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script async src="//vercount.one/js"></script>
+
+
+<script src="/js/app.js?rev=@@hash.js"></script>
+
+
+<div class="hide">
+    <script type="text/javascript">
+    var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+    document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+</div>
+
+
+
+
+</body>
+</html>

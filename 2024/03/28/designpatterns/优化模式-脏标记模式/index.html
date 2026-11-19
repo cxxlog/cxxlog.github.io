@@ -1,0 +1,333 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+<head>
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="Hexo">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="theme-version" content="1.0.0">
+    <meta name="root" content="/">
+    <link rel="dns-prefetch" href="https://cxxlog.github.io">
+    <!--SEO-->
+
+<meta name="keywords" content="设计模式" />
+
+
+<meta name="description" content="理论要点
+什么是脏标记模式：将工作推迟到必要时进行以避免不必要的工作。就是用一个标志位来标记内容是否发生变化，如果没有发生变化就直接使用缓存数据，不需要重新计算。
+
+要点 脏标识模式：当前有一组..." />
+
+
+<meta name="robots" content="all" />
+<meta name="google" content="all" />
+<meta name="googlebot" content="all" />
+<meta name="verify" content="all" />
+    <!--Title-->
+
+<title>
+    
+    优化模式-脏标记模式 |
+    
+    Hexo
+</title>
+
+<link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+
+
+<link rel="icon" href="/favicon.ico">
+
+    
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7.css">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.7.0.css">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash.css">
+
+    
+
+<meta name="generator" content="Hexo 6.2.0"></head>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+<body>
+    <header class="main-header"  style="background-image:url(
+    /img/banner.jpg)"
+     >
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title='cxx'>
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+            <!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+            <img src="/img/branding.png" alt="Snippet 博客主题" class="img-responsive center-block">
+            
+        </div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                        <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="https://cxxlog.github.io">
+                        Hexo</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/"><i class="fa "></i>
+                                首页</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/archives/"><i class="fa "></i>
+                                时间轴</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/guestbook/"><i class="fa "></i>
+                                留言</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="优化模式-脏标记模式">
+            
+            优化模式-脏标记模式
+            
+        </h1>
+        <div class="post-meta">
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a class="category-link" href="/categories/designpatterns/">designpatterns</a>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+            <a class="tag-none-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a>
+            
+        </span>
+    </span>
+    
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-clock-o"></i>
+        <span class="date-meta">
+            2024/03/28</span>
+    </span>
+    
+    <span class="fa-wrap">
+        <i class="fa fa-eye"></i>
+        <span id="busuanzi_value_page_pv"></span>
+    </span>
+    
+    
+</div>
+        
+        
+    </div>
+    
+    <div class="post-body post-content">
+        <h2 id="理论要点"><a href="#理论要点" class="headerlink" title="理论要点"></a>理论要点</h2><ul>
+<li><p>什么是脏标记模式：将工作推迟到必要时进行以避免不必要的工作。<strong>就是用一个标志位来标记内容是否发生变化，如果没有发生变化就直接使用缓存数据，不需要重新计算。</strong></p>
+</li>
+<li><p>要点<br> 脏标识模式：当前有一组原始数据随着时间变化而改变。由这些原始数据计算出目标数据需要耗费一定的计算量。这个时候，可以用一个脏标识，来追踪目前的原始数据是否与之前的原始数据保持一致，而此脏标识会在被标记的原始数据改变时改变。那么，若这个标记没被改变，就可以使用之前缓存的目标数据，不用再重复计算。反之，若此标记已经改变，则需用新的原始数据计算目标数据。</p>
+</li>
+<li><p>使用场合</p>
+<p> 1，原始数据转换到目标数据会消耗很多时间，都可以考虑使用脏标记模式来节省开销。</p>
+<p> 2，游戏中物体局部变换到世界变换的计算，当没有变化时不需要每帧重复计算。(<strong>从根节点沿着它的父链将变换组合起来，矩阵相乘&#x3D;世界变换</strong>)。还有游戏场景图中每帧渲染的对象，对于没有发生变化的对象可以不必重新渲染。再有我们的文档存档也可以用到，内存中就是我们的原始数据，存盘到磁盘就是我们的目标数据，当然不需要实时存盘。</p>
+<p> 3，若原始数据的变化速度远高于目标数据的使用速度，此时数据会因为随后的修改而失效，此时就不适合使用脏标记模式。</p>
+</li>
+</ul>
+<h2 id="代码分析"><a href="#代码分析" class="headerlink" title="代码分析"></a>代码分析</h2><p>1，就如上面提到的，游戏场景中，物体运动并渲染需要知道它的世界坐标，这就意味着我们需要计算场景中所有对象的世界变换。很多对象都有很深的父链，父节点运动其上子节点也跟着变化，如果每个对象都每帧重新计算世界变换，这种开销也是很恐怖的。<br>下面我们就来分析怎么用脏标记模式来避免这种重复计算：<br>首先，局部坐标到世界坐标换算的矩阵计算不在我们这里的讨论范围，我们假设它的实现在其他什么地方。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">class Transform</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">	//原始变换，单位矩阵表示没有移动、旋转或者缩放</span><br><span class="line">	static Transform origin();</span><br><span class="line">	//组合父链中所有的局部变换得到它的世界变换</span><br><span class="line">	Transform combine(Transform&amp; other);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>再来一个世界变换换算过程的示意图帮助理解计算过程，如下：</p>
+<p><img decoding="async" src="/2024/03/28/designpatterns/%E4%BC%98%E5%8C%96%E6%A8%A1%E5%BC%8F-%E8%84%8F%E6%A0%87%E8%AE%B0%E6%A8%A1%E5%BC%8F/20171015162132597.png" alt="这里写图片描述"></p>
+<p><img loading="lazy" decoding="async" src="/2024/03/28/designpatterns/%E4%BC%98%E5%8C%96%E6%A8%A1%E5%BC%8F-%E8%84%8F%E6%A0%87%E8%AE%B0%E6%A8%A1%E5%BC%8F/20171015162221875.png" alt="这里写图片描述"></p>
+<p>好，现在我们有了计算世界坐标的类了，接下来，我们来定义游戏场景中的物体类。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">//每个物体组成：网格(图元)，坐标，它的子节点</span><br><span class="line">class GraphNode</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">	GraphNode(Mesh* mesh):_mesh(mesh), _local(Transform::origin()) &#123;&#125;</span><br><span class="line"></span><br><span class="line">private:</span><br><span class="line">	Transform _local;</span><br><span class="line">	Mesh* _mesh;</span><br><span class="line">	</span><br><span class="line">	GraphNode* _children[MAX_CHILDREN];</span><br><span class="line">	int _numChildren;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这样我们游戏的场景其实可以看作是一个单一的根节点”GraphNode”对象，它的子节点(子子节点，等等)就是世界中的所有物体。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">GraphNode* _graphRoot = new GraphNode(NULL);</span><br><span class="line"></span><br><span class="line">//Add children to root graph node...</span><br><span class="line">//往这个节点树中添加子节点，即就形成了我们的场景图(与cocos节点树不谋而合)</span><br></pre></td></tr></table></figure>
+<p>渲染整个场景，其实就是遍历节点树，从根节点开始，通过正确的世界变换为每个节点图元调用下面的方法。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">void renderMesh(Mesh* mesh, Transform transform);</span><br></pre></td></tr></table></figure>
+<p>我们这里不实现它，目的只是了解游戏场景形成的大概流程。现在我们的主要精力是看在遍历这个节点树计算世界变换并调用renderMesh最终渲染这个过程中是怎么优化的。<br>老套路，先来看不优化最直接的实现方式：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">void GraphNode::render(Transform parentWorld)</span><br><span class="line">&#123;</span><br><span class="line">	Transform world = _local.combine(parentWorld)</span><br><span class="line">	if(_mesh) renderMesh(_mesh, world);</span><br><span class="line">	</span><br><span class="line">	for(int i = 0; i &lt; _numChildren; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		_children[i]-&gt;render(world);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>我们通过“parentWorld”将父节点的世界变换传给它。这样这个节点的世界变换就是它本身的局部变换_local与parentWorld组合了。我们不需要回溯到父节点去重新计算，因为我们沿着父链下来已经计算过了。<br>我们计算节点的世界变换并保存到world中，然后如果有图元的话，就渲染它。最后我们递归进入子节点中，将当前节点的世界变换传递进去。总之，这是一个紧凑、简单的递归调用。<br>为了绘制整个场景图，我们从空根节点开始渲染：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">_graphRoot -&gt;render(Transform::origin());</span><br></pre></td></tr></table></figure>
+
+<p>分析下，我们上面是正确的实现了场景图的渲染，但是它并不高效，它每帧都在每个节点上调用_local.combine(parentWorld)计算世界变换。</p>
+<p>2，下面就来看看怎么用脏标记来优化这个计算。首先我们需要添加两个成员到GraphNode类中。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">class GraphNode</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">	GraphNode(Mesh* mesh)</span><br><span class="line">	:_mesh(mesh),</span><br><span class="line">	 _local(Transform::origin()),</span><br><span class="line">	 _dirty(true)</span><br><span class="line">	&#123;&#125;</span><br><span class="line">	</span><br><span class="line">	//Other methods...</span><br><span class="line">	</span><br><span class="line">private:</span><br><span class="line">	Transform _local;</span><br><span class="line">	Mesh* _mesh;</span><br><span class="line">	</span><br><span class="line">	//添加的两个成员</span><br><span class="line">	Transform _world;  //缓存上次计算的世界变换</span><br><span class="line">	bool _dirty;       //脏标记</span><br><span class="line">	</span><br><span class="line">	GraphNode* _children[MAX_CHILDREN];</span><br><span class="line">	int _numChildren;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在物体移动，发生局部变换时，我们需要设置脏标记。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">//设置脏标记</span><br><span class="line">void GraphNode::setTransform(Transform local)</span><br><span class="line">&#123;</span><br><span class="line">	_local = local;</span><br><span class="line">	_dirty = true;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这样之后我们再来看看优化后的每帧渲染接口：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">void GraphNode::render(Transform parentWorld, bool dirty)</span><br><span class="line">&#123;</span><br><span class="line">	dirty |= _dirty;</span><br><span class="line">	if(dirty)</span><br><span class="line">	&#123;</span><br><span class="line">		//清除脏标记</span><br><span class="line">		_world = _local.combine(parentWorld);</span><br><span class="line">		_dirty = false;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	if(_mesh) renderMesh(_mesh, _world);</span><br><span class="line">	</span><br><span class="line">	//父节点变化,递归子节点</span><br><span class="line">	for(int i = 0; i &lt; _numChildren; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		_children[i]-&gt;render(_world, dirty);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这样修改一个节点的局部变换只是几条赋值语句，渲染世界时只计算了自上一帧以来最少的变动的世界变换。</p>
+
+    </div>
+    
+    <div class="post-footer">
+        <div>
+            
+            转载声明：
+            商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">cxx</a>
+            
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+<div class="article-nav prev-next-wrap clearfix">
+    
+    <a href="/2025/06/06/3dmathprimer/3D%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80-%E5%9D%90%E6%A0%87%E7%B3%BB/" class="pre-post btn btn-default" title='3D数学基础-坐标系'>
+        <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+        <span class="hidden-xs">
+            3D数学基础-坐标系</span>
+    </a>
+    
+    
+    <a href="/2024/03/24/designpatterns/%E4%BC%98%E5%8C%96%E6%A8%A1%E5%BC%8F-%E6%95%B0%E6%8D%AE%E5%B1%80%E9%83%A8%E6%80%A7/" class="next-post btn btn-default" title='优化模式-数据局部性'>
+        <span class="hidden-lg">下一篇</span>
+        <span class="hidden-xs">
+            优化模式-数据局部性</span><i class="fa fa-angle-right fa-fw"></i>
+    </a>
+    
+</div>
+
+<div id="comments">
+    
+    <script src="https://giscus.app/client.js"
+        data-repo="cxxlog/myblog-comment"
+        data-repo-id="R_kgDOVzxsBw"
+        data-category="Announcements"
+        data-category-id="DIC_kwDOVzxsB84DLdxb"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="bottom"
+        data-theme="light"
+        data-lang="zh-CN"
+        crossorigin="anonymous"
+        async>
+    </script>
+
+</div>
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">
+            文章目录
+        </h3>
+        
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%90%86%E8%AE%BA%E8%A6%81%E7%82%B9"><span class="toc-text">理论要点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E5%88%86%E6%9E%90"><span class="toc-text">代码分析</span></a></li></ol>
+        
+    </div>
+</aside>
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+<a id="back-to-top" class="icon-btn hide">
+    <i class="fa fa-chevron-up"></i>
+</a>
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+    访问量:
+    <strong id="busuanzi_value_site_pv">
+        <i class="fa fa-spinner fa-spin"></i>
+    </strong>
+    &nbsp; | &nbsp;
+    访客数:
+    <strong id="busuanzi_value_site_uv">
+        <i class="fa fa-spinner fa-spin"></i>
+    </strong>
+    
+</div>
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy;
+                    2022
+                    
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script async src="//vercount.one/js"></script>
+
+
+<script src="/js/app.js?rev=@@hash.js"></script>
+
+
+<div class="hide">
+    <script type="text/javascript">
+    var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+    document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+</div>
+
+
+
+
+</body>
+</html>

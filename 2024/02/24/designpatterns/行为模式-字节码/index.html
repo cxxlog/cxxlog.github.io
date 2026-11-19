@@ -1,0 +1,365 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+<head>
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="Hexo">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="theme-version" content="1.0.0">
+    <meta name="root" content="/">
+    <link rel="dns-prefetch" href="https://cxxlog.github.io">
+    <!--SEO-->
+
+<meta name="keywords" content="设计模式" />
+
+
+<meta name="description" content="理论要点
+什么是字节码模式：将行为编码为虚拟机器上的指令，来赋予其数据的灵活性。从而让数据易于修改，易于加载，并与其他可执行部分相隔离。
+
+要点  1，字节码模式：指令集定义了可执行的底层操作。..." />
+
+
+<meta name="robots" content="all" />
+<meta name="google" content="all" />
+<meta name="googlebot" content="all" />
+<meta name="verify" content="all" />
+    <!--Title-->
+
+<title>
+    
+    行为模式-字节码 |
+    
+    Hexo
+</title>
+
+<link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+
+
+<link rel="icon" href="/favicon.ico">
+
+    
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7.css">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.7.0.css">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash.css">
+
+    
+
+<meta name="generator" content="Hexo 6.2.0"></head>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+<body>
+    <header class="main-header"  style="background-image:url(
+    /img/banner.jpg)"
+     >
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title='cxx'>
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+            <!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+            <img src="/img/branding.png" alt="Snippet 博客主题" class="img-responsive center-block">
+            
+        </div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                        <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="https://cxxlog.github.io">
+                        Hexo</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/"><i class="fa "></i>
+                                首页</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/archives/"><i class="fa "></i>
+                                时间轴</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/guestbook/"><i class="fa "></i>
+                                留言</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="行为模式-字节码">
+            
+            行为模式-字节码
+            
+        </h1>
+        <div class="post-meta">
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a class="category-link" href="/categories/designpatterns/">designpatterns</a>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+            <a class="tag-none-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a>
+            
+        </span>
+    </span>
+    
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-clock-o"></i>
+        <span class="date-meta">
+            2024/02/24</span>
+    </span>
+    
+    <span class="fa-wrap">
+        <i class="fa fa-eye"></i>
+        <span id="busuanzi_value_page_pv"></span>
+    </span>
+    
+    
+</div>
+        
+        
+    </div>
+    
+    <div class="post-body post-content">
+        <h2 id="理论要点"><a href="#理论要点" class="headerlink" title="理论要点"></a>理论要点</h2><ul>
+<li><p>什么是字节码模式：<strong>将行为编码为虚拟机器上的指令，来赋予其数据的灵活性。从而让数据易于修改，易于加载，并与其他可执行部分相隔离。</strong></p>
+</li>
+<li><p>要点<br>  1，字节码模式：指令集定义了可执行的底层操作。一系列的指令被编码为字节序列。 虚拟机使用中间值堆栈依次执行这些指令。 通过组合指令，可以定义复杂的高层行为。</p>
+<p>  2，可以理解为项目中的转表工具，将excel中的数据转为二进制数据，并读取到工程中。还有如在项目中使用protobuf，json，xml等都是这么个思路。</p>
+<p> 3，字节码类似GOF的解释器模式，这两种方式都能让我们将数据与行为相组合。其实很多时候都是两者一起使用。用来构造字节码的工具会有内部的对象树，而为了编译到字节码，我们需要递归回溯整棵树，就像用解释器模式去解释它一样。唯一的不同在于，并不是立即执行一段行为，而是生成整个字节码再执行。</p>
+</li>
+<li><p>使用场合<br>  像C++这样的编译型语言开发游戏，一个功能刚开发完甚至还没开发完，策划又该需求了，这里调下数值，那里调下表现，等等诸如此类，犹如家常便饭。<br> 而如果是大型项目，改需求难点不是实现需求，而是烦人的编译时间，而且对于上线的项目，我甚至得重新出包发布。更恐怖的如果遇到error，我程序就直接over了。</p>
+<p>  我们是不是可以想个办法，把需求行为和游戏主逻辑隔开，这样底层不变，上层行为通过中间层传递给底层使用，这时，即使上层行为要修改或是有bug都不影响我们底层代码的运行。这有点像数据，如果能在分离的数据文件中定义行为，游戏引擎还能加载并“执行”它们，就可以实现所有目标- - -<strong>即把行为转换为数据使用。</strong></p>
+<p>  这其实有点类似，“<strong>开发我们自己的程序语言</strong>”，想想，我们自己定义一套指令集，分别实现编译器和解释器，编译器负责把我们自定义的语言转换为类似机器码的字节码，这种字节码然后通过我们的解释器解析为机器码。如果实现了这些，那么我们自定义的语言就真的能被计算机识别使用了，到时再把它以自己名字命名。想想是不是很激动！(像现在很多脚步语言，如Lua等都是这样发展而来的)</p>
+<p> 但需要注意，这种中间字节码的形式比直接本地机器码代码慢，所以最好不要用于引擎对性能敏感的部分。</p>
+</li>
+</ul>
+<h2 id="代码分析"><a href="#代码分析" class="headerlink" title="代码分析"></a>代码分析</h2><p>1，实现自己语言前，我们先温习下与之类似的GOF的<strong>解释器模式</strong>：假设我们要让语言支持这样的算术表达式：(1 + 2) * (3 - 4)<br>我们的做法是把每块表达式，每条语言规则，都封装到对象中去，那么最终就会变成如下这样的抽象语法树。</p>
+<p><img decoding="async" src="/2024/02/24/designpatterns/%E8%A1%8C%E4%B8%BA%E6%A8%A1%E5%BC%8F-%E5%AD%97%E8%8A%82%E7%A0%81/d2920efb722cd9e8c388647689b46f1c.png" alt="这里写图片描述"></p>
+<p>创建这棵树是编译器的工作，我们这里讲的解释器模式与这无关。怎么形成的先不管，下面我们来看看怎么去解析这颗树，即实现解释器：<br>首先，我们定义所有表达式的基本接口：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">class Expression</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">  virtual ~Expression() &#123;&#125;</span><br><span class="line">  virtual double evaluate() = 0;    //求值</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>然后，实现数字派生类：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">class NumberExpression : public Expression</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">  NumberExpression(double value)</span><br><span class="line">  : value_(value)</span><br><span class="line">  &#123;&#125;</span><br><span class="line"></span><br><span class="line">  virtual double evaluate()</span><br><span class="line">  &#123;</span><br><span class="line">    return value_;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">private:</span><br><span class="line">  double value_;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>最后就是运算符了，下面是加法的实现：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">class AdditionExpression : public Expression</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">  AdditionExpression(Expression* left, Expression* right)</span><br><span class="line">  : left_(left),</span><br><span class="line">    right_(right)</span><br><span class="line">  &#123;&#125;</span><br><span class="line"></span><br><span class="line">  virtual double evaluate()</span><br><span class="line">  &#123;</span><br><span class="line">    // 计算操作数</span><br><span class="line">    double left = left_-&gt;evaluate();</span><br><span class="line">    double right = right_-&gt;evaluate();</span><br><span class="line"></span><br><span class="line">    // 把它们加起来</span><br><span class="line">    return left + right;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">private:</span><br><span class="line">  Expression* left_;</span><br><span class="line">  Expression* right_;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>好，这样支持简单的算术计算的解释器就实现了。然而，很明显它是把每种指令都封装成对象，想想如果处理的问题比较复杂，那么会是个庞大的语法树，层次很,深，而且需要new很多对象。这样明显效率不好且耗内存。</p>
+<p>2，上面我们已经实现了解释器模式，它的优点就是安全，因为它的语法行为是我们自己定义的，不直接接触底层。但是缺点也很明显，就是效率低、耗内存。</p>
+<p>再想想我们现有的语言C++，它是直接把这些指令编译成机器码，机器码是一组密集的，线性的，底层的指令，硬件直接识别，它效率飞快。然而，我们总不能指望要用户编写机器码吧，这肯定不现实，也不安全(硬件直接识别，所以不安全)。</p>
+<p>那我们想过没有，如果把它们两者结合起来，不是直接加载机器码，而是定义自己的虚拟机器码呢？ 然后，在游戏中写个小模拟器。 这与机器码类似，密集，线性，相对底层，但支持规则都是我们自己定义的，所以可以放心地将其放入沙箱。</p>
+<p>我们将这个小模拟器称为虚拟机（或简称“VM”），它运行的虚拟机器码叫做字节码。 它有数据的灵活性和易用性，但比解释器模式有更好的性能。</p>
+<p>这听起来有点高端吓人。不过下面经过我通俗易懂的解剖完后，其实拥有自己的语言也就那么回事！(我们风靡全球的lua脚步其实就是这个原理实现的，即使你不打算开发自己的语言，也至少能对lua语言有更多的了解)</p>
+<p>好，下面我们就以一个通俗易懂的游戏情境来带你走进<strong>字节码模式</strong>，看看我是怎么实现这个能解析字节码的虚拟机的。<br>假设我们游戏中有两只怪物，他们可以互相攻击，释放法术。绝大多数法术是会改变怪物身上的某个状态，我们就从一组状态开始：如果是c++会这么设置：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">void setHealth(int wizard, int amount);       //设置生命值</span><br><span class="line">void setWisdom(int wizard, int amount);       //设置智力值</span><br><span class="line">void setAgility(int wizard, int amount);      //设置敏捷值</span><br></pre></td></tr></table></figure>
+<p>参数wizard是怪物目标，比如说用0代表玩家，用1代表对手。参数amount是改变对应属性的具体数值。<br>上面只有数值上的变化，这样的法术未免太单调，我们再加些特效作用：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">void playSound(int soundId);              //播发音效</span><br><span class="line">void spawnParticles(int particleType);    //播发粒子特效</span><br></pre></td></tr></table></figure>
+<p>好，上面这是我们硬代码的一般形式了，看看我们怎么来一步一步把这些API抽离出来，让它用我们自己定义的指令去解析执行。<br>首先，我们的目标是实现自己的解析器。好，那么我们需求解析什么呢？当然是上面API操作的所有状态，我们要把这些状态定义成指令。我们可以这样枚举它们：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">enum Instruction</span><br><span class="line">&#123;</span><br><span class="line">  INST_SET_HEALTH      = 0x00,</span><br><span class="line">  INST_SET_WISDOM      = 0x01,</span><br><span class="line">  INST_SET_AGILITY     = 0x02,</span><br><span class="line">  INST_PLAY_SOUND      = 0x03,</span><br><span class="line">  INST_SPAWN_PARTICLES = 0x04</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>一个法术就是一系列这样的指令，每个指令对应一个行为操作。如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">switch (instruction)</span><br><span class="line">&#123;</span><br><span class="line">  case INST_SET_HEALTH:</span><br><span class="line">    setHealth(0, 100);</span><br><span class="line">    break;</span><br><span class="line"></span><br><span class="line">  case INST_SET_WISDOM:</span><br><span class="line">    setWisdom(0, 100);</span><br><span class="line">    break;</span><br><span class="line"></span><br><span class="line">  case INST_SET_AGILITY:</span><br><span class="line">    setAgility(0, 100);</span><br><span class="line">    break;</span><br><span class="line"></span><br><span class="line">  case INST_PLAY_SOUND:</span><br><span class="line">    playSound(SOUND_BANG);</span><br><span class="line">    break;</span><br><span class="line"></span><br><span class="line">  case INST_SPAWN_PARTICLES:</span><br><span class="line">    spawnParticles(PARTICLE_FLAME);</span><br><span class="line">    break;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>如果我把这套东西封装好，那么以后我们的法术代码就变成了一个个字节列表，列表保存的就是这些状态的枚举值，其实这就是所谓的字节码。<br>好，现在我们就实现我们的第一个虚拟机，像这样它就能解析一个完整的法术：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">class VM</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">  void interpret(char bytecode[], int size)</span><br><span class="line">  &#123;</span><br><span class="line">    for (int i = 0; i &lt; size; i++)</span><br><span class="line">    &#123;</span><br><span class="line">      char instruction = bytecode[i];</span><br><span class="line">      switch (instruction)</span><br><span class="line">      &#123;</span><br><span class="line">        // 每条指令的跳转分支……</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>恩，是不是觉得这个虚拟机过于死板了，没错，它不能设置参数，我们不能设定攻击对手的法术，也不能减少状态上限。我们只能播放声音！<br>那要这个虚拟机生动起来，就得支持怎么引入参数？其实上面定义的状态集 + 这里的参数 &#x3D; 数据。我们只要处理如何序列化的操作这个数据，其实这个过程就是我们的解析，而且释放法术这个行为也已经完美转换成纯数据了。那么现在就只有一个问题了，就是究竟怎么序列式操作这个数据呢？没错，堆栈。通过push，pop与外界交互数据，把所有数据用堆栈来保存。先我们来定义一个堆栈：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">class VM</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">  VM()</span><br><span class="line">  : stackSize_(0)</span><br><span class="line">  &#123;&#125;</span><br><span class="line"></span><br><span class="line">  // 其他代码……</span><br><span class="line"></span><br><span class="line">private:</span><br><span class="line">  static const int MAX_STACK = 128;</span><br><span class="line">  int stackSize_;</span><br><span class="line">  int stack_[MAX_STACK];</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>到时我们的一个技能对应的一组连续字节码就保存到这个stack_堆栈数组中，遍历这个堆栈过程就是执行技能的过程。<br>接着来看怎么加入(push)，和取出(pop)数据：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">class VM</span><br><span class="line">&#123;</span><br><span class="line">private:</span><br><span class="line">  void push(int value)</span><br><span class="line">  &#123;</span><br><span class="line">    // 检查栈溢出</span><br><span class="line">    assert(stackSize_ &lt; MAX_STACK);</span><br><span class="line">    stack_[stackSize_++] = value;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  int pop()</span><br><span class="line">  &#123;</span><br><span class="line">    // 保证栈不是空的</span><br><span class="line">    assert(stackSize_ &gt; 0);</span><br><span class="line">    return stack_[--stackSize_];</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  // 其余的代码</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>现在支持引入参数的指令执行操作就会这样从堆栈中pop取了：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">switch (instruction)</span><br><span class="line">&#123;</span><br><span class="line">  case INST_SET_HEALTH:</span><br><span class="line">  &#123;</span><br><span class="line">    int amount = pop();</span><br><span class="line">    int wizard = pop();</span><br><span class="line">    setHealth(wizard, amount);</span><br><span class="line">    break;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  case INST_SET_WISDOM:</span><br><span class="line">  case INST_SET_AGILITY:</span><br><span class="line">    // 像上面一样……</span><br><span class="line"></span><br><span class="line">  case INST_PLAY_SOUND:</span><br><span class="line">    playSound(pop());</span><br><span class="line">    break;</span><br><span class="line"></span><br><span class="line">  case INST_SPAWN_PARTICLES:</span><br><span class="line">    spawnParticles(pop());</span><br><span class="line">    break;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>然后，我们还得为添加数据(push)也定义一个指令，接着上面枚举INST_LITERAL &#x3D; 0x05：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">case INST_LITERAL:</span><br><span class="line">&#123;</span><br><span class="line">  //bytecode字节码数组，它就是我们的行为，我们这个虚拟机所有工作就是在解析它</span><br><span class="line">  int value = bytecode[++i];     </span><br><span class="line">  push(value);</span><br><span class="line">  break;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>好，这个第二次改进的虚拟机就搞完了。然后我们来个游戏实际情形分析下它的工作原理：“假设我们这次的技能操作是要给玩家自己加10点生命值。”这个行为对应的字节码数据就是这样：[0x05, 0, 0x05, 10, 0x00]。下面是示意图分析：<br>首先从空栈开始，虚拟机指向字节码数组的第一个：</p>
+<p><img loading="lazy" decoding="async" src="/2024/02/24/designpatterns/%E8%A1%8C%E4%B8%BA%E6%A8%A1%E5%BC%8F-%E5%AD%97%E8%8A%82%E7%A0%81/2488b31e4d8cb6359e90dce156c9cafa.png" alt="这里写图片描述"></p>
+<p>然后，它执行第一个指令“INST_LITERAL”，把下一个字节0压入堆栈。</p>
+<p><img loading="lazy" decoding="async" src="/2024/02/24/designpatterns/%E8%A1%8C%E4%B8%BA%E6%A8%A1%E5%BC%8F-%E5%AD%97%E8%8A%82%E7%A0%81/fcf01c99277a30614c0233565bcb841a.png" alt="这里写图片描述"></p>
+<p>接着执行第二个”INST_LITERAL”，把下一个字节10压入堆栈。</p>
+<p><img loading="lazy" decoding="async" src="/2024/02/24/designpatterns/%E8%A1%8C%E4%B8%BA%E6%A8%A1%E5%BC%8F-%E5%AD%97%E8%8A%82%E7%A0%81/26e34bb994af11bb30516994d056b543.png" alt="这里写图片描述"></p>
+<p>最后执行”INST_SET_HEALTH”。它会弹出10存进amount，弹出0存进wizard。然后用这两个参数调用setHealth()。这就实现了我们为自己加血行为的整套字节码解析流程。</p>
+<p>嗯，乍看上去貌似很完美了！不过还缺些行为，我们只有set属性，而没有get属性是不是？我们可以引入参数把属性设置为我们想要的值，这更像是数据。而如果我想把智力属性值设置为它的生命值，那这又怎么操作呢？很明显，我们得再添加些get指令：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">case INST_GET_HEALTH:</span><br><span class="line">&#123;</span><br><span class="line">  int wizard = pop();</span><br><span class="line">  push(getHealth(wizard));</span><br><span class="line">  break;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">case INST_GET_WISDOM:</span><br><span class="line">case INST_GET_AGILITY:</span><br><span class="line">  // 你知道思路了吧……</span><br></pre></td></tr></table></figure>
+<p>现在，我们的虚拟机已经可以支持设置任意属性，得到当前属性，播发音效，粒子特效。好，我们接着再来丰富下它，让它支持更多的行为。接下来，我们添加一个算术指令，让它具有计算能力：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">case INST_ADD:</span><br><span class="line">&#123;</span><br><span class="line">  int b = pop();</span><br><span class="line">  int a = pop();</span><br><span class="line">  push(a + b);</span><br><span class="line">  break;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>算计指令就类似这样了，那么有了这些我们能实现什么复杂点的行为呢？来看看这么个示例：假设我们希望有个法术，能让玩家的血量增加敏捷和智慧的平均值。 用代码表示如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">setHealth(0, getHealth(0) + (getAgility(0) + getWisdom(0)) / 2);</span><br></pre></td></tr></table></figure>
+<p>好，假设玩家目前有45点血量，7点敏捷，和11点智慧。 我们来看看实现这么个行为，我们是用的一组什么字节码数组和对应堆栈的数据变化，下面是演示这个过程的示例图：</p>
+<p><img loading="lazy" decoding="async" src="/2024/02/24/designpatterns/%E8%A1%8C%E4%B8%BA%E6%A8%A1%E5%BC%8F-%E5%AD%97%E8%8A%82%E7%A0%81/9ed6f18e372bbedaa0c7947dcfaaa079.png" alt="这里写图片描述"></p>
+<p>左边是指令，右边是对应的堆栈数据变化。这么个过程我们就计算出了玩家的血量增加敏捷和智慧的平均值。</p>
+<p>我可以继续下去，添加越来越多的指令，但是时候适可而止了。 如上所述，我们已经有了一个可爱的小虚拟机，可以使用简单，紧凑的数据格式，定义开放的行为。 虽然“字节码”和“虚拟机”的听起来很吓人，但你可以看到它们往往简单到只需栈，循环，和switch语句。</p>
+<p>再回过头来想想，是不是实现自己的虚拟机其实也就那么回事，<strong>首先我们对需要处理的问题定义好指令集合(枚举)，从而某个行为就可以用这些对应指令来表示(字节码数组)，然后用堆栈来遍历这组字节码(push存储数据，pop使用数据)，执行对应操作。</strong></p>
+<p>3，到目前为止，我们虚拟机(解释器)已经讲完了，但是对应的编译器呢？我们上面所有操作的字节码数组都是自己手动写的，这样肯定不实用。很明显，我们需要写个上层的图形工具(编译器)，就算不是程序的人也可以轻松使用这个工具编辑行为，然后生成对应的字节码数组。类似这样的东西：</p>
+<p><img loading="lazy" decoding="async" src="/2024/02/24/designpatterns/%E8%A1%8C%E4%B8%BA%E6%A8%A1%E5%BC%8F-%E5%AD%97%E8%8A%82%E7%A0%81/cfce241ae29cff211d98aa091dbe1371.png" alt="这里写图片描述"></p>
+<p>你可以做个这样的工具，用户通过单击拖动小盒子，下拉菜单项，或任何有意义的行为创建“脚本”，从而创建行为。<br>这样做的好处是，你的UI可以保证用户无法创建“无效的”程序。 与其向他们喷射错误警告，不如主动关闭按钮或提供默认值， 以确保他们创造的东西在任何时间点上都有效。</p>
+<p>这篇已经太长了，其实到目前，关于怎么实现自定义语言的编译器，解释器原理已经讲得很清楚了。相信你只要认真看完了的，实现一个小型自定义语言是完全没压力的了。<br>比如游戏里的技能系统，我们刚好是不是可以做个工具让策划自己去编辑行为，然后生成字节码，最后我们的虚拟机去解析执行。这套东西做好后，我们程序里将没有一个硬代码，所有工作无非是策划的编辑事情了。这时我们就可以轻松的去倒杯咖啡，看着策划们调它们要的效果，而这再也与我们无关~</p>
+
+    </div>
+    
+    <div class="post-footer">
+        <div>
+            
+            转载声明：
+            商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">cxx</a>
+            
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+<div class="article-nav prev-next-wrap clearfix">
+    
+    <a href="/2024/02/28/designpatterns/%E8%A1%8C%E4%B8%BA%E6%A8%A1%E5%BC%8F-%E5%AD%90%E7%B1%BB%E6%B2%99%E7%AE%B1/" class="pre-post btn btn-default" title='行为模式-子类沙箱'>
+        <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+        <span class="hidden-xs">
+            行为模式-子类沙箱</span>
+    </a>
+    
+    
+    <a href="/2024/02/20/designpatterns/%E5%BA%8F%E5%88%97%E6%A8%A1%E5%BC%8F-%E6%9B%B4%E6%96%B0%E6%96%B9%E6%B3%95/" class="next-post btn btn-default" title='序列模式-更新方法'>
+        <span class="hidden-lg">下一篇</span>
+        <span class="hidden-xs">
+            序列模式-更新方法</span><i class="fa fa-angle-right fa-fw"></i>
+    </a>
+    
+</div>
+
+<div id="comments">
+    
+    <script src="https://giscus.app/client.js"
+        data-repo="cxxlog/myblog-comment"
+        data-repo-id="R_kgDOVzxsBw"
+        data-category="Announcements"
+        data-category-id="DIC_kwDOVzxsB84DLdxb"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="bottom"
+        data-theme="light"
+        data-lang="zh-CN"
+        crossorigin="anonymous"
+        async>
+    </script>
+
+</div>
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">
+            文章目录
+        </h3>
+        
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%90%86%E8%AE%BA%E8%A6%81%E7%82%B9"><span class="toc-text">理论要点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E5%88%86%E6%9E%90"><span class="toc-text">代码分析</span></a></li></ol>
+        
+    </div>
+</aside>
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+<a id="back-to-top" class="icon-btn hide">
+    <i class="fa fa-chevron-up"></i>
+</a>
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+    访问量:
+    <strong id="busuanzi_value_site_pv">
+        <i class="fa fa-spinner fa-spin"></i>
+    </strong>
+    &nbsp; | &nbsp;
+    访客数:
+    <strong id="busuanzi_value_site_uv">
+        <i class="fa fa-spinner fa-spin"></i>
+    </strong>
+    
+</div>
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy;
+                    2022
+                    
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script async src="//vercount.one/js"></script>
+
+
+<script src="/js/app.js?rev=@@hash.js"></script>
+
+
+<div class="hide">
+    <script type="text/javascript">
+    var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+    document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+</div>
+
+
+
+
+</body>
+</html>

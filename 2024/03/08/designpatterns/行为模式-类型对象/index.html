@@ -1,0 +1,336 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+<head>
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="Hexo">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="theme-version" content="1.0.0">
+    <meta name="root" content="/">
+    <link rel="dns-prefetch" href="https://cxxlog.github.io">
+    <!--SEO-->
+
+<meta name="keywords" content="设计模式" />
+
+
+<meta name="description" content="理论要点
+什么是类型对象：创造一个类A来允许灵活的创造新的类，而类A的每个实例都代表了不同类型的对象。通俗地讲就是定义一个类型对象类和一个有类型的对象类。每个类型对象实例代表一种不同的逻辑类型。..." />
+
+
+<meta name="robots" content="all" />
+<meta name="google" content="all" />
+<meta name="googlebot" content="all" />
+<meta name="verify" content="all" />
+    <!--Title-->
+
+<title>
+    
+    行为模式-类型对象 |
+    
+    Hexo
+</title>
+
+<link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+
+
+<link rel="icon" href="/favicon.ico">
+
+    
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7.css">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.7.0.css">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash.css">
+
+    
+
+<meta name="generator" content="Hexo 6.2.0"></head>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+<body>
+    <header class="main-header"  style="background-image:url(
+    /img/banner.jpg)"
+     >
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title='cxx'>
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+            <!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+            <img src="/img/branding.png" alt="Snippet 博客主题" class="img-responsive center-block">
+            
+        </div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                        <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="https://cxxlog.github.io">
+                        Hexo</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/"><i class="fa "></i>
+                                首页</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/archives/"><i class="fa "></i>
+                                时间轴</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/guestbook/"><i class="fa "></i>
+                                留言</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="行为模式-类型对象">
+            
+            行为模式-类型对象
+            
+        </h1>
+        <div class="post-meta">
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a class="category-link" href="/categories/designpatterns/">designpatterns</a>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+            <a class="tag-none-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a>
+            
+        </span>
+    </span>
+    
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-clock-o"></i>
+        <span class="date-meta">
+            2024/03/08</span>
+    </span>
+    
+    <span class="fa-wrap">
+        <i class="fa fa-eye"></i>
+        <span id="busuanzi_value_page_pv"></span>
+    </span>
+    
+    
+</div>
+        
+        
+    </div>
+    
+    <div class="post-body post-content">
+        <h2 id="理论要点"><a href="#理论要点" class="headerlink" title="理论要点"></a>理论要点</h2><ul>
+<li><p>什么是类型对象：创造一个类A来允许灵活的创造新的类，而类A的每个实例都代表了不同类型的对象。<strong>通俗地讲就是定义一个类型对象类和一个有类型的对象类。每个类型对象实例代表一种不同的逻辑类型。每种有类型的对象保存描述它类型的类型对象的引用。</strong></p>
+</li>
+<li><p>要点：</p>
+<p> 1，类型对象的基本思想就是给基类一个品种类（breed类），而不是用一些子类继承自这个基类。所以我们在做种类区分的时候就可以只有两个类，怪物类monster和品种类breed，而不是monster，dragon，troll等一堆类。所以在此种情况下，游戏中的每个怪物都是怪物类的一个实例，而实例中的breed类包含了所有同种类型怪物共享的信息。</p>
+<p> 2，这个模式引出的进阶问题是如何在不同对象之间共享数据。以不同的方式解决同一个问题的是GOF设计模式中的原型模式。</p>
+<p> 3，类型对象是GOF设计模式中享元模式的亲兄弟。两者都让你在实例间分享代码。使用享元，意图是节约内存，而分享的数据也许不代表任何概念上对象的“类型”。而使用类型对象模式，焦点在组织性和灵活性。</p>
+</li>
+<li><p>使用场合：<br>  在任何你需要定义不同“种”事物，但是语言自身的类型系统过于僵硬的时候使用该模式。尤其是下面两者之一成立时：</p>
+</li>
+<li><p>你不知道你后面还需要什么新类型。（举个例子，如果你的游戏需要支持增量更新，让用户下载后续新包含进来的怪物品种）</p>
+</li>
+<li><p>修改或添加新类型不想改变代码或者重新编译。</p>
+</li>
+</ul>
+<h2 id="代码分析"><a href="#代码分析" class="headerlink" title="代码分析"></a>代码分析</h2><p>1，在MMO游戏中，玩家挑战副本或在野外游历都会遇到各种各样的怪物攻击，它们种类多样但都有相同属性，只是具体值不同而已。如果叫你实现这些怪物对象，你会怎么编写你的代码呢？<br>传统的面向对象方案一般会是这么干：<br>首先实现一个怪物基类：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">class Monster</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">  virtual ~Monster() &#123;&#125;</span><br><span class="line">  virtual const char* getAttack() = 0;</span><br><span class="line"></span><br><span class="line">protected:</span><br><span class="line">  Monster(int startingHealth)</span><br><span class="line">  : health_(startingHealth)</span><br><span class="line">  &#123;&#125;</span><br><span class="line"></span><br><span class="line">private:</span><br><span class="line">  int health_; // 当前血值</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>然后，我们来实现龙和巨魔这两个品种：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">class Dragon : public Monster</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">  Dragon() : Monster(230) &#123;&#125;</span><br><span class="line"></span><br><span class="line">  virtual const char* getAttack()</span><br><span class="line">  &#123;</span><br><span class="line">    return &quot;The dragon breathes fire!&quot;;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">class Troll : public Monster</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">  Troll() : Monster(48) &#123;&#125;</span><br><span class="line"></span><br><span class="line">  virtual const char* getAttack()</span><br><span class="line">  &#123;</span><br><span class="line">    return &quot;The troll clubs you!&quot;;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>好，传统做法已经实现了，既然是传统做法，一般都不是最好方案。想想，如果怪物种类很多，成百上千，那岂不是我要对应的上百子类。这还好，一般也不会有这么多种类，最无法忍受的是，策划如果要经常调整修改某些怪(这通常是家常便饭)，如把我们巨魔的血量从48改到52，那么我们得找到troll类然后修改代码，重新编译。</p>
+<p>没错，对于游戏程序猿们来说最坑爹的就是策划经常改需求，然后对已经写好的代码反复修改，编译。其实，被坑多了，你得学会总结经验教训，想想有么有什么办法支持策划随便调整而我能尽量少的改代码甚至不改。&#x3D;&#x3D;&gt;其实做法很明显了，那就是得支持读配置表。</p>
+<p>2，下面我就来告诉你一个更高端的方案，彻底解放程序！随便想想你就能发现上面很多种类的怪其实他们属性都差不多，只是值不同而已。基于这样，我们可以把这些共同属性抽出来封装成单独的类，然后，怪物类保存一份它的引用，通过构造不同属性对象来实现不同怪物，这样都不需要继承了，就这两个类搞定。示例代码如下：<br>类型对象类：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">class Breed</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">  Breed(int health, const char* attack)</span><br><span class="line">  : health_(health),</span><br><span class="line">    attack_(attack)</span><br><span class="line">  &#123;&#125;</span><br><span class="line"></span><br><span class="line">  int getHealth() &#123; return health_; &#125;</span><br><span class="line">  const char* getAttack() &#123; return attack_; &#125;</span><br><span class="line"></span><br><span class="line">private:</span><br><span class="line">  int health_; // 初始血值</span><br><span class="line">  const char* attack_;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>包含类型对象的怪物类：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">class Monster</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">  Monster(Breed&amp; breed)</span><br><span class="line">  : health_(breed.getHealth()),</span><br><span class="line">    breed_(breed)</span><br><span class="line">  &#123;&#125;</span><br><span class="line"></span><br><span class="line">  const char* getAttack()</span><br><span class="line">  &#123;</span><br><span class="line">    return breed_.getAttack();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">private:</span><br><span class="line">  int    health_; // 当前血值</span><br><span class="line">  Breed&amp; breed_;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>上面这两个非常简单的类就是我们类型对象模式的核心思想了，下面再讲的都是一些周边扩展福利！</p>
+<p>3，我们再来探讨下可能遇到的一些其它问题的决策：<br>问题一：目前我们实现的类型对象模式，它要创建一种类型会是这样：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Breed *someBreed = new Breed(...);</span><br><span class="line">Monster * monster = new Monster(someBreed);</span><br></pre></td></tr></table></figure>
+<p>其实我们可以进一步封装，使创建新对象尽量接触少的类，将它们绑定在一起，让它更像类型，首先，把Breed类设置成Monster类的友元类，并把Monster构造设为私有属性，构造新种类全交个Breed类型对象。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">class Monster</span><br><span class="line">&#123;</span><br><span class="line">  friend class Breed;</span><br><span class="line"></span><br><span class="line">public:</span><br><span class="line">  const char* getAttack() &#123; return breed_.getAttack(); &#125;</span><br><span class="line"></span><br><span class="line">private:</span><br><span class="line">  Monster(Breed&amp; breed)</span><br><span class="line">  : health_(breed.getHealth()),</span><br><span class="line">    breed_(breed)</span><br><span class="line">  &#123;&#125;</span><br><span class="line"></span><br><span class="line">  int health_; // 当前血值</span><br><span class="line">  Breed&amp; breed_;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">class Breed</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">  Monster* newMonster() &#123; return new Monster(*this); &#125;</span><br><span class="line"></span><br><span class="line">  // Previous Breed code...</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>这样之后，我们再创建新类型就变成这样了：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Monster* monster = someBreed.newMonster();</span><br></pre></td></tr></table></figure>
+
+<p>问题二：如果我们有这样的需求，需要在不同类型的怪物间分享数据，那这要怎么做呢？分享数据，继承当然是名副其实，但是我们的类型对象模式没有继承，这时可以这样模拟：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">class Breed</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">  Breed(Breed* parent, int health, const char* attack)</span><br><span class="line">  : parent_(parent),</span><br><span class="line">    health_(health),</span><br><span class="line">    attack_(attack)</span><br><span class="line">  &#123;&#125;</span><br><span class="line"></span><br><span class="line">  int         getHealth();</span><br><span class="line">  const char* getAttack();</span><br><span class="line"></span><br><span class="line">private:</span><br><span class="line">  Breed*      parent_;</span><br><span class="line">  int         health_; // 初始血值</span><br><span class="line">  const char* attack_;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Breed(Breed* parent, int health, const char* attack)</span><br><span class="line">: health_(health),</span><br><span class="line">  attack_(attack)</span><br><span class="line">&#123;</span><br><span class="line">  // 继承没有重载的属性</span><br><span class="line">  if (parent != NULL)</span><br><span class="line">  &#123;</span><br><span class="line">    if (health == 0) health_ = parent-&gt;getHealth();</span><br><span class="line">    if (attack == NULL) attack_ = parent-&gt;getAttack();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>通过外部传入的方式来模拟继承属性，这样就可以在不同类型对象之间分享数据了。</p>
+
+    </div>
+    
+    <div class="post-footer">
+        <div>
+            
+            转载声明：
+            商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">cxx</a>
+            
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+<div class="article-nav prev-next-wrap clearfix">
+    
+    <a href="/2024/03/12/designpatterns/%E8%A7%A3%E8%80%A6%E6%A8%A1%E5%BC%8F-%E7%BB%84%E4%BB%B6%E6%A8%A1%E5%BC%8F/" class="pre-post btn btn-default" title='解耦模式-组件模式'>
+        <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+        <span class="hidden-xs">
+            解耦模式-组件模式</span>
+    </a>
+    
+    
+    <a href="/2024/02/28/designpatterns/%E8%A1%8C%E4%B8%BA%E6%A8%A1%E5%BC%8F-%E5%AD%90%E7%B1%BB%E6%B2%99%E7%AE%B1/" class="next-post btn btn-default" title='行为模式-子类沙箱'>
+        <span class="hidden-lg">下一篇</span>
+        <span class="hidden-xs">
+            行为模式-子类沙箱</span><i class="fa fa-angle-right fa-fw"></i>
+    </a>
+    
+</div>
+
+<div id="comments">
+    
+    <script src="https://giscus.app/client.js"
+        data-repo="cxxlog/myblog-comment"
+        data-repo-id="R_kgDOVzxsBw"
+        data-category="Announcements"
+        data-category-id="DIC_kwDOVzxsB84DLdxb"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="bottom"
+        data-theme="light"
+        data-lang="zh-CN"
+        crossorigin="anonymous"
+        async>
+    </script>
+
+</div>
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">
+            文章目录
+        </h3>
+        
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%90%86%E8%AE%BA%E8%A6%81%E7%82%B9"><span class="toc-text">理论要点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E5%88%86%E6%9E%90"><span class="toc-text">代码分析</span></a></li></ol>
+        
+    </div>
+</aside>
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+<a id="back-to-top" class="icon-btn hide">
+    <i class="fa fa-chevron-up"></i>
+</a>
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+    访问量:
+    <strong id="busuanzi_value_site_pv">
+        <i class="fa fa-spinner fa-spin"></i>
+    </strong>
+    &nbsp; | &nbsp;
+    访客数:
+    <strong id="busuanzi_value_site_uv">
+        <i class="fa fa-spinner fa-spin"></i>
+    </strong>
+    
+</div>
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy;
+                    2022
+                    
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script async src="//vercount.one/js"></script>
+
+
+<script src="/js/app.js?rev=@@hash.js"></script>
+
+
+<div class="hide">
+    <script type="text/javascript">
+    var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+    document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+</div>
+
+
+
+
+</body>
+</html>

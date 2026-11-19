@@ -1,0 +1,365 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+<head>
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="Hexo">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="theme-version" content="1.0.0">
+    <meta name="root" content="/">
+    <link rel="dns-prefetch" href="https://cxxlog.github.io">
+    <!--SEO-->
+
+<meta name="keywords" content="3D数学基础" />
+
+
+<meta name="description" content="
+前言：前面我们讲解了3D中描述方位和角位移的三种形式：矩阵，欧拉角，四元数。这节我们将比较它们之间的区别与选择建议，然后讲下它们之间的相互转换。
+
+各方法比较先来看下下面的总结表：
+
+不同的方..." />
+
+
+<meta name="robots" content="all" />
+<meta name="google" content="all" />
+<meta name="googlebot" content="all" />
+<meta name="verify" content="all" />
+    <!--Title-->
+
+<title>
+    
+    3D数学基础-3D中的方位与角位移(3) |
+    
+    Hexo
+</title>
+
+<link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+
+
+<link rel="icon" href="/favicon.ico">
+
+    
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7.css">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.7.0.css">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash.css">
+
+    
+
+<meta name="generator" content="Hexo 6.2.0"></head>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+<body>
+    <header class="main-header"  style="background-image:url(
+    /img/banner.jpg)"
+     >
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title='cxx'>
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+            <!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+            <img src="/img/branding.png" alt="Snippet 博客主题" class="img-responsive center-block">
+            
+        </div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                        <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="https://cxxlog.github.io">
+                        Hexo</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/"><i class="fa "></i>
+                                首页</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/archives/"><i class="fa "></i>
+                                时间轴</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/guestbook/"><i class="fa "></i>
+                                留言</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="3D数学基础-3D中的方位与角位移(3)">
+            
+            3D数学基础-3D中的方位与角位移(3)
+            
+        </h1>
+        <div class="post-meta">
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a class="category-link" href="/categories/3dmathprimer/">3dmathprimer</a>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+            <a class="tag-none-link" href="/tags/3D%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/" rel="tag">3D数学基础</a>
+            
+        </span>
+    </span>
+    
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-clock-o"></i>
+        <span class="date-meta">
+            2025/07/24</span>
+    </span>
+    
+    <span class="fa-wrap">
+        <i class="fa fa-eye"></i>
+        <span id="busuanzi_value_page_pv"></span>
+    </span>
+    
+    
+</div>
+        
+        
+    </div>
+    
+    <div class="post-body post-content">
+        <ul>
+<li>前言：前面我们讲解了3D中描述方位和角位移的三种形式：矩阵，欧拉角，四元数。这节我们将比较它们之间的区别与选择建议，然后讲下它们之间的相互转换。</li>
+</ul>
+<h2 id="各方法比较"><a href="#各方法比较" class="headerlink" title="各方法比较"></a>各方法比较</h2><p>先来看下下面的总结表：</p>
+<p><img decoding="async" src="/2025/07/24/3dmathprimer/3D%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80-3D%E4%B8%AD%E7%9A%84%E6%96%B9%E4%BD%8D%E4%B8%8E%E8%A7%92%E4%BD%8D%E7%A7%BB(3)/20150704094948531.png" alt="这里写图片描述"></p>
+<p>不同的方位表示方法适用于不同的情况，下面是一些选择的建议：</p>
+<ul>
+<li>欧拉角最容易使用，如为世界中的物体指定方位，简化人机交互，包括直接的键盘输入方位，在代码中指定方位(如为渲染设定摄像机)，在调试中测试等，容易使用这个优点不应被忽视，不要以名义上的优化来牺牲易用性，除非你确定这个优化的确有效。</li>
+<li>如果需要在不同坐标系之间转换向量，建议选择矩阵形式。当然也可以先用其他形式保存方位，再在需要的时候转换为矩阵形式就行了。 </li>
+<li>当需要大量保存方位数据(如动画)时，就使用欧拉角或四元数。欧拉角比四元数还少占25%的内存，但它在转换到矩阵时要稍微慢一些。如果动画数据需要嵌套坐标系之间的连接，四元数就比矩阵快。所以说如果内存不是很要紧，这种情况一般选择四元数要好。</li>
+<li>平滑的插值只能用四元数完成。</li>
+</ul>
+<h2 id="各种形式之间的转换"><a href="#各种形式之间的转换" class="headerlink" title="各种形式之间的转换"></a>各种形式之间的转换</h2><ul>
+<li><strong>从欧拉角转换到矩阵：</strong>欧拉角描述了一个旋转序列(按一定顺序分别绕x,y,z轴旋转)，所以这个转换就是分别计算出每个旋转的矩阵再将它们连接成一个矩阵得到。公式如下(H,P,B分别是heading,pitch,bank)：</li>
+</ul>
+<p><img loading="lazy" decoding="async" src="/2025/07/24/3dmathprimer/3D%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80-3D%E4%B8%AD%E7%9A%84%E6%96%B9%E4%BD%8D%E4%B8%8E%E8%A7%92%E4%BD%8D%E7%A7%BB(3)/20150704111610834.png" alt="这里写图片描述"></p>
+<p><img loading="lazy" decoding="async" src="/2025/07/24/3dmathprimer/3D%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80-3D%E4%B8%AD%E7%9A%84%E6%96%B9%E4%BD%8D%E4%B8%8E%E8%A7%92%E4%BD%8D%E7%A7%BB(3)/20150704111624989.png" alt="这里写图片描述"></p>
+<ul>
+<li><strong>从矩阵转换到欧拉角：</strong><br>先看下说明：</li>
+</ul>
+<p><img loading="lazy" decoding="async" src="/2025/07/24/3dmathprimer/3D%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80-3D%E4%B8%AD%E7%9A%84%E6%96%B9%E4%BD%8D%E4%B8%8E%E8%A7%92%E4%BD%8D%E7%A7%BB(3)/20150704113446316.png" alt="这里写图片描述"></p>
+<p>具体的计算其实就是利用给定的矩阵公式，一个个代入，分别解出h,p,b值。下面直接贴出公式：<br>矩阵公式：</p>
+<p><img loading="lazy" decoding="async" src="/2025/07/24/3dmathprimer/3D%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80-3D%E4%B8%AD%E7%9A%84%E6%96%B9%E4%BD%8D%E4%B8%8E%E8%A7%92%E4%BD%8D%E7%A7%BB(3)/20150704113652517.png" alt="这里写图片描述"></p>
+<p>计算p：</p>
+<p><img loading="lazy" decoding="async" src="/2025/07/24/3dmathprimer/3D%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80-3D%E4%B8%AD%E7%9A%84%E6%96%B9%E4%BD%8D%E4%B8%8E%E8%A7%92%E4%BD%8D%E7%A7%BB(3)/20150704113754518.png" alt="这里写图片描述"></p>
+<p>计算h：</p>
+<p><img loading="lazy" decoding="async" src="/2025/07/24/3dmathprimer/3D%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80-3D%E4%B8%AD%E7%9A%84%E6%96%B9%E4%BD%8D%E4%B8%8E%E8%A7%92%E4%BD%8D%E7%A7%BB(3)/20150704113835018.png" alt="这里写图片描述"></p>
+<p>计算b：</p>
+<p><img loading="lazy" decoding="async" src="/2025/07/24/3dmathprimer/3D%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80-3D%E4%B8%AD%E7%9A%84%E6%96%B9%E4%BD%8D%E4%B8%8E%E8%A7%92%E4%BD%8D%E7%A7%BB(3)/20150704113853967.png" alt="这里写图片描述"></p>
+<p>最后，从惯性到物体旋转矩阵中提取欧拉角实例代码：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">//设矩阵保存在下面这些变量中</span><br><span class="line">   float m11, m12, m13;</span><br><span class="line">   float m21, m22, m23;</span><br><span class="line">   float m31, m32, m33;</span><br><span class="line">   </span><br><span class="line">   //以弧度形式计算欧拉角并保存在以下变量中(360° == 2π弧度)</span><br><span class="line">   float h, p, b;</span><br><span class="line">   </span><br><span class="line">   //从m23计算pitch</span><br><span class="line">   float sp = -m23;</span><br><span class="line">   if(sp &lt;= -1.0f)</span><br><span class="line">   &#123;</span><br><span class="line">       p = -1.570796f;  //p = -90°</span><br><span class="line">   &#125;</span><br><span class="line">   else if(sp &gt;= 1.0f)</span><br><span class="line">   &#123;</span><br><span class="line">       p = 1.570796f;  //p = 90°</span><br><span class="line">   &#125;</span><br><span class="line">   else</span><br><span class="line">   &#123;</span><br><span class="line">       p = asin(sp);</span><br><span class="line">   &#125;</span><br><span class="line">   </span><br><span class="line">   //检查万向锁情况并计算heading,bank</span><br><span class="line">   if(sp &gt; 0.9999f)</span><br><span class="line">   &#123;</span><br><span class="line">       b = 0.0f;</span><br><span class="line">       h = atan2f(-m31, m11);</span><br><span class="line">   &#125;</span><br><span class="line">   else</span><br><span class="line">   &#123;</span><br><span class="line">       h = atan2(m13, m33);</span><br><span class="line">       b = atan2(m21, m22);</span><br><span class="line">   &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>从四元数转换到矩阵</strong><br> 首先看看书上讲解的转换原理，其实就是公式间的代入转化求解：</li>
+</ul>
+<p> <img loading="lazy" decoding="async" src="/2025/07/24/3dmathprimer/3D%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80-3D%E4%B8%AD%E7%9A%84%E6%96%B9%E4%BD%8D%E4%B8%8E%E8%A7%92%E4%BD%8D%E7%A7%BB(3)/20150704124524857.png" alt="这里写图片描述"></p>
+<p> 下面直接给出公式：</p>
+<p> <img loading="lazy" decoding="async" src="/2025/07/24/3dmathprimer/3D%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80-3D%E4%B8%AD%E7%9A%84%E6%96%B9%E4%BD%8D%E4%B8%8E%E8%A7%92%E4%BD%8D%E7%A7%BB(3)/20150704124623580.png" alt="这里写图片描述"></p>
+<ul>
+<li><strong>从矩阵转换到四元数</strong><br> 首先看四元数中w的计算：</li>
+</ul>
+<p> <img loading="lazy" decoding="async" src="/2025/07/24/3dmathprimer/3D%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80-3D%E4%B8%AD%E7%9A%84%E6%96%B9%E4%BD%8D%E4%B8%8E%E8%A7%92%E4%BD%8D%E7%A7%BB(3)/20150704125954008.png" alt="这里写图片描述"></p>
+<p> 通过使轨迹中三个元素中的两个为负，用类似方法求得其他三个元素：</p>
+<p> <img loading="lazy" decoding="async" src="/2025/07/24/3dmathprimer/3D%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80-3D%E4%B8%AD%E7%9A%84%E6%96%B9%E4%BD%8D%E4%B8%8E%E8%A7%92%E4%BD%8D%E7%A7%BB(3)/20150704130110516.png" alt="这里写图片描述"></p>
+<p> 上面已经计算出了四元数的四个分量，但从上可以看出，都是要通过开平方得到其值，而开平方得到的是正值，所以用这个公式没有选择正根还是负根的依据，但是，q和-q是代表相同的方位。下面来看下怎么对上面公式进行扩展：</p>
+<p><img loading="lazy" decoding="async" src="/2025/07/24/3dmathprimer/3D%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80-3D%E4%B8%AD%E7%9A%84%E6%96%B9%E4%BD%8D%E4%B8%8E%E8%A7%92%E4%BD%8D%E7%A7%BB(3)/20150704132742022.png" alt="这里写图片描述"></p>
+<p>从矩阵转换到四元数具体实例代码：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line">//输入矩阵</span><br><span class="line">    float m11, m12, m13;</span><br><span class="line">    float m21, m22, m23;</span><br><span class="line">    float m31, m32, m33;</span><br><span class="line">    </span><br><span class="line">    //输入四元数</span><br><span class="line">    float w, x, y, z;</span><br><span class="line">    </span><br><span class="line">    //检测w, x, y, z中的最大绝对值</span><br><span class="line">    float fourWSquaredMinus1 = m11 + m22 + m33;</span><br><span class="line">    float fourXSquaredMinus1 = m11 - m22 - m33;</span><br><span class="line">    float fourYSquaredMinus1 = m22 - m11 - m33;</span><br><span class="line">    float fourZSquaredMinus1 = m33 - m11 - m22;</span><br><span class="line">    int biggestIndex = 0;</span><br><span class="line">    float fourBiggestSquaredMinus1 = fourWSquaredMinus1;</span><br><span class="line">    if(fourXSquaredMinus1 &gt; fourBiggestSquaredMinus1)</span><br><span class="line">    &#123;</span><br><span class="line">        fourBiggestSquaredMinus1 = fourXSquaredMinus1;</span><br><span class="line">        biggestIndex = 1;</span><br><span class="line">    &#125;</span><br><span class="line">    if(fourYSquaredMinus1 &gt; fourBiggestSquaredMinus1)</span><br><span class="line">    &#123;</span><br><span class="line">        fourBiggestSquaredMinus1 = fourYSquaredMinus1;</span><br><span class="line">        biggestIndex = 2;</span><br><span class="line">    &#125;</span><br><span class="line">    if(fourZSquaredMinus1 &gt; fourBiggestSquaredMinus1)</span><br><span class="line">    &#123;</span><br><span class="line">        fourBiggestSquaredMinus1 = fourZSquaredMinus1;</span><br><span class="line">        biggestIndex = 3;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    //计算平方根和除数</span><br><span class="line">    float biggestVal = sqrt(fourBiggestSquaredMinus1 + 1.0f) * 0.5f;</span><br><span class="line">    float mult = 0.25f / biggestVal;</span><br><span class="line">    </span><br><span class="line">    //计算四元数的四个分量</span><br><span class="line">    switch (biggestIndex) &#123;</span><br><span class="line">        case 0:</span><br><span class="line">            w = biggestVal;</span><br><span class="line">            x = (m23 - m32) * mult;</span><br><span class="line">            y = (m31 - m13) * mult;</span><br><span class="line">            z = (m12 - m21) * mult;</span><br><span class="line">            break;</span><br><span class="line">        </span><br><span class="line">        case 1:</span><br><span class="line">            x = biggestVal;</span><br><span class="line">            w = (m23 - m32) * mult;</span><br><span class="line">            y = (m12 + m21) * mult;</span><br><span class="line">            z = (m31 + m13) * mult;</span><br><span class="line">            break;</span><br><span class="line">            </span><br><span class="line">        case 2:</span><br><span class="line">            y = biggestVal;</span><br><span class="line">            w = (m31 - m13) * mult;</span><br><span class="line">            x = (m12 + m21) * mult;</span><br><span class="line">            z = (m23 + m32) * mult;</span><br><span class="line">            break;</span><br><span class="line">            </span><br><span class="line">        case 3:</span><br><span class="line">            z = biggestVal;</span><br><span class="line">            w = (m12 - m21) * mult;</span><br><span class="line">            x = (m31 + m13) * mult;</span><br><span class="line">            y = (m23 + m32) * mult;</span><br><span class="line">            break;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>从欧拉角转换到四元数</strong><br>这个和从欧拉角到矩阵类似，都是分别把欧拉角每个分量单独表示出来再叉乘连接得到。注意欧拉角有两种情况：惯性到物体的欧拉角和物体到惯性的欧拉角，不过它们对应的四元数互为共轭。先看从惯性坐标系到物体坐标系的变换：<br>将每个分量单独表示成四元数，如下：</li>
+</ul>
+<p><img loading="lazy" decoding="async" src="/2025/07/24/3dmathprimer/3D%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80-3D%E4%B8%AD%E7%9A%84%E6%96%B9%E4%BD%8D%E4%B8%8E%E8%A7%92%E4%BD%8D%E7%A7%BB(3)/20150704141809701.png" alt="这里写图片描述"></p>
+<p>再连接得到：</p>
+<p><img loading="lazy" decoding="async" src="/2025/07/24/3dmathprimer/3D%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80-3D%E4%B8%AD%E7%9A%84%E6%96%B9%E4%BD%8D%E4%B8%8E%E8%A7%92%E4%BD%8D%E7%A7%BB(3)/20150704141924247.png" alt="这里写图片描述"></p>
+<p>惯性到物体与物体到惯性的四元数互为共轭，所以它的公式如下：</p>
+<p><img loading="lazy" decoding="async" src="/2025/07/24/3dmathprimer/3D%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80-3D%E4%B8%AD%E7%9A%84%E6%96%B9%E4%BD%8D%E4%B8%8E%E8%A7%92%E4%BD%8D%E7%A7%BB(3)/20150704142039665.png" alt="这里写图片描述"></p>
+<ul>
+<li><strong>从四元数转换到欧拉角</strong><br>总体推导同样和以前类似，都是根据以有公式代入求解，下面直接贴出公式：</li>
+</ul>
+<p><img loading="lazy" decoding="async" src="/2025/07/24/3dmathprimer/3D%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80-3D%E4%B8%AD%E7%9A%84%E6%96%B9%E4%BD%8D%E4%B8%8E%E8%A7%92%E4%BD%8D%E7%A7%BB(3)/20150704142342589.png" alt="这里写图片描述"></p>
+<p> 从惯性–物体四元数转换到欧拉角代码实例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">//用全局变量保存输入输出</span><br><span class="line">    float w, x, y, z;</span><br><span class="line">    float h, p, b;</span><br><span class="line">    </span><br><span class="line">    //计算sin(pitch)</span><br><span class="line">    float sp = -2.0f * (y * z + w * x);</span><br><span class="line">    </span><br><span class="line">    //检查万向锁并计算出欧拉角</span><br><span class="line">    if(fabs(sp) &gt; 0.9999f)</span><br><span class="line">    &#123;</span><br><span class="line">        p = 1.570796f * sp;</span><br><span class="line">        h = atan2(-x * z - w * y, 0.5f - y * y - z * z);</span><br><span class="line">        b = 0.0f;</span><br><span class="line">    &#125;</span><br><span class="line">    else</span><br><span class="line">    &#123;</span><br><span class="line">        p = asin(sp);</span><br><span class="line">        h = atan2(x * z - w * y, 0.5f - x * x - y * y);</span><br><span class="line">        b = atan2(x * y - w * z, 0.5f - x * x - z * z);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>  从物体–惯性四元数转换到欧拉角代码实例(只是将x,y,z值变负，因为共轭)：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">//用全局变量保存输入输出</span><br><span class="line">    float w, x, y, z;</span><br><span class="line">    float h, p, b;</span><br><span class="line">    </span><br><span class="line">    //计算sin(pitch)</span><br><span class="line">    float sp = -2.0f * (y * z - w * x);</span><br><span class="line">    </span><br><span class="line">    //检查万向锁并计算出欧拉角</span><br><span class="line">    if(fabs(sp) &gt; 0.9999f)</span><br><span class="line">    &#123;</span><br><span class="line">        p = 1.570796f * sp;</span><br><span class="line">        h = atan2(-x * z + w * y, 0.5f - y * y - z * z);</span><br><span class="line">        b = 0.0f;</span><br><span class="line">    &#125;</span><br><span class="line">    else</span><br><span class="line">    &#123;</span><br><span class="line">        p = asin(sp);</span><br><span class="line">        h = atan2(x * z + w * y, 0.5f - x * x - y * y);</span><br><span class="line">        b = atan2(x * y + w * z, 0.5f - x * x - z * z);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+    </div>
+    
+    <div class="post-footer">
+        <div>
+            
+            转载声明：
+            商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">cxx</a>
+            
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+<div class="article-nav prev-next-wrap clearfix">
+    
+    <a href="/2026/11/17/fpga/C++%E7%A8%8B%E5%BA%8F%E5%91%98%E8%A7%86%E8%A7%92%E5%A6%82%E4%BD%95%E7%9C%8BFPGA/" class="pre-post btn btn-default" title='C++程序员视角如何看FPGA'>
+        <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+        <span class="hidden-xs">
+            C++程序员视角如何看FPGA</span>
+    </a>
+    
+    
+    <a href="/2025/07/18/3dmathprimer/3D%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80-3D%E4%B8%AD%E7%9A%84%E6%96%B9%E4%BD%8D%E4%B8%8E%E8%A7%92%E4%BD%8D%E7%A7%BB(2)/" class="next-post btn btn-default" title='3D数学基础-3D中的方位与角位移(2)'>
+        <span class="hidden-lg">下一篇</span>
+        <span class="hidden-xs">
+            3D数学基础-3D中的方位与角位移(2)</span><i class="fa fa-angle-right fa-fw"></i>
+    </a>
+    
+</div>
+
+<div id="comments">
+    
+    <script src="https://giscus.app/client.js"
+        data-repo="cxxlog/myblog-comment"
+        data-repo-id="R_kgDOVzxsBw"
+        data-category="Announcements"
+        data-category-id="DIC_kwDOVzxsB84DLdxb"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="bottom"
+        data-theme="light"
+        data-lang="zh-CN"
+        crossorigin="anonymous"
+        async>
+    </script>
+
+</div>
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">
+            文章目录
+        </h3>
+        
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%84%E6%96%B9%E6%B3%95%E6%AF%94%E8%BE%83"><span class="toc-text">各方法比较</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%84%E7%A7%8D%E5%BD%A2%E5%BC%8F%E4%B9%8B%E9%97%B4%E7%9A%84%E8%BD%AC%E6%8D%A2"><span class="toc-text">各种形式之间的转换</span></a></li></ol>
+        
+    </div>
+</aside>
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+<a id="back-to-top" class="icon-btn hide">
+    <i class="fa fa-chevron-up"></i>
+</a>
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+    访问量:
+    <strong id="busuanzi_value_site_pv">
+        <i class="fa fa-spinner fa-spin"></i>
+    </strong>
+    &nbsp; | &nbsp;
+    访客数:
+    <strong id="busuanzi_value_site_uv">
+        <i class="fa fa-spinner fa-spin"></i>
+    </strong>
+    
+</div>
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy;
+                    2022
+                    
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script async src="//vercount.one/js"></script>
+
+
+<script src="/js/app.js?rev=@@hash.js"></script>
+
+
+<div class="hide">
+    <script type="text/javascript">
+    var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+    document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+</div>
+
+
+
+
+</body>
+</html>
