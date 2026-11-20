@@ -166,52 +166,52 @@
 <h2 id="旋转"><a href="#旋转" class="headerlink" title="旋转"></a>旋转</h2><ul>
 <li>2D中的旋转：因暂不考虑平移，假设物体绕原点旋转，我们通常规定逆时针旋转为正方向，顺时针为负方向(不是必须)。得到的2D旋转矩阵如下图所示：</li>
 </ul>
-<p> <img decoding="async" src="/2025/06/24/3dmathprimer/3D%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80-%E7%9F%A9%E9%98%B5%E7%BA%BF%E6%80%A7%E5%8F%98%E6%8D%A2/20150617110202930.png" alt="这里写图片描述"></p>
+<p> <img decoding="async" src="/2025/06/24/3dmathprimer/3D%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80-%E7%9F%A9%E9%98%B5%E7%BA%BF%E6%80%A7%E5%8F%98%E6%8D%A2/20150617110202930.png"></p>
 <ul>
 <li>3D中绕坐标轴旋转：同样讨论前需先明确正方向，左手坐标系中定义此方向的规则是左手法则(对应的右手坐标系定义的规则是右手法则)，左手法则是：大拇指指向旋转轴的正方向，此时，四指弯曲的方向就是旋转的正方向。如下图所示：</li>
 </ul>
-<p><img loading="lazy" decoding="async" src="/2025/06/24/3dmathprimer/3D%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80-%E7%9F%A9%E9%98%B5%E7%BA%BF%E6%80%A7%E5%8F%98%E6%8D%A2/20150617111147358.png" alt="这里写图片描述"></p>
+<p><img loading="lazy" decoding="async" src="/2025/06/24/3dmathprimer/3D%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80-%E7%9F%A9%E9%98%B5%E7%BA%BF%E6%80%A7%E5%8F%98%E6%8D%A2/20150617111147358.png"></p>
 <pre><code>(1)绕x轴旋转：即x轴不变，y,z轴旋转，示意图与公式如下图：
 </code></pre>
-<p><img loading="lazy" decoding="async" src="/2025/06/24/3dmathprimer/3D%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80-%E7%9F%A9%E9%98%B5%E7%BA%BF%E6%80%A7%E5%8F%98%E6%8D%A2/20150617111750656.png" alt="这里写图片描述"></p>
+<p><img loading="lazy" decoding="async" src="/2025/06/24/3dmathprimer/3D%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80-%E7%9F%A9%E9%98%B5%E7%BA%BF%E6%80%A7%E5%8F%98%E6%8D%A2/20150617111750656.png"></p>
 <pre><code>(2)绕y轴旋转：
 </code></pre>
-<p><img loading="lazy" decoding="async" src="/2025/06/24/3dmathprimer/3D%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80-%E7%9F%A9%E9%98%B5%E7%BA%BF%E6%80%A7%E5%8F%98%E6%8D%A2/20150617112037967.png" alt="这里写图片描述"></p>
+<p><img loading="lazy" decoding="async" src="/2025/06/24/3dmathprimer/3D%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80-%E7%9F%A9%E9%98%B5%E7%BA%BF%E6%80%A7%E5%8F%98%E6%8D%A2/20150617112037967.png"></p>
 <pre><code>(3)绕z轴旋转：
 </code></pre>
-<p><img loading="lazy" decoding="async" src="/2025/06/24/3dmathprimer/3D%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80-%E7%9F%A9%E9%98%B5%E7%BA%BF%E6%80%A7%E5%8F%98%E6%8D%A2/20150617112104890.png" alt="这里写图片描述"></p>
+<p><img loading="lazy" decoding="async" src="/2025/06/24/3dmathprimer/3D%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80-%E7%9F%A9%E9%98%B5%E7%BA%BF%E6%80%A7%E5%8F%98%E6%8D%A2/20150617112104890.png"></p>
 <ul>
 <li>3D中绕任意轴旋转：不考虑平移，假定任意轴都穿过原点。用单位向量n描述旋转轴，用θ描述旋转量。公式如下：</li>
 </ul>
-<p><img loading="lazy" decoding="async" src="/2025/06/24/3dmathprimer/3D%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80-%E7%9F%A9%E9%98%B5%E7%BA%BF%E6%80%A7%E5%8F%98%E6%8D%A2/20150617112615523.png" alt="这里写图片描述"></p>
+<p><img loading="lazy" decoding="async" src="/2025/06/24/3dmathprimer/3D%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80-%E7%9F%A9%E9%98%B5%E7%BA%BF%E6%80%A7%E5%8F%98%E6%8D%A2/20150617112615523.png"></p>
 <h2 id="缩放"><a href="#缩放" class="headerlink" title="缩放"></a>缩放</h2><ul>
 <li><p>我们可以通过让比例因子<strong>k</strong>按比例变大或缩小来缩放物体。如果每个轴上的缩放因子都相等，这样的缩放为均匀缩放(等比例缩放)，否则为非均匀缩放。</p>
 </li>
 <li><p><strong>普通缩放</strong><br> (1)沿坐标轴的2D缩放矩阵示意图与公式如下：</p>
 </li>
 </ul>
-<p> <img loading="lazy" decoding="async" src="/2025/06/24/3dmathprimer/3D%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80-%E7%9F%A9%E9%98%B5%E7%BA%BF%E6%80%A7%E5%8F%98%E6%8D%A2/20150617140502148.png" alt="这里写图片描述"></p>
+<p> <img loading="lazy" decoding="async" src="/2025/06/24/3dmathprimer/3D%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80-%E7%9F%A9%E9%98%B5%E7%BA%BF%E6%80%A7%E5%8F%98%E6%8D%A2/20150617140502148.png"></p>
 <p> (2)同上，沿坐标轴的3D缩放矩阵公式：</p>
-<p> <img loading="lazy" decoding="async" src="/2025/06/24/3dmathprimer/3D%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80-%E7%9F%A9%E9%98%B5%E7%BA%BF%E6%80%A7%E5%8F%98%E6%8D%A2/20150617140749697.png" alt="这里写图片描述"></p>
+<p> <img loading="lazy" decoding="async" src="/2025/06/24/3dmathprimer/3D%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80-%E7%9F%A9%E9%98%B5%E7%BA%BF%E6%80%A7%E5%8F%98%E6%8D%A2/20150617140749697.png"></p>
 <p> (3)沿任意方向的缩放公式：</p>
-<p> <img loading="lazy" decoding="async" src="/2025/06/24/3dmathprimer/3D%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80-%E7%9F%A9%E9%98%B5%E7%BA%BF%E6%80%A7%E5%8F%98%E6%8D%A2/20150617140957478.png" alt="这里写图片描述"></p>
+<p> <img loading="lazy" decoding="async" src="/2025/06/24/3dmathprimer/3D%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80-%E7%9F%A9%E9%98%B5%E7%BA%BF%E6%80%A7%E5%8F%98%E6%8D%A2/20150617140957478.png"></p>
 <ul>
 <li><strong>特殊缩放</strong><br> (1)正交投影：投影其实就是降维操作，有一种投影方法是在某个方向上用零作为缩放因子，这种类型的投影称作正交投影。(还有一种透视投影以后讨论)<br> <strong>向坐标轴或平面上投影</strong>如下图所示：</li>
 </ul>
-<p> <img loading="lazy" decoding="async" src="/2025/06/24/3dmathprimer/3D%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80-%E7%9F%A9%E9%98%B5%E7%BA%BF%E6%80%A7%E5%8F%98%E6%8D%A2/20150617142217403.png" alt="这里写图片描述"></p>
-<p> <img loading="lazy" decoding="async" src="/2025/06/24/3dmathprimer/3D%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80-%E7%9F%A9%E9%98%B5%E7%BA%BF%E6%80%A7%E5%8F%98%E6%8D%A2/20150617142228236.png" alt="这里写图片描述"></p>
+<p> <img loading="lazy" decoding="async" src="/2025/06/24/3dmathprimer/3D%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80-%E7%9F%A9%E9%98%B5%E7%BA%BF%E6%80%A7%E5%8F%98%E6%8D%A2/20150617142217403.png"></p>
+<p> <img loading="lazy" decoding="async" src="/2025/06/24/3dmathprimer/3D%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80-%E7%9F%A9%E9%98%B5%E7%BA%BF%E6%80%A7%E5%8F%98%E6%8D%A2/20150617142228236.png"></p>
 <p><strong>向任意直线或平面投影</strong>：和前面一样，不考虑平移，这些直线或平面都必须通过原点。投影由垂直于直线或平面的单位向量n定义，注意n垂直于投影直接，不是平行。公式如下：</p>
-<p><img loading="lazy" decoding="async" src="/2025/06/24/3dmathprimer/3D%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80-%E7%9F%A9%E9%98%B5%E7%BA%BF%E6%80%A7%E5%8F%98%E6%8D%A2/20150617144848710.png" alt="这里写图片描述"></p>
-<p><img loading="lazy" decoding="async" src="/2025/06/24/3dmathprimer/3D%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80-%E7%9F%A9%E9%98%B5%E7%BA%BF%E6%80%A7%E5%8F%98%E6%8D%A2/20150617144901175.png" alt="这里写图片描述"></p>
-<p><img loading="lazy" decoding="async" src="/2025/06/24/3dmathprimer/3D%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80-%E7%9F%A9%E9%98%B5%E7%BA%BF%E6%80%A7%E5%8F%98%E6%8D%A2/20150617144921348.png" alt="这里写图片描述"></p>
+<p><img loading="lazy" decoding="async" src="/2025/06/24/3dmathprimer/3D%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80-%E7%9F%A9%E9%98%B5%E7%BA%BF%E6%80%A7%E5%8F%98%E6%8D%A2/20150617144848710.png"></p>
+<p><img loading="lazy" decoding="async" src="/2025/06/24/3dmathprimer/3D%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80-%E7%9F%A9%E9%98%B5%E7%BA%BF%E6%80%A7%E5%8F%98%E6%8D%A2/20150617144901175.png"></p>
+<p><img loading="lazy" decoding="async" src="/2025/06/24/3dmathprimer/3D%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80-%E7%9F%A9%E9%98%B5%E7%BA%BF%E6%80%A7%E5%8F%98%E6%8D%A2/20150617144921348.png"></p>
 <p>(2)镜像(反射)：其表现是将物体沿直线或平面翻折，其实就是设置缩放因子为-1实现的。示意图和公式如下：</p>
-<p><img loading="lazy" decoding="async" src="/2025/06/24/3dmathprimer/3D%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80-%E7%9F%A9%E9%98%B5%E7%BA%BF%E6%80%A7%E5%8F%98%E6%8D%A2/20150617151154221.png" alt="这里写图片描述"></p>
-<p><img loading="lazy" decoding="async" src="/2025/06/24/3dmathprimer/3D%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80-%E7%9F%A9%E9%98%B5%E7%BA%BF%E6%80%A7%E5%8F%98%E6%8D%A2/20150617151212100.png" alt="这里写图片描述"></p>
-<p><img loading="lazy" decoding="async" src="/2025/06/24/3dmathprimer/3D%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80-%E7%9F%A9%E9%98%B5%E7%BA%BF%E6%80%A7%E5%8F%98%E6%8D%A2/20150617151235942.png" alt="这里写图片描述"></p>
+<p><img loading="lazy" decoding="async" src="/2025/06/24/3dmathprimer/3D%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80-%E7%9F%A9%E9%98%B5%E7%BA%BF%E6%80%A7%E5%8F%98%E6%8D%A2/20150617151154221.png"></p>
+<p><img loading="lazy" decoding="async" src="/2025/06/24/3dmathprimer/3D%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80-%E7%9F%A9%E9%98%B5%E7%BA%BF%E6%80%A7%E5%8F%98%E6%8D%A2/20150617151212100.png"></p>
+<p><img loading="lazy" decoding="async" src="/2025/06/24/3dmathprimer/3D%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80-%E7%9F%A9%E9%98%B5%E7%BA%BF%E6%80%A7%E5%8F%98%E6%8D%A2/20150617151235942.png"></p>
 <p>(3)切变：是一种坐标系的扭曲变换，非均匀拉伸，角度会发生变化，但面积和体积却保持不变。基本思想是将某一坐标的乘积加到另一个上，例如，2D中，将y乘以某个因子然后加到x上，得到x &#x3D; x + sy。示意图和公式如下：</p>
-<p><img loading="lazy" decoding="async" src="/2025/06/24/3dmathprimer/3D%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80-%E7%9F%A9%E9%98%B5%E7%BA%BF%E6%80%A7%E5%8F%98%E6%8D%A2/20150617153434650.png" alt="这里写图片描述"></p>
-<p><img loading="lazy" decoding="async" src="/2025/06/24/3dmathprimer/3D%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80-%E7%9F%A9%E9%98%B5%E7%BA%BF%E6%80%A7%E5%8F%98%E6%8D%A2/20150617153448810.png" alt="这里写图片描述"></p>
-<p><img loading="lazy" decoding="async" src="/2025/06/24/3dmathprimer/3D%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80-%E7%9F%A9%E9%98%B5%E7%BA%BF%E6%80%A7%E5%8F%98%E6%8D%A2/20150617153502622.png" alt="这里写图片描述"></p>
+<p><img loading="lazy" decoding="async" src="/2025/06/24/3dmathprimer/3D%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80-%E7%9F%A9%E9%98%B5%E7%BA%BF%E6%80%A7%E5%8F%98%E6%8D%A2/20150617153434650.png"></p>
+<p><img loading="lazy" decoding="async" src="/2025/06/24/3dmathprimer/3D%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80-%E7%9F%A9%E9%98%B5%E7%BA%BF%E6%80%A7%E5%8F%98%E6%8D%A2/20150617153448810.png"></p>
+<p><img loading="lazy" decoding="async" src="/2025/06/24/3dmathprimer/3D%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80-%E7%9F%A9%E9%98%B5%E7%BA%BF%E6%80%A7%E5%8F%98%E6%8D%A2/20150617153502622.png"></p>
 <h2 id="变换的组合"><a href="#变换的组合" class="headerlink" title="变换的组合"></a>变换的组合</h2><p>乘一个矩阵就等于对应做了某种变换，而矩阵数学计算满足结合律，所以当一个物体要做一系列变换时，可以先将每个矩阵相乘得到一个矩阵，这个新矩阵就代表依次执行原变换的累加效果。这样还能省几次矩阵乘法，从而提高效率。例如：要渲染一个物体，首先要把物体从物体坐标系变换到世界坐标系(M1矩阵)，然后再从世界坐标系变换到摄像机坐标系(M2矩阵)。一般我们要分别乘以这两个矩阵，现在我们可以先计算M &#x3D; M1 × M2，再只要乘以M一个矩阵就可以了。</p>
 
     </div>

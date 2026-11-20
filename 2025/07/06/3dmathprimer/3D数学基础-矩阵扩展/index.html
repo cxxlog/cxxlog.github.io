@@ -169,14 +169,14 @@
 </ul>
 <p> 1，在任意方阵中都存在一个<strong>标量</strong>，称作该方阵的行列式，非方阵矩阵的行列式是未定义的。n × n阶矩阵的行列式定义非常复杂，我们先从常用的2 × 2，3 × 3，4 × 4矩阵开始。</p>
 <p>2， 2 × 2矩阵行列式定义如下：</p>
-<p><img decoding="async" src="/2025/07/06/3dmathprimer/3D%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80-%E7%9F%A9%E9%98%B5%E6%89%A9%E5%B1%95/20150624110226346.png" alt="这里写图片描述"></p>
+<p><img decoding="async" src="/2025/07/06/3dmathprimer/3D%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80-%E7%9F%A9%E9%98%B5%E6%89%A9%E5%B1%95/20150624110226346.png"></p>
 <p>3，3 × 3矩阵行列式定义如下：</p>
-<p><img loading="lazy" decoding="async" src="/2025/07/06/3dmathprimer/3D%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80-%E7%9F%A9%E9%98%B5%E6%89%A9%E5%B1%95/20150624110333816.png" alt="这里写图片描述"></p>
+<p><img loading="lazy" decoding="async" src="/2025/07/06/3dmathprimer/3D%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80-%E7%9F%A9%E9%98%B5%E6%89%A9%E5%B1%95/20150624110333816.png"></p>
 <p>4，4 × 4矩阵行列式定义如下：</p>
-<p><img loading="lazy" decoding="async" src="/2025/07/06/3dmathprimer/3D%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80-%E7%9F%A9%E9%98%B5%E6%89%A9%E5%B1%95/20150624110637987.png" alt="这里写图片描述"></p>
+<p><img loading="lazy" decoding="async" src="/2025/07/06/3dmathprimer/3D%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80-%E7%9F%A9%E9%98%B5%E6%89%A9%E5%B1%95/20150624110637987.png"></p>
 <p>5，高阶行列式计算的复杂性是呈指数递增的，这里我们通过<strong>余子式</strong>(矩阵)和<strong>代数余子式</strong>(标量)来计算n × n阶矩阵的行列式。对应公式如下：</p>
-<p><img loading="lazy" decoding="async" src="/2025/07/06/3dmathprimer/3D%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80-%E7%9F%A9%E9%98%B5%E6%89%A9%E5%B1%95/20150624111912164.png" alt="这里写图片描述"></p>
-<p><img loading="lazy" decoding="async" src="/2025/07/06/3dmathprimer/3D%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80-%E7%9F%A9%E9%98%B5%E6%89%A9%E5%B1%95/20150624111937382.jpg" alt="这里写图片描述"></p>
+<p><img loading="lazy" decoding="async" src="/2025/07/06/3dmathprimer/3D%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80-%E7%9F%A9%E9%98%B5%E6%89%A9%E5%B1%95/20150624111912164.png"></p>
+<p><img loading="lazy" decoding="async" src="/2025/07/06/3dmathprimer/3D%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80-%E7%9F%A9%E9%98%B5%E6%89%A9%E5%B1%95/20150624111937382.jpg"></p>
 <p>注释：还有一种称作“主元选择”的计算方法，它只需计算一个代数余子式，这里不做讨论。</p>
 <ul>
 <li><strong>几何意义</strong><br> 2D中，行列式等于以基向量为两边的平行四边形的<strong>有符号面积</strong>，对应的3D中等于有符号体积。这里有符号表示如果矩阵相对于原来位置进行了翻转(镜像)，那么行列式为负。(如果矩阵行列式为零，那么该矩阵包含投影。如果矩阵行列式为负，那么该矩阵包含镜像)</li>
@@ -186,17 +186,17 @@
 </ul>
 <p> 1，矩阵求逆也只能用于方阵，并非所有矩阵都有逆，包含投影的矩阵就不可逆。我们把一个矩阵有逆矩阵，称它为可逆的或非奇异的，如果没有逆矩阵，则称它为不可逆的或奇异矩阵。奇异矩阵的行列式为零，非奇异矩阵的行列式不为零。</p>
 <p>2，基本性质：</p>
-<p><img loading="lazy" decoding="async" src="/2025/07/06/3dmathprimer/3D%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80-%E7%9F%A9%E9%98%B5%E6%89%A9%E5%B1%95/20150624125637511.png" alt="这里写图片描述"></p>
+<p><img loading="lazy" decoding="async" src="/2025/07/06/3dmathprimer/3D%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80-%E7%9F%A9%E9%98%B5%E6%89%A9%E5%B1%95/20150624125637511.png"></p>
 <p>3，使用“标准伴随矩阵”来计算矩阵的逆，过程如下：</p>
-<p><img loading="lazy" decoding="async" src="/2025/07/06/3dmathprimer/3D%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80-%E7%9F%A9%E9%98%B5%E6%89%A9%E5%B1%95/20150624125810690.png" alt="这里写图片描述"></p>
-<p><img loading="lazy" decoding="async" src="/2025/07/06/3dmathprimer/3D%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80-%E7%9F%A9%E9%98%B5%E6%89%A9%E5%B1%95/20150624125832284.png" alt="这里写图片描述"><br>注释：计算矩阵的逆还有其他方法，如高斯消元法等，但对于简单低阶矩阵使用标准伴随矩阵的方式可能效率更高一些。</p>
+<p><img loading="lazy" decoding="async" src="/2025/07/06/3dmathprimer/3D%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80-%E7%9F%A9%E9%98%B5%E6%89%A9%E5%B1%95/20150624125810690.png"></p>
+<p><img loading="lazy" decoding="async" src="/2025/07/06/3dmathprimer/3D%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80-%E7%9F%A9%E9%98%B5%E6%89%A9%E5%B1%95/20150624125832284.png"><br>注释：计算矩阵的逆还有其他方法，如高斯消元法等，但对于简单低阶矩阵使用标准伴随矩阵的方式可能效率更高一些。</p>
 <ul>
 <li><strong>几何意义</strong><br> 前面章节了解到了矩阵的线性变换，如缩放，旋转等。求矩阵的逆矩阵，正如字面意思，这个逆矩阵其实就是原矩阵线性变换的反过程，即“撤销”。代数验证如下：</li>
 </ul>
-<p> <img loading="lazy" decoding="async" src="/2025/07/06/3dmathprimer/3D%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80-%E7%9F%A9%E9%98%B5%E6%89%A9%E5%B1%95/20150624131239288.png" alt="这里写图片描述"></p>
+<p> <img loading="lazy" decoding="async" src="/2025/07/06/3dmathprimer/3D%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80-%E7%9F%A9%E9%98%B5%E6%89%A9%E5%B1%95/20150624131239288.png"></p>
 <p> 即向量v先后经过原矩阵和逆矩阵变换得到的是自己本身，相当于没有变换。</p>
 <h2 id="正交矩阵"><a href="#正交矩阵" class="headerlink" title="正交矩阵"></a>正交矩阵</h2><p>1，正交矩阵的应用(快速得到矩阵的逆矩阵)：</p>
-<p><img loading="lazy" decoding="async" src="/2025/07/06/3dmathprimer/3D%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80-%E7%9F%A9%E9%98%B5%E6%89%A9%E5%B1%95/20150624135755513.png" alt="这里写图片描述"></p>
+<p><img loading="lazy" decoding="async" src="/2025/07/06/3dmathprimer/3D%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80-%E7%9F%A9%E9%98%B5%E6%89%A9%E5%B1%95/20150624135755513.png"></p>
 <p>2，判别矩阵是否是正交矩阵：1，矩阵的每一行都是单位矩阵 2，矩阵的所有行互相垂直。<br>记住，<strong>旋转和镜像矩阵是正交的</strong>，其他预先不知道矩阵是否正交的，我们一般直接计算它的逆矩阵，而不用正交性的优点了。因为，检测矩阵是否正交和一开始求逆计算量差不多，而且如果检测到矩阵不是正交，那么这个检测计算完全是浪费时间。</p>
 <p>3，矩阵正交化：有时候可能会遇到略微违反正交性的矩阵，例如：外部的坏数据或者浮点数运算的累积错误(称作“矩阵爬行”)。这些情况，需要做矩阵正交化，得到一个正交矩阵。这里不打算详细讲了，有兴趣可以自己查阅“施密特正交法”。</p>
 <h2 id="4-×-4-齐次矩阵"><a href="#4-×-4-齐次矩阵" class="headerlink" title="4 × 4 齐次矩阵"></a>4 × 4 齐次矩阵</h2><ul>
@@ -207,26 +207,26 @@
 <ul>
 <li><strong>4 × 4平移矩阵</strong><br>1，平移矩阵</li>
 </ul>
-<p><img loading="lazy" decoding="async" src="/2025/07/06/3dmathprimer/3D%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80-%E7%9F%A9%E9%98%B5%E6%89%A9%E5%B1%95/20150625200957997.png" alt="这里写图片描述"></p>
+<p><img loading="lazy" decoding="async" src="/2025/07/06/3dmathprimer/3D%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80-%E7%9F%A9%E9%98%B5%E6%89%A9%E5%B1%95/20150625200957997.png"></p>
 <p>2，线性变换和平移混合的仿射变换矩阵<br>旋转和平移矩阵R, T：</p>
-<p> <img loading="lazy" decoding="async" src="/2025/07/06/3dmathprimer/3D%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80-%E7%9F%A9%E9%98%B5%E6%89%A9%E5%B1%95/20150625201627129.png" alt="这里写图片描述"></p>
+<p> <img loading="lazy" decoding="async" src="/2025/07/06/3dmathprimer/3D%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80-%E7%9F%A9%E9%98%B5%E6%89%A9%E5%B1%95/20150625201627129.png"></p>
 <p> 包含两种的仿射变换矩阵</p>
-<p> <img loading="lazy" decoding="async" src="/2025/07/06/3dmathprimer/3D%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80-%E7%9F%A9%E9%98%B5%E6%89%A9%E5%B1%95/20150625201739423.png" alt="这里写图片描述"></p>
+<p> <img loading="lazy" decoding="async" src="/2025/07/06/3dmathprimer/3D%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80-%E7%9F%A9%E9%98%B5%E6%89%A9%E5%B1%95/20150625201739423.png"></p>
 <p> 由上就可以看出，前面三行还和以前的线性变换一样，只是增加了第四行来表示平移，它们不互相影响。</p>
 <ul>
 <li><strong>透视投影</strong></li>
 </ul>
 <p> 1,它和平行投影的区别是，平行投影的投影线是平行的，所以这种投影物体大小不管远近都不会变，而透视投影的投影线会相交于一点，将该点称为投影中心，所以这种投影物体表现更接近真实，近大远小。(实际上人类的视觉系统远比这个复杂，因为人有两只眼睛，两个视网膜，即两个投影平面，它们不是一个平面)</p>
-<p> <img loading="lazy" decoding="async" src="/2025/07/06/3dmathprimer/3D%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80-%E7%9F%A9%E9%98%B5%E6%89%A9%E5%B1%95/20150625203544433.png" alt="这里写图片描述"></p>
+<p> <img loading="lazy" decoding="async" src="/2025/07/06/3dmathprimer/3D%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80-%E7%9F%A9%E9%98%B5%E6%89%A9%E5%B1%95/20150625203544433.png"></p>
 <p>2，从上图可以看出，我们其实可以通过三角形的相似性，计算出任意点p经过透视投影到投影平面上的p’。(这里公式是将投影平面移到投影中心前面来算的，为了消除负号带来的不必要复杂性)</p>
-<p><img loading="lazy" decoding="async" src="/2025/07/06/3dmathprimer/3D%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80-%E7%9F%A9%E9%98%B5%E6%89%A9%E5%B1%95/20150625203932224.png" alt="这里写图片描述"></p>
+<p><img loading="lazy" decoding="async" src="/2025/07/06/3dmathprimer/3D%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80-%E7%9F%A9%E9%98%B5%E6%89%A9%E5%B1%95/20150625203932224.png"></p>
 <p>d：投影中心距投影平面的距离</p>
 <p>3，透视投影矩阵：<br>首先，依据上面公式，变形得到：</p>
-<p><img loading="lazy" decoding="async" src="/2025/07/06/3dmathprimer/3D%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80-%E7%9F%A9%E9%98%B5%E6%89%A9%E5%B1%95/20150625204338224.png" alt="这里写图片描述"></p>
+<p><img loading="lazy" decoding="async" src="/2025/07/06/3dmathprimer/3D%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80-%E7%9F%A9%E9%98%B5%E6%89%A9%E5%B1%95/20150625204338224.png"></p>
 <p>这个3D向量转换为4D向量为：</p>
-<p><img loading="lazy" decoding="async" src="/2025/07/06/3dmathprimer/3D%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80-%E7%9F%A9%E9%98%B5%E6%89%A9%E5%B1%95/20150625204419188.png" alt="这里写图片描述"></p>
+<p><img loading="lazy" decoding="async" src="/2025/07/06/3dmathprimer/3D%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80-%E7%9F%A9%E9%98%B5%E6%89%A9%E5%B1%95/20150625204419188.png"></p>
 <p>从而反推透视投影矩阵为：</p>
-<p><img loading="lazy" decoding="async" src="/2025/07/06/3dmathprimer/3D%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80-%E7%9F%A9%E9%98%B5%E6%89%A9%E5%B1%95/20150625204454116.png" alt="这里写图片描述"></p>
+<p><img loading="lazy" decoding="async" src="/2025/07/06/3dmathprimer/3D%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80-%E7%9F%A9%E9%98%B5%E6%89%A9%E5%B1%95/20150625204454116.png"></p>
 
     </div>
     

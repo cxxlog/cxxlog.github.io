@@ -178,7 +178,7 @@
 </li>
 </ul>
 <h2 id="代码分析"><a href="#代码分析" class="headerlink" title="代码分析"></a>代码分析</h2><p>1，实现自己语言前，我们先温习下与之类似的GOF的<strong>解释器模式</strong>：假设我们要让语言支持这样的算术表达式：(1 + 2) * (3 - 4)<br>我们的做法是把每块表达式，每条语言规则，都封装到对象中去，那么最终就会变成如下这样的抽象语法树。</p>
-<p><img decoding="async" src="/2024/02/24/designpatterns/%E8%A1%8C%E4%B8%BA%E6%A8%A1%E5%BC%8F-%E5%AD%97%E8%8A%82%E7%A0%81/d2920efb722cd9e8c388647689b46f1c.png" alt="这里写图片描述"></p>
+<p><img decoding="async" src="/2024/02/24/designpatterns/%E8%A1%8C%E4%B8%BA%E6%A8%A1%E5%BC%8F-%E5%AD%97%E8%8A%82%E7%A0%81/d2920efb722cd9e8c388647689b46f1c.png"></p>
 <p>创建这棵树是编译器的工作，我们这里讲的解释器模式与这无关。怎么形成的先不管，下面我们来看看怎么去解析这颗树，即实现解释器：<br>首先，我们定义所有表达式的基本接口：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">class Expression</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">  virtual ~Expression() &#123;&#125;</span><br><span class="line">  virtual double evaluate() = 0;    //求值</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 <p>然后，实现数字派生类：</p>
@@ -210,11 +210,11 @@
 <p>然后，我们还得为添加数据(push)也定义一个指令，接着上面枚举INST_LITERAL &#x3D; 0x05：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">case INST_LITERAL:</span><br><span class="line">&#123;</span><br><span class="line">  //bytecode字节码数组，它就是我们的行为，我们这个虚拟机所有工作就是在解析它</span><br><span class="line">  int value = bytecode[++i];     </span><br><span class="line">  push(value);</span><br><span class="line">  break;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>好，这个第二次改进的虚拟机就搞完了。然后我们来个游戏实际情形分析下它的工作原理：“假设我们这次的技能操作是要给玩家自己加10点生命值。”这个行为对应的字节码数据就是这样：[0x05, 0, 0x05, 10, 0x00]。下面是示意图分析：<br>首先从空栈开始，虚拟机指向字节码数组的第一个：</p>
-<p><img loading="lazy" decoding="async" src="/2024/02/24/designpatterns/%E8%A1%8C%E4%B8%BA%E6%A8%A1%E5%BC%8F-%E5%AD%97%E8%8A%82%E7%A0%81/2488b31e4d8cb6359e90dce156c9cafa.png" alt="这里写图片描述"></p>
+<p><img loading="lazy" decoding="async" src="/2024/02/24/designpatterns/%E8%A1%8C%E4%B8%BA%E6%A8%A1%E5%BC%8F-%E5%AD%97%E8%8A%82%E7%A0%81/2488b31e4d8cb6359e90dce156c9cafa.png"></p>
 <p>然后，它执行第一个指令“INST_LITERAL”，把下一个字节0压入堆栈。</p>
-<p><img loading="lazy" decoding="async" src="/2024/02/24/designpatterns/%E8%A1%8C%E4%B8%BA%E6%A8%A1%E5%BC%8F-%E5%AD%97%E8%8A%82%E7%A0%81/fcf01c99277a30614c0233565bcb841a.png" alt="这里写图片描述"></p>
+<p><img loading="lazy" decoding="async" src="/2024/02/24/designpatterns/%E8%A1%8C%E4%B8%BA%E6%A8%A1%E5%BC%8F-%E5%AD%97%E8%8A%82%E7%A0%81/fcf01c99277a30614c0233565bcb841a.png"></p>
 <p>接着执行第二个”INST_LITERAL”，把下一个字节10压入堆栈。</p>
-<p><img loading="lazy" decoding="async" src="/2024/02/24/designpatterns/%E8%A1%8C%E4%B8%BA%E6%A8%A1%E5%BC%8F-%E5%AD%97%E8%8A%82%E7%A0%81/26e34bb994af11bb30516994d056b543.png" alt="这里写图片描述"></p>
+<p><img loading="lazy" decoding="async" src="/2024/02/24/designpatterns/%E8%A1%8C%E4%B8%BA%E6%A8%A1%E5%BC%8F-%E5%AD%97%E8%8A%82%E7%A0%81/26e34bb994af11bb30516994d056b543.png"></p>
 <p>最后执行”INST_SET_HEALTH”。它会弹出10存进amount，弹出0存进wizard。然后用这两个参数调用setHealth()。这就实现了我们为自己加血行为的整套字节码解析流程。</p>
 <p>嗯，乍看上去貌似很完美了！不过还缺些行为，我们只有set属性，而没有get属性是不是？我们可以引入参数把属性设置为我们想要的值，这更像是数据。而如果我想把智力属性值设置为它的生命值，那这又怎么操作呢？很明显，我们得再添加些get指令：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">case INST_GET_HEALTH:</span><br><span class="line">&#123;</span><br><span class="line">  int wizard = pop();</span><br><span class="line">  push(getHealth(wizard));</span><br><span class="line">  break;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">case INST_GET_WISDOM:</span><br><span class="line">case INST_GET_AGILITY:</span><br><span class="line">  // 你知道思路了吧……</span><br></pre></td></tr></table></figure>
@@ -223,12 +223,12 @@
 <p>算计指令就类似这样了，那么有了这些我们能实现什么复杂点的行为呢？来看看这么个示例：假设我们希望有个法术，能让玩家的血量增加敏捷和智慧的平均值。 用代码表示如下：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">setHealth(0, getHealth(0) + (getAgility(0) + getWisdom(0)) / 2);</span><br></pre></td></tr></table></figure>
 <p>好，假设玩家目前有45点血量，7点敏捷，和11点智慧。 我们来看看实现这么个行为，我们是用的一组什么字节码数组和对应堆栈的数据变化，下面是演示这个过程的示例图：</p>
-<p><img loading="lazy" decoding="async" src="/2024/02/24/designpatterns/%E8%A1%8C%E4%B8%BA%E6%A8%A1%E5%BC%8F-%E5%AD%97%E8%8A%82%E7%A0%81/9ed6f18e372bbedaa0c7947dcfaaa079.png" alt="这里写图片描述"></p>
+<p><img loading="lazy" decoding="async" src="/2024/02/24/designpatterns/%E8%A1%8C%E4%B8%BA%E6%A8%A1%E5%BC%8F-%E5%AD%97%E8%8A%82%E7%A0%81/9ed6f18e372bbedaa0c7947dcfaaa079.png"></p>
 <p>左边是指令，右边是对应的堆栈数据变化。这么个过程我们就计算出了玩家的血量增加敏捷和智慧的平均值。</p>
 <p>我可以继续下去，添加越来越多的指令，但是时候适可而止了。 如上所述，我们已经有了一个可爱的小虚拟机，可以使用简单，紧凑的数据格式，定义开放的行为。 虽然“字节码”和“虚拟机”的听起来很吓人，但你可以看到它们往往简单到只需栈，循环，和switch语句。</p>
 <p>再回过头来想想，是不是实现自己的虚拟机其实也就那么回事，<strong>首先我们对需要处理的问题定义好指令集合(枚举)，从而某个行为就可以用这些对应指令来表示(字节码数组)，然后用堆栈来遍历这组字节码(push存储数据，pop使用数据)，执行对应操作。</strong></p>
 <p>3，到目前为止，我们虚拟机(解释器)已经讲完了，但是对应的编译器呢？我们上面所有操作的字节码数组都是自己手动写的，这样肯定不实用。很明显，我们需要写个上层的图形工具(编译器)，就算不是程序的人也可以轻松使用这个工具编辑行为，然后生成对应的字节码数组。类似这样的东西：</p>
-<p><img loading="lazy" decoding="async" src="/2024/02/24/designpatterns/%E8%A1%8C%E4%B8%BA%E6%A8%A1%E5%BC%8F-%E5%AD%97%E8%8A%82%E7%A0%81/cfce241ae29cff211d98aa091dbe1371.png" alt="这里写图片描述"></p>
+<p><img loading="lazy" decoding="async" src="/2024/02/24/designpatterns/%E8%A1%8C%E4%B8%BA%E6%A8%A1%E5%BC%8F-%E5%AD%97%E8%8A%82%E7%A0%81/cfce241ae29cff211d98aa091dbe1371.png"></p>
 <p>你可以做个这样的工具，用户通过单击拖动小盒子，下拉菜单项，或任何有意义的行为创建“脚本”，从而创建行为。<br>这样做的好处是，你的UI可以保证用户无法创建“无效的”程序。 与其向他们喷射错误警告，不如主动关闭按钮或提供默认值， 以确保他们创造的东西在任何时间点上都有效。</p>
 <p>这篇已经太长了，其实到目前，关于怎么实现自定义语言的编译器，解释器原理已经讲得很清楚了。相信你只要认真看完了的，实现一个小型自定义语言是完全没压力的了。<br>比如游戏里的技能系统，我们刚好是不是可以做个工具让策划自己去编辑行为，然后生成字节码，最后我们的虚拟机去解析执行。这套东西做好后，我们程序里将没有一个硬代码，所有工作无非是策划的编辑事情了。这时我们就可以轻松的去倒杯咖啡，看着策划们调它们要的效果，而这再也与我们无关~</p>
 
