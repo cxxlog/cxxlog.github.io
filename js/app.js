@@ -29,6 +29,78 @@
     }
   })();
 
+  //文章目录：默认展开两层，子目录可手动展开或收起
+  function initToc() {
+    if (!$toc) return;
+
+    var $tocList = $toc.querySelector(".toc");
+    var defaultExpandedDepth = 2;
+    var childListId = 0;
+    if (!$tocList) return;
+
+    function getChildList($item) {
+      for (
+        var $child = $item.firstElementChild;
+        $child;
+        $child = $child.nextElementSibling
+      ) {
+        if (
+          $child.tagName.toLowerCase() === "ol" &&
+          $child.classList.contains("toc-child")
+        ) {
+          return $child;
+        }
+      }
+      return null;
+    }
+
+    function setExpanded($item, $button, $childList, isExpanded) {
+      var label = isExpanded ? "收起子目录" : "展开子目录";
+      $item.classList.toggle("is-expanded", isExpanded);
+      $item.classList.toggle("is-collapsed", !isExpanded);
+      $button.setAttribute("aria-expanded", isExpanded ? "true" : "false");
+      $button.setAttribute("aria-label", label);
+      $button.setAttribute("title", label);
+      $childList.hidden = !isExpanded;
+    }
+
+    function setupList($list, depth) {
+      for (
+        var $item = $list.firstElementChild;
+        $item;
+        $item = $item.nextElementSibling
+      ) {
+        var $childList = getChildList($item);
+        if (!$childList) continue;
+
+        var $button = document.createElement("button");
+        $button.setAttribute("type", "button");
+        $button.setAttribute("class", "toc-toggle");
+        $childList.id =
+          $childList.id || "article-toc-children-" + ++childListId;
+        $button.setAttribute("aria-controls", $childList.id);
+        $item.insertBefore($button, $item.firstChild);
+        setExpanded($item, $button, $childList, depth < defaultExpandedDepth);
+
+        (function ($currentItem, $currentButton, $currentChildList) {
+          $currentButton.onclick = function () {
+            setExpanded(
+              $currentItem,
+              $currentButton,
+              $currentChildList,
+              $currentButton.getAttribute("aria-expanded") !== "true"
+            );
+          };
+        })($item, $button, $childList);
+
+        setupList($childList, depth + 1);
+      }
+    }
+
+    setupList($tocList, 1);
+  }
+  initToc();
+
   //手机菜单导航
   $mnav.onclick = function () {
     var navOpen = $mainMenu.getAttribute("class");

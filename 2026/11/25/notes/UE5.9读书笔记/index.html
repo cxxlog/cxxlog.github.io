@@ -1,0 +1,2522 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+<head>
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="Hexo">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="theme-version" content="1.0.0">
+    <meta name="root" content="/">
+    <link rel="dns-prefetch" href="https://cxxlog.github.io">
+    <!--SEO-->
+
+<meta name="keywords" content="UE5,读书笔记" />
+
+
+<meta name="description" content="
+前言本笔记基于虚幻引擎 5.9 官方文档整理，用于记录学习过程中的核心概念、常用操作与实践经验。
+虚幻引擎官方文档
+
+
+理解基础知识一、基础知识1. 虚幻引擎术语1. 项目、关卡与世界
+项目（..." />
+
+
+<meta name="robots" content="all" />
+<meta name="google" content="all" />
+<meta name="googlebot" content="all" />
+<meta name="verify" content="all" />
+    <!--Title-->
+
+<title>
+    
+    UE5.9读书笔记 |
+    
+    Hexo
+</title>
+
+<link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+
+
+<link rel="icon" href="/favicon.ico">
+
+    
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7.css">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.7.0.css">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash.css">
+
+    
+
+<meta name="generator" content="Hexo 6.2.0"></head>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+<body>
+    <header class="main-header"  style="background-image:url(
+    /img/banner.jpg)"
+     >
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title='cxx'>
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+            <!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+            <img src="/img/branding.png" alt="Snippet 博客主题" class="img-responsive center-block">
+            
+        </div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                        <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="https://cxxlog.github.io">
+                        Hexo</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/"><i class="fa "></i>
+                                首页</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/archives/"><i class="fa "></i>
+                                时间轴</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/guestbook/"><i class="fa "></i>
+                                留言</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="UE5.9读书笔记">
+            
+            UE5.9读书笔记
+            
+        </h1>
+        <div class="post-meta">
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a class="category-link" href="/categories/notes/">notes</a>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+            <a class="tag-none-link" href="/tags/UE5/" rel="tag">UE5</a> <a class="tag-none-link" href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" rel="tag">读书笔记</a>
+            
+        </span>
+    </span>
+    
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-clock-o"></i>
+        <span class="date-meta">
+            2026/11/25</span>
+    </span>
+    
+    <span class="fa-wrap">
+        <i class="fa fa-eye"></i>
+        <span id="busuanzi_value_page_pv"></span>
+    </span>
+    
+    
+</div>
+        
+        
+    </div>
+    
+    <div class="post-body post-content">
+        <p><img decoding="async" src="/2026/11/25/notes/UE5.9%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/ue5-banner.svg" alt="Unreal Engine 5"></p>
+<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>本笔记基于虚幻引擎 5.9 官方文档整理，用于记录学习过程中的核心概念、常用操作与实践经验。</p>
+<p><a target="_blank" rel="noopener" href="https://dev.epicgames.com/documentation/zh-cn/unreal-engine/unreal-engine-terminology">虚幻引擎官方文档</a></p>
+<br/>
+
+<h1 id="理解基础知识"><a href="#理解基础知识" class="headerlink" title="理解基础知识"></a>理解基础知识</h1><h2 id="一、基础知识"><a href="#一、基础知识" class="headerlink" title="一、基础知识"></a>一、基础知识</h2><h3 id="1-虚幻引擎术语"><a href="#1-虚幻引擎术语" class="headerlink" title="1. 虚幻引擎术语"></a>1. 虚幻引擎术语</h3><p><strong>1. 项目、关卡与世界</strong></p>
+<p><strong>项目（Project）</strong></p>
+<p>项目是虚幻引擎中所有内容和代码的容器，对应磁盘上的一个项目文件夹，其中包含 <code>.uproject</code> 文件。一个项目可以包含多个关卡、资产、蓝图以及 C++ 代码等。</p>
+<p><strong>关卡（Level）</strong></p>
+<p>关卡是玩家进行游戏的具体区域或场景，保存为 <code>.umap</code> 文件。可以把它理解为游戏中的一张”地图”或一个”场景”。</p>
+<p><strong>世界（World）</strong></p>
+<p>世界是关卡的容器，负责管理已加载的关卡、场景中的 Actor 以及游戏流程。一个世界可以包含多个通过流送方式加载的关卡。</p>
+<p><strong>2. Actor 与组件</strong></p>
+<p><strong>Actor</strong></p>
+<p>Actor 是可以被放置到关卡中的任何对象，支持移动、旋转、缩放等 3D 变换，并支持游戏性相关的生成与销毁。它是游戏场景中大多数可交互对象的基础类。</p>
+<p><strong>组件（Component）</strong></p>
+<p>组件是附加在 Actor 上、用于扩展其功能的模块化单元，例如静态网格体组件、灯光组件、移动组件、音频组件等。组件不能脱离 Actor 独立存在，一个 Actor 可以挂载多个组件。</p>
+<p><strong>3. 笔刷与体积</strong></p>
+<p><strong>笔刷（Brush &#x2F; BSP Brush）</strong></p>
+<p>笔刷是用于在关卡中创建基本几何形状（如立方体、球体、圆柱体、圆锥体等）的工具，基于 BSP（二进制空间分区）技术。它常用于快速搭建关卡原型、制作阻挡碰撞或简单几何体。笔刷分为<strong>添加型（Additive）</strong>和<strong>挖空型（Subtractive）</strong>，前者用于添加实体几何，后者用于从已有几何中挖去空间。</p>
+<p><strong>体积（Volume）</strong></p>
+<p>体积是一种特殊的 Actor，在关卡中占据一个三维空间区域，用于触发特定行为或影响进入其中的对象。常见体积包括触发体积（Trigger Volume）、阻挡体积（Blocking Volume）、物理体积（Physics Volume）、音频体积（Audio Volume）、后处理体积（Post Process Volume）等。与可见的网格体不同，体积通常用于逻辑、碰撞或空间效果控制。</p>
+<p><strong>4. Pawn、角色与控制器</strong></p>
+<p><strong>Pawn</strong></p>
+<p>Pawn 是 Actor 的子类，代表游戏中可以被玩家或 AI 控制的”化身”或”棋子”。它是所有可控制游戏对象的基础。</p>
+<p><strong>角色（Character）</strong></p>
+<p>角色是 Pawn 的子类，专门为玩家角色设计，默认包含碰撞体、角色移动组件等，适合用于人形角色或具有复杂移动能力的对象。</p>
+<p><strong>玩家控制器（Player Controller）</strong></p>
+<p>玩家控制器负责将玩家的输入转换为游戏内操作，并控制一个 Pawn。每个玩家通常对应一个玩家控制器，它处理输入、相机、UI 等玩家相关逻辑。</p>
+<p><strong>AI 控制器（AI Controller）</strong></p>
+<p>AI 控制器用于控制由 AI 驱动的 Pawn，实现自动行为、寻路、决策、感知等人工智能逻辑。</p>
+<p><strong>5. Gameplay 框架</strong></p>
+<p><strong>游戏模式（Game Mode）</strong></p>
+<p>游戏模式定义游戏规则，例如玩家如何加入、胜利条件、生成规则、计分规则等。每个关卡只能指定一个游戏模式；在多人游戏中，游戏模式仅存在于服务器上，不会复制到客户端。</p>
+<p><strong>游戏状态（Game State）</strong></p>
+<p>游戏状态保存需要同步给所有客户端的比赛信息，例如比分、比赛是否开始、剩余时间、当前阶段等。它是服务器与客户端共享游戏进度的重要载体。</p>
+<p><strong>玩家状态（Player State）</strong></p>
+<p>玩家状态保存单个玩家的数据，如玩家名称、分数、生命值、击杀数等。在多人游戏中，每个玩家的玩家状态会复制到所有机器上，便于其他玩家查看。</p>
+<p><strong>6. 类、对象、蓝图与资产</strong></p>
+<p><strong>对象（Object &#x2F; UObject）</strong></p>
+<p>对象是虚幻引擎大多数功能的基础构建块，引擎中几乎所有类都继承自 <code>UObject</code>。它提供了反射、序列化、垃圾回收等底层能力。</p>
+<p><strong>类（Class）</strong></p>
+<p>类定义对象或 Actor 的属性和行为，支持继承。无论是 C++ 类还是蓝图类，都建立在这一面向对象概念之上。</p>
+<p><strong>蓝图（Blueprint）</strong></p>
+<p>蓝图是虚幻引擎的可视化脚本系统，通过节点连线的方式创建游戏逻辑、类和对象，无需编写传统代码即可完成大量 gameplay 功能。</p>
+<p><strong>资产（Asset）</strong></p>
+<p>资产是项目中可被序列化的内容资源，例如静态网格体、骨骼网格体、材质、纹理、动画、声音、蓝图等，通常以 <code>.uasset</code> 文件形式保存。</p>
+<p><strong>包（Package）</strong></p>
+<p>包是资产在磁盘上的容器，可以包含一个或多个资产。<code>.uasset</code> 和 <code>.umap</code> 文件本质上都是包，用于组织、加载和保存引擎内容。</p>
+<p><strong>类型转换（Casting）</strong></p>
+<p>类型转换是将一个对象引用转换为另一个类的引用的过程，常用于在蓝图中访问特定类的变量、函数或组件。例如，将 <code>Pawn</code> 引用转换为 <code>Character</code> 引用，以便访问角色移动组件。类型转换会在运行时检查对象是否属于目标类，转换失败会返回空值，因此通常需要配合有效性检查（Is Valid）使用。</p>
+<p><strong>请记住：</strong></p>
+<blockquote>
+<ul>
+<li><strong>Actor</strong> 是关卡中可放置对象的基础，<strong>组件</strong> 以模块化方式为 Actor 提供功能。</li>
+<li><strong>笔刷</strong> 用于快速搭建 BSP 几何体，<strong>体积</strong> 用于定义具有特定逻辑或效果的三维空间区域。</li>
+<li><strong>Pawn</strong> 表示可被控制的对象，<strong>玩家控制器</strong> 和 <strong>AI 控制器</strong> 分别负责玩家和 AI 对 Pawn 的控制。</li>
+<li><strong>游戏模式</strong> 定义规则且只在服务器存在，<strong>游戏状态</strong> 和 <strong>玩家状态</strong> 负责同步共享数据与玩家数据。</li>
+<li><strong>蓝图</strong> 是可视化脚本系统，<strong>类</strong> 和 <strong>对象</strong> 是虚幻引擎面向对象体系的核心，<strong>资产</strong> 和 <strong>包</strong> 则是项目内容的存储形式。</li>
+<li><strong>类型转换</strong> 用于将对象引用转换为目标类，转换失败会返回空值，使用时需注意有效性检查。</li>
+</ul>
+</blockquote>
+<h3 id="2-工具和编辑器"><a href="#2-工具和编辑器" class="headerlink" title="2. 工具和编辑器"></a>2. 工具和编辑器</h3><p>虚幻引擎中的<strong>工具（Tools）</strong>通常指完成特定任务的独立功能；<strong>编辑器（Editors）</strong>则是由多个工具组成的综合工作环境，用于实现复杂的创作目标；而<strong>系统（Systems）</strong>是更大范围的功能集合，例如渲染系统、物理系统等。日常开发中，我们接触最多的就是各种专用编辑器。</p>
+<p><strong>1. 核心场景与资产编辑器</strong></p>
+<p><strong>关卡编辑器（Level Editor）</strong></p>
+<p>关卡编辑器是构建 Gameplay 关卡的主要工作区。你可以在其中放置 Actor、几何体、蓝图、Niagara 特效、灯光、音频等元素，调整它们的位置和属性，并组织整个游戏场景。它是使用频率最高的编辑器之一。</p>
+<p><strong>静态网格体编辑器（Static Mesh Editor）</strong></p>
+<p>静态网格体编辑器用于预览和配置静态网格体资产，包括查看碰撞体、UV 贴图、材质插槽，以及设置 LOD（细节层次）、光照贴图分辨率、距离场等属性。</p>
+<p><strong>材质编辑器（Material Editor）</strong></p>
+<p>材质编辑器用于创建和编辑材质资产。通过节点连线的方式，可以控制网格体的颜色、金属度、粗糙度、法线、自发光等视觉外观，是美术表现的核心工具。</p>
+<p><strong>蓝图编辑器（Blueprint Editor）</strong></p>
+<p>蓝图编辑器用于修改蓝图资产，通过可视化脚本创建 Gameplay 元素、编写事件逻辑、控制 Actor 行为、修改材质参数等，无需编写 C++ 代码即可实现大量功能。</p>
+<p><strong>2. 动画与物理</strong></p>
+<p><strong>动画编辑器（Animation Editor）</strong></p>
+<p>动画编辑器用于编辑骨架（Skeleton）、骨骼网格体（Skeletal Mesh）、动画序列（Animation Sequence）、动画蓝图（Animation Blueprint）等动画相关资产，是角色动画制作的核心环境。</p>
+<p><strong>物理资产编辑器（Physics Asset Editor）</strong></p>
+<p>物理资产编辑器用于为骨骼网格体创建物理资产，配置碰撞体、物理形体、约束关系以及布娃娃（Ragdoll）效果，让角色能够参与物理模拟。</p>
+<p><strong>Control Rig</strong></p>
+<p>Control Rig 是一套基于节点的绑定与动画系统，可以在引擎内直接为骨骼网格体创建控制绑定，制作程序动画或调整现有动画，常用于过场动画和角色动画的精细控制。</p>
+<p><strong>3. AI 与视觉特效</strong></p>
+<p><strong>行为树编辑器（Behavior Tree Editor）</strong></p>
+<p>行为树编辑器通过可视化的节点系统创建 AI 行为，适用于敌人、NPC、载具等 Actor 的决策逻辑，配合黑板（Blackboard）可以实现复杂的 AI 状态切换与行为控制。</p>
+<p><strong>Niagara 编辑器（Niagara Editor）</strong></p>
+<p>Niagara 编辑器用于构建模块化的粒子与视觉特效。它基于可复用的发射器（Emitter）和系统（System）架构，能够制作从简单粒子到复杂 VFX 的各种效果。</p>
+<p><strong>4. UI、音频与媒体</strong></p>
+<p><strong>UMG UI 编辑器（UMG UI Editor）</strong></p>
+<p>UMG（Unreal Motion Graphics）UI 编辑器用于可视化地制作用户界面，包括 HUD、主菜单、背包、设置界面等。它采用控件（Widget）拖拽布局，并支持蓝图逻辑绑定。</p>
+<p><strong>字体编辑器（Font Editor）</strong></p>
+<p>字体编辑器用于添加、组织和预览字体资产，并配置字体的布局、提示（Hinting）策略等，主要服务于 UI 和文本渲染。</p>
+<p><strong>声音提示编辑器（Sound Cue Editor）</strong></p>
+<p>声音提示编辑器用于将多个声音资产组合、混合为单一的声音提示（Sound Cue）输出，支持随机化、循环、衰减、调制等音频逻辑。</p>
+<p><strong>Sequencer</strong></p>
+<p>Sequencer 是多轨道的过场动画与动态事件编辑器，可以编排动画、变换、音频、镜头、粒子、事件触发等，常用于制作游戏内过场、CG 和实时演出。</p>
+<p><strong>媒体编辑器（Media Editor）</strong></p>
+<p>媒体编辑器用于配置媒体文件或 URL 在引擎内的播放方式，例如自动播放、播放速率、循环等。它只负责播放设置，不直接编辑媒体内容本身。</p>
+<p><strong>5. 高级显示与演出控制</strong></p>
+<p><strong>nDisplay 3D</strong></p>
+<p>nDisplay 3D 是虚幻引擎的多显示器&#x2F;多机同步渲染工具，用于在多个显示设备或投影表面上呈现同一个 3D 场景。它广泛应用于虚拟制作 LED 舞台、模拟器、穹顶影院、沉浸式空间等场景，支持集群配置、视口管理、相机跟踪和色彩校正。</p>
+<p><strong>DMX</strong></p>
+<p>DMX（Digital Multiplex）是舞台灯光和演出控制领域常用的通信协议。虚幻引擎的 DMX 工具&#x2F;插件用于将引擎与真实世界的 DMX 灯光设备连接，实现虚拟灯光与实体灯光的同步控制，常用于虚拟制作、现场演出和舞台预演。</p>
+<p><strong>请记住：</strong></p>
+<blockquote>
+<ul>
+<li><strong>关卡编辑器</strong> 是搭建场景的核心，<strong>蓝图编辑器</strong> 和 <strong>材质编辑器</strong> 分别负责逻辑与视觉表现。</li>
+<li><strong>静态网格体编辑器</strong> 和 <strong>物理资产编辑器</strong> 用于配置网格体与物理属性，<strong>动画编辑器</strong> 和 <strong>Control Rig</strong> 负责角色动画。</li>
+<li><strong>行为树编辑器</strong> 处理 AI 决策，<strong>Niagara 编辑器</strong> 制作粒子特效。</li>
+<li><strong>UMG</strong> 负责 UI，<strong>Sequencer</strong> 负责过场编排，<strong>声音提示编辑器</strong> 和 <strong>媒体编辑器</strong> 分别处理音频逻辑与媒体播放。</li>
+<li><strong>nDisplay 3D</strong> 用于多屏&#x2F;多机同步渲染，<strong>DMX</strong> 用于虚拟与实体灯光设备的同步控制。</li>
+</ul>
+</blockquote>
+<h3 id="3-编辑器偏好设置"><a href="#3-编辑器偏好设置" class="headerlink" title="3. 编辑器偏好设置"></a>3. 编辑器偏好设置</h3><p>编辑器偏好设置用于调整编辑器本身的行为和外观，只影响当前用户，不会改变项目内容。打开路径：<strong>编辑（Edit）→ 编辑器偏好设置（Editor Preferences）</strong>。</p>
+<p><strong>1. 常规与自动保存</strong></p>
+<p>常规设置里可以调整编辑器的默认行为，例如启动时加载哪个项目、是否显示启动画面、性能相关选项等。自动保存（Auto Save）建议保持开启，并设置合适的保存间隔和保留版本数，防止意外崩溃丢失工作。</p>
+<p><strong>2. 视口</strong></p>
+<p>视口设置控制场景视图的操作手感，例如 WASD 飞行相机的移动速度、鼠标滚轮缩放速度、正交视图导航方式、视口关联、FOV 范围，以及鼠标悬停时是否高亮对象等。按照自己的操作习惯调整即可。</p>
+<p><strong>3. 外观</strong></p>
+<p>外观设置用于改变编辑器界面样式，例如使用小型工具栏图标、调整编辑器主题、设置用户界面缩放比例等，主要影响视觉体验。</p>
+<p><strong>4. 源代码控制</strong></p>
+<p>源代码控制设置用于对接 Git、Perforce、SVN 等版本管理工具，可以配置是否在修改资产时提示检出、是否自动将修改文件加入版本控制，以及服务器地址、用户名、工作区等信息。团队协作时建议尽早配置。</p>
+<p><strong>5. 键盘快捷键</strong></p>
+<p>键盘快捷键设置允许自定义编辑器命令的按键绑定。命令按功能分组，每个命令最多可绑定两个快捷键，支持处理冲突、删除绑定，以及导入&#x2F;导出键位配置，方便在不同设备间同步个人习惯。</p>
+<p><strong>请记住：</strong></p>
+<blockquote>
+<ul>
+<li>编辑器偏好设置只影响个人使用习惯，通过 <strong>编辑 → 编辑器偏好设置</strong> 打开。</li>
+<li>重点关注 <strong>自动保存</strong>、<strong>视口操作</strong>、<strong>源代码控制</strong> 和 <strong>键盘快捷键</strong>，这些对日常效率影响最大。</li>
+<li>外观和界面缩放按个人喜好调整即可，团队协作时建议统一源代码控制配置。</li>
+</ul>
+</blockquote>
+<h3 id="4-目录结构"><a href="#4-目录结构" class="headerlink" title="4. 目录结构"></a>4. 目录结构</h3><p>了解虚幻引擎的目录结构，有助于找到源码、内容、配置和缓存文件，也能清楚哪些文件可以安全删除、哪些需要纳入版本管理。</p>
+<p><strong>1. 根目录</strong></p>
+<p><strong>Engine</strong>：引擎本体目录，包含引擎源码、内置内容、插件和工具。</p>
+<p><strong>Templates</strong>：项目模板目录，创建新项目时使用的各类模板都存放在这里。</p>
+<p><strong>GenerateProjectFiles.bat</strong>：用于生成 Visual Studio 解决方案和项目文件的脚本，修改源码或添加模块后常需要重新运行。</p>
+<p><strong>2. 通用目录</strong></p>
+<p><strong>Binaries</strong>：存放可执行文件和编译产物，例如编辑器、游戏程序的 <code>.exe</code> 和 <code>.dll</code> 文件。</p>
+<p><strong>Build</strong>：存放构建引擎、游戏及各平台版本所需的文件和脚本。</p>
+<p><strong>Config</strong>：存放配置文件。项目中的配置会覆盖 <code>Engine/Config</code> 里的同名配置，因此项目个性化设置通常改项目目录下的 <code>.ini</code> 文件。</p>
+<p><strong>Content</strong>：存放资产、地图、材质、蓝图等内容。项目里的 <code>Content</code> 只供当前项目使用，而 <code>Engine/Content</code> 可被所有使用该引擎的项目共享。</p>
+<p><strong>DerivedDataCache</strong>：派生数据缓存，保存引擎自动生成的优化数据。删除后不会丢失工作内容，但下次加载可能会明显变慢。</p>
+<p><strong>Intermediate</strong>：构建过程中生成的临时文件，可以安全删除，重新编译时会再次生成。</p>
+<p><strong>Plugins</strong>：存放插件，引擎和项目都可以有自己的插件目录。</p>
+<p><strong>Saved</strong>：存放自动保存文件、日志、截图、生成的配置等。项目中的 <code>Saved</code> 和 <code>Intermediate</code> 通常都可以删除并重新生成。</p>
+<p><strong>Source</strong>：存放源码。引擎源码按 <code>Developer</code>、<code>Editor</code>、<code>Programs</code>、<code>Runtime</code> 等分类；游戏模块一般使用 <code>Public</code> 和 <code>Private</code> 目录组织头文件与实现文件。</p>
+<p><strong>请记住：</strong></p>
+<blockquote>
+<ul>
+<li><strong>Engine</strong> 是引擎本体，<strong>Content</strong> 放资产，<strong>Source</strong> 放源码，<strong>Config</strong> 放配置。</li>
+<li><strong>Saved</strong> 和 <strong>Intermediate</strong> 通常可安全删除，<strong>DerivedDataCache</strong> 删除后只是重新生成缓存。</li>
+<li>项目配置会覆盖引擎默认配置，修改项目行为优先改项目目录下的 <code>.ini</code> 文件。</li>
+</ul>
+</blockquote>
+<h3 id="5-使用插件"><a href="#5-使用插件" class="headerlink" title="5. 使用插件"></a>5. 使用插件</h3><p>插件是虚幻引擎扩展功能的重要方式，可以添加新工具、新资产类型、新运行时模块等。插件分为<strong>引擎插件</strong>（所有项目可用）和<strong>项目插件</strong>（仅当前项目可用）。</p>
+<p><strong>1. 启用与禁用</strong></p>
+<p>打开 <strong>编辑（Edit）→ 插件（Plugins）</strong>，搜索目标插件后勾选或取消勾选，保存并重启编辑器即可生效。如果禁用的插件被其他插件依赖，系统会提示可能同时禁用相关插件。</p>
+<p><strong>2. 安装插件</strong></p>
+<p>从 <strong>Fab</strong> 下载插件后，在 Epic Games 启动器的 <strong>库 → Fab 库</strong> 中点击 <strong>安装到引擎（Install to Engine）</strong>，选择受支持的引擎版本。安装完成后，还需要在项目中启用才能使用。</p>
+<p>默认引擎插件目录：</p>
+<ul>
+<li>Windows：<code>C:\Program Files\Epic Games\UE_[version]\Engine\Plugins</code></li>
+<li>macOS：<code>/Users/Shared/Epic Games/UE_[version]/Engine/Plugins</code></li>
+</ul>
+<p><strong>3. 插件目录结构</strong></p>
+<p>引擎通过 <code>.uplugin</code> 描述文件识别插件，并扫描 <code>Plugins</code> 目录下的子文件夹。</p>
+<ul>
+<li><strong>项目插件</strong>：<code>&lt;ProjectRoot&gt;/Plugins/&lt;PluginName&gt;/</code></li>
+<li><strong>引擎插件</strong>：<code>&lt;UnrealEngineRoot&gt;/Engine/Plugins/&lt;PluginName&gt;/</code></li>
+</ul>
+<p>代码插件通常包含：</p>
+<ul>
+<li><code>Source/</code>：模块源码和 <code>.Build.cs</code> 文件</li>
+<li><code>Binaries/</code>：编译后的二进制文件</li>
+<li><code>Intermediate/</code>：临时构建文件</li>
+<li><code>Content/</code>：插件自带的资产（可选）</li>
+</ul>
+<p><strong>4. 创建插件</strong></p>
+<p>在编辑器的插件浏览器中点击 <strong>New Plugin</strong>，选择模板并填写名称和设置即可。新插件会自动在当前项目中启用，适合封装可复用的功能或工具。</p>
+<p><strong>请记住：</strong></p>
+<blockquote>
+<ul>
+<li>插件通过 <strong>编辑 → 插件</strong> 启用或禁用，修改后需要重启编辑器。</li>
+<li>从 Fab 安装的插件先安装到引擎，再在项目中启用。</li>
+<li>项目插件放在项目根目录的 <code>Plugins</code> 下，引擎插件放在引擎的 <code>Engine/Plugins</code> 下。</li>
+<li><code>.uplugin</code> 是插件的描述文件，代码插件通常包含 <code>Source</code>、<code>Binaries</code>、<code>Intermediate</code>、<code>Content</code> 等目录。</li>
+</ul>
+</blockquote>
+<h3 id="6-坐标系与坐标空间"><a href="#6-坐标系与坐标空间" class="headerlink" title="6. 坐标系与坐标空间"></a>6. 坐标系与坐标空间</h3><p><strong>1. 坐标系</strong></p>
+<p>虚幻编辑器使用<strong>三维笛卡尔坐标系</strong>，并且是<strong>左手坐标系、Z 轴向上</strong>。三个轴的正方向分别是：</p>
+<ul>
+<li><strong>X 轴</strong>：朝前</li>
+<li><strong>Y 轴</strong>：朝右</li>
+<li><strong>Z 轴</strong>：朝上</li>
+</ul>
+<p>原点为 <code>(0, 0, 0)</code>。记住”前后看 X，左右看 Y，上下看 Z”即可。</p>
+<p><strong>2. 世界空间</strong></p>
+<p><strong>世界空间（World Space）</strong>是整个关卡的全局坐标系，原点固定在场景中心（世界网格）。它不会随 Actor 移动或旋转而改变，适合用来表示对象在关卡中的绝对位置、旋转和缩放。</p>
+<p><strong>3. 局部空间</strong></p>
+<p><strong>局部空间（Local Space）</strong>，也叫<strong>对象空间（Object Space）</strong>，是相对于 Actor 自身枢轴点的坐标系。当编辑器切换为局部空间后，变换 Gizmo 的轴会跟随所选 Actor 的旋转方向，方便相对于父对象或自身进行移动、旋转。</p>
+<p><strong>4. 资产导入注意事项</strong></p>
+<p>从 Maya、Houdini、ZBrush、Blender、3ds Max 等外部软件导入资产时，要注意各软件与 UE 在<strong>坐标系手性</strong>和<strong>向上轴</strong>上的差异。如果导入后模型朝向或旋转异常，通常需要检查导出设置中的坐标系转换选项。</p>
+<p><strong>请记住：</strong></p>
+<blockquote>
+<ul>
+<li>UE 是<strong>左手坐标系，Z 轴向上</strong>：X 前、Y 右、Z 上。</li>
+<li><strong>世界空间</strong>固定不变，表示关卡中的绝对位置；<strong>局部空间</strong>相对于 Actor 自身，Gizmo 会随 Actor 旋转。</li>
+<li>导入外部模型时，注意源软件与 UE 的坐标系差异，必要时在导出&#x2F;导入设置中调整。</li>
+</ul>
+</blockquote>
+<h3 id="7-测量单位"><a href="#7-测量单位" class="headerlink" title="7. 测量单位"></a>7. 测量单位</h3><p><strong>1. 长度与距离</strong></p>
+<p>虚幻引擎默认使用<strong>厘米（cm）</strong>作为长度单位。通常 <strong>1 虚幻单位（uu）&#x3D; 1 cm</strong>，所以 <strong>100 uu &#x3D; 1 米</strong>。搭建场景或设置角色尺寸时，按这个比例估算即可。</p>
+<p><strong>2. 时间</strong></p>
+<p>时间默认使用<strong>秒（s）</strong>和<strong>分钟（min）</strong>，也支持毫秒、小时、天等单位。游戏中的计时器、动画时长、延迟等通常以秒为单位。</p>
+<p><strong>3. 角度</strong></p>
+<p>角度默认使用<strong>度（deg）</strong>，也支持<strong>弧度（rad）</strong>。编辑器里旋转 Actor 时一般直接输入度数，蓝图或 C++ 中部分数学函数可能需要弧度，注意转换。</p>
+<p><strong>4. 其他常用单位</strong></p>
+<ul>
+<li><strong>质量</strong>：千克（kg）</li>
+<li><strong>速度</strong>：米&#x2F;秒（m&#x2F;s）</li>
+<li><strong>温度</strong>：摄氏度（°C），也支持开尔文（K）和华氏度（°F）</li>
+<li><strong>力</strong>：牛顿（N）</li>
+<li><strong>扭矩</strong>：牛顿米（N·m）</li>
+</ul>
+<p>此外，引擎还支持功率、能量、压力、频率、加速度、面积、体积、数据大小等多种单位，具体可在单位设置中查看和切换。</p>
+<p><strong>5. 修改显示单位</strong></p>
+<p>如果需要改变编辑器中单位的显示方式，可以打开 <strong>编辑 → 项目设置 → 编辑器 → 外观 → 单位 → 高级</strong> 进行调整。距离&#x2F;长度、质量和时间还支持复合单位显示。</p>
+<p><strong>请记住：</strong></p>
+<blockquote>
+<ul>
+<li>长度默认用<strong>厘米</strong>，<strong>1 uu &#x3D; 1 cm</strong>，<strong>100 uu &#x3D; 1 米</strong>。</li>
+<li>时间默认用<strong>秒</strong>，角度默认用<strong>度</strong>，质量用<strong>千克</strong>，速度用<strong>米&#x2F;秒</strong>，力用<strong>牛顿</strong>，扭矩用<strong>牛顿米</strong>。</li>
+<li>编辑器显示单位可在 <strong>项目设置 → 编辑器 → 外观 → 单位</strong> 中修改。</li>
+</ul>
+</blockquote>
+<h2 id="二、使用项目和模板"><a href="#二、使用项目和模板" class="headerlink" title="二、使用项目和模板"></a>二、使用项目和模板</h2><h3 id="1-新建项目"><a href="#1-新建项目" class="headerlink" title="1. 新建项目"></a>1. 新建项目</h3><p>新建项目主要在<strong>虚幻项目浏览器（Unreal Project Browser）</strong>中完成，流程是：<strong>选模板 → 配置项目 → 设置名称和路径 → 创建</strong>。</p>
+<p><strong>1. 选择模板</strong></p>
+<p>启动虚幻引擎后会自动打开项目浏览器；如果已经进入编辑器，可以选择 <strong>文件 → 新建项目</strong>。</p>
+<p>开发类别包括<strong>游戏、影视与直播、建筑工程、汽车与制造</strong>等，用于筛选对应行业的模板。游戏开发常用的模板有：</p>
+<ul>
+<li><strong>空白</strong>：不带额外玩法，适合从零开始。</li>
+<li><strong>第一人称 &#x2F; 第三人称</strong>：自带可操作角色和基础控制，适合快速体验和学习。</li>
+<li><strong>其他模板</strong>：包括俯视角、载具、AR、VR 等，可按项目需要选择。</li>
+</ul>
+<p>部分模板还提供不同的玩法变体。</p>
+<p><strong>2. 配置项目</strong></p>
+<ul>
+<li>**蓝图 &#x2F; C++**：蓝图使用可视化脚本；C++ 需要提前配置编译环境。</li>
+<li><strong>目标平台</strong>：选择桌面端或移动端。</li>
+<li><strong>质量预设</strong>：电脑和主机通常选<strong>最大值</strong>，移动端通常选<strong>可扩展</strong>。</li>
+<li><strong>初学者内容包</strong>：包含简单的模型、纹理和材质，方便学习和测试。</li>
+<li><strong>光线追踪</strong>：按项目需求开启。</li>
+</ul>
+<p>具体选项可能随模板变化，例如手持式 AR 模板只能使用蓝图。</p>
+<p><strong>3. 创建项目</strong></p>
+<p>选择保存位置并输入项目名称，然后点击<strong>创建（Create）</strong>。项目名称会用于项目文件夹和 <code>.uproject</code> 文件，建议使用简洁的英文路径和名称。</p>
+<p>项目生成后会自动打开；C++ 项目首次打开可能需要编译，因此耗时更长。</p>
+<p><strong>请记住：</strong></p>
+<blockquote>
+<ul>
+<li>想从零开始选<strong>空白模板</strong>，想快速体验角色控制选<strong>第一人称或第三人称模板</strong>。</li>
+<li>蓝图容易上手，C++ 需要编译环境；项目选项按平台和需求设置。</li>
+</ul>
+</blockquote>
+<h3 id="2-打开现有项目"><a href="#2-打开现有项目" class="headerlink" title="2. 打开现有项目"></a>2. 打开现有项目</h3><p><strong>1. 从最近项目打开</strong></p>
+<p>启动虚幻引擎后，项目浏览器默认显示<strong>最近项目</strong>。双击项目缩略图，或选中项目后点击<strong>打开</strong>即可。如果已经进入编辑器，可以选择 <strong>文件 → 打开项目</strong>。</p>
+<p><strong>2. 使用其他方式打开</strong></p>
+<ul>
+<li><strong>项目浏览器</strong>：点击<strong>浏览（Browse）</strong>，选择项目根目录中的 <code>.uproject</code> 文件。</li>
+<li><strong>文件管理器</strong>：直接双击项目的 <code>.uproject</code> 文件。</li>
+<li><strong>Epic Games 启动器</strong>：进入 <strong>虚幻引擎 → 库 → 我的项目</strong>，双击项目缩略图；条目会显示兼容的引擎版本。</li>
+</ul>
+<p>从其他电脑复制、从网络下载或位于网络位置的项目，通常要先在本地打开一次，之后才会出现在项目列表中。</p>
+<p><strong>3. 注意引擎版本</strong></p>
+<p>尽量使用项目原来的引擎版本。更换版本可能导致资产不兼容，甚至损坏或丢失数据，建议先备份项目，或者打开项目副本。</p>
+<p><strong>请记住：</strong></p>
+<blockquote>
+<ul>
+<li>最近项目直接打开；找不到时，手动选择 <code>.uproject</code> 文件。</li>
+<li>更换引擎版本前，先备份或打开副本。</li>
+</ul>
+</blockquote>
+<h3 id="3-模板参考"><a href="#3-模板参考" class="headerlink" title="3. 模板参考"></a>3. 模板参考</h3><p>模板是预先配置好场景、资产和功能的项目起点。各类别都提供<strong>空白模板</strong>，其他常见模板如下：</p>
+<table>
+<thead>
+<tr>
+<th>类别</th>
+<th>主要模板</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>游戏</td>
+<td>第一人称、第三人称、俯视角、手持式 AR、虚拟现实、载具</td>
+</tr>
+<tr>
+<td>影视与直播</td>
+<td>虚拟制片、DMX、InCamera VFX、nDisplay</td>
+</tr>
+<tr>
+<td>建筑工程</td>
+<td>建筑可视化、设计配置器、协作查看器、手持式 AR</td>
+</tr>
+<tr>
+<td>汽车与制造</td>
+<td>影棚、产品配置器、协作查看器、手持式 AR</td>
+</tr>
+<tr>
+<td>模拟</td>
+<td>模拟空白</td>
+</tr>
+</tbody></table>
+<p>影视模板分别覆盖虚拟拍摄、灯光控制、LED 舞台和多屏渲染等用途；建筑和汽车模板可通过 <strong>Datasmith</strong> 导入其他 3D 软件的内容。<strong>模拟空白</strong>预置了地球大气、大气光照、体积云、地理坐标和 WGS84 等功能，适合作为模拟应用的起点。</p>
+<h4 id="1-第一人称模板"><a href="#1-第一人称模板" class="headerlink" title="1. 第一人称模板"></a>1. 第一人称模板</h4><p>第一人称模板用于快速搭建以角色视角观察场景的项目。创建时选择 <strong>游戏 → 第一人称游戏（First Person）</strong>，再选择模板变体。</p>
+<p>基础角色使用<strong>增强输入</strong>，支持 <strong>WASD 移动、鼠标观察</strong>。角色使用完整的身体网格体，而不是只显示一双手臂。</p>
+<p><strong>三种模板变体：</strong></p>
+<ul>
+<li><strong>无（None）</strong>：只包含基础角色和测试关卡。关卡 <code>Lvl_FirstPerson</code> 中有斜坡、平台等简单几何体，适合学习和自由扩展。</li>
+<li><strong>竞技场射击游戏（Arena Shooter）</strong>：增加榴弹发射器、手枪和步枪，支持拾取武器和射击；还包含会寻找并攻击玩家的 AI 敌人、跳跃踏板，以及准星、击杀数、死亡数和弹药量 UI。</li>
+<li><strong>生存恐怖游戏（Survival Horror）</strong>：提供昏暗、高对比度的关卡，包含彩色光源和自动门，并加入冲刺、体力消耗和体力条 UI。</li>
+</ul>
+<p><strong>主要资源目录：</strong></p>
+<ul>
+<li><code>Content/FirstPerson/Blueprints</code>：基础玩家角色、游戏模式、玩家控制器和摄像机管理器蓝图。</li>
+<li><code>Content/Characters/Mannequins</code>：角色的骨架网格体、材质、纹理、动画和绑定。</li>
+<li><code>Content/LevelPrototyping</code>：各变体共用的关卡静态网格体、材质和纹理。</li>
+<li><code>Content/Variant_Shooter</code>：射击变体的关卡、武器、AI、动画和 UI。</li>
+<li><code>Content/Variant_Horror</code>：恐怖变体的关卡、角色、输入和 UI。</li>
+</ul>
+<p>射击变体中，<code>Blueprints/Pickups</code> 存放武器与拾取物，<code>BPWeaponBase</code> 是武器基类；<code>Projectiles</code> 中的 <code>BP_FirstPersonProjectile</code> 负责生成子弹并对命中的物理 Actor 施加冲击。<code>Blueprints/AI</code> 包含敌人及其状态树、环境查询和行为树黑板资产，<code>Anims</code> 和 <code>UI</code> 分别存放武器动画与界面。</p>
+<p>恐怖变体的玩家角色是 <code>Blueprints/BP_FP_Horror</code>，关卡为 <code>Lvl_Horror</code>；输入配置和体力条分别位于 <code>Input</code> 与 <code>UI</code> 目录。</p>
+<h4 id="2-模拟空白模板"><a href="#2-模拟空白模板" class="headerlink" title="2. 模拟空白模板"></a>2. 模拟空白模板</h4><p><strong>模拟空白（Simulation Blank）</strong>基于<strong>空世界（Empty World）</strong>，保留一块平坦地面，并预置环境、地理配准和运行控制工具，适合作为模拟项目的起点。</p>
+<p><strong>环境内容：</strong></p>
+<ul>
+<li><strong>SunSky 与定向光源</strong>：使用地球专用设置，太阳强度和源角度偏真实；SunSky 的北偏移遵循 GeoReferencing 插件规范。</li>
+<li><strong>天空与曝光</strong>：包含自然外观的体积云、指数高度雾、装饰性星星，以及按人眼视觉设置曝光的全局后期处理体积。</li>
+<li><strong>地理配准</strong>：通过 Georeferencing Actor 关联虚幻世界与真实地理位置。SunSky 和地理配准 Actor 的默认原点都是<strong>西经 73°、北纬 45°</strong>，实际项目需要修改。</li>
+<li><strong>远阴影</strong>：定向光源通过虚拟阴影贴图产生远阴影。Windows 项目需要在 <strong>项目设置 → 平台 - Windows</strong> 中启用 <strong>DirectX 12（SM6 试验性）</strong>，并使用兼容显卡。</li>
+</ul>
+<p><strong>预置蓝图：</strong></p>
+<ul>
+<li><code>BP_SimGameMode</code>：配置默认的玩家控制器和浮动 Pawn。</li>
+<li><code>BP_SimPlayerController</code>：提供 Pawn 切换、时间控制和信息显示等运行功能。</li>
+<li><code>BP_SimFloatingPawn</code>：用于在大型场景中自由移动和查看内容。</li>
+</ul>
+<p><strong>常用运行快捷键：</strong></p>
+<table>
+<thead>
+<tr>
+<th>按键</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>Enter</code></td>
+<td>在运行时生成的浮动 Pawn 与关卡已有 Pawn 之间切换</td>
+</tr>
+<tr>
+<td><code>Tab</code> &#x2F; <code>Shift + Tab</code></td>
+<td>切换到下一个 &#x2F; 上一个可控制的关卡 Pawn</td>
+</tr>
+<tr>
+<td><code>1</code>～<code>6</code></td>
+<td>直接选择关卡 Pawn；超过 6 个时用 <code>Tab</code> 循环切换</td>
+</tr>
+<tr>
+<td><code>End</code> &#x2F; <code>Page Down</code></td>
+<td>减少 &#x2F; 增加当日时间</td>
+</tr>
+<tr>
+<td><code>Insert</code> &#x2F; <code>Home</code> &#x2F; <code>Page Up</code></td>
+<td>切换到黎明 &#x2F; 中午 &#x2F; 傍晚</td>
+</tr>
+<tr>
+<td><code>P</code></td>
+<td>显示或隐藏分析控件，查看 FPS、引擎和场景渲染等性能数据</td>
+</tr>
+<tr>
+<td><code>G</code></td>
+<td>显示或隐藏地理空间控件，查看投影 CRS、地理 CRS（经纬度）和地心 ECEF 坐标</td>
+</tr>
+<tr>
+<td>鼠标滚轮 &#x2F; 按下滚轮</td>
+<td>调整浮动 Pawn 的最大导航速度 &#x2F; 恢复默认速度</td>
+</tr>
+</tbody></table>
+<h4 id="3-为模板角色配置输入"><a href="#3-为模板角色配置输入" class="headerlink" title="3. 为模板角色配置输入"></a>3. 为模板角色配置输入</h4><p>模板角色的按键可以在项目设置中修改，不一定要先改蓝图。</p>
+<p><strong>1. 打开输入设置</strong></p>
+<p>进入 <strong>编辑 → 项目设置 → 引擎 → 输入 → 绑定（Bindings）</strong>。</p>
+<p><strong>2. 选择映射类型</strong></p>
+<ul>
+<li><strong>操作映射（Action Mappings）</strong>：用于跳跃、开火等按下或松开触发的操作。</li>
+<li><strong>轴映射（Axis Mappings）</strong>：用于移动、转向等持续输入，可以通过正值和负值区分方向。</li>
+<li>同一个操作可以绑定键盘、鼠标和手柄按键，方便支持多种设备。</li>
+</ul>
+<p>可用方向受模板玩法限制。例如，横版变体只允许左右移动和跳跃，仅添加其他按键并不会解除移动限制。</p>
+<p>新版模板通常使用<strong>增强输入</strong>，按键主要在 <code>Input</code> 目录的<strong>输入操作（IA）</strong>和<strong>输入映射上下文（IMC）</strong>中配置；核心思路仍是把设备输入映射到角色操作。</p>
+<h4 id="4-游戏模板变体"><a href="#4-游戏模板变体" class="headerlink" title="4. 游戏模板变体"></a>4. 游戏模板变体</h4><p>创建游戏项目时，可以通过<strong>变体（Variants）</strong>下拉菜单选择预置玩法：</p>
+<ul>
+<li><strong>无（None）</strong>：标准基础模板，不添加额外玩法。</li>
+<li><strong>其他变体</strong>：在基础模板上增加示例关卡、角色功能、UI 和相关资产，方便直接运行和学习。</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>基础模板</th>
+<th>可选变体</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>第一人称</td>
+<td>竞技场射击、生存恐怖</td>
+</tr>
+<tr>
+<td>第三人称</td>
+<td>战斗、平台跳跃、横版卷轴</td>
+</tr>
+<tr>
+<td>俯视角</td>
+<td>策略游戏、双摇杆</td>
+</tr>
+<tr>
+<td>载具</td>
+<td>计时赛、越野</td>
+</tr>
+</tbody></table>
+<p>变体资产通常放在 <code>Content/Variant_变体名称</code> 目录中，便于与基础模板资源区分。</p>
+<h4 id="5-俯视角模板"><a href="#5-俯视角模板" class="headerlink" title="5. 俯视角模板"></a>5. 俯视角模板</h4><p>创建时选择 <strong>游戏 → 俯视角（Top Down）</strong>。基础模板从高处俯视角色，适合点击移动、策略和双摇杆玩法。</p>
+<p><strong>模板变体：</strong></p>
+<ul>
+<li><strong>无（None）</strong>：点击并按住鼠标或使用触摸屏控制角色移动，点击位置会出现光标特效；基础关卡为 <code>Lvl_TopDown</code>。</li>
+<li><strong>策略游戏（Strategy）</strong>：提供可平移、缩放的正交摄像机，支持选择多个单位并集体移动；还包含选中数量 UI、可透视的屋顶、物理交互物体和自动门。</li>
+<li><strong>双摇杆游戏（Twin Stick）</strong>：支持全向射击和投掷炸弹，包含追踪玩家的 AI 敌人、得分和随时间衰减的倍率，以及分数、倍率和炸弹数量 UI。命中特效使用 Niagara，敌人破坏使用 Chaos 物理。</li>
+</ul>
+<p><strong>双摇杆操作：</strong></p>
+<ul>
+<li><strong>瞄准</strong>：鼠标或手柄右摇杆。</li>
+<li><strong>射击</strong>：<code>F</code>、鼠标左键或手柄右扳机。</li>
+<li><strong>投掷炸弹</strong>：<code>G</code>、鼠标右键或手柄左扳机。</li>
+</ul>
+<p><strong>主要资源目录：</strong></p>
+<ul>
+<li><code>Content/TopDown/Blueprint</code>：基础玩家角色、玩家控制器和游戏模式蓝图。</li>
+<li><code>Content/TopDown/Lvl_TopDown</code>：基础关卡。</li>
+<li><code>Content/Variant_Strategy/Blueprints</code>：策略变体逻辑，主要包括 <code>BP_StrategyPlayerController</code> 和 <code>BP_StrategyPawn</code>。</li>
+<li><code>Content/Variant_TwinStick/Blueprints</code>：双摇杆变体的角色、射击和敌人等逻辑。</li>
+<li><code>Content/LevelPrototyping</code>：关卡网格体、材质和纹理。</li>
+</ul>
+<h4 id="6-第三人称模板"><a href="#6-第三人称模板" class="headerlink" title="6. 第三人称模板"></a>6. 第三人称模板</h4><p>创建时选择 <strong>游戏 → 第三人称（Third Person）</strong>。基础模板提供位于角色后上方的摄像机，以及可移动、跳跃的角色。</p>
+<p><strong>基础操作与内容：</strong></p>
+<ul>
+<li><strong>WASD</strong> 移动，<strong>鼠标</strong>控制视角，<strong>空格键</strong>跳跃。</li>
+<li>关卡包含斜坡、平台和可被角色推动的物理方块。</li>
+<li>提供 <strong>Manny 和 Quinn</strong> 人体模型及配套动画，可用于学习动画和重定向。</li>
+</ul>
+<p><strong>模板变体：</strong></p>
+<ul>
+<li><strong>战斗（Combat）</strong>：包含近战与连击、敌人锁定、AI 对手、生命值系统和场景中的血条 UI。</li>
+<li><strong>平台跳跃（Platforming）</strong>：增加冲刺和蹬墙跳等移动能力，并提供示例关卡。</li>
+<li><strong>横版卷轴（Side Scroller）</strong>：使用固定或锁定摄像机，将移动限制在平面内；包含拾取物、单面碰撞和可下落穿透的平台。</li>
+</ul>
+<p><strong>主要资源目录：</strong></p>
+<ul>
+<li><code>Content/ThirdPerson/Blueprints</code>：主要包括 <code>BP_ThirdPersonCharacter</code> 和 <code>BP_ThirdPersonGameMode</code>。</li>
+<li><code>Content/Characters</code>：角色资产；<code>Mannequins/Animations</code> 中分别保存 Manny 和 Quinn 的动画。</li>
+<li><code>Content/LevelPrototyping</code>：基础关卡的几何体、材质和纹理。</li>
+<li>角色动画使用 <strong>IK Rig</strong>；<code>CR_Mannequin_BasicFootIK</code> 负责动态脚部 IK，<code>CR_Mannequin_Body</code> 可用于在编辑器中直接调整和制作人体动画。</li>
+</ul>
+<h4 id="7-载具模板"><a href="#7-载具模板" class="headerlink" title="7. 载具模板"></a>7. 载具模板</h4><p>创建时选择 <strong>游戏 → 载具（Vehicle）</strong>。模板提供基于物理的可驾驶载具、车内和车后摄像机，并支持键盘、手柄、触摸屏和 VR 输入。</p>
+<p><strong>基础操作：</strong></p>
+<table>
+<thead>
+<tr>
+<th>按键</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>W</code> &#x2F; <code>S</code></td>
+<td>加速 &#x2F; 刹车</td>
+</tr>
+<tr>
+<td><code>A</code> &#x2F; <code>D</code></td>
+<td>转向</td>
+</tr>
+<tr>
+<td>鼠标</td>
+<td>调整摄像机</td>
+</tr>
+<tr>
+<td><code>Space</code></td>
+<td>手刹</td>
+</tr>
+<tr>
+<td><code>L</code></td>
+<td>开关车灯</td>
+</tr>
+<tr>
+<td><code>Backspace</code></td>
+<td>重置载具</td>
+</tr>
+</tbody></table>
+<p><strong>模板变体：</strong></p>
+<ul>
+<li><strong>无（None）</strong>：提供可驾驶载具和带道路、障碍物的基础关卡 <code>Lvl_VehicleBasic</code>。</li>
+<li><strong>计时赛（Timetrial）</strong>：提供跑车和带坡道、隧道的赛道。按顺序通过所有检查点后增加圈数并记录时间；UI 显示起跑倒计时、当前与最佳圈速、档位和速度。</li>
+<li><strong>越野（Offroad）</strong>：提供悬挂较软的越野车，以及包含道路和起伏地形的关卡。地形使用 Landscape 和运行时虚拟纹理，HLOD 用于降低渲染内存开销。</li>
+</ul>
+<p><strong>主要资源目录：</strong></p>
+<ul>
+<li><code>Content/VehicleTemplate/Blueprints</code>：基础载具、游戏模式和玩家控制器蓝图。</li>
+<li><code>Content/VehicleTemplate/Maps/Lvl_VehicleBasic</code>：基础关卡。</li>
+<li><code>Content/Vehicles/SportsCar</code>、<code>Content/Vehicles/OffroadCar</code>：跑车与越野车资产。</li>
+<li><code>Content/Variant_Timetrial</code>：计时赛的蓝图、UI 和 <code>Maps/Lvl_Timetrial</code> 关卡；共用 UI 位于 <code>Content/VehicleTemplate/UI</code>。</li>
+<li><code>Content/Variant_Offroad</code>：越野变体的蓝图、HLOD 和 <code>Maps/Lvl_Offroad</code> 关卡；地形资源位于 <code>Content/VehicleTemplate/Maps/LandscapeInfo</code>。</li>
+</ul>
+<p>模板蓝图的事件图表带有注释，可以结合关卡和注释理解实现逻辑。</p>
+<h4 id="8-创建自定义模板"><a href="#8-创建自定义模板" class="headerlink" title="8. 创建自定义模板"></a>8. 创建自定义模板</h4><p>自定义模板本质上是一个可重复使用的项目。将项目放入引擎的模板目录，再配置名称、说明、分类和预览图即可。</p>
+<p><strong>1. 将项目放入 Templates 目录</strong></p>
+<p>复制整个项目文件夹到引擎安装目录的 <code>Templates</code> 中：</p>
+<ul>
+<li>Windows：<code>C:\Program Files\Epic Games\UE_[version]\Templates</code></li>
+<li>macOS：<code>/Users/Shared/Epic Games/UE_[version]/Templates</code></li>
+<li>源码编译版：放入引擎源码目录下的 <code>Templates</code> 文件夹。</li>
+</ul>
+<p><strong>2. 设置项目名称</strong></p>
+<p>编辑项目的 <code>Config/DefaultGame.ini</code>，在 <code>[/Script/EngineSettings.GeneralProjectSettings]</code> 下设置：</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">ProjectName</span>=MyTestTemplate</span><br></pre></td></tr></table></figure>
+
+<p><code>ProjectName</code> 是项目名称；<code>ProjectID</code> 是每个项目的唯一 ID，两者作用不同。</p>
+<p><strong>3. 配置模板信息</strong></p>
+<p>从现有模板复制 <code>TemplateDefs.ini</code> 到项目的 <code>Config</code> 文件夹，例如从 <code>Templates/TP_FirstPerson/Config</code> 中复制。</p>
+<p>在 <code>[/Script/GameProjectGeneration.TemplateProjectDefs]</code> 下修改：</p>
+<ul>
+<li><code>LocalizedDisplayNames</code>：模板在项目浏览器中的显示名称。</li>
+<li><code>LocalizedDescriptions</code>：模板说明。</li>
+<li><code>Categories</code>：模板分类；每个模板只能选择一个类别。</li>
+</ul>
+<p>本地化文本支持 <code>en</code>、<code>ko</code>、<code>ja</code>、<code>zh-Hans</code> 等语言，其中 <code>zh-Hans</code> 表示简体中文。常用分类值为 <code>Games</code>（游戏）、<code>ME</code>（影视与直播）、<code>AEC</code>（建筑工程）和 <code>MFG</code>（汽车与制造）。更多分类可在引擎 <code>Templates/TemplateCategories.ini</code> 中查看。</p>
+<p><strong>4. 添加图标和预览图</strong></p>
+<p>此步骤可选。在项目的 <code>Media</code> 文件夹中放入 PNG 图片：</p>
+<ul>
+<li>图标：<code>[ProjectName].png</code></li>
+<li>预览图：<code>[ProjectName]_Preview.png</code></li>
+</ul>
+<p>例如项目名为 <code>MyTemplate</code>，图片就命名为 <code>MyTemplate.png</code> 和 <code>MyTemplate_Preview.png</code>。</p>
+<p><strong>5. 检查并使用模板</strong></p>
+<p>重新打开虚幻项目浏览器，在对应分类中检查名称、说明和图片，并用它试建一个项目，确认内容能够正确复制和打开。</p>
+<p><strong>请记住：</strong></p>
+<blockquote>
+<ul>
+<li>选模板时先选视角，再按需要选变体；<strong>无（None）</strong>只保留基础内容。</li>
+<li>修改模板时，重点查看角色、玩家控制器、GameMode、输入资产和 <code>Content/Variant_*</code> 目录。</li>
+<li>模拟空白先设置真实地理位置；其他模板先运行示例，再结合资源目录和蓝图注释理解实现。</li>
+<li>自定义模板要放入引擎的 <code>Templates</code> 目录，并配置 <code>DefaultGame.ini</code> 和 <code>TemplateDefs.ini</code>。</li>
+</ul>
+</blockquote>
+<h2 id="四、项目设置"><a href="#四、项目设置" class="headerlink" title="四、项目设置"></a>四、项目设置</h2><h3 id="1-项目"><a href="#1-项目" class="headerlink" title="1. 项目"></a>1. 项目</h3><p>打开 <strong>编辑 → 项目设置 → 项目</strong>。这里主要配置项目信息、窗口、编译与打包、默认地图、Gameplay 标签和支持平台。</p>
+<p><strong>1. 项目说明（Description）</strong></p>
+<table>
+<thead>
+<tr>
+<th>分组</th>
+<th>主要设置</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>关于（About）</td>
+<td>项目描述、项目 ID、项目名称、项目版本、项目缩略图</td>
+</tr>
+<tr>
+<td>发布方（Publisher）</td>
+<td>公司名称、公司区分名称、主页、支持联系方式</td>
+</tr>
+<tr>
+<td>法律信息（Legal）</td>
+<td>版权声明、许可条款、隐私政策</td>
+</tr>
+<tr>
+<td>显示信息（Displayed）</td>
+<td>项目显示标题、项目调试标题信息</td>
+</tr>
+</tbody></table>
+<p>关于、发布方和法律信息主要用于记录项目元数据，不会改变玩法。显示标题支持 <code>&#123;GameName&#125;</code>、<code>&#123;PlatformArchitecture&#125;</code>、<code>&#123;BuildConfiguration&#125;</code>、<code>&#123;RHIName&#125;</code> 等占位符；调试标题信息用于在非发布构建的窗口标题中补充配置、平台等信息。</p>
+<p><strong>2. 窗口（Window）</strong></p>
+<p>控制打包后程序窗口的表现，包括：</p>
+<ul>
+<li>是否保持宽高比、是否使用无边框窗口。</li>
+<li>是否允许调整窗口大小。</li>
+<li>是否显示关闭、最大化和最小化按钮。</li>
+<li>是否在 VR 中启动。</li>
+</ul>
+<p><strong>3. 编译（Build）</strong></p>
+<ul>
+<li><strong>Build</strong>：决定打包时是否编译游戏可执行文件，可设置为总是、从不，或根据代码项目和本地编译编辑器的情况决定。</li>
+<li><strong>Build Configuration</strong>：选择打包配置，包括 <code>Debug</code>、<code>DebugGame</code>、<code>Development</code>、<code>Test</code> 和 <code>Shipping</code>。</li>
+<li><strong>Build Target</strong>：指定要编译的目标名称。</li>
+<li><strong>Staging Directory</strong>：指定打包产物的暂存和复制目录。</li>
+<li><strong>Full Rebuild</strong>：每次打包都完整重新编译；关闭后只编译修改过的文件。调试打包流程时可关闭以加快迭代，正式打包通常建议开启。</li>
+<li><strong>For Distribution</strong>：标记用于分发的构建；<code>Include Debug Files in Shipping Builds</code> 控制 Shipping 构建是否附带调试文件。</li>
+</ul>
+<p><strong>4. 打包与烘焙（Packaging）</strong></p>
+<p>这里的“烘焙”指资源 <strong>Cook</strong>，不是光照烘焙。主要设置包括：</p>
+<ul>
+<li><strong>内容容器</strong>：<code>Use Pak File</code> 默认启用，将内容放入一个或多个 <code>.pak</code> 文件；<code>Use Io Store</code> 使用 <code>.utoc</code> &#x2F; <code>.ucas</code> 容器。另有 Zen Store、Pak 加密等相关选项。</li>
+<li><strong>Cook 范围</strong>：通过打包地图列表、额外烘焙资产目录和额外非资产目录，指定需要处理的内容。</li>
+<li><strong>配置清理</strong>：<code>Ini Section Denylist</code> 用于在打包时移除指定的 <code>.ini</code> 配置分段。</li>
+<li><strong>数据块（Chunks）</strong>：可生成数据块、设置数据块 ID，并构建 HTTP 数据块安装数据，用于拆分下载或发布内容。</li>
+<li><strong>大小与压缩</strong>：<code>Force One Chunk Per File</code> 限制文件只能进入一个数据块；<code>Max Chunk Size</code> 限制数据块大小，超限后拆分 Pak；压缩节省过小时可让数据块保持未压缩。</li>
+</ul>
+<p><strong>5. 地图和模式（Maps &amp; Modes）</strong></p>
+<ul>
+<li><strong>默认 GameMode</strong>：当地图或 URL 没有指定游戏模式时使用。</li>
+<li><strong>全局默认服务器 GameMode</strong>：供专用服务器使用；未设置时回退到全局默认 GameMode。</li>
+<li><strong>GameMode 地图前缀与类别名</strong>：按地图前缀覆盖游戏模式，或为 URL 中的游戏模式设置别名。</li>
+<li><strong>默认地图</strong>：分别设置编辑器启动地图、游戏默认地图、服务器默认地图和地图切换时使用的过渡地图；另有编辑器模板地图覆盖和本地地图选项。</li>
+</ul>
+<p><strong>6. Gameplay 标签</strong></p>
+<p>用于管理项目中的 Gameplay Tag：</p>
+<ul>
+<li>从 <code>Config/Tags</code> 中的 <code>.ini</code> 文件导入标签，或配置要加载的 Gameplay 标签表。</li>
+<li>设置无效标签的警告、清除和禁用字符，并管理标签列表、重定向与类别重新映射。</li>
+<li>高级设置可限制能够修改标签的配置文件和标签列表。</li>
+<li>网络复制设置包括快速复制、常用复制标签和容器大小位数等。</li>
+</ul>
+<p><strong>7. 支持的平台（Supported Platforms）</strong></p>
+<p>选择项目支持的目标平台，限定项目准备部署的平台范围。这里只声明支持范围，实际打包仍需要对应平台的 SDK 和编译环境。</p>
+<p><strong>请记住：</strong></p>
+<blockquote>
+<ul>
+<li>关于、发布方和法律信息是项目资料；显示与窗口设置会影响程序外观。</li>
+<li>编译设置决定如何构建，打包设置决定资源如何 Cook、装入容器和拆分数据块。</li>
+<li>地图与模式设置默认入口，Gameplay 标签集中管理标签，支持平台声明部署范围。</li>
+</ul>
+</blockquote>
+<h3 id="2-游戏"><a href="#2-游戏" class="headerlink" title="2. 游戏"></a>2. 游戏</h3><p>打开 <strong>项目设置 → 游戏</strong>。这里主要配置<strong>资产管理器（Asset Manager）</strong>，控制主要资产的扫描、Cook、数据块加载和重定向，不是设置 GameMode 的地方。</p>
+<p><strong>1. 资产管理器（Asset Manager）</strong></p>
+<ul>
+<li><strong>要扫描的主要资产类型（Primary Asset Types to Scan）</strong>：设置启动时需要扫描的主要资产类型。</li>
+<li><strong>要排除的目录（Directories to Exclude）</strong>：排除不参与扫描的目录，适合排除测试资产。</li>
+<li><strong>主要资产规则（Primary Asset Rules）</strong>：为具体资产设置规则覆盖；自定义主要资产规则用于添加项目专用规则，默认不生效。</li>
+<li><strong>仅烘焙产品级资产（Only Cook Production Assets）</strong>：启用后，遇到 <code>DevelopmentCook</code> 资产会报错，适合在产品分支中检查资产用途。</li>
+<li><strong>由管理器决定类型和名称</strong>：资产没有实现 <code>GetPrimaryAssetId</code> 时，管理器会调用 <code>DeterminePrimaryAssetIdForObject</code> 并结合 <code>.ini</code> 配置推导 ID，但速度比直接在资产中实现更慢。</li>
+<li><strong>在编辑器中猜测类型和名称</strong>：用于修正已经实现 <code>GetPrimaryAssetId</code>、但尚未重新保存的旧资产 ID。</li>
+<li><strong>加载时获取缺少的数据块</strong>：加载主要资产缺少数据块时，通过平台的数据块安装接口请求下载。</li>
+<li><strong>无效资产警告</strong>：资产管理器被要求处理无法识别的资产时发出警告。</li>
+</ul>
+<p><strong>2. 重定向（Redirects）</strong></p>
+<p>资产改名、移动或调整类型后，可以用重定向兼容旧引用：</p>
+<ul>
+<li><strong>主要资产 ID 重定向</strong>：从 <code>Type:Name</code> 指向新的 <code>Type:NameNew</code>。</li>
+<li><strong>主要资产类型重定向</strong>：从旧 <code>Type</code> 指向新的 <code>TypeNew</code>。</li>
+<li><strong>资产路径重定向</strong>：从 <code>/Game/AssetPath</code> 指向新的 <code>/Game/AssetPathNew</code>。</li>
+</ul>
+<p><strong>3. 资产注册表（Asset Registry）</strong></p>
+<p><strong>资产注册表的元数据标签（Metadata Tags For Asset Registry）</strong>用于指定需要转移到资产注册表的元数据标签，方便后续查询和管理资产。</p>
+<p><strong>4. 资产工具：高级复制（Advanced Copy）</strong></p>
+<p><strong>高级复制自定义（Advanced Copy Customizations）</strong>用于设置资产高级复制时使用的自定义规则。这里的“复制”是复制资产，与 Gameplay 标签的网络复制无关。</p>
+<p><strong>请记住：</strong></p>
+<blockquote>
+<ul>
+<li>“游戏”分段主要管理主要资产，包括扫描范围、Cook 规则、数据块加载和重定向。</li>
+<li>资产改名或移动后，可通过 ID、类型或路径重定向兼容旧引用。</li>
+</ul>
+</blockquote>
+<h3 id="3-引擎"><a href="#3-引擎" class="headerlink" title="3. 引擎"></a>3. 引擎</h3><p>打开 <strong>项目设置 → 引擎</strong>。这里集中管理引擎各系统的项目级默认值，实际可见的子项会随引擎版本和启用的插件变化。</p>
+<p><strong>1. AI 系统（AI System）</strong></p>
+<p>配置 AI 移动、环境查询、黑板、行为树和感知系统等全局行为。</p>
+<p><strong>2. 动画（Animation）</strong></p>
+<p>配置动画压缩、更新和性能等全局选项。</p>
+<p><strong>3. 动画修改器（Animation Modifiers）</strong></p>
+<p>管理可批量应用到动画序列上的修改器，用于自动添加或调整动画数据。</p>
+<p><strong>4. 音频（Audio）</strong></p>
+<p>配置默认声音类、并发、音质和混音等全局音频行为。</p>
+<p><strong>5. Chaos 解算器（Chaos Solver）</strong></p>
+<p>配置 Chaos 物理解算器的默认模拟参数。</p>
+<p><strong>6. 碰撞（Collision）</strong></p>
+<p>定义碰撞通道、碰撞预设和对象响应，是物理碰撞与射线检测的基础。</p>
+<p><strong>7. 控制台（Console）</strong></p>
+<p>配置控制台快捷键和历史记录缓冲等基础选项。</p>
+<p><strong>8. Control Rig</strong></p>
+<p>配置 Control Rig 的全局编辑和控制点显示行为。</p>
+<p><strong>9. 烘焙器（Cooker）</strong></p>
+<p>控制资源 Cook 时的进程、输出和性能等行为。</p>
+<p><strong>10. 人群管理器（Crowd Manager）</strong></p>
+<p>配置基于 Recast 的人群避让，控制参与避让的代理数量和避障质量。</p>
+<p><strong>11. 数据驱动的控制台变量（Data Driven CVars）</strong></p>
+<p>登记可由平台配置或其他数据驱动配置修改的控制台变量。</p>
+<p><strong>12. Gameplay 调试器（Gameplay Debugger）</strong></p>
+<p>配置 Gameplay 调试器的启用方式、快捷键和调试类别。</p>
+<p><strong>13. 垃圾回收（Garbage Collection）</strong></p>
+<p>控制 UObject 垃圾回收的频率、增量清理和对象簇等行为。</p>
+<p><strong>14. 通用设置（General Engine Settings）</strong></p>
+<p>配置字体、默认类与材质、字幕、蓝图、帧率、时间码和关卡流送等通用选项。</p>
+<p><strong>15. 层级细节（Hierarchical LOD，HLOD）</strong></p>
+<p>设置 HLOD 的生成与切换规则，将远处对象合批以降低渲染开销。</p>
+<p><strong>16. 输入（Input）</strong></p>
+<p>配置旧式输入映射、默认输入组件和鼠标捕获等行为；Enhanced Input 资产仍在内容目录中管理。</p>
+<p><strong>17. Interchange</strong></p>
+<p>配置 Interchange 的默认导入管线和转换规则，统一处理外部资产导入。</p>
+<p><strong>18. 地形（Landscape）</strong></p>
+<p>配置地形的默认材质、LOD 和编辑行为。</p>
+<p><strong>19. 关卡序列（Level Sequence）</strong></p>
+<p>配置关卡序列的默认帧率、播放和编辑行为。</p>
+<p><strong>20. 导航网格（Navigation Mesh）</strong></p>
+<p>配置 Recast 导航网格的生成参数和运行时行为，影响可行走区域的构建。</p>
+<p><strong>21. 导航系统（Navigation System）</strong></p>
+<p>控制导航系统的自动创建、支持代理、导航数据更新和查询行为。</p>
+<p><strong>22. 网络（Network）</strong></p>
+<p>配置网络驱动、连接超时和多人网络的基础行为。</p>
+<p><strong>23. 物理（Physics）</strong></p>
+<p>设置重力、摩擦、子步进、约束和物理场景等全局物理参数。</p>
+<p><strong>24. 渲染（Rendering）</strong></p>
+<p>配置阴影、全局光照、反射、纹理、后期处理和移动渲染等画质与功能选项。</p>
+<p><strong>25. 渲染覆盖（Rendering Overrides）</strong></p>
+<p>按平台覆盖部分渲染设置，让同一项目在不同设备上使用不同画质方案。</p>
+<p><strong>26. Slate 设置（Slate Settings）</strong></p>
+<p>控制 Slate 的休眠、绘制和界面无效化等 UI 性能行为。</p>
+<p><strong>27. 流送（Streaming）</strong></p>
+<p>控制异步加载和资源流送，包括每帧加载时间限制及相关线程行为。</p>
+<p><strong>28. 纹理编码（Texture Encoding）</strong></p>
+<p>配置纹理编码的质量和速度，影响 Cook 时的压缩耗时与结果。</p>
+<p><strong>29. 用户界面（User Interface）</strong></p>
+<p>配置 UI 焦点、光标、应用缩放和 3D 控件交互等全局行为。</p>
+<p><strong>30. 世界分区（World Partition）</strong></p>
+<p>配置世界分区的运行时流送、数据层和编辑器加载等默认行为。</p>
+<p><strong>请记住：</strong></p>
+<blockquote>
+<ul>
+<li>“引擎”分段配置的是各系统的项目级默认值，不是某个关卡或资产的单独设置。</li>
+<li>优先调整明确需要的子项；渲染、物理、导航和流送等全局设置可能影响整个项目。</li>
+</ul>
+</blockquote>
+<h3 id="4-Editor"><a href="#4-Editor" class="headerlink" title="4. Editor"></a>4. Editor</h3><p>打开 <strong>项目设置 → Editor</strong>。这里保存随项目共享的编辑器配置，与“编辑器偏好设置”中的个人本地选项不同；实际可见的子项会随版本和插件变化。</p>
+<p><strong>1. 2D</strong></p>
+<p>配置二维关卡编辑器的组合变换控件和分层吸附功能。</p>
+<p><strong>2. 外观（Appearance）</strong></p>
+<p>配置属性与变换的单位显示，以及引用查看器的默认显示和搜索范围。</p>
+<p><strong>3. 蓝图（Blueprint）</strong></p>
+<p>配置蓝图编译消息、软 Actor 引用校验和 PIE 期间允许重新编译的基类等项目级行为。</p>
+<p><strong>4. 类查看器（Class Viewer）</strong></p>
+<p>设置视为内部的目录和基类，控制它们在类选择器中的可见性。</p>
+<p><strong>5. 派生数据（Derived Data）</strong></p>
+<p>配置缺少推荐 DDC 设置时的编辑器警告，帮助检查本地、共享或云端缓存配置。</p>
+<p><strong>6. 层级 LOD 网格体简化（Hierarchical LOD Mesh Simplification）</strong></p>
+<p>选择用于简化 HLOD 几何体的网格体减面插件。</p>
+<p><strong>7. 关卡序列（Level Sequences）</strong></p>
+<p>设置新关卡序列的默认时长、镜头命名和编号，以及 FBX 属性轨道映射。</p>
+<p><strong>8. 网格体简化（Mesh Simplification）</strong></p>
+<p>选择用于静态网格体自动简化的减面插件。</p>
+<p><strong>9. Paper2D 导入（Paper2D - Import）</strong></p>
+<p>设置精灵导入时的默认材质、每单位像素数、纹理后缀识别和压缩方式。</p>
+<p><strong>10. 性能（Performance）</strong></p>
+<p>设置编辑器视口默认的屏幕百分比和渲染分辨率范围。</p>
+<p><strong>11. 骨骼网格体简化（Skeletal Mesh Simplification）</strong></p>
+<p>选择用于骨骼网格体自动简化的减面插件。</p>
+<p><strong>12. 源码管理（Source Control）</strong></p>
+<p>配置提交验证标签、还原时删除新增文件和集合变更列表说明等源码管理行为。</p>
+<p><strong>13. 结构体查看器（Struct Viewer）</strong></p>
+<p>设置视为内部的目录和基础结构体，控制它们在结构体选择器中的可见性。</p>
+<p><strong>14. 纹理导入（Texture Import）</strong></p>
+<p>设置新导入纹理自动启用虚拟纹理流送的尺寸阈值，不影响已有纹理。</p>
+<p><strong>15. 控件设计器（团队）（Widget Designer (Team)）</strong></p>
+<p>为团队统一 UMG 编译规则，包括是否允许 Tick、OnPaint 和属性绑定，以及自定义验证规则。</p>
+<p><strong>请记住：</strong></p>
+<blockquote>
+<ul>
+<li>Editor 是随项目共享的编辑器配置，个人偏好仍在“编辑器偏好设置”中。</li>
+<li>三种网格体简化分别作用于 HLOD、静态网格体和骨骼网格体，不要混淆。</li>
+</ul>
+</blockquote>
+<h3 id="5-平台"><a href="#5-平台" class="headerlink" title="5. 平台"></a>5. 平台</h3><p>打开 <strong>项目设置 → 平台</strong>。这里按目标平台配置构建、SDK、渲染接口、图标和音频等选项，实际可见的平台会随引擎安装、插件和开发环境变化。</p>
+<p><strong>1. Android</strong></p>
+<p>配置 Android 应用的包信息、构建方式、SDK 版本、权限、屏幕方向和 Google Play 等发布选项。</p>
+<p><strong>2. Android 材质质量 - ES31（Android Material Quality - ES31）</strong></p>
+<p>为 Android OpenGL ES 3.1 渲染配置前向渲染覆盖、材质简化和移动阴影质量，并可更新预览着色器。</p>
+<p><strong>3. Android 材质质量 - Vulkan（Android Material Quality - Vulkan）</strong></p>
+<p>为 Android Vulkan 移动渲染配置材质质量、前向渲染覆盖和预览着色器。</p>
+<p><strong>4. Android SDK</strong></p>
+<p>设置 Android SDK、NDK、JDK 的路径及 SDK&#x2F;NDK API 等级，是 Android 编译和打包的环境基础。</p>
+<p><strong>5. Android SM5 材质质量 - Vulkan（Android SM5 Material Quality - Vulkan）</strong></p>
+<p>为使用 Vulkan SM5 功能等级的 Android 设备配置更高等级的材质与前向渲染覆盖。</p>
+<p><strong>6. iOS</strong></p>
+<p>配置 iOS 应用的 Bundle 信息、签名与描述文件、设备方向、功能和构建发布选项。</p>
+<p><strong>7. iOS 材质质量（iOS Material Quality）</strong></p>
+<p>为 iOS Metal 渲染配置材质简化、前向渲染覆盖和移动阴影质量，并可更新预览着色器。</p>
+<p><strong>8. Linux</strong></p>
+<p>配置 Linux 的目标 RHI、启动画面、图标以及空间化、混响和遮挡等音频插件。</p>
+<p><strong>9. Windows</strong></p>
+<p>配置 Windows 的目标 RHI、编译器、启动画面、图标和音频混音等选项。</p>
+<p><strong>请记住：</strong></p>
+<blockquote>
+<ul>
+<li>平台分段放目标平台的专用设置，通用 Cook 和打包规则仍在“项目 → 打包与烘焙”中。</li>
+<li>Android SDK 配置开发环境，Android 配置应用本身；材质质量子项则分别针对不同渲染后端。</li>
+</ul>
+</blockquote>
+<h3 id="6-插件设置"><a href="#6-插件设置" class="headerlink" title="6. 插件设置"></a>6. 插件设置</h3><p>打开 <strong>项目设置 → 插件</strong>。这里集中显示插件注册的项目级配置；官方列表并不完整，启用或禁用插件会增删对应子项，找不到时应查看该插件自己的文档。</p>
+<p><strong>1. AndroidFileServer</strong></p>
+<p>配置 Android 构建内置的文件服务器，供 <code>UnrealAndroidFileTool</code> 通过 USB 或网络部署、查看和管理设备文件。</p>
+<p><strong>2. AVF Media</strong></p>
+<p>配置 Apple AVFoundation 媒体播放器的原生音频输出，决定音轨是否交给系统混音器播放。</p>
+<p><strong>3. 几何体缓存（Geometry Cache）</strong></p>
+<p>配置几何体缓存流送的预读秒数和总内存上限。</p>
+<p><strong>4. GooglePAD</strong></p>
+<p>配置 Google Play Asset Delivery 插件在打包中的启用范围，可限制为仅分发构建或仅 Shipping 构建。</p>
+<p><strong>5. 毛发（Groom）</strong></p>
+<p>配置 Groom 缓存动画流送的预读时间，让后续动画帧提前加载。</p>
+<p><strong>6. IMG Media</strong></p>
+<p>配置图像序列的默认帧率、缓存和解码线程、EXR 解码及低分辨率代理。</p>
+<p><strong>7. 关卡序列编辑器（Level Sequencer）</strong></p>
+<p>配置自动生成轨道的规则，以及播放或模拟时 Sequencer 是否自动绑定到 PIE、Simulate 世界。</p>
+<p><strong>8. 建模模式（Modeling Mode）</strong></p>
+<p>配置建模模式的新资产类型、命名、保存位置和选择行为。</p>
+<p><strong>9. 建模模式工具（Modeling Mode Tools）</strong></p>
+<p>配置编辑及新建网格时的光线追踪和碰撞默认行为。</p>
+<p><strong>10. Niagara</strong></p>
+<p>配置 Niagara 参数类型、质量等级、渲染器默认值和网格数据接口等运行时选项。</p>
+<p><strong>11. Niagara 编辑器（Niagara Editor）</strong></p>
+<p>配置 Niagara 脚本模板、自动编译、参数显示、播放速度和曲线模板等编辑行为。</p>
+<p><strong>12. Paper 2D</strong></p>
+<p>配置精灵图集、2D 地形样条，以及源纹理尺寸变化时的精灵数据同步等功能。</p>
+<p><strong>13. Python</strong></p>
+<p>配置启动脚本、额外模块路径、隔离解释器环境、开发者模式和远程执行。</p>
+<p><strong>14. Resonance Audio</strong></p>
+<p>配置 Resonance Audio 的输出 Submix、空间化质量、全局混响和声源预设。</p>
+<p><strong>15. TCP 消息传递（TCP Messaging）</strong></p>
+<p>配置 TCP 消息通道的监听地址、远程连接端点和断线重试。</p>
+<p><strong>16. UDP 消息传递（UDP Messaging）</strong></p>
+<p>配置 UDP 消息通道的单播与多播端点、消息格式、静态端点和隧道等传输行为。</p>
+<p><strong>17. WMF Media</strong></p>
+<p>配置 Windows Media Foundation 播放器的非标准编解码器、低延迟、硬件解码和原生音频输出。</p>
+<p><strong>请记住：</strong></p>
+<blockquote>
+<ul>
+<li>这里不是固定的完整清单，具体子项以当前启用的插件为准，第三方插件也可能添加设置。</li>
+<li>Niagara、Paper2D 等相近名称可能分别负责运行时、编辑器和资产导入，修改前先确认用途。</li>
+</ul>
+</blockquote>
+<h2 id="五、关卡"><a href="#五、关卡" class="headerlink" title="五、关卡"></a>五、关卡</h2><p>关卡（Level，也叫地图）是游戏世界的全部或一部分，以独立的 <code>.umap</code> 资产保存，可包含灯光、网格体、角色等 Actor。世界（World）由持久关卡和可选的流送关卡组成，负责管理这些关卡的加载与流送。</p>
+<h3 id="1-使用关卡"><a href="#1-使用关卡" class="headerlink" title="1. 使用关卡"></a>1. 使用关卡</h3><p><strong>1. 新建关卡</strong></p>
+<p>可用以下任一方式打开“新建关卡”窗口：</p>
+<ul>
+<li>主菜单选择 <strong>文件 → 新建关卡</strong>。</li>
+<li>在内容浏览器中右键，选择 <strong>创建基础资产 → 关卡</strong>。</li>
+<li>Windows 按 <code>Ctrl + N</code>，macOS 按 <code>Cmd + N</code>。</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>模板</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>开放世界（Open World）</td>
+<td>带示例内容，使用 World Partition 构建可流送的大型开放世界。</td>
+</tr>
+<tr>
+<td>空白开放世界（Empty Open World）</td>
+<td>使用 World Partition，但不包含示例内容。</td>
+</tr>
+<tr>
+<td>基础（Basic）</td>
+<td>包含地面、光照、大气和指数高度雾。</td>
+</tr>
+<tr>
+<td>空白关卡（Empty Level）</td>
+<td>不包含任何对象。</td>
+</tr>
+</tbody></table>
+<p>选择模板并点击“创建”后，新关卡会自动打开；连接源码管理时，新建并保存的关卡会自动加入源码管理。</p>
+<p><strong>2. 保存关卡</strong></p>
+<ul>
+<li><strong>保存当前关卡</strong>：选择 <strong>文件 → 保存当前关卡</strong>，或按 <code>Ctrl + S</code>（macOS 为 <code>Cmd + S</code>）；首次保存需要指定位置和名称。</li>
+<li><strong>另存副本</strong>：选择 <strong>文件 → 当前关卡另存为</strong>，或按 <code>Ctrl + Alt + S</code>（macOS 为 <code>Cmd + Option + S</code>），用新名称保存一份副本。</li>
+<li>切换到其他关卡时，编辑器会通过“保存内容”对话框提示保存未保存的修改。</li>
+</ul>
+<p><strong>3. 打开关卡</strong></p>
+<p>选择 <strong>文件 → 打开关卡</strong> 并选择目标关卡，或按 <code>Ctrl + O</code>（macOS 为 <code>Cmd + O</code>）。</p>
+<h3 id="2-管理多个关卡"><a href="#2-管理多个关卡" class="headerlink" title="2. 管理多个关卡"></a>2. 管理多个关卡</h3><p>通过 <strong>窗口 → 关卡（Levels）</strong> 打开关卡窗口。UE5 游戏开发通常改用 <strong>World Partition</strong>；这里介绍的持久关卡与子关卡流程主要用于旧版 UE4 项目，以及建筑可视化等非游戏项目。</p>
+<p><strong>1. 持久关卡与子关卡</strong></p>
+<ul>
+<li>一个世界始终有一个<strong>持久关卡（Persistent Level）</strong>，还可以包含多个子关卡；子关卡可始终加载，也可通过关卡流送体积、蓝图或 C++ 按需流送。</li>
+<li>当前关卡以蓝色粗体显示，在视口中添加或修改 Actor 时，修改的是当前关卡；所有相关关卡必须可写，才能一起编辑。</li>
+<li>关卡窗口可保存一个或多个关卡、打开对应关卡蓝图，并通过右键设置当前关卡、可见性、锁定状态或选中其中的 Actor。</li>
+<li>子关卡的右键菜单还可移除子关卡和修改流送方式。</li>
+<li><strong>可见性只影响编辑器显示，不决定游戏运行时是否加载</strong>；隐藏的关卡不会参与关卡重建，复杂场景可借此节省重建时间。</li>
+</ul>
+<p><strong>2. 添加与拆分子关卡</strong></p>
+<ul>
+<li><strong>添加现有关卡</strong>：在关卡窗口的 <strong>Levels</strong> 下拉菜单选择 <strong>Add Existing</strong>，再选择要加入的 <code>.umap</code>。</li>
+<li><strong>创建空子关卡</strong>：选择 <strong>Create New</strong>，使用空白关卡或模板，指定保存位置和名称；新关卡会加入当前持久关卡并成为当前关卡。</li>
+<li><strong>用选中 Actor 拆分子关卡</strong>：先在大纲或视口中选中 Actor，再选择 <strong>Create New with Selected Actors</strong>；这些 Actor 会从原关卡移到新子关卡，新子关卡同样会成为当前关卡。如果留在持久关卡中的 Actor 引用了被移动的 Actor，编辑器会弹出确认提示。</li>
+</ul>
+<p><strong>3. 在关卡之间移动 Actor</strong></p>
+<p>选中 Actor，在关卡窗口中右键目标关卡，选择 <strong>Move Selected Actors to Level</strong>，完成后按 <code>Ctrl + S</code> 保存所有相关关卡。</p>
+<p><strong>4. 关卡详情与流送设置</strong></p>
+<p>点击关卡窗口中的放大镜按钮打开 <strong>Level Details</strong>。持久关卡没有额外的子关卡详情；子关卡可设置位置和旋转偏移、关卡的流送体积、显示颜色，以及两次卸载请求之间的最小间隔等高级选项。</p>
+<p><strong>5. 子关卡着色</strong></p>
+<p>可在关卡窗口或 Level Details 中为子关卡设置颜色，再通过 <strong>视口 → Show → Advanced → Level Coloration</strong> 开关着色显示。持久关卡显示为白色，子关卡使用各自颜色；透视和正交视口都支持，游戏视图模式下会关闭。</p>
+<h3 id="3-世界设置"><a href="#3-世界设置" class="headerlink" title="3. 世界设置"></a>3. 世界设置</h3><p>通过 <strong>窗口 → 世界设置（World Settings）</strong> 打开面板，它默认位于“细节”面板旁，可用搜索框快速查找设置。这里配置的是<strong>当前关卡的专用设置和覆盖项</strong>，不同于作用于整个项目的“项目设置”。</p>
+<table>
+<thead>
+<tr>
+<th>分组</th>
+<th>用途与注意事项</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>预计算可见性（Precomputed Visibility）</td>
+<td>降低渲染线程耗时，但会增加运行时内存；适合小型关卡或移动端，难以扩展到大型复杂环境。</td>
+</tr>
+<tr>
+<td>游戏模式（Game Mode）</td>
+<td>通过 GameMode Override 为当前关卡指定游戏模式，并配置玩家、计分和胜利条件等相关规则。</td>
+</tr>
+<tr>
+<td>Lightmass</td>
+<td>配置静态光照构建的间接光细节与质量，以及环境光遮蔽等选项。</td>
+</tr>
+<tr>
+<td>世界（World）</td>
+<td>配置关卡边界、导航系统和 Kill Z 等世界规则，决定 Actor 坠落到多深时被销毁。</td>
+</tr>
+<tr>
+<td>物理（Physics）</td>
+<td>配置世界重力和默认物理体积等；重力会影响角色跳跃高度和物体下落速度。</td>
+</tr>
+<tr>
+<td>宽阶段（Broadphase）</td>
+<td>配置碰撞宽阶段的 Multi-Box Pruning 网格；<code>MBPNumSubDivs</code> 是每轴细分数，2 和 3 分别形成 4、9 个单元，超出 <code>MBPOuterBounds</code> 的活跃物理对象不再参与碰撞检测。</td>
+</tr>
+<tr>
+<td>HLOD 系统</td>
+<td>远处用合并后的静态网格体替代多个 Static Mesh Actor，减少每帧绘制调用。</td>
+</tr>
+<tr>
+<td>World Partition</td>
+<td>将单个持久关卡划分为网格单元，按与流送源的距离自动加载和卸载，无需手动拆成多个子关卡。</td>
+</tr>
+<tr>
+<td>导航（Navigation）</td>
+<td>配置当前关卡使用的导航网格。</td>
+</tr>
+<tr>
+<td>VR</td>
+<td>通过 <code>World to Meters</code> 调整虚拟世界尺度；在 <code>1 UU = 1 cm</code> 的内容中，设为 10 会让世界显得更大，设为 1000 会让世界显得更小。</td>
+</tr>
+<tr>
+<td>渲染（Rendering）</td>
+<td>配置距离场环境光遮蔽和动态间接阴影等当前关卡的渲染选项。</td>
+</tr>
+<tr>
+<td>音频（Audio）</td>
+<td>配置默认音量、混响和衰减时间等声音行为。</td>
+</tr>
+<tr>
+<td>Tick</td>
+<td>配置 Actor 和组件的 Tick 兼容行为，包括旧逻辑是否需要在 <code>BeginPlay()</code> 前执行 Tick。</td>
+</tr>
+<tr>
+<td>AI</td>
+<td>启用旧式 AI 系统支持。</td>
+</tr>
+<tr>
+<td>Cook</td>
+<td>控制当前场景内容如何纳入 Cook 和最终打包版本。</td>
+</tr>
+</tbody></table>
+<h3 id="4-更改默认关卡"><a href="#4-更改默认关卡" class="headerlink" title="4. 更改默认关卡"></a>4. 更改默认关卡</h3><p><strong>1. 设置游戏默认地图</strong></p>
+<ol>
+<li>打开 <strong>编辑 → 项目设置 → 地图和模式（Maps &amp; Modes）</strong>。</li>
+<li>在 <strong>Game Default Map</strong> 下拉列表中选择关卡，它是玩家启动游戏时加载的默认地图。</li>
+</ol>
+<p><strong>2. 设置编辑器启动地图</strong></p>
+<p>在 <strong>Editor Startup Map</strong> 中选择编辑器启动时自动打开的关卡，可设为经常编辑的地图，减少每次手动打开的步骤；它不改变玩家启动游戏时加载的地图。</p>
+<p><strong>3. 高级默认地图选项</strong></p>
+<p>展开默认地图的高级设置，还可配置 <strong>Local Map Options</strong>、关卡切换时使用的 <strong>Transition Map</strong>，以及专用服务器使用的 <strong>Server Default Map</strong>。</p>
+<p><strong>请记住：</strong></p>
+<blockquote>
+<ul>
+<li>关卡是独立的 <code>.umap</code> 资产；新建、另存和打开都可通过菜单或快捷键完成。</li>
+<li>UE5 游戏大场景优先使用 World Partition，持久关卡与子关卡流程主要留给旧项目和非游戏项目。</li>
+<li>World Settings 管当前关卡，Maps &amp; Modes 管项目启动时使用的默认地图。</li>
+</ul>
+</blockquote>
+<h2 id="六、资产和内容包"><a href="#六、资产和内容包" class="headerlink" title="六、资产和内容包"></a>六、资产和内容包</h2><p>资产（Asset）是项目中可复用的内容，例如纹理、材质、网格体、蓝图和关卡，通常以 <code>.uasset</code> 文件保存。内容浏览器负责创建、导入和组织这些资产；跨项目复用时，应通过迁移同时处理资产及其依赖。</p>
+<h3 id="1-直接导入资产"><a href="#1-直接导入资产" class="headerlink" title="1. 直接导入资产"></a>1. 直接导入资产</h3><p><strong>1. 选择导入位置</strong></p>
+<p>在内容侧滑菜单或内容浏览器中选中一个有效的目标文件夹。点击 <strong>添加&#x2F;导入（Add&#x2F;Import）→ 导入</strong>，或直接把源文件从资源管理器、Finder 拖入内容区域。</p>
+<p><strong>2. 设置导入选项</strong></p>
+<p>不同资产会显示不同的导入选项。点击 <strong>Import</strong> 可逐个确认，点击 <strong>Import All</strong> 可按当前设置一次导入全部文件；部分纹理能根据名称或内容自动识别用途，例如法线贴图。导入完成后，源文件会转换为 UE 使用的 <code>.uasset</code>。</p>
+<p><strong>3. 专用内容的导入</strong></p>
+<p>常规导入适合常见的图片、模型和音频等文件；CAD 等复杂场景数据应使用 Datasmith 等专用工具，以保留场景层级、变换和元数据。</p>
+<h3 id="2-使用资产"><a href="#2-使用资产" class="headerlink" title="2. 使用资产"></a>2. 使用资产</h3><p><strong>1. 创建资产与理解路径</strong></p>
+<p>在内容浏览器空白处右键，选择资产类型即可创建空资产；蓝图等类型还需要指定父类。资产位于包（Package）中，例如：</p>
+<ul>
+<li>包路径：<code>/Game/StarterContent/Shapes/Shape_Cone</code>。</li>
+<li>对象路径：<code>/Game/StarterContent/Shapes/Shape_Cone.Shape_Cone</code>。</li>
+</ul>
+<p>通常一个包包含一个主要资产，但蓝图包还包含生成的 <code>_C</code> 类，HLOD 包也可能包含多个资产。右键选择 <strong>Copy Reference</strong>，可复制带资产类型和完整对象路径的引用文本。</p>
+<p><strong>2. 常用资产操作</strong></p>
+<table>
+<thead>
+<tr>
+<th>操作</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Edit</td>
+<td>用对应的编辑器打开资产。</td>
+</tr>
+<tr>
+<td>Rename</td>
+<td>重命名资产，并更新项目中对它的引用。</td>
+</tr>
+<tr>
+<td>Duplicate</td>
+<td>在当前文件夹创建副本，可再拖到其他文件夹。</td>
+</tr>
+<tr>
+<td>Save</td>
+<td>保存选中的资产。</td>
+</tr>
+<tr>
+<td>Show in Folder View</td>
+<td>在文件夹树中定位资产的实际父文件夹，适合查找集合中的资产。</td>
+</tr>
+<tr>
+<td>Show in Explorer &#x2F; Finder</td>
+<td>打开磁盘上的 <code>.uasset</code> 所在目录。</td>
+</tr>
+</tbody></table>
+<p><strong>3. 移动和复制</strong></p>
+<p>把资产或文件夹拖到目标位置后，可选择：</p>
+<ul>
+<li><strong>Move Here</strong>：移动到目标位置，原位置不再保留。</li>
+<li><strong>Copy Here</strong>：复制到目标位置，保留原资产。</li>
+<li><strong>Advanced Copy Here</strong>：复制资产并尝试自动处理其引用和依赖，随后还需确认保存副本。</li>
+</ul>
+<p>不要直接在磁盘上移动、复制或删除 <code>.uasset</code>，否则可能破坏引用，导致数据损坏或丢失；应始终通过编辑器管理，跨项目则使用迁移。</p>
+<p><strong>4. 引用与删除</strong></p>
+<p>资产使用另一个资产时，就产生了引用。例如静态网格体引用材质，因此删除前必须检查引用：</p>
+<ul>
+<li>没有其他资产引用时，可直接确认删除。</li>
+<li>被其他资产引用时，优先使用 <strong>Replace References</strong>，指定替代资产，让原引用全部转向它。</li>
+<li><strong>Force Delete</strong> 不处理引用，可能使相关资产失效，甚至造成数据损坏或丢失，不应作为常规删除方式。</li>
+<li>如果资产引用数为零但仍有内存引用，先关闭其他子编辑器再重试；仍无法删除时，保存工作并重启编辑器。</li>
+</ul>
+<p><strong>5. 导出资产</strong></p>
+<p>右键选择 <strong>Asset Actions → Export</strong>，可把资产导出为其他应用能读取的格式。可选格式取决于资产类型，例如静态网格体可导出为 FBX、OBJ、COPY 或 T3D；并非所有资产都支持导出。</p>
+<h3 id="3-迁移资产"><a href="#3-迁移资产" class="headerlink" title="3. 迁移资产"></a>3. 迁移资产</h3><p>迁移用于把资产连同依赖复制到另一个项目，避免只复制主资产后丢失材质、纹理等内容。</p>
+<p><strong>1. 执行迁移</strong></p>
+<ol>
+<li>在内容浏览器中选中资产，右键选择 <strong>Asset Actions → Migrate</strong>。</li>
+<li>在 <strong>Asset Report</strong> 中检查将要复制的资产。报告会列出引用和依赖，依赖默认一并迁移。</li>
+<li>点击确认，在文件选择器中选择<strong>目标项目的 <code>Content</code> 文件夹</strong>，再确认复制。</li>
+</ol>
+<p>不要随意取消依赖，否则迁移后的材质、网格体等可能无法正常工作。目标必须是另一个项目的 <code>Content</code> 文件夹；选到其他位置会出现警告，并可能导致资产无法正常使用。</p>
+<p><strong>2. 处理同名与异常</strong></p>
+<p>目标位置已有同名资产时，可选择覆盖或跳过。若迁移后出现内容缺失或显示异常，先确认源项目中的资产正常，再保留完整依赖重新迁移。</p>
+<h3 id="4-资产元数据"><a href="#4-资产元数据" class="headerlink" title="4. 资产元数据"></a>4. 资产元数据</h3><p>元数据是附加到资产的自定义键值对，可记录作者、用途或“制作中、已完成、已审核”等状态，用于内容浏览器筛选，以及编辑器中的蓝图或 Python 资产管理脚本。</p>
+<p><strong>1. 查看和筛选</strong></p>
+<ul>
+<li>右键资产，选择 <strong>Asset Actions → Show Metadata</strong> 查看键和值；编辑器界面目前只能查看，不能直接修改。</li>
+<li>要按键值筛选，先在 <strong>项目设置 → Game → Asset Manager → Asset Registry → Metadata Tags for Asset Registry</strong> 中注册标签，再在内容浏览器搜索框输入 <code>标签名=值</code>。</li>
+</ul>
+<p><strong>2. 使用脚本管理</strong></p>
+<p>启用 <strong>Editor Scripting Utilities</strong> 插件后，可通过 <code>unreal.EditorAssetLibrary</code> 管理元数据：</p>
+<ul>
+<li>先用 <code>load_asset()</code> 加载资产。</li>
+<li>用 <code>get_metadata_tag()</code> 读取单个标签，<code>get_metadata_tag_values()</code> 读取全部标签。</li>
+<li>用 <code>set_metadata_tag()</code> 新增或更新标签，<code>remove_metadata_tag()</code> 删除标签。</li>
+<li>修改后用 <code>save_asset()</code> 或 <code>save_loaded_asset()</code> 保存资产。</li>
+</ul>
+<p>元数据主要服务于编辑器，运行时游戏代码不能直接访问。第三方应用生成的受支持元数据，也可通过 <strong>FBX Asset Metadata Pipeline</strong> 随资产导入。</p>
+<h3 id="5-自动重导入资产"><a href="#5-自动重导入资产" class="headerlink" title="5. 自动重导入资产"></a>5. 自动重导入资产</h3><p>自动重导入会监控指定目录；源文件变化后，编辑器自动重新导入由它生成的资产，省去每次手动导入。</p>
+<p><strong>1. 开启功能</strong></p>
+<p>进入 <strong>编辑器偏好设置 → Loading &amp; Saving → Auto Reimport</strong>，启用 <strong>Monitor Content Directories</strong>。使用默认配置时，建议把源文件和对应资产一起放在项目的 <code>Content</code> 文件夹中；其他目录结构需要单独配置。</p>
+<p><strong>2. 主要选项</strong></p>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>作用与限制</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Directories to Monitor</td>
+<td>指定监控目录，可用 <code>/Game/Textures</code> 等虚拟路径，也可用 <code>C:/Game/SourceArt/</code> 等绝对路径；只有这些目录内的源文件参与自动重导入。</td>
+</tr>
+<tr>
+<td>Include&#x2F;Exclude Wildcards</td>
+<td>用通配符限制文件类型或排除子目录，例如只包含 <code>*.fbx</code>，或用 <code>Subfolder/*</code> 忽略整个子目录。</td>
+</tr>
+<tr>
+<td>Import Threshold Time</td>
+<td>检测到变化后等待的秒数，避免文件尚未写完就导入。</td>
+</tr>
+<tr>
+<td>Auto Create Assets</td>
+<td>新建源文件时自动创建资产；需要监控虚拟路径，或为目录设置资产创建位置的挂载点。</td>
+</tr>
+<tr>
+<td>Auto Delete Assets</td>
+<td>删除源文件时删除关联资产，但仅在源文件与资产存在明确的一对一关系时执行。</td>
+</tr>
+<tr>
+<td>Detect Changes on Restart</td>
+<td>启动时处理编辑器关闭期间发生的变化；源码管理同步也会改动源文件，因此团队协作时可关闭它，避免同步后重复重导入。</td>
+</tr>
+</tbody></table>
+<h3 id="6-引用查看器"><a href="#6-引用查看器" class="headerlink" title="6. 引用查看器"></a>6. 引用查看器</h3><p><strong>Reference Viewer</strong> 用关系图显示资产引用。箭头指向被引用的资产：引用当前资产的其他资产位于一侧，当前资产依赖的资产位于另一侧；引用是单向的，被引用资产不会自动保存反向引用。</p>
+<p><strong>1. 打开与选择范围</strong></p>
+<p>在内容浏览器中选中资产或文件夹，右键选择 <strong>Reference Viewer</strong>。选择多个资产时，只显示它们共有的引用；选择文件夹时，显示其中全部资产的引用关系。</p>
+<p><strong>2. 控制搜索范围</strong></p>
+<table>
+<thead>
+<tr>
+<th>设置</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Search References Depth</td>
+<td>控制向外查找多少层“谁引用了它”。</td>
+</tr>
+<tr>
+<td>Search Dependencies Depth</td>
+<td>控制向外查找多少层“它依赖谁”。</td>
+</tr>
+<tr>
+<td>Search Breadth Limit</td>
+<td>限制每列显示的引用数量，防止关系图过大。</td>
+</tr>
+<tr>
+<td>Collection Filter</td>
+<td>把搜索限定在某个集合内。</td>
+</tr>
+</tbody></table>
+<p>可按名称搜索、按资产类型过滤，也可让工具根据图中现有资产自动填充类型过滤器。大图会出现 <strong>Overflow</strong> 节点，双击可查看剩余引用；被过滤的节点可能以非活跃形式保留，用于维持完整引用链。</p>
+<p><strong>3. 查看和分析</strong></p>
+<p>右键节点可在内容浏览器中定位、编辑资产、重新以其为中心生成图，或把引用和依赖生成集合。还可打开 <strong>Show Reference Tree</strong> 查看引用链、<strong>Size Map</strong> 分析磁盘或内存大小，以及 <strong>Audit Assets</strong> 查看并导出资产信息。</p>
+<p>常用快捷键：<code>R</code> &#x2F; <code>Shift + R</code> 增减引用深度，<code>D</code> &#x2F; <code>Shift + D</code> 增减依赖深度，<code>L</code> &#x2F; <code>Shift + L</code> 调整广度，<code>A</code> 开关资产过滤，<code>V</code> 切换紧凑视图，<code>F</code> 缩放至适合窗口。引用类型也可用快捷键切换，例如 <code>S</code> 为软引用、<code>H</code> 为硬引用、<code>E</code> 为仅编辑器引用、<code>M</code> 为管理引用、<code>N</code> 为名称引用。</p>
+<h3 id="7-合并资产"><a href="#7-合并资产" class="headerlink" title="7. 合并资产"></a>7. 合并资产</h3><p>合并资产通过 <strong>Replace References</strong> 把多个重复资产的引用统一到一个保留资产，再删除其余副本，并留下对象重定向器，让尚未加载的旧引用转向保留资产。</p>
+<p><strong>1. 操作前检查</strong></p>
+<ul>
+<li>关闭正在使用相关资产的蓝图、静态网格体等子编辑器，避免部分引用无法清理。</li>
+<li>通常只能合并同类资产，材质与纹理存在有限例外；它也不是替换 Actor 的通用工具。</li>
+<li>如果保留资产本身引用了某个待删除资产，该关联资产不会被合并。</li>
+<li>删除后的资产无法恢复，必须仔细核对最终删除列表。</li>
+</ul>
+<p><strong>2. 执行合并</strong></p>
+<ol>
+<li>在内容浏览器中选中重复资产；分布在不同文件夹时，可在设置中关闭文件夹显示，以便一起选择。</li>
+<li>右键选择 <strong>Asset Actions → Replace References</strong>，需要时还可把其他兼容资产拖入列表。</li>
+<li>点击列表中的资产，将它指定为保留资产；至少要有两个资产并选中保留项，才能执行合并。</li>
+<li>可选中 <strong>Save Dirtied Assets</strong>，让合并后受影响的资产一并保存；合并失败时不会保存，并会显示警告。</li>
+<li>点击 <strong>Consolidate Assets</strong>，检查将被删除的资产列表后再确认。</li>
+</ol>
+<p>若只合并了部分引用，关闭子编辑器并重启编辑器后重试。合并完成后先保存相关资产，再加载其他仍引用旧资产的未加载资产；之后还应运行 <strong>Fix Up Redirects</strong> 命令清理重定向。</p>
+<h3 id="8-类查看器"><a href="#8-类查看器" class="headerlink" title="8. 类查看器"></a>8. 类查看器</h3><p>通过 <strong>工具 → 类查看器（Class Viewer）</strong> 打开，可用层级树查看编辑器中的类，并创建蓝图、编辑蓝图、打开 C++ 头文件或创建派生 C++ 类。</p>
+<p><strong>1. 筛选与显示</strong></p>
+<ul>
+<li>过滤器包括 <strong>Actors</strong>、<strong>Placeable Actors</strong> 和 <strong>Blueprint Base Classes</strong>，搜索框可按类名查找。</li>
+<li>Settings 可展开或折叠全部类、显示或隐藏内部类，以及显示 Developer 文件夹中的类。</li>
+</ul>
+<p><strong>2. 使用类</strong></p>
+<p>蓝图类可创建子蓝图、打开编辑器或在内容浏览器中定位；C++ 类可创建子蓝图、打开源代码或作为父类创建新 C++ 类。蓝图类还能直接拖入视口生成 Actor，也可把兼容的类拖到 Details 或 World Settings 的类下拉框中；拖入会强制加载尚未加载的类。</p>
+<h3 id="9-全局资产选择器"><a href="#9-全局资产选择器" class="headerlink" title="9. 全局资产选择器"></a>9. 全局资产选择器</h3><p>按 <code>Ctrl + P</code> 打开 <strong>Global Asset Picker</strong>，搜索整个资产树，包括 Engine 资产，不受内容浏览器当前文件夹限制。它适合已知名称或类型时快速定位，不适合逐层浏览全部资产。</p>
+<ul>
+<li>输入名称后，可把资产直接拖入关卡，或双击打开对应编辑器。</li>
+<li>底部可调整显示方式和缩放，但没有资产右键菜单，缩略图编辑器也不可用。</li>
+<li>窗口不能自由移动或调整大小；拖入资产、双击编辑或点击窗口外部后都会关闭。</li>
+</ul>
+<h3 id="10-属性矩阵"><a href="#10-属性矩阵" class="headerlink" title="10. 属性矩阵"></a>10. 属性矩阵</h3><p><strong>Property Matrix</strong> 用可定制表格比较并批量编辑多个 Actor 或资产的属性，支持大量对象、结构和数组等深层属性，也便于排序并找出配置异常的对象。</p>
+<p><strong>1. 打开方式</strong></p>
+<ul>
+<li>点击 Details 面板搜索框旁的 <strong>Property Matrix</strong> 按钮。</li>
+<li>在内容浏览器中选中资产，右键选择 <strong>Asset Actions → Edit Selection in Property Matrix</strong>。</li>
+<li>在 Outliner 中右键选中项，选择在属性矩阵中编辑；World Outliner 还可选择编辑其公共组件。</li>
+</ul>
+<p><strong>2. 配置和编辑表格</strong></p>
+<ul>
+<li>在属性树中固定或取消固定属性来增删列，也可用中键点击列头移除；工具会按对象类型自动生成常用列。</li>
+<li>点击列头可升序或降序排序；属性修改只应用于当前选中的表格行。</li>
+<li>单元格支持直接编辑、复制和粘贴，<code>F2</code> 进入编辑，<code>Esc</code> 退出编辑，方向键和 <code>Tab</code> 可移动当前单元格。</li>
+<li>场景会随修改即时更新，但仍需点击属性矩阵中的 <strong>Save</strong> 才能正式保存对象。</li>
+</ul>
+<p><strong>请记住：</strong></p>
+<blockquote>
+<ul>
+<li>资产操作尽量在编辑器内完成；跨项目使用 Migrate，并保留完整依赖，目标必须是另一个项目的 <code>Content</code> 文件夹。</li>
+<li>元数据和自动重导入适合编辑器资产管理；Replace References 与 Force Delete 都可能删除或破坏内容，操作前必须检查引用。</li>
+<li>Reference Viewer 查依赖，Class Viewer 查类层级，Global Asset Picker 快速找资产，Property Matrix 批量比较和修改属性。</li>
+</ul>
+</blockquote>
+<h2 id="七、Actor-和几何体"><a href="#七、Actor-和几何体" class="headerlink" title="七、Actor 和几何体"></a>七、Actor 和几何体</h2><p>Actor 是任何可以放进关卡的物体，例如网格体、灯光、摄像机和 Player Start。它们支持移动、旋转和缩放，也能由蓝图或 C++ 在运行时生成和销毁；在 C++ 中，<code>AActor</code> 是所有 Actor 的基类。搭建关卡的核心就是放置 Actor、调整变换，再赋予它们所需的行为。</p>
+<h3 id="1-放置-Actor"><a href="#1-放置-Actor" class="headerlink" title="1. 放置 Actor"></a>1. 放置 Actor</h3><p>放置 Actor 会在关卡中创建一个实例，同时把它加入 World Outliner。</p>
+<p><strong>1. 使用 Place Actors 面板</strong></p>
+<p>通过 <strong>窗口 → Place Actors</strong> 打开面板，搜索 Actor 或按类别筛选，再把它拖入关卡的视口。主要类别包括：</p>
+<ul>
+<li><strong>Recently Placed</strong>：当前项目最近放置的 20 种 Actor。</li>
+<li><strong>Basic、Lights、Shapes、Cinematic、Visual Effects</strong>：分别提供基础对象、灯光、几何形状、电影摄像机及视觉效果。</li>
+<li><strong>Geometry</strong>：用于快速搭建原型的 BSP 几何体，可选择添加或挖空。</li>
+<li><strong>Volumes、All Classes</strong>：分别列出体积和所有可放置的类。</li>
+</ul>
+<p><strong>2. 从内容浏览器放置</strong></p>
+<ul>
+<li>直接把资产拖入视口，会根据资产生成对应 Actor：蓝图生成蓝图实例，Static Mesh 和 Skeletal Mesh 生成同名 Actor，Sound Wave 和 Sound Cue 生成 Ambient Sound Actor。</li>
+<li>也可先选中资产，再在视口右键，通过 <strong>Place Actor</strong> 在点击位置放置。</li>
+<li>选中一个或多个关卡 Actor 后，可用右键菜单把它们替换为内容浏览器中的所选资产。</li>
+</ul>
+<p><strong>3. 从 Class Viewer 放置</strong></p>
+<p>通过 <strong>工具 → Class Viewer</strong> 打开类查看器，可放置的 Actor 类显示为蓝色；选中后拖入视口即可。</p>
+<h3 id="2-选择-Actor"><a href="#2-选择-Actor" class="headerlink" title="2. 选择 Actor"></a>2. 选择 Actor</h3><p><strong>1. 基础选择</strong></p>
+<ul>
+<li>在视口中左键点击会替换当前选择；按住 <code>Ctrl</code> 点击可添加或移除单个 Actor。</li>
+<li>在 World Outliner 中，<code>Shift + 点击</code> 选择连续范围，<code>Ctrl + 点击</code> 选择不连续项。</li>
+<li>视口与 World Outliner 的选择会同步；多选后可以一起变换，并在 Details 中批量修改公共属性。</li>
+</ul>
+<p><strong>2. 框选</strong></p>
+<p>在视口中左键拖动可框选，正交视图尤其适合批量选择：</p>
+<table>
+<thead>
+<tr>
+<th>操作</th>
+<th>结果</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>左键拖动</td>
+<td>用框内 Actor 替换当前选择。</td>
+</tr>
+<tr>
+<td><code>Shift + 左键拖动</code></td>
+<td>把框内 Actor 加入当前选择。</td>
+</tr>
+<tr>
+<td><code>Ctrl + Alt + 左键拖动</code></td>
+<td>从当前选择中移除框内 Actor。</td>
+</tr>
+</tbody></table>
+<p><strong>3. Select 菜单</strong></p>
+<p>Select 菜单提供全选、取消全选、反选和聚焦所选项，还可按层级或属性扩大选择：</p>
+<ul>
+<li><strong>Select Immediate Children &#x2F; Select All Descendants</strong>：选择直接子级或全部后代。</li>
+<li><strong>Select Relevant Lights</strong>：选择影响当前 Actor 的灯光。</li>
+<li><strong>Select Matching (Selected Classes)<strong>：选择使用相同 Static Mesh 且属于相同 Actor 类的对象；</strong>All Classes</strong> 则只要求 Static Mesh 相同。</li>
+<li>还可选择相同材质的对象，以及全部添加型、删减型笔刷或表面。</li>
+</ul>
+<h3 id="3-变换-Actor"><a href="#3-变换-Actor" class="headerlink" title="3. 变换 Actor"></a>3. 变换 Actor</h3><p>变换包括 Location、Rotation 和 Scale；UE 的竖直轴是 <strong>Z 轴</strong>，视口操纵器的 X、Y、Z 轴分别为红、绿、蓝。</p>
+<p><strong>1. 在 Details 中精确变换</strong></p>
+<p>可直接输入各轴数值。多选时值不同的字段会显示“多个值”，输入新值会统一覆盖，Location 相同还可能导致对象重叠。Scale 锁开启后三轴同步变化，避免比例失真。</p>
+<p>默认使用相对于父 Actor 的<strong>相对坐标</strong>，也可通过属性旁的下拉菜单切换到<strong>世界坐标</strong>；需要还原时可使用“重置为默认值”。</p>
+<p><strong>2. 使用视口操纵器</strong></p>
+<table>
+<thead>
+<tr>
+<th>工具</th>
+<th>快捷键</th>
+<th>操作</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>移动</td>
+<td><code>W</code></td>
+<td>拖箭头沿单轴移动，拖轴间方块沿平面移动，拖中心自由移动。</td>
+</tr>
+<tr>
+<td>旋转</td>
+<td><code>E</code></td>
+<td>拖动彩色弧线，绕垂直于该弧线的轴旋转。</td>
+</tr>
+<tr>
+<td>缩放</td>
+<td><code>R</code></td>
+<td>拖轴柄单轴缩放，拖轴间三角形沿平面缩放，拖中心立方体等比缩放。</td>
+</tr>
+</tbody></table>
+<p>按空格可循环切换操纵器。<code>Alt + 拖动移动轴</code> 会复制并移动 Actor，<code>Ctrl + W</code> 则在原位复制；<code>H</code> 隐藏所选 Actor，<code>Ctrl + H</code> 恢复全部隐藏对象。</p>
+<p><strong>3. 世界、局部与枢轴</strong></p>
+<p>视口工具栏的地球&#x2F;立方体按钮用于切换世界和局部坐标。拖动平移操纵器中心的球体并按住鼠标中键，可临时移动枢轴，让后续旋转或缩放围绕新位置进行；枢轴也可以位于物体外部。</p>
+<h3 id="4-Actor-吸附"><a href="#4-Actor-吸附" class="headerlink" title="4. Actor 吸附"></a>4. Actor 吸附</h3><p>吸附让 Actor 按固定步长变换，或对齐表面、网格和其他物体的顶点。</p>
+<p><strong>1. 表面吸附</strong></p>
+<p>在视口工具栏启用 <strong>Surface Snapping</strong> 后，可把 Actor 对齐到地面或其他表面：</p>
+<ul>
+<li><strong>Rotate to Surface Normal</strong>：让 Actor 随表面法线自动旋转。</li>
+<li><strong>Surface Offset</strong>：设置 Actor 与吸附表面之间的距离。</li>
+<li>选中 Actor 后按 <code>End</code>，可将其吸附到最近的下方表面。</li>
+</ul>
+<p><strong>2. 网格吸附</strong></p>
+<p>移动、旋转和缩放分别使用独立的 Drag Grid、Rotation Grid 和 Scale Grid，可单独开关并设置步长。例如移动步长为 10 时，Actor 每次移动 10 个单位。</p>
+<p>在 <strong>编辑器偏好设置 → 视口 → 吸附</strong> 中，可配置十进制或 2 的幂网格、旋转和缩放间隔，以及正交视图的网格线间距。缩放默认可采用增量方式，也可启用旧式百分比乘法方式；需要二维布局时还可开启 Foreground、Default、Background 等 2D 层吸附。</p>
+<p><strong>3. 顶点吸附</strong></p>
+<p>使用移动操纵器时按住 <code>V</code>，可把 Actor 的顶点吸附到另一网格体的顶点。配合临时调整枢轴，先把枢轴吸到自身顶点，再与目标顶点对齐，适合拼接墙体、管道和道路。</p>
+<h3 id="5-Actor-移动性"><a href="#5-Actor-移动性" class="headerlink" title="5. Actor 移动性"></a>5. Actor 移动性</h3><p><strong>Mobility</strong> 决定 Actor 在运行时能否移动或变化，主要影响 Static Mesh 和 Light 的照明、阴影与性能。</p>
+<table>
+<thead>
+<tr>
+<th>模式</th>
+<th>Static Mesh</th>
+<th>Light</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Static</td>
+<td>运行时不移动或变化，阴影参与 Lightmass 预计算，适合固定建筑和装饰；材质仍可播放动画。</td>
+<td>参与烘焙，直接照亮静态和固定对象，移动对象主要通过体积光照贴图等间接数据照明。</td>
+</tr>
+<tr>
+<td>Stationary</td>
+<td>可以变化但不能移动；由可移动灯照射时，灯不动可复用缓存阴影贴图。</td>
+<td>不能移动，但可改变颜色、强度或开关；保留烘焙光照，同时为移动对象提供动态阴影。重叠照亮同一对象过多会降低性能。</td>
+</tr>
+<tr>
+<td>Movable</td>
+<td>可在运行时移动、旋转、缩放或替换，使用动态照明和阴影，不参与静态阴影烘焙。</td>
+<td>可实时移动和调整，只产生动态阴影并支持 Lumen；动态阴影通常是三种模式中开销最高的。</td>
+</tr>
+</tbody></table>
+<h3 id="6-Actor-分组"><a href="#6-Actor-分组" class="headerlink" title="6. Actor 分组"></a>6. Actor 分组</h3><p>分组可把多个 Actor 当作一个整体变换，但不会把它们合并成一个网格。</p>
+<p><strong>1. 创建和取消分组</strong></p>
+<ul>
+<li>先在主工具栏 Settings 中启用 <strong>Allow Group Selection</strong>，快捷键为 <code>Ctrl + Shift + G</code>。</li>
+<li>选中 Actor 后按 <code>Ctrl + G</code> 或右键选择 <strong>Group</strong>；对已有组和其他对象执行此操作会重新组成一个新组。</li>
+<li>按 <code>Shift + G</code> 可取消分组。World Outliner 中会出现 Group Actor，选中组或组内对象即可选中整个锁定组。</li>
+</ul>
+<p>一个 Actor 同一时间只能属于一个组，不同关卡中的 Actor 不能直接分组；把单个组员移到其他关卡会将其移出组，但可以整组移动。</p>
+<p><strong>2. 锁定与编辑组员</strong></p>
+<ul>
+<li>新组默认<strong>锁定</strong>，显示绿色括号，所有变换作用于整组。</li>
+<li><strong>解锁</strong>后显示红色括号，可单独选择和变换组员，或把对象移出组。</li>
+<li>选中一个组和其他未分组 Actor 时可 <strong>Add to Group</strong>；空组会自动删除，嵌套组被移出后仍可独立存在。</li>
+</ul>
+<p>组枢轴默认位于中心。选中组后用 <code>Alt + 鼠标中键</code> 点击目标位置，或中键拖动操纵器中心，可调整整组变换的枢轴。</p>
+<h3 id="7-合并-Actor"><a href="#7-合并-Actor" class="headerlink" title="7. 合并 Actor"></a>7. 合并 Actor</h3><p>Merge Actors 可把多个 Static Mesh Actor 生成一个新 Actor，减少绘制调用。选中对象后选择 <strong>Actor → Merge Actors</strong>，指定合并方式；通过 <strong>Merge Actor Settings</strong> 可修改参数，最后设置输出名称和保存目录。</p>
+<table>
+<thead>
+<tr>
+<th>方式</th>
+<th>特点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Merge</td>
+<td>默认每种材质生成一个网格体分段并保留 UV，绘制调用数约等于材质数；合并为单一材质可减到一个分段，但会重新生成 UV。</td>
+</tr>
+<tr>
+<td>Simplify</td>
+<td>使用各输入的低细节 LOD，简化几何并生成一个 Proxy Mesh 和一种材质；只有一次绘制调用，但不保留原 UV，遮挡剔除也按整个网格处理。</td>
+</tr>
+<tr>
+<td>Batch</td>
+<td>把相同 Static Mesh 组件转换为实例化组件，保留 UV，不改变遮挡剔除方式。</td>
+</tr>
+<tr>
+<td>Approximate</td>
+<td>类似 Simplify，但能处理更复杂的源网格，例如 Nanite 网格；这类输入可能无法完成普通 Simplify 的简化和纹理烘焙。</td>
+</tr>
+</tbody></table>
+<p>常用设置包括把枢轴置于世界原点、合并碰撞体、烘焙顶点颜色和法线、选择输入 LOD、生成 Lightmap UV 或 Nanite 网格。<strong>使用全部 LOD 时不能直接合并材质</strong>；合并材质还可设置输出纹理尺寸、各材质通道和 UV 岛间距，避免 mip 降低分辨率后发生串色。</p>
+<h3 id="8-Actor-参考"><a href="#8-Actor-参考" class="headerlink" title="8. Actor 参考"></a>8. Actor 参考</h3><h4 id="1-物理体积（Physics-Volume）"><a href="#1-物理体积（Physics-Volume）" class="headerlink" title="1. 物理体积（Physics Volume）"></a>1. 物理体积（Physics Volume）</h4><p>Physics Volume 修改覆盖区域的物理环境，常用于水体等对 CharacterMovement 有影响的区域。</p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Terminal Velocity</td>
+<td>设置使用 CharacterMovement 的 Pawn 下落时的终端速度。</td>
+</tr>
+<tr>
+<td>Priority</td>
+<td>多个体积重叠时决定采用哪个 Physics Volume，数值越大优先级越高。</td>
+</tr>
+<tr>
+<td>Fluid Friction</td>
+<td>设置体积对 CharacterMovement Pawn 的流体阻力，越大越难移动。</td>
+</tr>
+<tr>
+<td>Water Volume</td>
+<td>把体积标记为水等流体区域。</td>
+</tr>
+<tr>
+<td>Physics on Contact</td>
+<td>允许 Actor 仅接触体积就受到影响；默认通常要求 Actor 原点进入体积。</td>
+</tr>
+</tbody></table>
+<h4 id="2-静态网格体（Static-Mesh）"><a href="#2-静态网格体（Static-Mesh）" class="headerlink" title="2. 静态网格体（Static Mesh）"></a>2. 静态网格体（Static Mesh）</h4><p>Static Mesh Actor 用来显示几何形状不会骨骼变形的模型，是搭建环境的主要 Actor。“Static”指模型类型，不代表 Actor 绝对不能移动。</p>
+<ul>
+<li><strong>放置与材质</strong>：把 Static Mesh 从内容浏览器拖入视口即可；可把材质拖到某个实例上覆盖外观，而不修改其他实例使用的原资产。</li>
+<li><strong>运行时移动</strong>：默认 Mobility 为 Static；要在运行时移动、旋转或缩放，需改为 Movable。</li>
+<li><strong>物理模拟</strong>：启用 <strong>Simulate Physics</strong> 后，网格体可受重力并参与物理交互。</li>
+<li><strong>碰撞</strong>：模型需要 Physics Body 才能正常产生碰撞；可从 DCC 导入，也可在 Static Mesh Editor 中创建。</li>
+</ul>
+<h4 id="3-骨骼网格体（Skeletal-Mesh）"><a href="#3-骨骼网格体（Skeletal-Mesh）" class="headerlink" title="3. 骨骼网格体（Skeletal Mesh）"></a>3. 骨骼网格体（Skeletal Mesh）</h4><p>Skeletal Mesh Actor 显示绑定骨架、可随骨骼变形的模型，常用于玩家角色、NPC、生物和复杂机械。</p>
+<ul>
+<li>把 Skeletal Mesh 拖入视口即可放置；既可单独覆盖每个实例的材质，也要确保材质启用了 <strong>Used with Skeletal Mesh</strong>。</li>
+<li>动画主要有两种驱动方式：<strong>Animation Blueprint</strong> 负责状态切换和多动画混合；直接使用 <strong>Animation Sequence</strong> 则适合单次或循环播放一段动画。</li>
+<li>骨骼网格体通常需要专用 <strong>Physics Asset</strong> 才能进行碰撞和物理交互；可在内容浏览器中右键网格体，选择 <strong>Create → Physics Asset → Create and Assign</strong>。</li>
+</ul>
+<h4 id="4-几何笔刷（Geometry-Brush）"><a href="#4-几何笔刷（Geometry-Brush）" class="headerlink" title="4. 几何笔刷（Geometry Brush）"></a>4. 几何笔刷（Geometry Brush）</h4><p>Geometry Brush（BSP）通过填充或挖除空间快速搭建关卡，适合灰盒、路线测试、碰撞检查和临时补形。现在正式关卡通常使用 Static Mesh 和内置 Modeling 工具，<strong>不推荐把 BSP 作为最终场景的主要建模方式</strong>。</p>
+<p><strong>1. 创建与类型</strong></p>
+<p>在 <strong>Place Actors → Geometry</strong> 中拖入立方体、圆锥、圆柱、球体、线性楼梯、弧形楼梯或螺旋楼梯，再设置尺寸、分段数和空心等参数。</p>
+<ul>
+<li><strong>Additive</strong>：添加实体，用于墙体、地板等体积。</li>
+<li><strong>Subtractive</strong>：从实体中扣除空间，用于门洞、窗户和可进入的房间。</li>
+</ul>
+<p><strong>2. 编辑</strong></p>
+<p>可用普通变换工具调整整体，也可进入 <strong>Brush Editing Mode</strong> 直接编辑顶点、边和面。Details 的 Brush Settings 可修改形状和类型，高级设置还可合并或拆分共面面片，以及调整 Solid、Semi Solid、Non Solid 等笔刷实体属性。</p>
+<h4 id="5-摄像机（Camera）"><a href="#5-摄像机（Camera）" class="headerlink" title="5. 摄像机（Camera）"></a>5. 摄像机（Camera）</h4><p>Camera Actor 提供固定或可移动的观察视点；需要电影级镜头控制时使用 <strong>Cine Camera Actor</strong>。从 Place Actors 拖入后，选中 Camera Actor 或含 Camera 组件的蓝图，视口会显示该摄像机的实时预览。</p>
+<p>相关工具还包括阻止镜头穿墙的 <strong>Camera Blocking Volume</strong>、模拟摇臂和轨道拍摄的 <strong>Camera Rig Crane &#x2F; Rail</strong>，以及通过 Sequencer 轨道和关键帧控制摄像机的 <strong>Level Sequence Actor</strong>。</p>
+<h4 id="6-音频体积（Audio-Volume）"><a href="#6-音频体积（Audio-Volume）" class="headerlink" title="6. 音频体积（Audio Volume）"></a>6. 音频体积（Audio Volume）</h4><p>Audio Volume 按玩家所处区域控制混响及内外声音的过渡。它属于传统音频体积流程，新项目也可根据需求使用 <strong>Audio Gameplay Volumes</strong>。</p>
+<ul>
+<li><strong>Priority</strong>：体积重叠时采用最高优先级；同优先级重叠时没有确定的先后关系。</li>
+<li><strong>混响设置</strong>：<code>Apply Reverb</code> 控制是否启用，<code>Reverb Effect</code> 指定效果，<code>Volume</code> 和 <code>Fade Time</code> 控制音量及过渡时间，<code>Enabled</code> 控制整个体积是否生效。</li>
+<li><strong>环境区域设置</strong>：玩家进入体积后，可用 <code>Exterior Volume / LPF / Time</code> 调整外部声音的音量、低通滤波和过渡；玩家在外部时，<code>Interior Volume / LPF / Time</code> 对内部声音做对应处理。</li>
+</ul>
+<h4 id="7-玩家出生点（Player-Start）"><a href="#7-玩家出生点（Player-Start）" class="headerlink" title="7. 玩家出生点（Player Start）"></a>7. 玩家出生点（Player Start）</h4><p>Player Start 决定玩家角色的出生位置和朝向，箭头表示出生时的观察方向，胶囊体用于检查空间是否足够。</p>
+<ul>
+<li>没有 Player Start 时，玩家默认从世界原点 <code>(0,0,0)</code> 出生；有多个时，默认随机选择并优先使用未被几何体阻挡的出生点。可用蓝图、C++ 或重写 GameMode 的 <code>FindPlayerStart()</code>、<code>ChoosePlayerStart()</code> 自定义选择逻辑。</li>
+<li>通过 <code>Player Start Tag</code> 标记出生点，再用 GameMode 蓝图的 <strong>Find Player Start</strong> 和 <strong>Restart Player at Player Start</strong> 按标签查找并重生。</li>
+<li>出现 <strong>BADsize</strong> 表示胶囊体与地形或其他物体重叠，应移动到无碰撞的位置。</li>
+<li>PIE 可在 Play Settings 的 <strong>Spawn player at</strong> 中选择默认出生点或当前摄像机位置，也可在视口右键选择 <strong>Play From Here</strong>。</li>
+</ul>
+<h4 id="8-触发器体积（Trigger-Volume）"><a href="#8-触发器体积（Trigger-Volume）" class="headerlink" title="8. 触发器体积（Trigger Volume）"></a>8. 触发器体积（Trigger Volume）</h4><p>Trigger Volume 在其他 Actor 与其碰撞或重叠时触发事件，Box、Capsule、Sphere 三种标准触发器主要区别是作用区域的形状。</p>
+<ol>
+<li>从 <strong>Place Actors → Basic</strong> 拖入所需触发器。</li>
+<li>在视口中选中它并打开 Level Blueprint。</li>
+<li>在事件图中右键，从 <strong>Add Event for [触发器名称]</strong> 添加重叠、碰撞或输入等事件，再连接开门、播放声音等业务逻辑。</li>
+</ol>
+<p>碰撞响应必须与目标 Actor 匹配，例如需要重叠事件时，双方设置应允许 Overlap。</p>
+<h4 id="9-体积（Volume）"><a href="#9-体积（Volume）" class="headerlink" title="9. 体积（Volume）"></a>9. 体积（Volume）</h4><p>Volume 是覆盖三维区域的特殊 Actor，可检测进入和离开，也可直接改变该区域的行为、声音或渲染。<strong>它们在运行时默认不可见</strong>，必要时应补充火焰、水面等视觉提示。</p>
+<table>
+<thead>
+<tr>
+<th>类别</th>
+<th>常见类型与用途</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>碰撞与交互</td>
+<td>Blocking Volume 提供简化的不可见碰撞；Camera Blocking Volume 只阻挡摄像机；Kill Z Volume 对进入者调用 <code>FellOutOfWorld</code>，默认销毁，也可按游戏需要重写；Trigger Volume 触发事件。</td>
+</tr>
+<tr>
+<td>物理与伤害</td>
+<td>Physics Volume 改变移动环境；Pain Causing Volume 按设定伤害区域中的 Actor。</td>
+</tr>
+<tr>
+<td>图形与声音</td>
+<td>Audio Volume 控制区域音频；Cull Distance Volume 按尺寸和距离剔除小物体；Post Process Volume 覆盖局部后期效果。</td>
+</tr>
+<tr>
+<td>光照与可见性</td>
+<td>Lightmass Importance Volume 集中高质量间接光计算；Lightmass Character Indirect Detail Volume 为竖直空间补充样本；Precomputed Visibility Volume 及 Override Volume 保存或覆盖预计算可见性。</td>
+</tr>
+<tr>
+<td>几何优化</td>
+<td>HLOD Volume 手动划分 HLOD 集群；Merged Mesh Culling Volume 标记可合并并统一剔除的网格。</td>
+</tr>
+<tr>
+<td>关卡与 AI</td>
+<td>Level Streaming Volume 按玩家进出加载或卸载子关卡；Nav Mesh Bounds Volume 限定导航网格生成范围，视口按 <code>P</code> 可显示导航网格。</td>
+</tr>
+</tbody></table>
+<p>以上只是常用类型，插件和具体系统还可能增加其他 Volume。</p>
+<h4 id="10-伤害体积（Pain-Causing-Volume）"><a href="#10-伤害体积（Pain-Causing-Volume）" class="headerlink" title="10. 伤害体积（Pain Causing Volume）"></a>10. 伤害体积（Pain Causing Volume）</h4><p>Pain Causing Volume 继承 Physics Volume 的属性，并对区域内的 Actor 造成伤害：</p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Pain Causing</td>
+<td>总开关，决定体积是否造成伤害。</td>
+</tr>
+<tr>
+<td>Damage Per Sec</td>
+<td>启用后每秒造成的伤害量。</td>
+</tr>
+<tr>
+<td>Damage Type</td>
+<td>指定伤害类型，供游戏逻辑做抗性或反馈处理。</td>
+</tr>
+<tr>
+<td>Pain Interval</td>
+<td>两次周期伤害之间的秒数。</td>
+</tr>
+<tr>
+<td>Entry Pain</td>
+<td>进入体积时立即追加一次伤害，不会替代后续周期伤害。</td>
+</tr>
+</tbody></table>
+<p>使用时应启用碰撞，让玩家或其他 Actor 能与体积发生交互。</p>
+<h4 id="11-贴花（Decal）"><a href="#11-贴花（Decal）" class="headerlink" title="11. 贴花（Decal）"></a>11. 贴花（Decal）</h4><p>Deferred Decal 把材质投射到物体表面，适合弹孔、污渍和标识等局部细节，不需要修改原模型。选中合适的 Decal Material 后，可在视口右键放置，再通过移动、旋转和非等比缩放调整位置、宽高及投射深度。</p>
+<ul>
+<li><strong>Material</strong>：决定投射内容，材质的 <code>Decal Blend Mode</code> 决定颜色、法线、粗糙度等如何写入 GBuffer；需要正确影响烘焙光照时通常使用相应的 DBuffer 模式。</li>
+<li><strong>Sort Order</strong>：控制重叠 decal 的绘制顺序，数值大的显示在上层；过多不同排序值会妨碍渲染状态排序，影响性能。</li>
+<li><strong>性能</strong>：主要取决于材质复杂度和屏幕覆盖面积，而非接收模型的面数；应尽量收紧投射范围，避免无意义的大面积重叠。</li>
+</ul>
+<h4 id="12-3D-文本（3D-Text）"><a href="#12-3D-文本（3D-Text）" class="headerlink" title="12. 3D 文本（3D Text）"></a>12. 3D 文本（3D Text）</h4><p>3D Text Actor 用真正的三维几何显示文字，适合虚拟场景和动态图形，不同于普通平面 Text Render。</p>
+<p><strong>1. 启用与放置</strong></p>
+<p>在 <strong>编辑 → 插件 → Text</strong> 中启用 <strong>Text 3D</strong> 并按提示重启。该插件在文档所述版本中仍标记为实验性。随后从 <strong>Place Actors → All Classes → Text 3D</strong> 拖入关卡。</p>
+<p><strong>2. 文字外观</strong></p>
+<p>Details 可设置文本、TTF&#x2F;OTF 字体、水平与垂直对齐、字距、词距、行距和最大宽高；<code>Shift + Enter</code> 可换行。<code>Extrude</code> 控制厚度，<code>Bevel</code> 和 <code>Bevel Type</code> 控制边缘斜角，正面、斜角、侧面和背面还可分别指定材质。</p>
+<p><strong>3. 逐字动画</strong></p>
+<p>添加 <strong>Text3DCharacterTransform</strong> 组件后，可分别启用位置、旋转和缩放的逐字变换：</p>
+<ul>
+<li><strong>Progress</strong>：<code>0</code> 为开始状态，<code>100</code> 为结束状态，可在 Sequencer 中给它打关键帧。</li>
+<li><strong>Order</strong>：支持从左到右、从右到左、从中心向外和从外向内。</li>
+<li><strong>Range</strong>：<code>0</code> 表示逐字依次完成，<code>100</code> 表示所有字同时进行，中间值产生重叠。</li>
+<li>只启用实际需要的变换类型，避免增加不必要的 CPU 开销。</li>
+</ul>
+<h4 id="13-目标点（Target-Point）"><a href="#13-目标点（Target-Point）" class="headerlink" title="13. 目标点（Target Point）"></a>13. 目标点（Target Point）</h4><p>Target Point 是用于标记世界坐标的通用空 Actor，类似其他 3D 软件中的 Dummy。可从 <strong>Place Actors → All Classes</strong> 拖入，再由蓝图或其他系统读取它的位置。</p>
+<p>常见用途包括摄像机注视目标、AI 巡逻点、特效和道具生成点，以及在编辑器中标记待摆放物体的位置。</p>
+<p><strong>请记住：</strong></p>
+<blockquote>
+<ul>
+<li>Actor 是可放入关卡的实例；放置后通过选择、变换、吸附和分组高效搭建场景。</li>
+<li>Mobility 直接影响照明和性能，Static Mesh 的“静态”指网格类型，运行时移动仍需设为 Movable。</li>
+<li>Volume 负责区域逻辑，几何体负责场景外观；BSP 适合原型，正式场景通常使用 Static Mesh 和 Modeling 工具。</li>
+</ul>
+</blockquote>
+<h2 id="八、运行和模拟"><a href="#八、运行和模拟" class="headerlink" title="八、运行和模拟"></a>八、运行和模拟</h2><p>运行和模拟用于在不先打包游戏的情况下测试玩法、物理和关卡逻辑。编辑器内预览适合快速修改与验证；命令行和独立进程运行则更接近实际游戏启动方式。</p>
+<h3 id="1-在编辑器中运行和模拟"><a href="#1-在编辑器中运行和模拟" class="headerlink" title="1. 在编辑器中运行和模拟"></a>1. 在编辑器中运行和模拟</h3><p><strong>1. PIE 与 SIE 的区别</strong></p>
+<table>
+<thead>
+<tr>
+<th>模式</th>
+<th>启动方式</th>
+<th>行为</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>在编辑器中运行（Play In Editor，PIE）</td>
+<td>点击主工具栏 <strong>Play</strong>，或按 <code>Alt + P</code></td>
+<td>从 Player Start 等游戏规则指定的位置生成玩家，并把控制权交给玩家，适合完整测试玩法。</td>
+</tr>
+<tr>
+<td>在编辑器中模拟（Simulate In Editor，SIE）</td>
+<td>从 Play 菜单选择 <strong>Simulate</strong>，Windows 按 <code>Alt + S</code>，macOS 按 <code>Option + S</code></td>
+<td>运行游戏逻辑和物理，但不生成玩家角色，也不移动当前编辑器摄像机，适合观察物理和场景行为。</td>
+</tr>
+</tbody></table>
+<p>两种模式都直接在当前关卡上测试，不需要先构建独立应用。工具栏会记住最近使用的 Play 或 Simulate 模式，方便重复启动。</p>
+<p><strong>2. 控制预览会话</strong></p>
+<ul>
+<li>在视口内运行时，先点击视口让游戏捕获鼠标；按 <code>Shift + F1</code>（macOS 为 <code>Shift + fn + F1</code>）释放鼠标，重新操作编辑器。</li>
+<li><strong>Pause &#x2F; Resume</strong> 暂停或继续；暂停后可用 <strong>Frame Advance</strong> 每次推进一帧。</li>
+<li><strong>Stop</strong> 或 <code>Esc</code> 结束会话。</li>
+<li><strong>Eject</strong> 释放对玩家 Pawn 的控制，让游戏继续运行，同时可在视口选择和编辑 Actor；点击 <strong>Possess</strong> 可重新接管玩家。</li>
+</ul>
+<p><strong>3. 保留运行中的修改</strong></p>
+<p>在 PIE 中通过 Details 修改 Actor，默认只影响本次预览，停止后不会保留。若确认需要写回关卡：</p>
+<ol>
+<li>释放鼠标并点击 <strong>Eject</strong>，但保持游戏运行。</li>
+<li>选中目标 Actor，右键选择 <strong>Keep Simulation Changes</strong>，或直接按 <code>K</code>。</li>
+<li>再停止预览，修改即可保留。</li>
+</ol>
+<p><strong>4. 选择运行位置</strong></p>
+<p>点击 Play 旁的菜单，可选择：</p>
+<table>
+<thead>
+<tr>
+<th>运行方式</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Selected Viewport</td>
+<td>默认方式，直接在当前选中的编辑器视口运行。</td>
+</tr>
+<tr>
+<td>New Editor Window (PIE)</td>
+<td>在编辑器内新建独立窗口运行，不占用原视口。</td>
+</tr>
+<tr>
+<td>Standalone Game</td>
+<td>在编辑器外的独立窗口和进程中运行，更接近正式游戏；不能使用普通 PIE 工具栏进行暂停或 Eject。</td>
+</tr>
+<tr>
+<td>Mobile Preview ES3.1 (PIE)</td>
+<td>用移动设备渲染预览及相关工具检查项目。</td>
+</tr>
+<tr>
+<td>VR Preview</td>
+<td>在已连接的 VR 设备上预览。</td>
+</tr>
+</tbody></table>
+<p>Play Settings 还可调整预览窗口、鼠标控制，以及多人测试的客户端数量、服务器和网络等选项。</p>
+<p><strong>5. 使用 PIE 控制台</strong></p>
+<p>预览期间按反引号&#x2F;波浪号键 <code>`</code>（通常与 <code>~</code> 同键）打开控制台，再次按下可展开或关闭。它支持命令自动补全，可执行 <code>stat</code> 等命令查看性能数据、切换引擎功能。</p>
+<h3 id="2-运行虚幻引擎"><a href="#2-运行虚幻引擎" class="headerlink" title="2. 运行虚幻引擎"></a>2. 运行虚幻引擎</h3><p><strong>1. 启动编辑器</strong></p>
+<ul>
+<li>直接运行编辑器可执行文件且不带参数时，如果没有设置自动打开最近项目，会先进入 Project Browser，再创建或打开项目。</li>
+<li>也可从命令行传入 <code>.uproject</code>；在路径后附加地图名，可让编辑器启动后直接打开指定地图，而不是默认地图或空地图。</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">UnrealEditor.exe <span class="string">&quot;D:\Projects\MyGame\MyGame.uproject&quot;</span></span><br><span class="line">UnrealEditor.exe <span class="string">&quot;D:\Projects\MyGame\MyGame.uproject&quot;</span> ExampleMap</span><br></pre></td></tr></table></figure>
+
+<p><strong>2. 运行未 Cook 的游戏</strong></p>
+<p>编辑器加载项目后，可通过 Play 菜单选择 <strong>Standalone Game</strong>，在编辑器外运行未 Cook 内容。命令行方式则传入项目路径并添加 <code>-game</code>：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">UnrealEditor.exe <span class="string">&quot;D:\Projects\MyGame\MyGame.uproject&quot;</span> -game</span><br><span class="line">UnrealEditor.exe <span class="string">&quot;D:\Projects\MyGame\MyGame.uproject&quot;</span> ExampleMap -game</span><br></pre></td></tr></table></figure>
+
+<p>这已经以游戏模式运行，但不是打包后的独立版本。已 Cook 和打包的项目应直接运行其生成的游戏可执行文件。</p>
+<p><strong>3. 指定启动地图和 URL 选项</strong></p>
+<p>引擎启动时默认加载项目 <code>Config/DefaultEngine.ini</code> 中配置的默认地图，通常就是 Maps &amp; Modes 里的 Game Default Map；在启动命令中显式指定地图可覆盖它。</p>
+<p>地图名还能组成带参数的 URL，在 <code>?</code> 后追加键值对。例如：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ExampleMap?Game=CaptureTheFlag</span><br></pre></td></tr></table></figure>
+
+<p>这样可在加载地图时指定 GameMode 等选项，不必为了测试反复修改项目默认设置。</p>
+<p><strong>4. 游戏中的常用控制台命令</strong></p>
+<p>运行游戏时通常可按 <code>`</code> 或 <code>Tab</code> 打开控制台。</p>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>EXIT</code> &#x2F; <code>QUIT</code></td>
+<td>断开当前游戏并退出，关闭引擎进程。</td>
+</tr>
+<tr>
+<td><code>DISCONNECT</code></td>
+<td>断开当前游戏或服务器的连接。</td>
+</tr>
+<tr>
+<td><code>OPEN [MapURL]</code></td>
+<td>打开指定地图或 URL；官方示例用 <code>open DM-Deck</code> 在保留当前设置的情况下加载地图。</td>
+</tr>
+<tr>
+<td><code>TRAVEL [MapURL]</code></td>
+<td>跳转到指定地图或 URL；官方示例用 <code>travel DM-Deck</code> 在重置设置的情况下加载地图。</td>
+</tr>
+<tr>
+<td><code>VIEWMODE [Mode]</code></td>
+<td>切换渲染视图模式，便于检查光照、线框等场景状态。</td>
+</tr>
+</tbody></table>
+<p><code>OPEN</code> 和 <code>TRAVEL</code> 后使用地图名时不需要写 <code>.umap</code> 扩展名，也可以附加地图 URL 选项。</p>
+<p><strong>请记住：</strong></p>
+<blockquote>
+<ul>
+<li>PIE 生成并控制玩家，SIE 不生成玩家且保留编辑器视角；两者都能测试游戏逻辑和物理。</li>
+<li>运行中的属性修改默认不保留，必须明确执行 Keep Simulation Changes 或按 <code>K</code>。</li>
+<li><code>-game</code> 可直接运行未 Cook 项目；启动地图可用命令行覆盖，地图 URL 还能携带 GameMode 等参数。</li>
+</ul>
+</blockquote>
+<h2 id="九、源码管理"><a href="#九、源码管理" class="headerlink" title="九、源码管理"></a>九、源码管理</h2><p>源码管理用于跟踪代码和资产的历史变化，让团队共享修改并减少互相覆盖。UE 的资产大多是二进制文件，不能像文本代码一样方便地合并，因此锁定、同步和明确提交尤其重要。</p>
+<h3 id="1-启用与配置源码管理"><a href="#1-启用与配置源码管理" class="headerlink" title="1. 启用与配置源码管理"></a>1. 启用与配置源码管理</h3><p><strong>1. 选择提供方</strong></p>
+<p>Perforce 和 SVN 是传统的内置支持方案；当前文档还列出了 <strong>Git（Beta）</strong>。不同提供方的连接方式不同，但编辑器中的 Check Out、Sync、Submit 等基本操作基本一致。</p>
+<ul>
+<li><strong>Perforce</strong>：以 Checkout 锁定和 Changelist 提交为核心，适合需要严格控制二进制资产编辑权的团队。</li>
+<li><strong>SVN</strong>：集中式版本管理，部分操作需配合 TortoiseSVN 等外部工具。</li>
+<li><strong>Git</strong>：使用前确认当前版本的 Beta 限制和团队工作流；二进制资产仍应避免多人同时修改。</li>
+</ul>
+<p><strong>2. 连接源码管理</strong></p>
+<p>可用以下任一入口：</p>
+<ul>
+<li>打开 <strong>编辑 → 编辑器偏好设置 → Loading &amp; Saving → Source Control</strong>，启用并配置连接。</li>
+<li>在内容浏览器中右键文件或文件夹，选择 <strong>Source Control → Connect to Source Control</strong>。</li>
+</ul>
+<p>在登录窗口选择 Provider，填写服务器、用户和工作区等信息，然后接受设置。连接成功后，资产右上角会显示状态图标，右键菜单也会增加源码管理操作。</p>
+<p><strong>3. 常用偏好设置</strong></p>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Automatically Checkout on Asset Modification</td>
+<td>修改受控资产时自动 Check Out。</td>
+</tr>
+<tr>
+<td>Prompt for Checkout on Package Modification</td>
+<td>修改包时询问是否 Check Out，避免忘记锁定文件。</td>
+</tr>
+<tr>
+<td>Add New Files when Modified</td>
+<td>新文件首次修改或保存时自动标记为添加。</td>
+</tr>
+<tr>
+<td>Use Global Settings</td>
+<td>使用全局连接配置，而非项目独立配置；切换后需要重新输入凭据。</td>
+</tr>
+<tr>
+<td>Tool for Diffing Text</td>
+<td>指定比较文本文件时使用的外部 Diff 工具。</td>
+</tr>
+</tbody></table>
+<p><strong>4. 状态与基本操作</strong></p>
+<p>内容浏览器中的常见状态包括：由自己 Check Out、由他人 Check Out、标记为添加、不在仓库中、服务器存在更新版本；部分提供方还会显示分支或复制状态。将鼠标悬停在资产上可查看更详细的信息，例如文件被谁锁定。</p>
+<ul>
+<li><strong>Check Out</strong>：锁定文件以进行编辑，避免其他人同时修改。</li>
+<li><strong>Refresh</strong>：刷新服务器状态。</li>
+<li><strong>History</strong>：查看历史版本。</li>
+<li><strong>Diff Against Depot</strong>：把本地资产与仓库版本进行比较。</li>
+<li><strong>Check In &#x2F; Submit</strong>：提交修改并填写变更说明；说明不能为空，否则无法确认提交。</li>
+</ul>
+<p><strong>5. 重载与断开连接</strong></p>
+<p>通过内置集成执行源码管理操作时，编辑器可自动重载受影响的内容；不要依赖它自动发现外部工具造成的所有变化。需要放弃资产尚未保存的修改时，可选择 <strong>Asset Actions → Reload</strong>，恢复到磁盘上最后保存的状态。</p>
+<p>确实不再使用源码管理时，可在 Source Control Login 中选择 <strong>Run Without Source Control</strong>。断开后状态指示会改变，团队协作和后续保存、提交也会受影响，不应把它当作普通刷新操作。</p>
+<h3 id="2-编辑器中的日常协作"><a href="#2-编辑器中的日常协作" class="headerlink" title="2. 编辑器中的日常协作"></a>2. 编辑器中的日常协作</h3><p><strong>1. 修改前 Check Out</strong></p>
+<p>在内容浏览器中右键资产并选择 <strong>Check Out</strong>，再开始编辑。弹出确认窗口时：</p>
+<ul>
+<li><strong>Check Out Selected</strong>：正式取出并锁定选中的文件。</li>
+<li><strong>Make Writable</strong>：只移除本地只读标记，不等于完成服务器锁定。</li>
+<li><strong>Ask Later</strong>：暂时继续，稍后再处理 Check Out。</li>
+</ul>
+<p><strong>2. 提交修改</strong></p>
+<p>选择 <strong>文件 → Submit to Source Control</strong>，编辑器会扫描项目和引擎中可提交的资产并打开 Submit Files 窗口。检查文件列表、填写变更说明后再提交；未提交的修改不会自动分享给团队。</p>
+<p><strong>3. 同步他人修改</strong></p>
+<p>右键文件或文件夹选择 <strong>Sync</strong>，获取服务器上的新版本。出现“服务器有更新版本”图标时，应先同步再继续工作。也可使用 P4V 等外部工具同步，但最好先关闭编辑器，避免编辑器占用或锁定文件。</p>
+<p><strong>4. 添加与删除</strong></p>
+<p>新资产可手动标记为添加，也可通过 <strong>Add New Files when Modified</strong> 自动处理。删除受控资产前仍需检查引用：</p>
+<ul>
+<li>在删除窗口中查看将删除的资产和引用它们的对象，必要时用 <strong>Replace References</strong> 指定替代资产。</li>
+<li><strong>Force Delete</strong> 可能留下断引用并破坏项目，只应作为最后手段。</li>
+<li>删除后可能留下重定向器；可对文件夹执行 <strong>Fix Up Redirectors in Folders</strong>，修正引用并标记相关文件删除。</li>
+<li>重定向器删除等部分操作可能需要通过 P4V 或 TortoiseSVN 等外部工具完成提交。</li>
+</ul>
+<p><strong>5. 关卡与配置文件</strong></p>
+<p>关卡既可像普通资产一样在内容浏览器中管理，也可通过 Level Browser 的 <strong>Source Control</strong> 菜单操作。</p>
+<p>项目设置对应的 <code>.ini</code> 文件可在设置编辑器中 Check Out，但当前并非所有配置文件都能直接在 UE 内 Check In；需要时使用外部源码管理工具提交。</p>
+<h3 id="3-使用-Perforce-管理项目"><a href="#3-使用-Perforce-管理项目" class="headerlink" title="3. 使用 Perforce 管理项目"></a>3. 使用 Perforce 管理项目</h3><p><strong>1. 服务器与工作区</strong></p>
+<p>Perforce 的基本流程是：Checkout 锁定文件，完成修改后通过 Changelist 提交到服务器并释放锁定。为减少 UnrealGameSync 等工具的路径兼容问题，官方建议使用<strong>不区分大小写的 Perforce Server</strong>。</p>
+<ul>
+<li><strong>P4D</strong> 随命令行进程运行，通常用于本地维护；需要持续服务时可使用 <strong>P4S</strong> Windows 服务。</li>
+<li>可用 <strong>P4Admin</strong> 管理 Depot、用户和用户组。</li>
+<li>在 <strong>P4V</strong> 中创建 Workspace，设置名称和本地 Workspace Root；首次上传项目通常在 P4V 中完成，加入现有项目则先执行 <strong>Get Latest</strong>。</li>
+</ul>
+<p><strong>2. 配置 Typemap</strong></p>
+<p>Typemap 告诉 Perforce 如何处理 UE 文件。<code>.uasset</code>、<code>.umap</code> 等二进制资产通常设置为 <code>binary+l</code>，表示二进制存储并采用独占 Checkout；源码和 <code>.ini</code> 则按文本处理。例如：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">binary+l //depot/....uasset</span><br><span class="line">binary+l //depot/....umap</span><br><span class="line">binary+l //depot/....ubulk</span><br><span class="line">text //depot/....cpp</span><br><span class="line">text //depot/....h</span><br><span class="line">text //depot/....ini</span><br></pre></td></tr></table></figure>
+
+<p>实际路径中的 <code>depot</code> 应替换为团队 Depot 名称，其他 UE 包类型也应按同样原则配置。</p>
+<p><strong>3. 决定提交与忽略的内容</strong></p>
+<table>
+<thead>
+<tr>
+<th>内容</th>
+<th>建议</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>Content/</code>、<code>Config/</code>、<code>.uproject</code></td>
+<td>应提交，分别保存资产、共享配置和项目描述。</td>
+</tr>
+<tr>
+<td><code>Source/</code></td>
+<td>C++ 项目应提交。</td>
+</tr>
+<tr>
+<td><code>Binaries/</code></td>
+<td>可选；有成员不自行编译、需要直接获取可执行版本时可提交。</td>
+</tr>
+<tr>
+<td><code>Saved/</code>、<code>Intermediate/</code>、<code>DerivedDataCache/</code></td>
+<td>属于生成或本地缓存内容，通常忽略。</td>
+</tr>
+<tr>
+<td>IDE 缓存、临时构建文件、<code>.pyc</code>、<code>.DS_Store</code> 等</td>
+<td>通常忽略，避免无关文件进入仓库。</td>
+</tr>
+</tbody></table>
+<p>Perforce 使用 <code>.p4ignore</code> 配置忽略规则，其语法与 <code>.gitignore</code> 并不完全相同。首次添加文件时，在 P4V 中选择 <strong>Mark for Add</strong>，进入 Pending Changelist，填写说明后 Submit。</p>
+<p><strong>4. 从编辑器连接</strong></p>
+<p>点击工具栏 <strong>Source Control</strong>，Provider 选择 Perforce，再填写服务器地址、用户和 Workspace 等信息。部分云服务器还需要在高级选项中填写 Host 和密码。连接后，日常资产操作即可按上一节的编辑器流程完成。</p>
+<p><strong>请记住：</strong></p>
+<blockquote>
+<ul>
+<li>修改前 Check Out、提交前检查文件和说明、继续工作前 Sync，是团队协作的基本节奏。</li>
+<li>二进制资产难以合并，应优先避免并发修改；Force Delete 和直接断开源码管理都要谨慎。</li>
+<li>Perforce 项目要同时管好 Typemap、Workspace 和忽略规则，不要把 Saved、Intermediate、DDC 等生成内容提交进去。</li>
+</ul>
+</blockquote>
+<h1 id="管理内容"><a href="#管理内容" class="headerlink" title="管理内容"></a>管理内容</h1><p>大部分美术资产在 3ds Max、Maya、Blender、Quixel、ZBrush 等外部工具中制作，再导入 UE；也有一部分内容直接在编辑器中创建。</p>
+<ul>
+<li><strong>直接在 UE 中创建</strong>：游戏关卡、材质、粒子系统、过场动画、蓝图脚本、AI 导航网格、预计算光照贴图和关卡灯光。</li>
+<li><strong>通常在外部创建</strong>：静态网格体、骨骼网格体、骨骼动画、纹理、WAV 声音、IES 灯光配置文件，以及 NVIDIA APEX 的 APB、APX 文件。</li>
+</ul>
+<h2 id="一、美术快速入门"><a href="#一、美术快速入门" class="headerlink" title="一、美术快速入门"></a>一、美术快速入门</h2><p><strong>1. 创建项目并整理目录</strong></p>
+<p>教程使用 <strong>Games → Blank</strong> 模板，启用 <strong>C++</strong> 和 <strong>Starter Content</strong>，项目名为 <code>Artist_QuickStart</code>。C++ 项目创建后还会打开 Visual Studio 解决方案。</p>
+<p>在内容浏览器中点击 <strong>Add New → New Folder</strong>，创建 <code>QuickStartContent</code> 存放导入内容。文件夹和资产命名应保持一致，避免后期难以查找。</p>
+<p><strong>2. 导入网格体和纹理</strong></p>
+<ul>
+<li>下载并解压教程示例资产，在目标文件夹中点击 <strong>Import</strong>，选择 <code>Basic_Asset1</code>、<code>Basic_Asset2</code> 两个 FBX 文件。</li>
+<li>在 FBX Import Options 中，<strong>Import</strong> 只处理当前文件，<strong>Import All</strong> 对剩余文件沿用设置。</li>
+<li>点击 <strong>Save All → Save Selected</strong> 保存，并确认目录中生成了对应的 <code>.uasset</code>。</li>
+<li>用同样方式导入 <code>T_Rock_04_D</code> 和 <code>T_Rock_04_n</code> 两张 TGA 纹理；法线贴图弹出设置确认时，检查并接受识别结果。</li>
+<li>导出自己的模型时，可在 DCC 中使用 <strong>Export Selection</strong> 只导出选中对象，或用 <strong>Export All</strong> 导出整个场景。几何体导出选项满足基本要求后，导入选项可先保持默认。</li>
+</ul>
+<p>建模应尽量干净，纹理尺寸通常使用 2 的幂。Fab 可用于查找和获取现成内容。</p>
+<p><strong>3. 创建并编辑材质</strong></p>
+<ol>
+<li>在内容浏览器选择 <strong>Add New → Material</strong>，命名为 <code>Rock</code>，双击打开材质编辑器。</li>
+<li>选中主材质节点，将 Shading Model 从 <strong>Default Lit</strong> 改为 <strong>Subsurface</strong>；主节点会增加 <strong>Opacity</strong> 和 <strong>Subsurface Color</strong> 输入。</li>
+<li>按住 <code>T</code> 并左键点击图表，创建 Texture Sample；分别指定颜色纹理和法线纹理。</li>
+<li>将颜色纹理的 Color 输出连接到 <strong>Base Color</strong>，法线纹理的 Normal 输出连接到 <strong>Normal</strong>。</li>
+<li>按住 <code>1</code> 并点击可创建标量 Constant，按住 <code>3</code> 并点击可创建 Constant3Vector；将它们连接到相应输入，并在 Details 中调整数值。</li>
+</ol>
+<p>教程示例使用 <code>Specular = 0</code>、<code>Roughness = 0.8</code>、<code>Opacity = 0.95</code>、红色 Subsurface Color <code>(1, 0, 0)</code>。节点排布应尽量避免连线交叉，完成后保存材质。</p>
+<p><strong>4. 给静态网格体应用材质</strong></p>
+<ul>
+<li><strong>修改资产默认材质</strong>：在静态网格体编辑器的 <strong>LOD0 → Material</strong> 槽中选择材质并保存，之后每次放置该资产都会使用此默认值。</li>
+<li><strong>只修改关卡中的实例</strong>：选中 Static Mesh Actor，在 <strong>Details → Materials</strong> 中替换材质，或直接把材质拖到 Actor 上；不会改变资产默认值。</li>
+</ul>
+<h2 id="二、Alembic-文件导入器"><a href="#二、Alembic-文件导入器" class="headerlink" title="二、Alembic 文件导入器"></a>二、Alembic 文件导入器</h2><p>Alembic（<code>.abc</code>）把复杂的程序化动画烘焙为与应用程序无关的几何结果，适合将外部制作的复杂动画带入 UE 实时播放。</p>
+<p><strong>1. 导出与几何限制</strong></p>
+<p>在 Maya 中选择 <strong>Cache → Alembic Cache → Export All to Alembic</strong>，或只导出选中对象。高级选项中启用 <strong>UV Write</strong>；若希望 UE 根据 Face Set 名称创建材质，还必须启用 <strong>Write Face Sets</strong>。</p>
+<p>在内容浏览器点击 <strong>Import</strong> 选择 <code>.abc</code> 文件，可在导入窗口中勾选需要的轨道。当前只支持三角形和四边形；超过四边的多边形、NURBS 或 SubDiv 曲面会导致加载失败。</p>
+<p><strong>2. 三种导入方式</strong></p>
+<table>
+<thead>
+<tr>
+<th>方式</th>
+<th>用途与关键设置</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Static Mesh</td>
+<td>默认方式，只取 <strong>Frame Start</strong> 指定的单帧，不含动画。多个网格可用 <strong>Merge Meshes</strong> 合并，但重叠 UV 可能出问题；<strong>Propagate Matrix Transformations</strong> 可在合并前保留各对象变换，否则对象可能都落到原点；还可生成 Lightmap UV。</td>
+</tr>
+<tr>
+<td>Geometry Cache</td>
+<td>以逐帧 Flipbook 播放顶点动画，性能随网格复杂度变化。支持按 Face Set 创建材质和运动矢量；适合顶点数量会变化的序列。</td>
+</tr>
+<tr>
+<td>Skeletal</td>
+<td>用 PCA 提取基础姿态，再通过 Morph Target 混合出动画。顶点数不变时，这是三种方式中播放效率较高的一种；顶点数变化时不适用。</td>
+</tr>
+</tbody></table>
+<p>Geometry Cache 的运动矢量选项：</p>
+<ul>
+<li><strong>No Motion Vectors</strong>：默认值，不保存运动矢量，也没有运动模糊。</li>
+<li><strong>Import Abc Velocities as Motion Vectors</strong>：拓扑会变化时，从 DCC 导出顶点速度并采用此选项。</li>
+<li><strong>Calculate Motion Vectors During Import</strong>：拓扑不变时，可在导入时计算。</li>
+<li>后两种方式都会增加磁盘占用。Geometry Cache 不支持细分所需的邻接缓冲；需要细分时，可改用带 Morph Target 的 Skeletal Mesh。</li>
+</ul>
+<p>Skeletal 导入还可合并网格、把纯矩阵动画烘焙为顶点动画，并用 <strong>Percentage Based</strong> 或 <strong>Fixed Number</strong> 控制基础姿态数量。姿态越少，压缩越高但细节损失越多。动画顶点相对原点位移很大时可能变形，可尝试 <strong>No Compression</strong> 并启用 <strong>Merge Meshes</strong>。</p>
+<p><strong>3. 采样与法线</strong></p>
+<ul>
+<li><strong>Per Frame</strong> 按源数据逐帧采样，<strong>Per X Frames</strong> 按帧间隔采样，<strong>Per Time Step</strong> 按时间步长采样。</li>
+<li><strong>Frame Start &#x2F; Frame End</strong> 控制范围，<strong>Skip Empty Frames at Start</strong> 可跳过开头没有几何体的预滚帧。</li>
+<li>法线设置包括每对象强制一个平滑组、硬边角度阈值、重新计算法线，以及计算切线和法线时忽略退化三角形。</li>
+<li>文件包含可用法线时通常优先使用；无法线或启用 <strong>Recompute Normals</strong> 时会重新计算。硬边阈值越接近 <code>0</code> 越平滑，越接近 <code>1</code> 越容易形成硬边。</li>
+<li>Skeletal 动画的法线变化过大时可能出现显示问题。可尝试实验性 Skin Cache：启用 <strong>Support Compute Skin Cache</strong> 和 <strong>Force all skinned meshes to recompute tangents</strong>，再在网格体对应材质或 Section 上启用 <strong>Recompute Tangent</strong>。</li>
+</ul>
+<h2 id="三、FBX-内容管线"><a href="#三、FBX-内容管线" class="headerlink" title="三、FBX 内容管线"></a>三、FBX 内容管线</h2><p>FBX 是 Autodesk 的交换格式，MotionBuilder 等工具可原生支持，Maya、3ds Max、Blender 等通常通过 FBX 插件导出。</p>
+<p>相比逐个处理不同文件格式，UE 的 FBX 管线有几个优势：</p>
+<ul>
+<li>同一格式可承载静态网格体、骨骼网格体、动画和 Morph Target。</li>
+<li>一次导入可包含多个 LOD 和多个 Morph &#x2F; Blendshape。</li>
+<li>可导入材质和纹理，并自动应用到静态网格体。</li>
+</ul>
+<p>当前 5.9 总览注明使用 <strong>FBX 2020.2</strong>；用其他版本导出可能出现兼容问题。旧教程中若出现其他 FBX 版本，应以当前管线说明为准。</p>
+<h3 id="1-FBX-动画管线"><a href="#1-FBX-动画管线" class="headerlink" title="1. FBX 动画管线"></a>1. FBX 动画管线</h3><p>用于设置、导出和导入 Skeletal Mesh 的骨骼动画，生成 Animation Sequence。导出时要确认目标 Skeleton、帧范围、采样和动画轨道，避免把动画导入到不兼容的骨架上。</p>
+<h3 id="2-FBX-资产元数据管线"><a href="#2-FBX-资产元数据管线" class="headerlink" title="2. FBX 资产元数据管线"></a>2. FBX 资产元数据管线</h3><p>可把源资产中的用户自定义属性带入 UE，作为资产元数据使用，并在编辑器中通过 Blueprint 或 Python 读取和处理。需要依赖这些属性时，应在 DCC 中统一名称和数据类型。</p>
+<h3 id="3-FBX-导入选项参考"><a href="#3-FBX-导入选项参考" class="headerlink" title="3. FBX 导入选项参考"></a>3. FBX 导入选项参考</h3><p>集中解释 FBX Import Options 对话框中的网格体、骨骼、动画、材质和变换等选项。导入结果异常时，先核对这里对应选项，不要盲目反复导出源文件。</p>
+<h3 id="4-FBX-材质管线"><a href="#4-FBX-材质管线" class="headerlink" title="4. FBX 材质管线"></a>4. FBX 材质管线</h3><p>用于随网格体传递基础材质和纹理，并在导入时建立材质槽与纹理连接。它主要处理可映射的基础属性，复杂 DCC 着色器通常仍需在 UE 材质编辑器中重建。</p>
+<h3 id="5-FBX-Morph-Target-管线"><a href="#5-FBX-Morph-Target-管线" class="headerlink" title="5. FBX Morph Target 管线"></a>5. FBX Morph Target 管线</h3><p>用于为 Skeletal Mesh 创建并导入 Blend Shape &#x2F; Morph Target，可随基础网格一次导入多个变形目标。源模型的拓扑和顶点顺序必须保持一致，否则变形结果可能错误。</p>
+<h3 id="6-FBX-场景导入"><a href="#6-FBX-场景导入" class="headerlink" title="6. FBX 场景导入"></a>6. FBX 场景导入</h3><p>通过 <strong>Import Into Level</strong> 导入完整 FBX 场景，不只生成资产，还可建立关卡中的 Actor 和场景层级。它与内容浏览器中只导入单个资产的方式不同，使用前应确认目标内容目录和场景放置方式。</p>
+<h3 id="7-FBX-骨骼网格体管线"><a href="#7-FBX-骨骼网格体管线" class="headerlink" title="7. FBX 骨骼网格体管线"></a>7. FBX 骨骼网格体管线</h3><p>涵盖骨架、蒙皮网格、权重和骨骼网格体 LOD 的设置、导出与导入。骨架层级、绑定姿势和权重质量会直接影响后续动画效果。</p>
+<h3 id="8-FBX-静态网格体管线"><a href="#8-FBX-静态网格体管线" class="headerlink" title="8. FBX 静态网格体管线"></a>8. FBX 静态网格体管线</h3><p>涵盖静态几何体、UV、法线、平滑组、碰撞体和 LOD 的导出与导入。把多个网格及自定义碰撞放在同一文件时，要分别检查 Combine Meshes、碰撞命名和生成结果。</p>
+<h3 id="9-FBX-导入错误"><a href="#9-FBX-导入错误" class="headerlink" title="9. FBX 导入错误"></a>9. FBX 导入错误</h3><p>汇总导入器产生的常见错误和警告。遇到导入失败或内容缺失时，应根据具体消息检查几何体、骨架、材质、FBX 版本和源文件，而不是忽略警告继续制作。</p>
+<h2 id="四、毛发渲染与模拟"><a href="#四、毛发渲染与模拟" class="headerlink" title="四、毛发渲染与模拟"></a>四、毛发渲染与模拟</h2><p><strong>1. 渲染方式</strong></p>
+<p>UE 的 Groom 系统采用基于发束的工作流，可实时渲染和模拟数十万根甚至更多毛发，并兼容传统发片等近似方式。毛发梳理仍要在 Maya&#x2F;XGen、Houdini、Ornatrix、Yeti 等外部 DCC 中完成，UE 的导入和渲染功能不是完整的 Groom 制作工具。</p>
+<p><strong>2. Alembic Groom 规范</strong></p>
+<ul>
+<li>毛发曲线使用 <code>Alembic::AbcGeom::ICurves</code>。</li>
+<li>自定义属性名使用小写，不含空格和特殊字符，并采用 <code>groom_</code> 前缀，例如 <code>groom_id</code>、<code>groom_color</code>、<code>groom_width</code>。</li>
+<li>属性可按整个对象、每根曲线或每个控制点设置，对应 Constant、Uniform、Vertex 三种 Scope。</li>
+<li>若没有 <code>groom_width</code>，也无法从源曲线宽度转换，UE 会回退为 <strong>1 厘米</strong>，因此导出时应主动检查宽度。</li>
+</ul>
+<p><strong>3. 资产与组件</strong></p>
+<p>导入 <code>.abc</code> 后生成 <strong>Groom Asset</strong>；通过 <strong>Groom Binding Asset</strong> 绑定到 Skeletal Mesh，再用 <strong>Groom Component</strong> 将毛发放入关卡。Groom 编辑器可配置材质、LOD、物理和调试显示；组件还可调整毛发宽度、发根与发梢缩放、阴影密度、光追选项和 LOD 偏移。</p>
+<p>实际项目还要核对目标平台的 Groom 支持情况；需要传统发片时，可使用 Hair Card Generator。</p>
+<h3 id="1-Groom-模拟与渲染快速入门"><a href="#1-Groom-模拟与渲染快速入门" class="headerlink" title="1. Groom 模拟与渲染快速入门"></a>1. Groom 模拟与渲染快速入门</h3><p>通过一个最短流程启用 Groom 所需插件、导入 Alembic 毛发、绑定骨架网格体并放入关卡，再设置材质和物理模拟。适合先跑通完整链路，再逐项调整外观和性能。</p>
+<h3 id="2-设置项目以使用-Groom"><a href="#2-设置项目以使用-Groom" class="headerlink" title="2. 设置项目以使用 Groom"></a>2. 设置项目以使用 Groom</h3><p>启用 <strong>Alembic Groom Importer</strong> 和 <strong>Groom</strong> 插件，并按目标渲染需求检查项目设置。模拟还需要相应的物理和 Niagara 支持，不能只导入毛发资产就期待自动运动。</p>
+<h3 id="3-Groom-平台支持"><a href="#3-Groom-平台支持" class="headerlink" title="3. Groom 平台支持"></a>3. Groom 平台支持</h3><p>不同平台对发束、发片、网格毛发、光追和模拟的支持程度不同。目标平台应在制作早期验证，避免以桌面编辑器效果推断主机或移动端结果。</p>
+<h3 id="4-导入-Groom"><a href="#4-导入-Groom" class="headerlink" title="4. 导入 Groom"></a>4. 导入 Groom</h3><p>从 Alembic 导入曲线时，根据源文件设置旋转、缩放、属性和 Groom 类型。导入器可识别 Groom 规范中的组、宽度、颜色等数据，但要先确认导出软件确实写入了这些属性。</p>
+<h3 id="5-Groom-组件与资产"><a href="#5-Groom-组件与资产" class="headerlink" title="5. Groom 组件与资产"></a>5. Groom 组件与资产</h3><p>Groom Asset 保存毛发数据，Groom Binding Asset 描述它与目标 Skeletal Mesh 的绑定关系，Groom Component 负责在关卡中使用毛发。组件上的宽度、缩放、阴影、光追和 LOD 偏移会影响最终显示。</p>
+<h3 id="6-Groom-资产编辑器"><a href="#6-Groom-资产编辑器" class="headerlink" title="6. Groom 资产编辑器"></a>6. Groom 资产编辑器</h3><p>集中检查发束、发片和网格表示，并设置材质、LOD、插值、物理和调试选项。资产级设置决定默认行为，关卡组件上的覆盖值则用于单个实例。</p>
+<h3 id="7-发片生成器"><a href="#7-发片生成器" class="headerlink" title="7. 发片生成器"></a>7. 发片生成器</h3><p>Hair Card Generator 可从 Groom 生成较廉价的发片表示，供远距离 LOD 或性能受限的平台使用。生成后要检查卡片朝向、纹理和密度，不能只依赖自动结果。</p>
+<h3 id="8-Groom-发束"><a href="#8-Groom-发束" class="headerlink" title="8. Groom 发束"></a>8. Groom 发束</h3><p>Strands 表示用于近距离渲染的真实曲线毛发。可以调整根部与尖端宽度、密度、渲染和阴影参数；发束质量高，但覆盖率和渲染成本通常也更高。</p>
+<h3 id="9-为-Groom-设置绑定"><a href="#9-为-Groom-设置绑定" class="headerlink" title="9. 为 Groom 设置绑定"></a>9. 为 Groom 设置绑定</h3><p>把 Groom 绑定到带动画的 Skeletal Mesh，使毛发跟随角色和骨骼运动。目标网格、绑定姿势、根骨骼和 Groom 在网格上的投影关系都要匹配，骨架变化后应重新检查。</p>
+<h3 id="10-Groom-插值"><a href="#10-Groom-插值" class="headerlink" title="10. Groom 插值"></a>10. Groom 插值</h3><p>在稀疏的引导曲线之间生成更多渲染毛发，减少源数据量并控制外观。引导分布、分组和插值设置会影响毛发结块、穿插及运动效果。</p>
+<h3 id="11-启用-Groom-物理模拟"><a href="#11-启用-Groom-物理模拟" class="headerlink" title="11. 启用 Groom 物理模拟"></a>11. 启用 Groom 物理模拟</h3><p>在 Groom 资产和组件上配置模拟资产与 Niagara 解算，使毛发响应重力和角色运动。先保证绑定和初始姿势正确，再调约束、阻尼和碰撞；模拟成本也要纳入性能预算。</p>
+<h3 id="12-设置-Groom-LOD"><a href="#12-设置-Groom-LOD" class="headerlink" title="12. 设置 Groom LOD"></a>12. 设置 Groom LOD</h3><p>为不同距离配置发束、发片和网格等表示，以及对应的屏幕尺寸和材质。LOD 切换既要控制发量和成本，也要避免密度、宽度或颜色突然变化。</p>
+<h3 id="13-为-Groom-设置发片与网格"><a href="#13-为-Groom-设置发片与网格" class="headerlink" title="13. 为 Groom 设置发片与网格"></a>13. 为 Groom 设置发片与网格</h3><p>Cards 用带纹理的片面对毛发进行近似，Meshes 则使用实际几何体，适合较远 LOD 或特定平台。两者都需要配合发束表示和阈值检查切换效果。</p>
+<h3 id="14-Groom-材质"><a href="#14-Groom-材质" class="headerlink" title="14. Groom 材质"></a>14. Groom 材质</h3><p>毛发通常使用 Hair 着色模型，可控制颜色、粗糙度、散射和切线等属性。发束、发片和网格对材质输入的依赖不同，应针对实际表示方式设置材质。</p>
+<h3 id="15-生成-Groom-纹理"><a href="#15-生成-Groom-纹理" class="headerlink" title="15. 生成 Groom 纹理"></a>15. 生成 Groom 纹理</h3><p>可从 Groom 数据生成供发片等表示使用的纹理，如深度、覆盖、属性和切线相关信息。输出分辨率和通道内容会直接影响发片质量，应与生成器及材质配套检查。</p>
+<h3 id="16-设置-Groom-Deformer-Graph"><a href="#16-设置-Groom-Deformer-Graph" class="headerlink" title="16. 设置 Groom Deformer Graph"></a>16. 设置 Groom Deformer Graph</h3><p>使用 Groom Deformer Graph 编写可复用的毛发变形和处理逻辑。它适合把 grooming 操作组织成节点流程，并用于不同资产，但要在实际绑定和动画状态下验证结果。</p>
+<h3 id="17-Groom-缓存"><a href="#17-Groom-缓存" class="headerlink" title="17. Groom 缓存"></a>17. Groom 缓存</h3><p>Groom Cache 保存预计算的毛发运动，用于播放确定性的动画结果。使用缓存可减少实时模拟的不确定性，但资产体积、采样、时间范围和播放同步需要单独管理。</p>
+<h3 id="18-Groom-可扩展性与性能"><a href="#18-Groom-可扩展性与性能" class="headerlink" title="18. Groom 可扩展性与性能"></a>18. Groom 可扩展性与性能</h3><p>通过 LOD、发束数量、发片、阴影、光追和模拟设置平衡质量与性能。用可扩展性等级为不同平台配置预算，并以目标硬件测试为准。</p>
+<h3 id="19-调试-Groom"><a href="#19-调试-Groom" class="headerlink" title="19. 调试 Groom"></a>19. 调试 Groom</h3><p>借助 Groom 编辑器和视口调试显示检查引导、发束、绑定、材质和 LOD 问题。出现毛发消失、爆炸或不跟随时，应分别排查源数据、绑定、模拟和渲染设置。</p>
+<h3 id="20-Groom-的-Alembic-规范"><a href="#20-Groom-的-Alembic-规范" class="headerlink" title="20. Groom 的 Alembic 规范"></a>20. Groom 的 Alembic 规范</h3><p>定义 UE 可识别的曲线、分组和 <code>groom_</code> 属性。特别要检查属性 Scope、命名和宽度：没有可用宽度时会回退到 <strong>1 厘米</strong>，很容易造成尺寸异常。</p>
+<h3 id="21-使用-XGen-创建-Groom-的指南"><a href="#21-使用-XGen-创建-Groom-的指南" class="headerlink" title="21. 使用 XGen 创建 Groom 的指南"></a>21. 使用 XGen 创建 Groom 的指南</h3><p>介绍在 Maya&#x2F;XGen 中准备并导出适合 UE 的 Groom，包括曲线、集合、描述和属性约定。导出前按 UE 规范整理，可减少导入后再修正宽度、分组和绑定的问题。</p>
+<h2 id="五、Interchange-框架"><a href="#五、Interchange-框架" class="headerlink" title="五、Interchange 框架"></a>五、Interchange 框架</h2><p>Interchange 是 UE 的通用导入、导出框架，特点是<strong>不绑定单一文件格式、异步、可定制，并支持运行时调用</strong>。</p>
+<h3 id="1-使用-Interchange-导入资产"><a href="#1-使用-Interchange-导入资产" class="headerlink" title="1. 使用 Interchange 导入资产"></a>1. 使用 Interchange 导入资产</h3><p><strong>1. 核心概念</strong></p>
+<ul>
+<li><strong>Pipeline</strong>：一组处理导入数据的操作，并向外暴露可配置选项。</li>
+<li><strong>Pipeline Stack</strong>：按顺序执行的 Pipeline 列表，可针对不同文件格式配置，位于 <strong>Project Settings → Engine → Interchange</strong>。</li>
+<li><strong>Factory</strong>：根据处理后的数据真正生成资产。</li>
+</ul>
+<p><strong>Interchange Editor</strong> 和 <strong>Interchange Framework</strong> 插件默认启用。导入时，文件先被转换成中间节点结构，再经过 Pipeline Stack，最后由 Factory 生成资产；格式不受支持时会回退到旧导入框架。</p>
+<p><strong>2. 导入、预览与重导入</strong></p>
+<ul>
+<li>可从内容抽屉或内容浏览器导入资产，也可使用 <strong>File → Import Into Level</strong> 导入场景；Interchange 的后者目前只支持 glTF 和 MaterialX。</li>
+<li>在 Pipeline Configuration 中选择 Pipeline Stack、调整选项并点击 <strong>Import</strong>。<strong>Basic Layout</strong> 只显示基础选项，<strong>Filter on Contents</strong> 按源文件实际内容过滤选项。</li>
+<li><strong>Preview</strong> 可提前查看将创建的资产类型及其预导入属性。</li>
+<li>重导入会记住上次使用的 Pipeline Stack 和选项。材质或 Skeleton 结构发生冲突时会高亮相关 Pipeline，<strong>Show Conflict</strong> 可查看变化。</li>
+<li>冲突窗口不再提供“保留原材质分配”的选择；需要修改时，应改源文件或在静态网格体编辑器中调整。</li>
+</ul>
+<p>通过 Interchange 导入 FBX 仍属实验功能，分别由 <code>Interchange.FeatureFlags.Import.FBX</code> 和 <code>Interchange.FeatureFlags.Import.FBX.ToLevel</code> 控制资产导入与 Import Into Level。</p>
+<h3 id="2-Interchange-开发指南"><a href="#2-Interchange-开发指南" class="headerlink" title="2. Interchange 开发指南"></a>2. Interchange 开发指南</h3><p>默认 Pipeline 覆盖普通资产、材质、纹理、场景资产和场景关卡等流程。可在项目设置中增删、重排 Pipeline，修改默认值、可见性和只读状态，也可用 C++、蓝图或 Python 创建自定义 Pipeline。</p>
+<ul>
+<li>蓝图自定义 Pipeline 可继承 <code>InterchangePipelineBase</code>，在文件转换后、Factory 创建资产前后等阶段插入逻辑；文档注明蓝图导出 Pipeline 回调目前不可用。</li>
+<li>运行时蓝图导入示例目前不支持 Skeletal Mesh 和 Animation 数据；改用 <strong>Import Scene</strong> 节点时，可将结果直接生成到场景。</li>
+<li>在 Cook 后的应用中使用 Interchange，需要把 <code>Interchange</code> 文件夹加入 <strong>Project Settings → Packaging → Additional Asset Directories to Cook</strong>。</li>
+</ul>
+<h2 id="六、骨骼网格体"><a href="#六、骨骼网格体" class="headerlink" title="六、骨骼网格体"></a>六、骨骼网格体</h2><p><strong>1. 资产组成与导入</strong></p>
+<p>Skeletal Mesh 同时包含角色外观网格和用于动画的骨骼数据。角色通常在外部 DCC 中制作并导出为 FBX，导入后可能得到：</p>
+<ul>
+<li><strong>Skeletal Mesh</strong>：角色模型。</li>
+<li><strong>Skeleton</strong>：独立保存的骨架资产，可在 Skeleton Editor 中编辑。</li>
+<li><strong>Animation Sequence</strong>：随 FBX 导入的动画，可在动画序列编辑器中处理。</li>
+</ul>
+<p>Skeletal Mesh Editor、Skeleton Editor、Physics Asset Editor 和 Animation Sequence Editor 分别处理模型、骨架、物理与动画属性。</p>
+<p><strong>2. 放入关卡并控制</strong></p>
+<p>Skeletal Mesh 可直接拖入关卡展示，但要作为可控制角色，通常需要创建 <strong>Character 蓝图</strong>，在其 Mesh 组件上指定 Skeletal Mesh，并调整模型与 Arrow、Capsule 组件的位置关系。保存并编译后，再把 Character 蓝图放入关卡，通过事件图表和函数实现行为。</p>
+<p><strong>3. 播放动画</strong></p>
+<ul>
+<li>简单播放：将 Mesh 组件的 <strong>Animation Mode</strong> 设为 <strong>Use Animation Asset</strong>，再在 <strong>Anim to Play</strong> 中选择动画。</li>
+<li>复杂逻辑：创建 <strong>Animation Blueprint</strong> 并选择目标 Skeleton，在 AnimGraph 中根据蓝图逻辑选择动画，配合 Blend Space 等实现混合。</li>
+<li>Animation Sequence 也可用于 Sequencer 制作过场动画。</li>
+</ul>
+<p><strong>4. 模块化与变形动画</strong></p>
+<p>换装或动态外观角色可由多个 Skeletal Mesh 组件组合而成。骨架相同或结构相近、骨骼命名一致时，可设置 Skeleton 兼容性以共享动画。</p>
+<p>除了骨骼动画，还可用 Morph Target 等变形器直接改变几何体，制作表情、皮肤、服装和肌肉运动。</p>
+<h3 id="1-使用-FBX-导入骨骼网格体"><a href="#1-使用-FBX-导入骨骼网格体" class="headerlink" title="1. 使用 FBX 导入骨骼网格体"></a>1. 使用 FBX 导入骨骼网格体</h3><p>从 DCC 导出绑定骨架和蒙皮权重的网格，在导入窗口选择或创建 Skeleton，并按需要导入动画。重点检查骨骼层级、绑定姿势、权重、单位、朝向和材质槽；骨架不兼容时不要强行复用现有 Skeleton。</p>
+<h3 id="2-设置角色"><a href="#2-设置角色" class="headerlink" title="2. 设置角色"></a>2. 设置角色</h3><p>将 Skeletal Mesh 放入 Character 蓝图的 Mesh 组件，调整它与 Capsule、Arrow 的相对位置和朝向。简单展示可直接指定 Animation Asset；需要移动、状态切换和混合时使用 Animation Blueprint，并配合 Character Movement 和输入逻辑。</p>
+<h3 id="3-使用模块化角色"><a href="#3-使用模块化角色" class="headerlink" title="3. 使用模块化角色"></a>3. 使用模块化角色</h3><p>把身体、服装、头发等拆成多个 Skeletal Mesh，通过共享或兼容的 Skeleton 组合角色并复用动画。各部件必须使用一致的骨架结构和绑定关系，否则容易出现接缝、穿插或部件不跟随主骨骼的问题。</p>
+<h3 id="4-Morph-Target-预览器"><a href="#4-Morph-Target-预览器" class="headerlink" title="4. Morph Target 预览器"></a>4. Morph Target 预览器</h3><p>在编辑器中单独查看和调节 Morph Target，检查表情或网格变形的权重效果。它用于验证变形目标本身；变形异常时还应回查源模型拓扑、顶点顺序和 FBX 导入结果。</p>
+<h2 id="七、静态网格体"><a href="#七、静态网格体" class="headerlink" title="七、静态网格体"></a>七、静态网格体</h2><p>Static Mesh 是 UE 关卡世界几何体的基本单位，通常在 3ds Max、Maya、Blender 等外部软件中制作，再通过内容浏览器导入，关卡中多以 Static Mesh Actor 的形式使用。</p>
+<p>Static Mesh 会缓存到显存，可平移、旋转和缩放，也能承载比简单 BSP 几何更复杂的模型。这里的“静态”是指网格不做骨骼变形，不代表 Actor 永远不能移动；运行时能否移动仍由 Mobility 等设置决定。</p>
+<h3 id="1-导入静态网格体"><a href="#1-导入静态网格体" class="headerlink" title="1. 导入静态网格体"></a>1. 导入静态网格体</h3><p>可通过 FBX 等格式导入 Static Mesh，并在导入窗口设置组合网格、法线与切线、材质、UV、LOD 和碰撞。导入后应检查比例、枢轴、朝向、平滑和材质槽，不能只确认文件导入成功。</p>
+<h3 id="2-创建和使用-LOD"><a href="#2-创建和使用-LOD" class="headerlink" title="2. 创建和使用 LOD"></a>2. 创建和使用 LOD</h3><p>为同一模型准备不同细节等级的网格，并按屏幕尺寸切换，降低远处对象的渲染成本。可以从外部导入 LOD，也可以在编辑器中生成；要同时检查几何体、材质槽和光照 UV 是否匹配。</p>
+<h3 id="3-理解光照贴图"><a href="#3-理解光照贴图" class="headerlink" title="3. 理解光照贴图"></a>3. 理解光照贴图</h3><p>静态光照使用专门的 Lightmap UV，不能把有重叠的普通纹理 UV 直接当作可靠的光照 UV。需要在独立 UV 通道中避免重叠、保留足够间距，并设置正确的 Light Map Coordinate Index 和分辨率。</p>
+<h3 id="4-Proxy-Geometry-工具"><a href="#4-Proxy-Geometry-工具" class="headerlink" title="4. Proxy Geometry 工具"></a>4. Proxy Geometry 工具</h3><p>把多个 Static Mesh Actor 及其材质合并成较简单的代理网格和纹理，用于减少绘制调用和几何复杂度。它适合远景或场景优化，但会改变原始组织，使用前应保留源资产并检查合并后的材质、碰撞和 LOD。</p>
+<h3 id="5-设置静态网格体碰撞"><a href="#5-设置静态网格体碰撞" class="headerlink" title="5. 设置静态网格体碰撞"></a>5. 设置静态网格体碰撞</h3><p>可使用简单碰撞体、自定义 FBX 碰撞或编辑器自动生成，也可在复杂情况下使用复杂碰撞。碰撞形状应满足交互和物理需求，不能为追求精确而无条件使用高开销的逐三角面碰撞。</p>
+<h3 id="6-设置静态网格体材质"><a href="#6-设置静态网格体材质" class="headerlink" title="6. 设置静态网格体材质"></a>6. 设置静态网格体材质</h3><p>导入后确认材质槽数量、顺序和分配，再在 Static Mesh Editor 或 Actor 上指定材质。材质槽决定几何体如何分区，额外槽和错误分配都可能增加绘制调用或导致表面错误。</p>
+<h3 id="7-设置按平台-LOD"><a href="#7-设置按平台-LOD" class="headerlink" title="7. 设置按平台 LOD"></a>7. 设置按平台 LOD</h3><p>为不同设备或平台指定 LOD 的保留和显示规则，避免低性能平台使用过高的细节等级。平台覆盖应在目标硬件上验证，不能只看编辑器预览。</p>
+<h3 id="8-自动生成静态网格体-LOD"><a href="#8-自动生成静态网格体-LOD" class="headerlink" title="8. 自动生成静态网格体 LOD"></a>8. 自动生成静态网格体 LOD</h3><p>在 Static Mesh Editor 中设置 LOD 数量、简化比例和屏幕尺寸，由编辑器生成 LOD。自动简化适合快速建立基础结果，但轮廓、UV、材质和细小结构仍需人工检查。</p>
+<h3 id="9-静态网格体编辑器-UI"><a href="#9-静态网格体编辑器-UI" class="headerlink" title="9. 静态网格体编辑器 UI"></a>9. 静态网格体编辑器 UI</h3><p>编辑器用于查看模型并管理细节、材质槽、LOD、碰撞、UV、Socket 和 LOD 信息等。资产级修改会影响所有引用它的 Actor，而关卡实例上的覆盖只影响对应实例。</p>
+<h3 id="10-静态网格体-Morph-Target"><a href="#10-静态网格体-Morph-Target" class="headerlink" title="10. 静态网格体 Morph Target"></a>10. 静态网格体 Morph Target</h3><p>静态网格也可使用 Morph Target 表达局部变形，但使用范围和动画方式不同于 Skeletal Mesh。导入和设置后要确认目标引擎版本、渲染路径及材质是否正确支持该工作流。</p>
+<h3 id="11-使用静态网格体-Socket"><a href="#11-使用静态网格体-Socket" class="headerlink" title="11. 使用静态网格体 Socket"></a>11. 使用静态网格体 Socket</h3><p>在网格上设置带位置和旋转的命名挂点，用于附着道具、特效、音频或其他 Actor。Socket 随网格变换，适合统一挂接位置；修改资产 Socket 会影响相关实例。</p>
+<h3 id="12-使用-UV-通道"><a href="#12-使用-UV-通道" class="headerlink" title="12. 使用 UV 通道"></a>12. 使用 UV 通道</h3><p>Static Mesh 可保存多个 UV 通道，分别用于纹理、光照贴图或其他材质用途。导入与编辑器中都可检查通道，注意通道索引和 Light Map Coordinate Index 的对应关系。</p>
+<h3 id="13-实例化静态网格体组件"><a href="#13-实例化静态网格体组件" class="headerlink" title="13. 实例化静态网格体组件"></a>13. 实例化静态网格体组件</h3><p>Instanced Static Mesh Component 用一个组件渲染同一网格和材质的多个实例，适合大量重复物体，减少管理和渲染开销。各实例仍可拥有不同变换；需要独立复杂行为时，不一定适合全部用实例组件代替 Actor。</p>
+<h3 id="14-按平台优化-LOD-屏幕尺寸"><a href="#14-按平台优化-LOD-屏幕尺寸" class="headerlink" title="14. 按平台优化 LOD 屏幕尺寸"></a>14. 按平台优化 LOD 屏幕尺寸</h3><p>单独调整不同平台的 LOD Screen Size，使 LOD 更早或更晚切换，以控制质量和性能。它解决的是切换阈值，不能替代 LOD 网格本身和材质复杂度的优化。</p>
+<h2 id="八、Mutable-骨骼网格体生成"><a href="#八、Mutable-骨骼网格体生成" class="headerlink" title="八、Mutable 骨骼网格体生成"></a>八、Mutable 骨骼网格体生成</h2><p>Mutable 可在<strong>编辑器或运行时</strong>动态生成 Skeletal Mesh、Material 和 Texture，主要用于角色换装与自定义系统，也能生成动物、道具等其他动态骨骼网格内容。</p>
+<p>它的价值是把多种部件、材质和参数组合交给生成系统处理，而不是为每一种组合预先制作独立成品。更完整的节点和使用说明需参考 Mutable 自身文档。</p>
+<h2 id="九、Datasmith"><a href="#九、Datasmith" class="headerlink" title="九、Datasmith"></a>九、Datasmith</h2><p>Datasmith 是一组工具和插件，用于把设计软件中的完整场景和复杂资产带入 UE，保留场景组织，并围绕设计数据制作实时可视化内容。</p>
+<h3 id="1-Datasmith-概览"><a href="#1-Datasmith-概览" class="headerlink" title="1. Datasmith 概览"></a>1. Datasmith 概览</h3><p>Datasmith 面向建筑、制造和产品可视化等场景，尽量保留源应用的层级、几何体、材质、灯光和元数据。它既包括导入器和重导入工作流，也包括各设计软件的 Exporter 插件与 Direct Link。</p>
+<h3 id="2-将-Datasmith-内容导入-UE"><a href="#2-将-Datasmith-内容导入-UE" class="headerlink" title="2. 将 Datasmith 内容导入 UE"></a>2. 将 Datasmith 内容导入 UE</h3><p>在源应用中安装匹配的 Exporter 并导出，或在 UE 中直接导入支持的文件；完整场景通常生成 Datasmith Scene Asset 及一批关联资产。导入前要选择目标目录，导入后检查场景层级、单位、材质和灯光转换结果。</p>
+<h3 id="3-Datasmith-Exporter-插件发行说明"><a href="#3-Datasmith-Exporter-插件发行说明" class="headerlink" title="3. Datasmith Exporter 插件发行说明"></a>3. Datasmith Exporter 插件发行说明</h3><p>用于核对各源应用 Exporter 的版本变化、修复和已知问题。源应用、Exporter 与 UE 版本要配套，升级前后应查看发行说明并测试现有场景。</p>
+<h3 id="4-Datasmith-导入过程"><a href="#4-Datasmith-导入过程" class="headerlink" title="4. Datasmith 导入过程"></a>4. Datasmith 导入过程</h3><p>导入器把源场景转换为 UE 资产和 Actor，同时建立场景层级与引用关系。不同数据源支持的内容不同，几何体、材质、元数据和场景组织应分别验证。</p>
+<h3 id="5-Datasmith-重导入工作流"><a href="#5-Datasmith-重导入工作流" class="headerlink" title="5. Datasmith 重导入工作流"></a>5. Datasmith 重导入工作流</h3><p><strong>1. 导入与迭代</strong></p>
+<p>不同软件可使用对应 Exporter 插件，或直接导入受支持的文件。重导入 Datasmith Scene Asset 时：</p>
+<ul>
+<li>源内容仍保存在原文件：右键 <strong>Reimport</strong>。</li>
+<li>保存成了另一个文件：右键 <strong>Reimport With New File</strong> 并选择新路径。</li>
+<li><strong>Sync Current Level Actors → Datasmith Scene Actors</strong> 可将更新同步到当前关卡；<strong>Re-Spawn Deleted Actors</strong> 会重新生成之前删除的 Actor。</li>
+<li>若当时没有同步，之后可选中关卡中的 Datasmith Scene Actor，在 Details 的 Datasmith 部分点击 <strong>Update actors from Scene</strong>。</li>
+</ul>
+<p>重导入可能覆盖内容浏览器中的 Static Mesh 几何体、Parent Material 和 Texture，执行前应确认本地修改是否需要保留。</p>
+<p><strong>2. 单独重导入资产</strong></p>
+<p>Static Mesh、Material、Texture 可分别重导入。Material 使用 <strong>Datasmith → Reimport Material</strong>，但它通常只出现在 Datasmith 从头创建的 Parent Material 上，例如部分 3ds Max 材质；由内置材质实例化而来的 CAD、SketchUp 材质通常没有此选项。</p>
+<p>单独重导入没有关卡 Actor 同步选项，但项目里所有引用该资产的对象会自动使用更新后的版本。</p>
+<h3 id="6-自定义-Datasmith-导入过程"><a href="#6-自定义-Datasmith-导入过程" class="headerlink" title="6. 自定义 Datasmith 导入过程"></a>6. 自定义 Datasmith 导入过程</h3><p>用 Blueprint 或 Python 自定义导入过程，控制源场景如何转换成 UE 资产和 Actor。可通过回调、过滤、资产替换或属性修改适配项目规范，但自动化脚本也要处理重导入和本地覆盖问题。</p>
+<h3 id="7-Dataprep-导入自定义"><a href="#7-Dataprep-导入自定义" class="headerlink" title="7. Dataprep 导入自定义"></a>7. Dataprep 导入自定义</h3><p>用 <strong>Dataprep</strong> 制作可复用的导入与清理配方，批量处理几何体、材质、Actor 和场景组织。配方适合把重复操作标准化，执行前仍应预览结果并保留原始数据。</p>
+<h3 id="8-使用-Datasmith-元数据"><a href="#8-使用-Datasmith-元数据" class="headerlink" title="8. 使用 Datasmith 元数据"></a>8. 使用 Datasmith 元数据</h3><p>读取源应用传入的自定义属性，并在编辑器或运行时通过 Blueprint、Python 使用。元数据可用于检索、配置和展示，但字段名称、类型及源应用支持范围需要统一。</p>
+<h3 id="9-使用-Datasmith-Direct-Link"><a href="#9-使用-Datasmith-Direct-Link" class="headerlink" title="9. 使用 Datasmith Direct Link"></a>9. 使用 Datasmith Direct Link</h3><p>建立源应用与 UE 的直接同步工作流，源场景变化后可更新 UE 中的对应内容。Direct Link 适合迭代预览，但仍要检查版本兼容、同步范围及本地修改是否会被覆盖。</p>
+<h3 id="10-3ds-Max"><a href="#10-3ds-Max" class="headerlink" title="10. 3ds Max"></a>10. 3ds Max</h3><p>使用 3ds Max Exporter 导出几何体、材质、灯光、摄像机和场景组织。应核对支持的渲染器与材质类型，复杂着色器和修改器通常需要在导出前转换或烘焙。</p>
+<h3 id="11-Archicad"><a href="#11-Archicad" class="headerlink" title="11. Archicad"></a>11. Archicad</h3><p>通过对应工作流把 BIM 模型、对象层级和属性带入 UE。导入前后要检查单位、坐标、元素分类和材质映射，并确认当前 Archicad 版本受支持。</p>
+<h3 id="12-Cinema-4D"><a href="#12-Cinema-4D" class="headerlink" title="12. Cinema 4D"></a>12. Cinema 4D</h3><p>导出 Cinema 4D 场景时保留可转换的几何体、层级和材质。程序生成器、特殊对象和复杂材质未必能直接转换，必要时应先烘焙或简化。</p>
+<h3 id="13-Deltagen-和-VRED"><a href="#13-Deltagen-和-VRED" class="headerlink" title="13. Deltagen 和 VRED"></a>13. Deltagen 和 VRED</h3><p>面向 Deltagen、VRED 的设计可视化数据交换，重点核对场景层级、几何体、材质和变体支持。不同软件版本及渲染材质可能需要专门转换。</p>
+<h3 id="14-Navisworks"><a href="#14-Navisworks" class="headerlink" title="14. Navisworks"></a>14. Navisworks</h3><p>可把聚合的建筑和工程模型导入 UE，用于设计审查与可视化。大型模型要关注对象数量、层级、材质和性能，并核对当前 Navisworks 与 Exporter 的兼容版本。</p>
+<h3 id="15-Revit"><a href="#15-Revit" class="headerlink" title="15. Revit"></a>15. Revit</h3><p>使用 Revit 工作流交换建筑模型、类别、材质和元数据。族、链接模型、视图及坐标设置会影响导出结果，正式导入前先用代表性项目测试。</p>
+<h3 id="16-Rhino"><a href="#16-Rhino" class="headerlink" title="16. Rhino"></a>16. Rhino</h3><p>交换 Rhino 的曲面、网格、图层和材质等数据。NURBS 等曲面需要按导入设置转换，网格密度和法线会直接影响视觉质量与性能。</p>
+<h3 id="17-SketchUp-Pro"><a href="#17-SketchUp-Pro" class="headerlink" title="17. SketchUp Pro"></a>17. SketchUp Pro</h3><p>通过 SketchUp Pro 的 Datasmith 导出流程保留场景组织、几何体和材质。组、组件、双面材质和纹理映射要重点检查，且不同 SketchUp 版本的导出方式可能不同。</p>
+<h3 id="18-Solidworks"><a href="#18-Solidworks" class="headerlink" title="18. Solidworks"></a>18. Solidworks</h3><p>用于把 Solidworks 的 CAD 模型和装配结构转换为实时场景。应关注曲面细分、零件层级、外观材质和大型装配性能，不要只按默认精度导入全部零件。</p>
+<h3 id="19-CAD-文件格式"><a href="#19-CAD-文件格式" class="headerlink" title="19. CAD 文件格式"></a>19. CAD 文件格式</h3><p>Datasmith 可直接处理多种 CAD 格式，将设计曲面和装配数据转换为 UE 内容。格式、曲面细分和装配层级支持各不相同，使用前应核对具体文件类型和许可要求。</p>
+<h3 id="20-IFC-文件"><a href="#20-IFC-文件" class="headerlink" title="20. IFC 文件"></a>20. IFC 文件</h3><p>IFC 工作流用于交换建筑信息模型及其属性。导入时既要检查几何体，也要检查对象分类、元数据、单位和坐标；超大 IFC 模型还需控制数据规模。</p>
+<h3 id="21-Datasmith-支持的平台"><a href="#21-Datasmith-支持的平台" class="headerlink" title="21. Datasmith 支持的平台"></a>21. Datasmith 支持的平台</h3><p>列出 Datasmith 编辑器工具和导入器可运行的平台。源应用或 Exporter 的平台支持不一定与 UE 编辑器完全相同，打包后的运行时支持也不能据此推断。</p>
+<h3 id="22-Datasmith-支持的软件和文件类型"><a href="#22-Datasmith-支持的软件和文件类型" class="headerlink" title="22. Datasmith 支持的软件和文件类型"></a>22. Datasmith 支持的软件和文件类型</h3><p>最终选择工作流前，应在这张支持表中核对软件版本、Exporter、可直接导入的文件格式及限制。旧项目升级后也要重新验证，不能只根据过去可用的格式判断当前版本。</p>
+<h2 id="十、GL-传输格式（glTF）"><a href="#十、GL-传输格式（glTF）" class="headerlink" title="十、GL 传输格式（glTF）"></a>十、GL 传输格式（glTF）</h2><p>glTF 是 Khronos Group 维护的开放标准，目标是让 3D 场景文件紧凑、加载快，并能完整描述场景。UE 支持导入和导出，也可与 Twinmotion、Sketchfab 等应用交换内容。</p>
+<h3 id="1-glTF-支持"><a href="#1-glTF-支持" class="headerlink" title="1. glTF 支持"></a>1. glTF 支持</h3><p>UE 的 glTF 支持覆盖常见网格、材质、场景和动画工作流，但核心格式与扩展的支持范围不同。交换前应确认导入器、导出器及目标查看器是否支持同一组扩展。</p>
+<p><strong>1. 两种文件形式</strong></p>
+<ul>
+<li>**<code>.gltf</code>**：JSON 场景描述、纹理和 <code>.bin</code> 二进制数据分开保存，JSON 可直接阅读。</li>
+<li>**<code>.glb</code>**：把场景描述、二进制数据和纹理打包成一个自包含文件。</li>
+</ul>
+<h3 id="2-导入-glTF-文件"><a href="#2-导入-glTF-文件" class="headerlink" title="2. 导入 glTF 文件"></a>2. 导入 glTF 文件</h3><ul>
+<li><strong>导入单个资产</strong>：在内容浏览器使用 <strong>Add → Import</strong>，或拖入 <code>.gltf</code> &#x2F; <code>.glb</code>，随后在 Interchange Pipeline Configuration 中设置并导入。</li>
+<li><strong>导入完整场景</strong>：选择 <strong>File → Import Into Level</strong>，选择文件和目标内容目录，再配置 Interchange 选项。</li>
+</ul>
+<h3 id="3-将-UE-内容导出为-glTF"><a href="#3-将-UE-内容导出为-glTF" class="headerlink" title="3. 将 UE 内容导出为 glTF"></a>3. 将 UE 内容导出为 glTF</h3><p>支持 Static Mesh、Skeletal Mesh、Animation Sequence、Level、Level Sequence、Material 和 Level Variant Sets 等内容。</p>
+<ul>
+<li>单资产：右键 <strong>Asset Actions → Export</strong>。</li>
+<li>当前整个关卡：<strong>File → Export All</strong>。</li>
+<li>只导出选中 Actor：选中后使用 <strong>File → Export Selected</strong>。</li>
+</ul>
+<h3 id="4-编写-glTF-导出脚本"><a href="#4-编写-glTF-导出脚本" class="headerlink" title="4. 编写 glTF 导出脚本"></a>4. 编写 glTF 导出脚本</h3><p>可通过 Blueprint、Python 或 C++ 批量导出，使用导出选项和任务控制输出路径、内容及格式。自动化适合资产库或场景批处理，但每次升级后应检查导出结果；脱离编辑器的运行时导出存在限制。</p>
+<h3 id="5-glTF-导出器如何处理-UE-内容"><a href="#5-glTF-导出器如何处理-UE-内容" class="headerlink" title="5. glTF 导出器如何处理 UE 内容"></a>5. glTF 导出器如何处理 UE 内容</h3><ul>
+<li><strong>Export Uniform Scale</strong> 默认 <code>0.01</code>，把 UE 的厘米转换为 glTF 的米。</li>
+<li>简单材质表达式可直接匹配；复杂输入可烘焙为纹理。Unlit、Clear Coat、灯光、纹理变换和网格量化等依赖相应 glTF 扩展，部分查看器可能不支持。</li>
+<li>glTF 总把顶点颜色当作 Base Color 乘数，容易产生意外效果，因此通常建议关闭 <strong>Export Vertex Colors</strong>。</li>
+<li>导出 Skeletal Mesh 动画时必须同时启用 <strong>Export Vertex Skin Weights</strong>；Level Sequence 只支持 Transform 轨道。</li>
+<li><strong>Adjust Normalmaps</strong> 会翻转法线贴图绿色通道以符合 glTF 约定。场景导出还可控制隐藏 Actor、灯光、摄像机和材质等变体。</li>
+</ul>
+<h3 id="6-glTF-代理材质"><a href="#6-glTF-代理材质" class="headerlink" title="6. glTF 代理材质"></a>6. glTF 代理材质</h3><p>代理材质用于把 UE 中无法直接对应的复杂材质网络转换成 glTF 可表达的材质与纹理。应检查烘焙输入、输出纹理、扩展和精度；代理能改善交换兼容性，但不保证所有渲染器中的效果完全一致。</p>
+<h2 id="十一、通用场景描述（USD）"><a href="#十一、通用场景描述（USD）" class="headerlink" title="十一、通用场景描述（USD）"></a>十一、通用场景描述（USD）</h2><p>USD 是 Pixar 开发的开源交换格式，适合由许多资产组合而成的大型 3D 场景。它既能交换模型和动画，也支持读取、写入、编辑和快速预览几何体与着色信息。</p>
+<h3 id="1-UE-中的通用场景描述"><a href="#1-UE-中的通用场景描述" class="headerlink" title="1. UE 中的通用场景描述"></a>1. UE 中的通用场景描述</h3><p>UE 支持两种主要用法：通过 USD Stage 直接查看和编辑原始 USD 场景，或把 USD 转成原生资产与 Actor。Stage 工作流利用 Layer 非破坏性组合场景；转换工作流便于使用完整 UE 功能，但导入后就不再只是原始 USD 数据。</p>
+<p>也可把关卡、Actor、资产和动画等导出为 USD。导出前应检查单位、坐标轴、材质映射和动画支持范围；USD 能表达的结构不代表所有目标应用都能同样显示。</p>
+<h3 id="2-将-Live-Link-与-USD-结合使用"><a href="#2-将-Live-Link-与-USD-结合使用" class="headerlink" title="2. 将 Live Link 与 USD 结合使用"></a>2. 将 Live Link 与 USD 结合使用</h3><p>通过 Live Link 把外部变化传入 USD Stage 工作流，用于动态预览和同步。使用时要明确数据源、更新对象和连接状态，并区分实时覆盖与已经写入 USD Layer 的持久修改。</p>
+<h3 id="3-使用-USD-Stage-Prim"><a href="#3-使用-USD-Stage-Prim" class="headerlink" title="3. 使用 USD Stage Prim"></a>3. 使用 USD Stage Prim</h3><p>Prim 是 USD Stage 中的场景对象。可在层级中选择 Prim，编辑变换、可见性、Variant 等属性，添加或清除 Reference，以及加载或卸载 Payload。修改受 Layer 强弱和覆盖规则影响，不能只看视口结果判断最终保存内容。</p>
+<h3 id="4-USD-Stage-编辑器快速入门"><a href="#4-USD-Stage-编辑器快速入门" class="headerlink" title="4. USD Stage 编辑器快速入门"></a>4. USD Stage 编辑器快速入门</h3><p><strong>1. 打开 USD Stage</strong></p>
+<p>先启用 <strong>USD Importer</strong> 插件，再打开 <strong>Window → Virtual Production → USD Stage</strong>，选择 <strong>File → Open</strong> 打开 USD 文件。每个打开的文件都需要一个 <strong>USD Stage Actor</strong> 作为关卡中的锚点，此流程会自动创建；也可手动放置 Actor，并在 <strong>Root Layer</strong> 中指定文件。</p>
+<p><strong>2. 编辑 Stage 与 Prim</strong></p>
+<ul>
+<li>Hierarchy 显示场景层级，Properties 可编辑 <code>upAxis</code>、变换、可见性、Variant 等属性。</li>
+<li>右键 Prim 可增删 Prim、添加或清除 Reference，以及加载或卸载 Payload。</li>
+<li><strong>Options → Selection → Synchronize with Editor</strong> 可同步 USD Stage 与 UE 视口的选择。</li>
+<li><strong>File → Save</strong> 可把 USD Stage Actor 中的修改写回 USD 数据。</li>
+</ul>
+<p>USD 通过 Layer 组合和覆盖场景。用 Sequencer 编辑 USD 动画时，从 USD Stage Actor 的 <strong>Level Sequence</strong> 打开生成的序列；动画所在 Layer 必须高于被影响的场景 Layer，保存后才会写回 USD。</p>
+<p><strong>3. 转成 UE 原生内容</strong></p>
+<table>
+<thead>
+<tr>
+<th>入口</th>
+<th>导入结果</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>File → Import Into Level</strong></td>
+<td>同时导入资产和 Actor。</td>
+</tr>
+<tr>
+<td>内容浏览器 <strong>Add&#x2F;Import</strong> 或拖放</td>
+<td>只导入资产。</td>
+</tr>
+<tr>
+<td>USD Stage 的 <strong>Actions → Import</strong></td>
+<td>导入 Stage 上的资产和 Actor，完成后用新生成的 UE Actor 替换 Stage 中对应内容。</td>
+</tr>
+</tbody></table>
+<h3 id="5-将-Control-Rig-用于-USD-动画"><a href="#5-将-Control-Rig-用于-USD-动画" class="headerlink" title="5. 将 Control Rig 用于 USD 动画"></a>5. 将 Control Rig 用于 USD 动画</h3><p>在 USD 动画工作流中使用 Control Rig 编辑或控制 Prim 的变换动画，并结合 Sequencer 管理关键帧。保存时要确认动画写入的 Layer、目标 Prim 和时间范围，避免控制器改动只存在于临时编辑状态。</p>
+<h2 id="十二、LiDAR-点云插件"><a href="#十二、LiDAR-点云插件" class="headerlink" title="十二、LiDAR 点云插件"></a>十二、LiDAR 点云插件</h2><p>LiDAR Point Cloud 插件用于导入、可视化和编辑点云，支持多种着色方式、动态 LOD 和运行时修改，适合把激光扫描数据与三维模型放在同一项目中查看。</p>
+<h3 id="1-LiDAR-点云插件概述"><a href="#1-LiDAR-点云插件概述" class="headerlink" title="1. LiDAR 点云插件概述"></a>1. LiDAR 点云插件概述</h3><p><strong>1. 支持格式</strong></p>
+<ul>
+<li>**<code>.xyz</code>、<code>.pts</code>、<code>.txt</code>**：ASCII 点云，每点包含 <code>X Y Z</code>，也可带 <code>R G B</code>；坐标以米为单位，支持浮点数和科学计数法。</li>
+<li>**<code>.las</code>、<code>.laz</code>**：支持 8、12、16 位数据。LAZ 是压缩 LAS，文件更小，但导入更慢。</li>
+<li>**<code>.e57</code>**：可保存点云、图像和元数据的开放三维成像格式。</li>
+</ul>
+<p><strong>2. 导入、导出与单位</strong></p>
+<p>把文件拖入内容浏览器，或使用 <strong>Add&#x2F;Import</strong> 导入。导入会把米转换为 Unreal Unit，<code>1 UU = 1 cm</code>；插件项目设置中的 <strong>Import Scale</strong> 可修改比例。</p>
+<p>右键点云资产选择 <strong>Asset Actions → Export</strong>，可导出 ASCII 或 LAS。导出默认乘以 <code>0.01</code> 转回米，对应设置为 <strong>Export Scale</strong>。</p>
+<p><strong>3. 性能与流送</strong></p>
+<ul>
+<li><strong>Global Point Budget</strong> 控制所有可见组件共享的最大显示点数。预算越高，点云越密，但性能开销越大。</li>
+<li>共享预算能在多个点云间选择更合适的点，节省显存并提高帧率，但<strong>不会降低总 RAM 占用</strong>。</li>
+<li>按需流送只加载头部信息，再读取需要的数据。新导入资产要先保存，编辑器才会释放其占用的系统内存并启用流送。</li>
+<li>大量文件的解析和资产处理仍需要较多内存，不能把动态 LOD 理解为没有内存成本。</li>
+</ul>
+<p><strong>4. 裁剪与运行时修改</strong></p>
+<p>在 <strong>Place Actors → Volume → Lidar Clipping Volume</strong> 创建裁剪体：<strong>Clip Outside</strong> 隐藏外部点，<strong>Clip Inside</strong> 隐藏内部点。每关最多使用 16 个，重叠时用 <strong>Priority</strong> 决定优先级。</p>
+<p>打包后的应用也能插入、删除和修改点，但插入点必须位于资产 Bounds 内，移动点不会自动把它转移到相邻 LOD，大量反复插入还会增加 LOD 生成开销。需要大范围动态修改时，可预留更大的 Bounds 并调高 <strong>Max Bucket Size</strong>，但这接近于关闭 LOD，必须权衡资源消耗。</p>
+<h3 id="2-LiDAR-点云插件快速入门"><a href="#2-LiDAR-点云插件快速入门" class="headerlink" title="2. LiDAR 点云插件快速入门"></a>2. LiDAR 点云插件快速入门</h3><p>基本流程是启用插件、导入并放置点云，再按需要生成碰撞，以及选择、隐藏、删除或裁剪点。编辑操作与运行时修改都要注意原始 Bounds 和 LOD 结构，避免点数据变化后出现剔除或显示异常。</p>
+<h3 id="3-点云的-Eye-Dome-Lighting-模式"><a href="#3-点云的-Eye-Dome-Lighting-模式" class="headerlink" title="3. 点云的 Eye-Dome Lighting 模式"></a>3. 点云的 Eye-Dome Lighting 模式</h3><p>Eye-Dome Lighting 用轮廓和明暗增强点云的空间结构，便于在没有完整表面和光照的情况下辨认形状。它是可视化辅助，不会修改点数据；强度等显示参数应按点密度和观察距离调整。</p>
+<h3 id="4-LiDAR-点云插件参考"><a href="#4-LiDAR-点云插件参考" class="headerlink" title="4. LiDAR 点云插件参考"></a>4. LiDAR 点云插件参考</h3><p>参考页集中列出八叉树、碰撞、导入导出、外观、自动化、项目设置和控制台变量。需要调整全局点预算、碰撞或渲染细节时，应在这里核对具体参数，而不是只凭视口效果判断。</p>
+<h2 id="十三、MaterialX"><a href="#十三、MaterialX" class="headerlink" title="十三、MaterialX"></a>十三、MaterialX</h2><p>MaterialX 是 Industrial Light &amp; Magic 于 2012 年开发的开放材质交换格式，2017 年开源，2021 年起由 Academy Software Foundation 托管。它用于在不同应用和渲染器之间共享材质表面描述，UE 通过 Interchange 支持它。</p>
+<h3 id="1-MaterialX-支持"><a href="#1-MaterialX-支持" class="headerlink" title="1. MaterialX 支持"></a>1. MaterialX 支持</h3><p>支持页用于核对 UE 对 MaterialX 材质、节点图表和着色模型的支持范围，以及 Interchange 的转换方式。材质能导入不等于所有节点和 BSDF 组合都能无损还原，复杂材质应结合实际渲染结果检查。</p>
+<h3 id="2-导入-MaterialX-文件"><a href="#2-导入-MaterialX-文件" class="headerlink" title="2. 导入 MaterialX 文件"></a>2. 导入 MaterialX 文件</h3><p><strong>1. 三种导入来源</strong></p>
+<ul>
+<li>直接把 <code>.mtlx</code> 文件导入内容目录。</li>
+<li>导入 USD 所引用的外部 <code>.mtlx</code> 文件。</li>
+<li>处理嵌入 USD Stage 的 MaterialX 表面描述。</li>
+</ul>
+<p>直接导入时使用内容浏览器的 Import 或拖放。Substrate 项目会生成原生 Substrate 材质，以更贴近源表面描述；其他项目生成普通 Material 或 Material Instance，需要时可通过自动转换接入 Substrate。</p>
+<p><strong>2. 导入选项</strong></p>
+<ul>
+<li><strong>Volumetric Material</strong>：稀疏体积纹理并创建 Heterogeneous Volume 时启用，同时需在 <strong>Project Settings → Engine → Rendering</strong> 开启 Heterogeneous Volume；普通材质图表操作应关闭。</li>
+<li><strong>Normals from Height</strong>：适合位移着色器生成的程序化法线；已经连接烘焙法线贴图时应关闭。导入后也可通过材质中的 <code>bRecomputeNormals</code> 静态布尔参数调整。</li>
+<li><strong>Project Settings → Interchange MaterialX</strong>：配置 OpenPBR、Standard Surface、Unlit、USD Preview Surface 等定义所对应的 Material Function。</li>
+</ul>
+<p>不建议直接修改引擎默认 Material Function。需要自定义时，应复制到项目 <code>Content</code> 中修改，再在项目设置里替换；输入可随节点定义调整，但输出的名称和数量必须与原 Material Function 一致。</p>
+<p><strong>3. 渲染限制</strong></p>
+<ul>
+<li>Displacement Shader 受支持，但位移效果只有网格启用 <strong>Nanite</strong> 时才可见，而 Nanite 不支持透明材质。</li>
+<li>当前 Transmission 走前向着色，Subsurface Scattering 走延迟管线，两者不能在同一着色路径中同时求值，因此部分半透明、次表面材质需要近似转换。</li>
+<li>Legacy GBuffer 和普通 Substrate Blendable GBuffer 每像素只能表达一种着色行为，无法完整表示复杂 OpenPBR 层叠 BSDF。<strong>Adaptive GBuffer</strong> 可支持更完整的组合，但会增加存储和计算成本。</li>
+</ul>
+<h3 id="3-MaterialX-扩展"><a href="#3-MaterialX-扩展" class="headerlink" title="3. MaterialX 扩展"></a>3. MaterialX 扩展</h3><p>扩展页记录 UE 使用的节点定义和自定义属性。它们用于补充标准 MaterialX 与 UE 材质系统之间的映射；自定义扩展被交换到其他应用时，仍需确认对方是否识别这些定义。</p>
+<h2 id="十四、建模与几何脚本"><a href="#十四、建模与几何脚本" class="headerlink" title="十四、建模与几何脚本"></a>十四、建模与几何脚本</h2><p>UE 提供两套互补的建模工具：交互式的 Modeling Mode，以及可自动化的 Geometry Scripting。</p>
+<h3 id="1-建模模式概述"><a href="#1-建模模式概述" class="headerlink" title="1. 建模模式概述"></a>1. 建模模式概述</h3><p>Modeling Mode 是面向美术的可视化编辑模式，可直接创建和修改 3D 几何体，适合原型搭建和手动建模。工具按创建、形状、变换、网格处理、UV 和属性等类别组织，操作结果可接受或取消。</p>
+<h3 id="2-建模模式快速入门"><a href="#2-建模模式快速入门" class="headerlink" title="2. 建模模式快速入门"></a>2. 建模模式快速入门</h3><p>从模式工具栏进入 Modeling Mode，选择现有 Actor 或创建新网格，再使用建模工具编辑。操作过程中检查预览和参数，最后接受结果；涉及资产与 Actor 的输出时要注意新资产保存位置及源对象是否被修改。</p>
+<h3 id="3-使用网格"><a href="#3-使用网格" class="headerlink" title="3. 使用网格"></a>3. 使用网格</h3><p>介绍建模工具如何读取、编辑和输出网格，以及关卡 Actor 与网格资产之间的关系。大量操作基于动态网格和临时结果，接受工具后才提交，因此要确认最终写回的是哪个资产或 Actor。</p>
+<h3 id="4-理解-PolyGroup"><a href="#4-理解-PolyGroup" class="headerlink" title="4. 理解 PolyGroup"></a>4. 理解 PolyGroup</h3><p>PolyGroup 是网格上的面分组，可用于选择、分割、材质处理和建模操作。分组不等同于独立网格或材质槽；边界和初始分组方式会影响后续倒角、挤出及选择结果。</p>
+<h3 id="5-网格元素选择"><a href="#5-网格元素选择" class="headerlink" title="5. 网格元素选择"></a>5. 网格元素选择</h3><p>支持按顶点、边、面及相关拓扑进行选择，并结合框选、扩展、循环和 PolyGroup 等方式提高效率。应看清当前选择模式，避免对隐藏元素或错误分组执行不可逆修改。</p>
+<h3 id="6-建模工具"><a href="#6-建模工具" class="headerlink" title="6. 建模工具"></a>6. 建模工具</h3><p>工具覆盖基础体创建、挤出、倒角、布尔、变形、简化、重网格化、法线和网格修复等。不同工具对封闭性、拓扑和属性有不同要求，使用后要检查结果而不只依赖预览。</p>
+<h3 id="7-UV-编辑器"><a href="#7-UV-编辑器" class="headerlink" title="7. UV 编辑器"></a>7. UV 编辑器</h3><p>在 UE 内查看和编辑 UV，可执行展开、布局、变换、接缝和通道管理。修改纹理 UV 与光照 UV 的目的不同，要确认正在编辑的通道，并检查重叠、利用率和资产保存结果。</p>
+<h3 id="8-Geometry-Scripting-用户指南"><a href="#8-Geometry-Scripting-用户指南" class="headerlink" title="8. Geometry Scripting 用户指南"></a>8. Geometry Scripting 用户指南</h3><p>Geometry Scripting 插件向 Blueprint 和 Python 提供网格生成、编辑和处理函数，适合参数化、批量处理及可复用建模流程。核心是基于 Dynamic Mesh 的函数库，可与 Modeling Mode 的交互操作互补。</p>
+<h3 id="9-通过蓝图使用-Geometry-Scripting"><a href="#9-通过蓝图使用-Geometry-Scripting" class="headerlink" title="9. 通过蓝图使用 Geometry Scripting"></a>9. 通过蓝图使用 Geometry Scripting</h3><p>在蓝图中创建或获取 Dynamic Mesh，连接处理节点，再把结果写回目标对象或生成新资产。节点较多时应按数据流组织，并注意编辑器工具、运行时能力和资产提交方式的区别。</p>
+<h3 id="10-使用-Geometry-Scripting-创建操作实用程序"><a href="#10-使用-Geometry-Scripting-创建操作实用程序" class="headerlink" title="10. 使用 Geometry Scripting 创建操作实用程序"></a>10. 使用 Geometry Scripting 创建操作实用程序</h3><p>把常用脚本封装为 Action Utility，让美术从内容浏览器或编辑器入口执行重复任务。应提供清楚的参数、输入检查和结果反馈，避免批处理静默修改大量资产。</p>
+<h3 id="11-将-Mesh-Actor-转换为-Skeletal-Mesh-资产"><a href="#11-将-Mesh-Actor-转换为-Skeletal-Mesh-资产" class="headerlink" title="11. 将 Mesh Actor 转换为 Skeletal Mesh 资产"></a>11. 将 Mesh Actor 转换为 Skeletal Mesh 资产</h3><p>通过 Geometry Scripting 把关卡中的网格转换成 Skeletal Mesh，建立需要的骨架和网格输出。转换结果还要检查骨架、绑定姿势、权重和材质，不能把它理解为自动生成完整角色动画系统。</p>
+<h3 id="12-创建用于传递蒙皮权重的操作实用程序"><a href="#12-创建用于传递蒙皮权重的操作实用程序" class="headerlink" title="12. 创建用于传递蒙皮权重的操作实用程序"></a>12. 创建用于传递蒙皮权重的操作实用程序</h3><p>用脚本在源网格和目标网格之间传递 Skin Weights，并封装为可重复执行的工具。网格形状、距离和拓扑差异会影响权重质量，传递后必须检查极端姿势和接缝变形。</p>
+<h2 id="十五、使用场景变体"><a href="#十五、使用场景变体" class="headerlink" title="十五、使用场景变体"></a>十五、使用场景变体</h2><p>Variant Manager 用于保存并切换场景的不同状态，例如对象位置和旋转、显示与隐藏、材质替换、灯光开关等，常见于汽车、机械和工业产品配置器。</p>
+<p>这类场景有时称为 <strong>150% BOM</strong>：场景中包含所有可选配置，多于最终产品实际会同时出现的 100% 内容。</p>
+<p><strong>基本流程：</strong></p>
+<ol>
+<li>在 <strong>Edit → Plugins</strong> 中启用 <strong>Editor → Variant Manager</strong>。</li>
+<li>在内容浏览器创建 <strong>Miscellaneous → Level Variant Sets</strong> 资产。</li>
+<li>在 Variant Manager 中建立 Variant Set 和 Variant，绑定 Actor 并捕获需要切换的属性。</li>
+<li>编辑器中可直接激活 Variant；运行时则把 Level Variant Sets 资产拖入关卡，生成 Level Variant Sets Actor。</li>
+<li>通过 UMG 和 Blueprint 调用 <strong>Switch on Variant by Index</strong> 或 <strong>Switch on Variant by Name</strong>，按索引或名称切换配置。</li>
+</ol>
+<h3 id="1-Variant-Manager-模板概述"><a href="#1-Variant-Manager-模板概述" class="headerlink" title="1. Variant Manager 模板概述"></a>1. Variant Manager 模板概述</h3><p>模板提供预置的 Level Variant Sets、Actor、蓝图和界面示例，用于理解 Variant Set、Variant、绑定 Actor 和属性捕获如何协作。研究模板时应分清示例逻辑与项目必须自行维护的资产和配置。</p>
+<p>Switch Actor 可把多个子 Actor 当作互斥选项，每次只显示其中一个。Variant Manager 可捕获它的 <strong>Selected Option</strong>，适合整组模型替换，不必分别维护每个对象的可见性。</p>
+<h3 id="2-在变体激活时调用函数"><a href="#2-在变体激活时调用函数" class="headerlink" title="2. 在变体激活时调用函数"></a>2. 在变体激活时调用函数</h3><p>除了切换已捕获的属性，还可在 Variant 激活时调用 Actor 上的函数，执行材质以外的自定义逻辑。函数需要可由 Variant Manager 调用，参数和目标 Actor 要配置正确，并注意切换顺序与重复激活。</p>
+<h3 id="3-编写-Variant-Manager-设置脚本"><a href="#3-编写-Variant-Manager-设置脚本" class="headerlink" title="3. 编写 Variant Manager 设置脚本"></a>3. 编写 Variant Manager 设置脚本</h3><p>用 Blueprint 或 Python 自动创建 Variant Set、Variant、绑定和属性捕获，适合批量配置大量产品选项。脚本化后仍要检查引用、命名和默认值，避免重复执行产生重复 Variant 或绑定。</p>
+<h3 id="4-产品配置器模板"><a href="#4-产品配置器模板" class="headerlink" title="4. 产品配置器模板"></a>4. 产品配置器模板</h3><p>Product Configurator Template 展示运行时的产品变体切换、UI 和交互组织方式。可把它作为起点，再替换模型、材质、Variant 和界面；发布前要按目标平台验证输入、性能和配置逻辑。</p>
+<h2 id="十六、SpeedTree"><a href="#十六、SpeedTree" class="headerlink" title="十六、SpeedTree"></a>十六、SpeedTree</h2><p>SpeedTree 是面向数字内容的程序化植被制作工具。UE 支持 **<code>.st9</code>**，也兼容旧版 <strong><code>.st</code></strong> 格式。</p>
+<p>SpeedTree 内容导入时使用 <code>Engine/Plugins/SpeedTree Importer Content</code> 中的 Material 和 Material Functions。树木生成、导出参数等制作环节仍需在 SpeedTree 中完成，并参考其自身文档。</p>
+<h2 id="十七、本地化"><a href="#十七、本地化" class="headerlink" title="十七、本地化"></a>十七、本地化</h2><h3 id="1-本地化概述"><a href="#1-本地化概述" class="headerlink" title="1. 本地化概述"></a>1. 本地化概述</h3><p><strong>1. 本地化与国际化</strong></p>
+<ul>
+<li><strong>本地化（L10N）</strong>围绕 UE 的文本类型和翻译资源展开。</li>
+<li><strong>国际化（I18N）</strong>由 ICU 提供区域相关能力，包括文化回退、数字和货币、日期时区、复数、Unicode 大小写、排序、断行和双向文本处理。</li>
+</ul>
+<p>运行时要正确显示本地化内容，必须同时打包匹配的 ICU 国际化数据。</p>
+<p><strong>2. Culture 与回退</strong></p>
+<p>Culture 使用 IETF 语言标签，由语言、可选文字系统和可选地区组成，例如 <code>zh-Hans-CN</code>。查找顺序从具体到宽泛：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">zh-Hans-CN → zh-CN → zh-Hans → zh</span><br><span class="line">en-GB → en</span><br></pre></td></tr></table></figure>
+
+<p>通常应使用能满足需求的最不具体 Culture，以扩大覆盖范围。简体中文和繁体中文分别使用 <code>zh-Hans</code>、<code>zh-Hant</code>；拉丁美洲西班牙语可用 <code>es-419</code>，再通过 Culture Remapping 把相应国家或地区映射过去。</p>
+<p><strong>3. Localization Target</strong></p>
+<p>Localization Target 是一组自包含的本地化数据：从指定来源收集文本，保存 Manifest，把各 Culture 的翻译存入 Archive，最后编译成运行时使用的 LocRes 和 LocMeta。</p>
+<ul>
+<li>配置位于 <code>Config/Localization/</code>，数据位于 <code>Content/Localization/&#123;TargetName&#125;/</code>。</li>
+<li>简单项目通常只需默认的 <strong>Game</strong> Target；大型项目或扩展包可拆分多个 Target。</li>
+<li><strong>Native Culture</strong> 应设为撰写源文本的语言。源文本变化后，其他语言的翻译会被标记为过期；是否允许编译过期翻译由编译选项控制。</li>
+</ul>
+<p>UE 默认采用 <strong>author-at-source</strong>：直接在文本属性或 C++ 的 <code>NSLOCTEXT</code>、<code>LOCTEXT</code> 中撰写文本，再由收集流程提取。需要集中维护时，可用 String Table 采用“撰写一次、多处引用”。旧的“伪造 Native Culture + ID 源文本”方案已不再支持，应迁移到 String Table。</p>
+<p><strong>4. 打包检查</strong></p>
+<p>在 <strong>Project Settings → Packaging</strong> 高级设置中检查：</p>
+<ul>
+<li><strong>Localizations to Package</strong>：选择要随包发布的 Culture，可用 Show Localized 过滤出已有 LocRes 的语言。</li>
+<li><strong>Internationalization Support</strong>：选择与目标语言重叠的 ICU 数据集。可按英语、EFIGS、EFIGSCJK、CJK 或全部数据进行取舍，在语言覆盖和包体大小之间平衡。</li>
+</ul>
+<h3 id="2-文本本地化"><a href="#2-文本本地化" class="headerlink" title="2. 文本本地化"></a>2. 文本本地化</h3><p>文本本地化以 <code>FText</code> 为核心，需要关注文本身份、源文本历史和 Culture 回退。格式化文本时应使用本地化参数和复数规则，不要拼接语序固定的字符串；需要集中维护或复用文本时使用 String Table，并检查文本修改后翻译是否被标记为过期。</p>
+<h3 id="3-字符串表"><a href="#3-字符串表" class="headerlink" title="3. 字符串表"></a>3. 字符串表</h3><p>String Table 用稳定 Key 集中维护文本，再由文本属性、C++ 或蓝图引用，适合复用和统一管理。Key 应保持稳定，修改源文本后仍要重新收集、翻译并编译；本地化管线内部会把字符串表作为一种文本来源处理。</p>
+<h3 id="4-资产本地化"><a href="#4-资产本地化" class="headerlink" title="4. 资产本地化"></a>4. 资产本地化</h3><p>资产本地化用于按 Culture 为不同语言或地区提供相应资产，例如带文字的贴图、语音或其他区域内容。应统一资源命名和 Culture 映射，并确认目标资产确实随相应语言打包，避免文本已经切换而资产仍使用默认版本。</p>
+<h3 id="5-本地化工具"><a href="#5-本地化工具" class="headerlink" title="5. 本地化工具"></a>5. 本地化工具</h3><p><strong>1. Localization Dashboard 工作流</strong></p>
+<p>从编辑器 <strong>Tools</strong> 菜单打开 Localization Dashboard。它虽仍标为实验性，但稳定且是官方推荐的目标管理方式。</p>
+<ol>
+<li>在 <strong>Gather Text</strong> 中指定要搜索的源码和资产。</li>
+<li>在 <strong>Cultures</strong> 中添加语言并设置 Native Culture。</li>
+<li>依次执行 <strong>Gather → Export → Import → Compile</strong>，以后有新文本或新翻译时循环执行。</li>
+<li>新建 Target 时要设置合适的 Loading Policy，通常为 <strong>Game</strong>，否则运行时不会加载。</li>
+</ol>
+<p>Dashboard 会在 <code>Config/Localization</code> 生成 INI；除非要自动化本地化管线，否则这些生成文件通常不需要提交源码管理。</p>
+<table>
+<thead>
+<tr>
+<th>文件</th>
+<th>用途与注意事项</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>.manifest</code></td>
+<td>保存从源码和资产收集的全部文本，每次 Gather 重建，不要手改。</td>
+</tr>
+<tr>
+<td><code>.archive</code></td>
+<td>保存各 Culture 的翻译；可以手改但强烈不建议，应通过 PO 导出、修改、再导入。</td>
+</tr>
+<tr>
+<td><code>.po</code></td>
+<td>通用翻译交换文件，可用 Poedit 或外部协作平台处理。</td>
+</tr>
+<tr>
+<td><code>.locres</code></td>
+<td>编译后的运行时翻译资源，也是运行时唯一读取的本地化数据；导入 PO 后必须重新 Compile 才生效。</td>
+</tr>
+<tr>
+<td><code>.locmeta</code></td>
+<td>编译后的 Target 元数据，目前主要保存 Native Culture。</td>
+</tr>
+</tbody></table>
+<p><strong>2. 翻译工具与自动化</strong></p>
+<p>Translation Editor 可从 Dashboard 打开，分为 <strong>Untranslated</strong>、<strong>Needs Review</strong>、<strong>Completed</strong> 三类。它缺少翻译记忆等完整功能，适合零星修补；正式翻译建议使用 PO 流程配合外部工具。</p>
+<p>实验性 Translation Picker 可检查 UI 和 PIE 中鼠标下的文本：在 <strong>Editor Preferences → Experimental</strong> 启用后，从 <strong>Window</strong> 菜单打开，按 <code>Esc</code> 锁定当前选择。已收集并编译的可本地化文本可进行行内修补。</p>
+<p>UAT 的 <strong>Localize</strong> 脚本可自动执行本地化流程并对接外部供应商，适合夜间更新；当前文档注明脚本固定使用 Win64 Development Editor 构建。默认提供 OneSky、XLOC 接入，其他供应商需实现相应 LocalizationProvider。</p>
+<h3 id="6-管线优化"><a href="#6-管线优化" class="headerlink" title="6. 管线优化"></a>6. 管线优化</h3><p>大型项目应控制收集范围、拆分合理的 Localization Target，并复用可重复的 Gather、Export、Import、Compile 流程。不要手改 Manifest，翻译通过 PO 回到 Archive；源文本变化和过期翻译要在持续集成中明确处理，避免反复收集无关资产。</p>
+<h3 id="7-在运行时管理活动-Culture"><a href="#7-在运行时管理活动-Culture" class="headerlink" title="7. 在运行时管理活动 Culture"></a>7. 在运行时管理活动 Culture</h3><p>运行时可查询并切换当前语言、文字系统或地区相关的 Culture，切换后刷新需要更新的 UI 和资产。保存用户选择并在下次启动时恢复，同时考虑 Culture 回退、ICU 数据和已打包语言；切换到未打包的语言不会凭空产生翻译。</p>
+<p><strong>请记住：</strong></p>
+<blockquote>
+<ul>
+<li>先按资产类型选择交换格式：FBX 适合常规网格和动画，Alembic 适合烘焙几何缓存，Datasmith 适合完整设计场景，USD 适合可组合的大型场景。</li>
+<li>重导入并不只是“刷新文件”：Interchange 要检查材质和 Skeleton 冲突，Datasmith 可能覆盖几何体、材质和纹理，本地化导入 PO 后还必须 Compile。</li>
+<li>glTF、MaterialX 和 Groom 都有明确的格式与渲染限制，导入成功不代表所有查看器、平台或着色路径都能得到相同效果。</li>
+<li>大型点云要同时关注显示预算、RAM、流送和 LOD；运行时修改数据也有 Bounds 与性能限制。</li>
+</ul>
+</blockquote>
+
+    </div>
+    
+    <div class="post-footer">
+        <div>
+            
+            转载声明：
+            商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">cxx</a>
+            
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+<div class="article-nav prev-next-wrap clearfix">
+    
+    <a href="/2026/11/27/notes/GPU%E7%BC%96%E7%A8%8B%E4%B8%8ECG%E8%AF%AD%E8%A8%80%E4%B9%8B%E9%98%B3%E6%98%A5%E7%99%BD%E9%9B%AA%E4%B8%8B%E9%87%8C%E5%B7%B4%E4%BA%BA/" class="pre-post btn btn-default" title='《GPU编程与CG语言》全书内容提炼总结'>
+        <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+        <span class="hidden-xs">
+            《GPU编程与CG语言》全书内容提炼总结</span>
+    </a>
+    
+    
+    <a href="/2026/11/23/thoughts/%E5%B7%A5%E4%B8%9A%E8%BD%AF%E4%BB%B6%E4%BA%A7%E5%93%81%E7%BB%8F%E7%90%86%E7%9A%84%E5%B7%A5%E4%BD%9C%E6%96%B9%E6%B3%95/" class="next-post btn btn-default" title='国产替代不是功能临摹：工业软件产品经理的工作方法'>
+        <span class="hidden-lg">下一篇</span>
+        <span class="hidden-xs">
+            国产替代不是功能临摹：工业软件产品经理的工作方法</span><i class="fa fa-angle-right fa-fw"></i>
+    </a>
+    
+</div>
+
+<div id="comments">
+    
+    <script src="https://giscus.app/client.js"
+        data-repo="cxxlog/myblog-comment"
+        data-repo-id="R_kgDOVzxsBw"
+        data-category="Announcements"
+        data-category-id="DIC_kwDOVzxsB84DLdxb"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="bottom"
+        data-theme="light"
+        data-lang="zh-CN"
+        crossorigin="anonymous"
+        async>
+    </script>
+
+</div>
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">
+            文章目录
+        </h3>
+        
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%90%86%E8%A7%A3%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="toc-text">理解基础知识</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="toc-text">一、基础知识</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E%E6%9C%AF%E8%AF%AD"><span class="toc-text">1. 虚幻引擎术语</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%B7%A5%E5%85%B7%E5%92%8C%E7%BC%96%E8%BE%91%E5%99%A8"><span class="toc-text">2. 工具和编辑器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E7%BC%96%E8%BE%91%E5%99%A8%E5%81%8F%E5%A5%BD%E8%AE%BE%E7%BD%AE"><span class="toc-text">3. 编辑器偏好设置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84"><span class="toc-text">4. 目录结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E4%BD%BF%E7%94%A8%E6%8F%92%E4%BB%B6"><span class="toc-text">5. 使用插件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-%E5%9D%90%E6%A0%87%E7%B3%BB%E4%B8%8E%E5%9D%90%E6%A0%87%E7%A9%BA%E9%97%B4"><span class="toc-text">6. 坐标系与坐标空间</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-%E6%B5%8B%E9%87%8F%E5%8D%95%E4%BD%8D"><span class="toc-text">7. 测量单位</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E4%BD%BF%E7%94%A8%E9%A1%B9%E7%9B%AE%E5%92%8C%E6%A8%A1%E6%9D%BF"><span class="toc-text">二、使用项目和模板</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E6%96%B0%E5%BB%BA%E9%A1%B9%E7%9B%AE"><span class="toc-text">1. 新建项目</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E6%89%93%E5%BC%80%E7%8E%B0%E6%9C%89%E9%A1%B9%E7%9B%AE"><span class="toc-text">2. 打开现有项目</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E6%A8%A1%E6%9D%BF%E5%8F%82%E8%80%83"><span class="toc-text">3. 模板参考</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E7%AC%AC%E4%B8%80%E4%BA%BA%E7%A7%B0%E6%A8%A1%E6%9D%BF"><span class="toc-text">1. 第一人称模板</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E6%A8%A1%E6%8B%9F%E7%A9%BA%E7%99%BD%E6%A8%A1%E6%9D%BF"><span class="toc-text">2. 模拟空白模板</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E4%B8%BA%E6%A8%A1%E6%9D%BF%E8%A7%92%E8%89%B2%E9%85%8D%E7%BD%AE%E8%BE%93%E5%85%A5"><span class="toc-text">3. 为模板角色配置输入</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-%E6%B8%B8%E6%88%8F%E6%A8%A1%E6%9D%BF%E5%8F%98%E4%BD%93"><span class="toc-text">4. 游戏模板变体</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-%E4%BF%AF%E8%A7%86%E8%A7%92%E6%A8%A1%E6%9D%BF"><span class="toc-text">5. 俯视角模板</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-%E7%AC%AC%E4%B8%89%E4%BA%BA%E7%A7%B0%E6%A8%A1%E6%9D%BF"><span class="toc-text">6. 第三人称模板</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-%E8%BD%BD%E5%85%B7%E6%A8%A1%E6%9D%BF"><span class="toc-text">7. 载具模板</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#8-%E5%88%9B%E5%BB%BA%E8%87%AA%E5%AE%9A%E4%B9%89%E6%A8%A1%E6%9D%BF"><span class="toc-text">8. 创建自定义模板</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E9%A1%B9%E7%9B%AE%E8%AE%BE%E7%BD%AE"><span class="toc-text">四、项目设置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E9%A1%B9%E7%9B%AE"><span class="toc-text">1. 项目</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E6%B8%B8%E6%88%8F"><span class="toc-text">2. 游戏</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%BC%95%E6%93%8E"><span class="toc-text">3. 引擎</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-Editor"><span class="toc-text">4. Editor</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E5%B9%B3%E5%8F%B0"><span class="toc-text">5. 平台</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-%E6%8F%92%E4%BB%B6%E8%AE%BE%E7%BD%AE"><span class="toc-text">6. 插件设置</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E5%85%B3%E5%8D%A1"><span class="toc-text">五、关卡</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E4%BD%BF%E7%94%A8%E5%85%B3%E5%8D%A1"><span class="toc-text">1. 使用关卡</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E7%AE%A1%E7%90%86%E5%A4%9A%E4%B8%AA%E5%85%B3%E5%8D%A1"><span class="toc-text">2. 管理多个关卡</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E4%B8%96%E7%95%8C%E8%AE%BE%E7%BD%AE"><span class="toc-text">3. 世界设置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E6%9B%B4%E6%94%B9%E9%BB%98%E8%AE%A4%E5%85%B3%E5%8D%A1"><span class="toc-text">4. 更改默认关卡</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AD%E3%80%81%E8%B5%84%E4%BA%A7%E5%92%8C%E5%86%85%E5%AE%B9%E5%8C%85"><span class="toc-text">六、资产和内容包</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E7%9B%B4%E6%8E%A5%E5%AF%BC%E5%85%A5%E8%B5%84%E4%BA%A7"><span class="toc-text">1. 直接导入资产</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E4%BD%BF%E7%94%A8%E8%B5%84%E4%BA%A7"><span class="toc-text">2. 使用资产</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E8%BF%81%E7%A7%BB%E8%B5%84%E4%BA%A7"><span class="toc-text">3. 迁移资产</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E8%B5%84%E4%BA%A7%E5%85%83%E6%95%B0%E6%8D%AE"><span class="toc-text">4. 资产元数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E8%87%AA%E5%8A%A8%E9%87%8D%E5%AF%BC%E5%85%A5%E8%B5%84%E4%BA%A7"><span class="toc-text">5. 自动重导入资产</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-%E5%BC%95%E7%94%A8%E6%9F%A5%E7%9C%8B%E5%99%A8"><span class="toc-text">6. 引用查看器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-%E5%90%88%E5%B9%B6%E8%B5%84%E4%BA%A7"><span class="toc-text">7. 合并资产</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-%E7%B1%BB%E6%9F%A5%E7%9C%8B%E5%99%A8"><span class="toc-text">8. 类查看器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-%E5%85%A8%E5%B1%80%E8%B5%84%E4%BA%A7%E9%80%89%E6%8B%A9%E5%99%A8"><span class="toc-text">9. 全局资产选择器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-%E5%B1%9E%E6%80%A7%E7%9F%A9%E9%98%B5"><span class="toc-text">10. 属性矩阵</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%83%E3%80%81Actor-%E5%92%8C%E5%87%A0%E4%BD%95%E4%BD%93"><span class="toc-text">七、Actor 和几何体</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E6%94%BE%E7%BD%AE-Actor"><span class="toc-text">1. 放置 Actor</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E9%80%89%E6%8B%A9-Actor"><span class="toc-text">2. 选择 Actor</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%8F%98%E6%8D%A2-Actor"><span class="toc-text">3. 变换 Actor</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-Actor-%E5%90%B8%E9%99%84"><span class="toc-text">4. Actor 吸附</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-Actor-%E7%A7%BB%E5%8A%A8%E6%80%A7"><span class="toc-text">5. Actor 移动性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-Actor-%E5%88%86%E7%BB%84"><span class="toc-text">6. Actor 分组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-%E5%90%88%E5%B9%B6-Actor"><span class="toc-text">7. 合并 Actor</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-Actor-%E5%8F%82%E8%80%83"><span class="toc-text">8. Actor 参考</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E7%89%A9%E7%90%86%E4%BD%93%E7%A7%AF%EF%BC%88Physics-Volume%EF%BC%89"><span class="toc-text">1. 物理体积（Physics Volume）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E9%9D%99%E6%80%81%E7%BD%91%E6%A0%BC%E4%BD%93%EF%BC%88Static-Mesh%EF%BC%89"><span class="toc-text">2. 静态网格体（Static Mesh）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E9%AA%A8%E9%AA%BC%E7%BD%91%E6%A0%BC%E4%BD%93%EF%BC%88Skeletal-Mesh%EF%BC%89"><span class="toc-text">3. 骨骼网格体（Skeletal Mesh）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-%E5%87%A0%E4%BD%95%E7%AC%94%E5%88%B7%EF%BC%88Geometry-Brush%EF%BC%89"><span class="toc-text">4. 几何笔刷（Geometry Brush）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-%E6%91%84%E5%83%8F%E6%9C%BA%EF%BC%88Camera%EF%BC%89"><span class="toc-text">5. 摄像机（Camera）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-%E9%9F%B3%E9%A2%91%E4%BD%93%E7%A7%AF%EF%BC%88Audio-Volume%EF%BC%89"><span class="toc-text">6. 音频体积（Audio Volume）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-%E7%8E%A9%E5%AE%B6%E5%87%BA%E7%94%9F%E7%82%B9%EF%BC%88Player-Start%EF%BC%89"><span class="toc-text">7. 玩家出生点（Player Start）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#8-%E8%A7%A6%E5%8F%91%E5%99%A8%E4%BD%93%E7%A7%AF%EF%BC%88Trigger-Volume%EF%BC%89"><span class="toc-text">8. 触发器体积（Trigger Volume）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#9-%E4%BD%93%E7%A7%AF%EF%BC%88Volume%EF%BC%89"><span class="toc-text">9. 体积（Volume）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#10-%E4%BC%A4%E5%AE%B3%E4%BD%93%E7%A7%AF%EF%BC%88Pain-Causing-Volume%EF%BC%89"><span class="toc-text">10. 伤害体积（Pain Causing Volume）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#11-%E8%B4%B4%E8%8A%B1%EF%BC%88Decal%EF%BC%89"><span class="toc-text">11. 贴花（Decal）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#12-3D-%E6%96%87%E6%9C%AC%EF%BC%883D-Text%EF%BC%89"><span class="toc-text">12. 3D 文本（3D Text）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#13-%E7%9B%AE%E6%A0%87%E7%82%B9%EF%BC%88Target-Point%EF%BC%89"><span class="toc-text">13. 目标点（Target Point）</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AB%E3%80%81%E8%BF%90%E8%A1%8C%E5%92%8C%E6%A8%A1%E6%8B%9F"><span class="toc-text">八、运行和模拟</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%9C%A8%E7%BC%96%E8%BE%91%E5%99%A8%E4%B8%AD%E8%BF%90%E8%A1%8C%E5%92%8C%E6%A8%A1%E6%8B%9F"><span class="toc-text">1. 在编辑器中运行和模拟</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E8%BF%90%E8%A1%8C%E8%99%9A%E5%B9%BB%E5%BC%95%E6%93%8E"><span class="toc-text">2. 运行虚幻引擎</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B9%9D%E3%80%81%E6%BA%90%E7%A0%81%E7%AE%A1%E7%90%86"><span class="toc-text">九、源码管理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%90%AF%E7%94%A8%E4%B8%8E%E9%85%8D%E7%BD%AE%E6%BA%90%E7%A0%81%E7%AE%A1%E7%90%86"><span class="toc-text">1. 启用与配置源码管理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E7%BC%96%E8%BE%91%E5%99%A8%E4%B8%AD%E7%9A%84%E6%97%A5%E5%B8%B8%E5%8D%8F%E4%BD%9C"><span class="toc-text">2. 编辑器中的日常协作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E4%BD%BF%E7%94%A8-Perforce-%E7%AE%A1%E7%90%86%E9%A1%B9%E7%9B%AE"><span class="toc-text">3. 使用 Perforce 管理项目</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AE%A1%E7%90%86%E5%86%85%E5%AE%B9"><span class="toc-text">管理内容</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E7%BE%8E%E6%9C%AF%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8"><span class="toc-text">一、美术快速入门</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81Alembic-%E6%96%87%E4%BB%B6%E5%AF%BC%E5%85%A5%E5%99%A8"><span class="toc-text">二、Alembic 文件导入器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81FBX-%E5%86%85%E5%AE%B9%E7%AE%A1%E7%BA%BF"><span class="toc-text">三、FBX 内容管线</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-FBX-%E5%8A%A8%E7%94%BB%E7%AE%A1%E7%BA%BF"><span class="toc-text">1. FBX 动画管线</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-FBX-%E8%B5%84%E4%BA%A7%E5%85%83%E6%95%B0%E6%8D%AE%E7%AE%A1%E7%BA%BF"><span class="toc-text">2. FBX 资产元数据管线</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-FBX-%E5%AF%BC%E5%85%A5%E9%80%89%E9%A1%B9%E5%8F%82%E8%80%83"><span class="toc-text">3. FBX 导入选项参考</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-FBX-%E6%9D%90%E8%B4%A8%E7%AE%A1%E7%BA%BF"><span class="toc-text">4. FBX 材质管线</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-FBX-Morph-Target-%E7%AE%A1%E7%BA%BF"><span class="toc-text">5. FBX Morph Target 管线</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-FBX-%E5%9C%BA%E6%99%AF%E5%AF%BC%E5%85%A5"><span class="toc-text">6. FBX 场景导入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-FBX-%E9%AA%A8%E9%AA%BC%E7%BD%91%E6%A0%BC%E4%BD%93%E7%AE%A1%E7%BA%BF"><span class="toc-text">7. FBX 骨骼网格体管线</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-FBX-%E9%9D%99%E6%80%81%E7%BD%91%E6%A0%BC%E4%BD%93%E7%AE%A1%E7%BA%BF"><span class="toc-text">8. FBX 静态网格体管线</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-FBX-%E5%AF%BC%E5%85%A5%E9%94%99%E8%AF%AF"><span class="toc-text">9. FBX 导入错误</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E6%AF%9B%E5%8F%91%E6%B8%B2%E6%9F%93%E4%B8%8E%E6%A8%A1%E6%8B%9F"><span class="toc-text">四、毛发渲染与模拟</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Groom-%E6%A8%A1%E6%8B%9F%E4%B8%8E%E6%B8%B2%E6%9F%93%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8"><span class="toc-text">1. Groom 模拟与渲染快速入门</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E8%AE%BE%E7%BD%AE%E9%A1%B9%E7%9B%AE%E4%BB%A5%E4%BD%BF%E7%94%A8-Groom"><span class="toc-text">2. 设置项目以使用 Groom</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-Groom-%E5%B9%B3%E5%8F%B0%E6%94%AF%E6%8C%81"><span class="toc-text">3. Groom 平台支持</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E5%AF%BC%E5%85%A5-Groom"><span class="toc-text">4. 导入 Groom</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-Groom-%E7%BB%84%E4%BB%B6%E4%B8%8E%E8%B5%84%E4%BA%A7"><span class="toc-text">5. Groom 组件与资产</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-Groom-%E8%B5%84%E4%BA%A7%E7%BC%96%E8%BE%91%E5%99%A8"><span class="toc-text">6. Groom 资产编辑器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-%E5%8F%91%E7%89%87%E7%94%9F%E6%88%90%E5%99%A8"><span class="toc-text">7. 发片生成器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-Groom-%E5%8F%91%E6%9D%9F"><span class="toc-text">8. Groom 发束</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-%E4%B8%BA-Groom-%E8%AE%BE%E7%BD%AE%E7%BB%91%E5%AE%9A"><span class="toc-text">9. 为 Groom 设置绑定</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-Groom-%E6%8F%92%E5%80%BC"><span class="toc-text">10. Groom 插值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#11-%E5%90%AF%E7%94%A8-Groom-%E7%89%A9%E7%90%86%E6%A8%A1%E6%8B%9F"><span class="toc-text">11. 启用 Groom 物理模拟</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#12-%E8%AE%BE%E7%BD%AE-Groom-LOD"><span class="toc-text">12. 设置 Groom LOD</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#13-%E4%B8%BA-Groom-%E8%AE%BE%E7%BD%AE%E5%8F%91%E7%89%87%E4%B8%8E%E7%BD%91%E6%A0%BC"><span class="toc-text">13. 为 Groom 设置发片与网格</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#14-Groom-%E6%9D%90%E8%B4%A8"><span class="toc-text">14. Groom 材质</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#15-%E7%94%9F%E6%88%90-Groom-%E7%BA%B9%E7%90%86"><span class="toc-text">15. 生成 Groom 纹理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#16-%E8%AE%BE%E7%BD%AE-Groom-Deformer-Graph"><span class="toc-text">16. 设置 Groom Deformer Graph</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#17-Groom-%E7%BC%93%E5%AD%98"><span class="toc-text">17. Groom 缓存</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#18-Groom-%E5%8F%AF%E6%89%A9%E5%B1%95%E6%80%A7%E4%B8%8E%E6%80%A7%E8%83%BD"><span class="toc-text">18. Groom 可扩展性与性能</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#19-%E8%B0%83%E8%AF%95-Groom"><span class="toc-text">19. 调试 Groom</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#20-Groom-%E7%9A%84-Alembic-%E8%A7%84%E8%8C%83"><span class="toc-text">20. Groom 的 Alembic 规范</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#21-%E4%BD%BF%E7%94%A8-XGen-%E5%88%9B%E5%BB%BA-Groom-%E7%9A%84%E6%8C%87%E5%8D%97"><span class="toc-text">21. 使用 XGen 创建 Groom 的指南</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94%E3%80%81Interchange-%E6%A1%86%E6%9E%B6"><span class="toc-text">五、Interchange 框架</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E4%BD%BF%E7%94%A8-Interchange-%E5%AF%BC%E5%85%A5%E8%B5%84%E4%BA%A7"><span class="toc-text">1. 使用 Interchange 导入资产</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Interchange-%E5%BC%80%E5%8F%91%E6%8C%87%E5%8D%97"><span class="toc-text">2. Interchange 开发指南</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AD%E3%80%81%E9%AA%A8%E9%AA%BC%E7%BD%91%E6%A0%BC%E4%BD%93"><span class="toc-text">六、骨骼网格体</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E4%BD%BF%E7%94%A8-FBX-%E5%AF%BC%E5%85%A5%E9%AA%A8%E9%AA%BC%E7%BD%91%E6%A0%BC%E4%BD%93"><span class="toc-text">1. 使用 FBX 导入骨骼网格体</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E8%AE%BE%E7%BD%AE%E8%A7%92%E8%89%B2"><span class="toc-text">2. 设置角色</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E4%BD%BF%E7%94%A8%E6%A8%A1%E5%9D%97%E5%8C%96%E8%A7%92%E8%89%B2"><span class="toc-text">3. 使用模块化角色</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-Morph-Target-%E9%A2%84%E8%A7%88%E5%99%A8"><span class="toc-text">4. Morph Target 预览器</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%83%E3%80%81%E9%9D%99%E6%80%81%E7%BD%91%E6%A0%BC%E4%BD%93"><span class="toc-text">七、静态网格体</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%AF%BC%E5%85%A5%E9%9D%99%E6%80%81%E7%BD%91%E6%A0%BC%E4%BD%93"><span class="toc-text">1. 导入静态网格体</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%88%9B%E5%BB%BA%E5%92%8C%E4%BD%BF%E7%94%A8-LOD"><span class="toc-text">2. 创建和使用 LOD</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E7%90%86%E8%A7%A3%E5%85%89%E7%85%A7%E8%B4%B4%E5%9B%BE"><span class="toc-text">3. 理解光照贴图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-Proxy-Geometry-%E5%B7%A5%E5%85%B7"><span class="toc-text">4. Proxy Geometry 工具</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E8%AE%BE%E7%BD%AE%E9%9D%99%E6%80%81%E7%BD%91%E6%A0%BC%E4%BD%93%E7%A2%B0%E6%92%9E"><span class="toc-text">5. 设置静态网格体碰撞</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-%E8%AE%BE%E7%BD%AE%E9%9D%99%E6%80%81%E7%BD%91%E6%A0%BC%E4%BD%93%E6%9D%90%E8%B4%A8"><span class="toc-text">6. 设置静态网格体材质</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-%E8%AE%BE%E7%BD%AE%E6%8C%89%E5%B9%B3%E5%8F%B0-LOD"><span class="toc-text">7. 设置按平台 LOD</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-%E8%87%AA%E5%8A%A8%E7%94%9F%E6%88%90%E9%9D%99%E6%80%81%E7%BD%91%E6%A0%BC%E4%BD%93-LOD"><span class="toc-text">8. 自动生成静态网格体 LOD</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-%E9%9D%99%E6%80%81%E7%BD%91%E6%A0%BC%E4%BD%93%E7%BC%96%E8%BE%91%E5%99%A8-UI"><span class="toc-text">9. 静态网格体编辑器 UI</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-%E9%9D%99%E6%80%81%E7%BD%91%E6%A0%BC%E4%BD%93-Morph-Target"><span class="toc-text">10. 静态网格体 Morph Target</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#11-%E4%BD%BF%E7%94%A8%E9%9D%99%E6%80%81%E7%BD%91%E6%A0%BC%E4%BD%93-Socket"><span class="toc-text">11. 使用静态网格体 Socket</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#12-%E4%BD%BF%E7%94%A8-UV-%E9%80%9A%E9%81%93"><span class="toc-text">12. 使用 UV 通道</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#13-%E5%AE%9E%E4%BE%8B%E5%8C%96%E9%9D%99%E6%80%81%E7%BD%91%E6%A0%BC%E4%BD%93%E7%BB%84%E4%BB%B6"><span class="toc-text">13. 实例化静态网格体组件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#14-%E6%8C%89%E5%B9%B3%E5%8F%B0%E4%BC%98%E5%8C%96-LOD-%E5%B1%8F%E5%B9%95%E5%B0%BA%E5%AF%B8"><span class="toc-text">14. 按平台优化 LOD 屏幕尺寸</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AB%E3%80%81Mutable-%E9%AA%A8%E9%AA%BC%E7%BD%91%E6%A0%BC%E4%BD%93%E7%94%9F%E6%88%90"><span class="toc-text">八、Mutable 骨骼网格体生成</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B9%9D%E3%80%81Datasmith"><span class="toc-text">九、Datasmith</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Datasmith-%E6%A6%82%E8%A7%88"><span class="toc-text">1. Datasmith 概览</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%B0%86-Datasmith-%E5%86%85%E5%AE%B9%E5%AF%BC%E5%85%A5-UE"><span class="toc-text">2. 将 Datasmith 内容导入 UE</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-Datasmith-Exporter-%E6%8F%92%E4%BB%B6%E5%8F%91%E8%A1%8C%E8%AF%B4%E6%98%8E"><span class="toc-text">3. Datasmith Exporter 插件发行说明</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-Datasmith-%E5%AF%BC%E5%85%A5%E8%BF%87%E7%A8%8B"><span class="toc-text">4. Datasmith 导入过程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-Datasmith-%E9%87%8D%E5%AF%BC%E5%85%A5%E5%B7%A5%E4%BD%9C%E6%B5%81"><span class="toc-text">5. Datasmith 重导入工作流</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-%E8%87%AA%E5%AE%9A%E4%B9%89-Datasmith-%E5%AF%BC%E5%85%A5%E8%BF%87%E7%A8%8B"><span class="toc-text">6. 自定义 Datasmith 导入过程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-Dataprep-%E5%AF%BC%E5%85%A5%E8%87%AA%E5%AE%9A%E4%B9%89"><span class="toc-text">7. Dataprep 导入自定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-%E4%BD%BF%E7%94%A8-Datasmith-%E5%85%83%E6%95%B0%E6%8D%AE"><span class="toc-text">8. 使用 Datasmith 元数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-%E4%BD%BF%E7%94%A8-Datasmith-Direct-Link"><span class="toc-text">9. 使用 Datasmith Direct Link</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-3ds-Max"><span class="toc-text">10. 3ds Max</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#11-Archicad"><span class="toc-text">11. Archicad</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#12-Cinema-4D"><span class="toc-text">12. Cinema 4D</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#13-Deltagen-%E5%92%8C-VRED"><span class="toc-text">13. Deltagen 和 VRED</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#14-Navisworks"><span class="toc-text">14. Navisworks</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#15-Revit"><span class="toc-text">15. Revit</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#16-Rhino"><span class="toc-text">16. Rhino</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#17-SketchUp-Pro"><span class="toc-text">17. SketchUp Pro</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#18-Solidworks"><span class="toc-text">18. Solidworks</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#19-CAD-%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F"><span class="toc-text">19. CAD 文件格式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#20-IFC-%E6%96%87%E4%BB%B6"><span class="toc-text">20. IFC 文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#21-Datasmith-%E6%94%AF%E6%8C%81%E7%9A%84%E5%B9%B3%E5%8F%B0"><span class="toc-text">21. Datasmith 支持的平台</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#22-Datasmith-%E6%94%AF%E6%8C%81%E7%9A%84%E8%BD%AF%E4%BB%B6%E5%92%8C%E6%96%87%E4%BB%B6%E7%B1%BB%E5%9E%8B"><span class="toc-text">22. Datasmith 支持的软件和文件类型</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%81%E3%80%81GL-%E4%BC%A0%E8%BE%93%E6%A0%BC%E5%BC%8F%EF%BC%88glTF%EF%BC%89"><span class="toc-text">十、GL 传输格式（glTF）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-glTF-%E6%94%AF%E6%8C%81"><span class="toc-text">1. glTF 支持</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%AF%BC%E5%85%A5-glTF-%E6%96%87%E4%BB%B6"><span class="toc-text">2. 导入 glTF 文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%B0%86-UE-%E5%86%85%E5%AE%B9%E5%AF%BC%E5%87%BA%E4%B8%BA-glTF"><span class="toc-text">3. 将 UE 内容导出为 glTF</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E7%BC%96%E5%86%99-glTF-%E5%AF%BC%E5%87%BA%E8%84%9A%E6%9C%AC"><span class="toc-text">4. 编写 glTF 导出脚本</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-glTF-%E5%AF%BC%E5%87%BA%E5%99%A8%E5%A6%82%E4%BD%95%E5%A4%84%E7%90%86-UE-%E5%86%85%E5%AE%B9"><span class="toc-text">5. glTF 导出器如何处理 UE 内容</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-glTF-%E4%BB%A3%E7%90%86%E6%9D%90%E8%B4%A8"><span class="toc-text">6. glTF 代理材质</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%81%E4%B8%80%E3%80%81%E9%80%9A%E7%94%A8%E5%9C%BA%E6%99%AF%E6%8F%8F%E8%BF%B0%EF%BC%88USD%EF%BC%89"><span class="toc-text">十一、通用场景描述（USD）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-UE-%E4%B8%AD%E7%9A%84%E9%80%9A%E7%94%A8%E5%9C%BA%E6%99%AF%E6%8F%8F%E8%BF%B0"><span class="toc-text">1. UE 中的通用场景描述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%B0%86-Live-Link-%E4%B8%8E-USD-%E7%BB%93%E5%90%88%E4%BD%BF%E7%94%A8"><span class="toc-text">2. 将 Live Link 与 USD 结合使用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E4%BD%BF%E7%94%A8-USD-Stage-Prim"><span class="toc-text">3. 使用 USD Stage Prim</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-USD-Stage-%E7%BC%96%E8%BE%91%E5%99%A8%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8"><span class="toc-text">4. USD Stage 编辑器快速入门</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E5%B0%86-Control-Rig-%E7%94%A8%E4%BA%8E-USD-%E5%8A%A8%E7%94%BB"><span class="toc-text">5. 将 Control Rig 用于 USD 动画</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%81%E4%BA%8C%E3%80%81LiDAR-%E7%82%B9%E4%BA%91%E6%8F%92%E4%BB%B6"><span class="toc-text">十二、LiDAR 点云插件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-LiDAR-%E7%82%B9%E4%BA%91%E6%8F%92%E4%BB%B6%E6%A6%82%E8%BF%B0"><span class="toc-text">1. LiDAR 点云插件概述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-LiDAR-%E7%82%B9%E4%BA%91%E6%8F%92%E4%BB%B6%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8"><span class="toc-text">2. LiDAR 点云插件快速入门</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E7%82%B9%E4%BA%91%E7%9A%84-Eye-Dome-Lighting-%E6%A8%A1%E5%BC%8F"><span class="toc-text">3. 点云的 Eye-Dome Lighting 模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-LiDAR-%E7%82%B9%E4%BA%91%E6%8F%92%E4%BB%B6%E5%8F%82%E8%80%83"><span class="toc-text">4. LiDAR 点云插件参考</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%81%E4%B8%89%E3%80%81MaterialX"><span class="toc-text">十三、MaterialX</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-MaterialX-%E6%94%AF%E6%8C%81"><span class="toc-text">1. MaterialX 支持</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%AF%BC%E5%85%A5-MaterialX-%E6%96%87%E4%BB%B6"><span class="toc-text">2. 导入 MaterialX 文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-MaterialX-%E6%89%A9%E5%B1%95"><span class="toc-text">3. MaterialX 扩展</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%81%E5%9B%9B%E3%80%81%E5%BB%BA%E6%A8%A1%E4%B8%8E%E5%87%A0%E4%BD%95%E8%84%9A%E6%9C%AC"><span class="toc-text">十四、建模与几何脚本</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%BB%BA%E6%A8%A1%E6%A8%A1%E5%BC%8F%E6%A6%82%E8%BF%B0"><span class="toc-text">1. 建模模式概述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%BB%BA%E6%A8%A1%E6%A8%A1%E5%BC%8F%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8"><span class="toc-text">2. 建模模式快速入门</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E4%BD%BF%E7%94%A8%E7%BD%91%E6%A0%BC"><span class="toc-text">3. 使用网格</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E7%90%86%E8%A7%A3-PolyGroup"><span class="toc-text">4. 理解 PolyGroup</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E7%BD%91%E6%A0%BC%E5%85%83%E7%B4%A0%E9%80%89%E6%8B%A9"><span class="toc-text">5. 网格元素选择</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-%E5%BB%BA%E6%A8%A1%E5%B7%A5%E5%85%B7"><span class="toc-text">6. 建模工具</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-UV-%E7%BC%96%E8%BE%91%E5%99%A8"><span class="toc-text">7. UV 编辑器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-Geometry-Scripting-%E7%94%A8%E6%88%B7%E6%8C%87%E5%8D%97"><span class="toc-text">8. Geometry Scripting 用户指南</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-%E9%80%9A%E8%BF%87%E8%93%9D%E5%9B%BE%E4%BD%BF%E7%94%A8-Geometry-Scripting"><span class="toc-text">9. 通过蓝图使用 Geometry Scripting</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-%E4%BD%BF%E7%94%A8-Geometry-Scripting-%E5%88%9B%E5%BB%BA%E6%93%8D%E4%BD%9C%E5%AE%9E%E7%94%A8%E7%A8%8B%E5%BA%8F"><span class="toc-text">10. 使用 Geometry Scripting 创建操作实用程序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#11-%E5%B0%86-Mesh-Actor-%E8%BD%AC%E6%8D%A2%E4%B8%BA-Skeletal-Mesh-%E8%B5%84%E4%BA%A7"><span class="toc-text">11. 将 Mesh Actor 转换为 Skeletal Mesh 资产</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#12-%E5%88%9B%E5%BB%BA%E7%94%A8%E4%BA%8E%E4%BC%A0%E9%80%92%E8%92%99%E7%9A%AE%E6%9D%83%E9%87%8D%E7%9A%84%E6%93%8D%E4%BD%9C%E5%AE%9E%E7%94%A8%E7%A8%8B%E5%BA%8F"><span class="toc-text">12. 创建用于传递蒙皮权重的操作实用程序</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%81%E4%BA%94%E3%80%81%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF%E5%8F%98%E4%BD%93"><span class="toc-text">十五、使用场景变体</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Variant-Manager-%E6%A8%A1%E6%9D%BF%E6%A6%82%E8%BF%B0"><span class="toc-text">1. Variant Manager 模板概述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%9C%A8%E5%8F%98%E4%BD%93%E6%BF%80%E6%B4%BB%E6%97%B6%E8%B0%83%E7%94%A8%E5%87%BD%E6%95%B0"><span class="toc-text">2. 在变体激活时调用函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E7%BC%96%E5%86%99-Variant-Manager-%E8%AE%BE%E7%BD%AE%E8%84%9A%E6%9C%AC"><span class="toc-text">3. 编写 Variant Manager 设置脚本</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E4%BA%A7%E5%93%81%E9%85%8D%E7%BD%AE%E5%99%A8%E6%A8%A1%E6%9D%BF"><span class="toc-text">4. 产品配置器模板</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%81%E5%85%AD%E3%80%81SpeedTree"><span class="toc-text">十六、SpeedTree</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%81%E4%B8%83%E3%80%81%E6%9C%AC%E5%9C%B0%E5%8C%96"><span class="toc-text">十七、本地化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E6%9C%AC%E5%9C%B0%E5%8C%96%E6%A6%82%E8%BF%B0"><span class="toc-text">1. 本地化概述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E6%96%87%E6%9C%AC%E6%9C%AC%E5%9C%B0%E5%8C%96"><span class="toc-text">2. 文本本地化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%A1%A8"><span class="toc-text">3. 字符串表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E8%B5%84%E4%BA%A7%E6%9C%AC%E5%9C%B0%E5%8C%96"><span class="toc-text">4. 资产本地化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E6%9C%AC%E5%9C%B0%E5%8C%96%E5%B7%A5%E5%85%B7"><span class="toc-text">5. 本地化工具</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-%E7%AE%A1%E7%BA%BF%E4%BC%98%E5%8C%96"><span class="toc-text">6. 管线优化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-%E5%9C%A8%E8%BF%90%E8%A1%8C%E6%97%B6%E7%AE%A1%E7%90%86%E6%B4%BB%E5%8A%A8-Culture"><span class="toc-text">7. 在运行时管理活动 Culture</span></a></li></ol></li></ol></li></ol>
+        
+    </div>
+</aside>
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+<a id="back-to-top" class="icon-btn hide">
+    <i class="fa fa-chevron-up"></i>
+</a>
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+    访问量:
+    <strong id="busuanzi_value_site_pv">
+        <i class="fa fa-spinner fa-spin"></i>
+    </strong>
+    &nbsp; | &nbsp;
+    访客数:
+    <strong id="busuanzi_value_site_uv">
+        <i class="fa fa-spinner fa-spin"></i>
+    </strong>
+    
+</div>
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy;
+                    2022
+                    
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script async src="//vercount.one/js"></script>
+
+
+<script src="/js/app.js?rev=@@hash.js"></script>
+
+
+<div class="hide">
+    <script type="text/javascript">
+    var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+    document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+</div>
+
+
+
+
+</body>
+</html>

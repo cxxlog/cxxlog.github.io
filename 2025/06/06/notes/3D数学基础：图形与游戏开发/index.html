@@ -1,0 +1,1700 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+<head>
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="Hexo">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="theme-version" content="1.0.0">
+    <meta name="root" content="/">
+    <link rel="dns-prefetch" href="https://cxxlog.github.io">
+    <!--SEO-->
+
+<meta name="keywords" content="3D数学基础,图形学" />
+
+
+<meta name="description" content="
+前言《3D数学基础：图形与游戏开发》（3D Math Primer for Graphics and Game Development，Fletcher Dunn &#x2F; Ian Par..." />
+
+
+<meta name="robots" content="all" />
+<meta name="google" content="all" />
+<meta name="googlebot" content="all" />
+<meta name="verify" content="all" />
+    <!--Title-->
+
+<title>
+    
+    《3D数学基础：图形与游戏开发》全书内容提炼总结 |
+    
+    Hexo
+</title>
+
+<link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+
+
+<link rel="icon" href="/favicon.ico">
+
+    
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7.css">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.7.0.css">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash.css">
+
+    
+
+<meta name="generator" content="Hexo 6.2.0"></head>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+<body>
+    <header class="main-header"  style="background-image:url(
+    /img/banner.jpg)"
+     >
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title='cxx'>
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+            <!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+            <img src="/img/branding.png" alt="Snippet 博客主题" class="img-responsive center-block">
+            
+        </div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                        <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="https://cxxlog.github.io">
+                        Hexo</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/"><i class="fa "></i>
+                                首页</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/archives/"><i class="fa "></i>
+                                时间轴</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/guestbook/"><i class="fa "></i>
+                                留言</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="《3D数学基础：图形与游戏开发》全书内容提炼总结">
+            
+            《3D数学基础：图形与游戏开发》全书内容提炼总结
+            
+        </h1>
+        <div class="post-meta">
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a class="category-link" href="/categories/notes/">notes</a>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+            <a class="tag-none-link" href="/tags/3D%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/" rel="tag">3D数学基础</a> <a class="tag-none-link" href="/tags/%E5%9B%BE%E5%BD%A2%E5%AD%A6/" rel="tag">图形学</a>
+            
+        </span>
+    </span>
+    
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-clock-o"></i>
+        <span class="date-meta">
+            2025/06/06</span>
+    </span>
+    
+    <span class="fa-wrap">
+        <i class="fa fa-eye"></i>
+        <span id="busuanzi_value_page_pv"></span>
+    </span>
+    
+    
+</div>
+        
+        
+    </div>
+    
+    <div class="post-body post-content">
+        <p><img decoding="async" src="/2025/06/06/notes/3D%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80%EF%BC%9A%E5%9B%BE%E5%BD%A2%E4%B8%8E%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/cover.jpg" alt="3D数学基础：图形与游戏开发"></p>
+<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>《3D数学基础：图形与游戏开发》（3D Math Primer for Graphics and Game Development，Fletcher Dunn &#x2F; Ian Parberry 著）是图形和游戏开发的经典入门书。它不追求数学证明，而是讲清楚每个概念的<strong>几何意义</strong>，并给出可直接使用的C++实现。</p>
+<p>全书主线：坐标系 → 向量 → 矩阵与变换 → 方位（矩阵、欧拉角、四元数）→ C++实现 → 几何图元与几何检测 → 三角网格 → 图形管道 → 可见性检测。</p>
+<p><strong>本文约定：</strong></p>
+<ul>
+<li>使用<strong>左手坐标系</strong>：+x向右，+y向上，+z向前（指向屏幕里）。</li>
+<li>使用<strong>行向量</strong>，向量左乘矩阵：<code>v&#39; = vM</code>，多个变换从左往右读：<code>v&#39; = vABC</code> 表示先A再B后C。</li>
+<li>角度正方向由<strong>左手法则</strong>确定。</li>
+<li>博客不渲染数学公式，公式写在代码块中：<code>·</code> 表示点乘，<code>×</code> 表示叉乘，<code>|v|</code> 表示模，<code>ᵀ</code> 表示转置。</li>
+</ul>
+<br/>
+
+<h1 id="一、笛卡尔坐标系"><a href="#一、笛卡尔坐标系" class="headerlink" title="一、笛卡尔坐标系"></a>一、笛卡尔坐标系</h1><h2 id="1-1D数学"><a href="#1-1D数学" class="headerlink" title="1. 1D数学"></a>1. 1D数学</h2><ul>
+<li>自然数、整数是<strong>离散</strong>的，实数是<strong>连续</strong>的。计算机只能存有限精度的数，所以计算机中的“实数”其实是近似。</li>
+<li><strong>图形学第一定律：如果它看上去是对的，它就是对的。</strong> 图形和游戏追求的是视觉上正确，大量计算都可以近似。</li>
+</ul>
+<h2 id="2-2D笛卡尔坐标系"><a href="#2-2D笛卡尔坐标系" class="headerlink" title="2. 2D笛卡尔坐标系"></a>2. 2D笛卡尔坐标系</h2><ul>
+<li>由<strong>原点</strong>和两条互相垂直、过原点的<strong>坐标轴</strong>组成。原点决定位置，坐标轴决定方向和刻度。</li>
+<li>点用坐标<code>(x, y)</code>表示，即沿x轴、y轴的有符号距离。</li>
+<li>两轴的朝向可以任意选，通过旋转和翻转共有<strong>8种</strong>方案，但它们本质等价：任意一种都能旋转（或翻转）成另一种。常用：+x向右，+y向上。</li>
+</ul>
+<h2 id="3-3D笛卡尔坐标系"><a href="#3-3D笛卡尔坐标系" class="headerlink" title="3. 3D笛卡尔坐标系"></a>3. 3D笛卡尔坐标系</h2><ul>
+<li>增加z轴表示深度，三轴两两垂直。点用<code>(x, y, z)</code>表示。</li>
+<li>3D坐标系分两种，<strong>不能通过旋转互相转换</strong>：<ul>
+<li><strong>左手坐标系</strong>：左手拇指指向+x，食指指向+y，中指指向+z。标准形式：+x右、+y上、+z向前（屏幕里）。</li>
+<li><strong>右手坐标系</strong>：同样的手势换右手。标准形式下+z向屏幕外。</li>
+</ul>
+</li>
+<li>同一种手系通过旋转有24种形式，共48种。</li>
+<li>两者只差z轴方向，换手系时把z取反即可。</li>
+<li><strong>旋转正方向（左手法则）</strong>：左手拇指指向旋转轴正方向，四指弯曲的方向就是正方向。从轴的正端往原点看，左手系中正旋转是<strong>顺时针</strong>，右手系中是<strong>逆时针</strong>。</li>
+<li>本书使用左手系；DirectX习惯左手系，OpenGL习惯右手系。数学本身不受影响，影响的只是如何解释数字。</li>
+</ul>
+<p><strong>请记住：</strong></p>
+<blockquote>
+<ul>
+<li>计算机中的连续量都是近似，“看起来对就是对的”。</li>
+<li>3D坐标系分左手系和右手系，两者不能通过旋转互换，只差z轴方向。</li>
+<li>本书使用左手系：+x右、+y上、+z前，正旋转从轴正端看是顺时针。</li>
+</ul>
+</blockquote>
+<br/>
+
+<h1 id="二、多坐标系"><a href="#二、多坐标系" class="headerlink" title="二、多坐标系"></a>二、多坐标系</h1><h2 id="1-为什么需要多个坐标系"><a href="#1-为什么需要多个坐标系" class="headerlink" title="1. 为什么需要多个坐标系"></a>1. 为什么需要多个坐标系</h2><p>一个坐标系理论上能描述所有点，但很多问题换一个坐标系会<strong>简单得多</strong>。例如“NPC在我左边吗？”在角色自己的坐标系中只需看x的正负。计算多个点的关系时，必须先把它们<strong>转换到同一个坐标系</strong>。</p>
+<h2 id="2-常用坐标系"><a href="#2-常用坐标系" class="headerlink" title="2. 常用坐标系"></a>2. 常用坐标系</h2><ul>
+<li><strong>世界坐标系</strong>：全局坐标系，描述其他坐标系的参照。它能描述其他坐标系，反过来不行。“这个物体在哪？”“从A到B怎么走？”这类问题在世界坐标系中回答。</li>
+<li><strong>物体坐标系（模型坐标系）</strong>：每个物体独有，随物体移动和旋转。“前后左右”就是物体坐标系中的概念。</li>
+<li><strong>摄像机坐标系</strong>：观察者的物体坐标系。本书中+x向右、+y向上、+z为摄像机朝向。用于判断“物体是否在视野内”“谁挡住了谁”。注意它与屏幕坐标系（2D）不同。</li>
+<li><strong>惯性坐标系</strong>：原点与物体坐标系原点重合，轴与世界坐标系平行。它是物体坐标系和世界坐标系之间的“半途”：<ul>
+<li>物体坐标系 → 惯性坐标系：<strong>只需旋转</strong>。</li>
+<li>惯性坐标系 → 世界坐标系：<strong>只需平移</strong>。</li>
+</ul>
+</li>
+</ul>
+<h2 id="3-嵌套式坐标系"><a href="#3-嵌套式坐标系" class="headerlink" title="3. 嵌套式坐标系"></a>3. 嵌套式坐标系</h2><p>物体可以由多个部件组成，每个部件有自己的坐标系，相对于父部件定义，形成树状层次。例如人体：躯干 → 上臂 → 前臂 → 手。父坐标系移动或旋转，子坐标系跟着变化。世界坐标系是这棵树的根。</p>
+<h2 id="4-描述坐标系与坐标系转换"><a href="#4-描述坐标系与坐标系转换" class="headerlink" title="4. 描述坐标系与坐标系转换"></a>4. 描述坐标系与坐标系转换</h2><ul>
+<li>描述一个坐标系，就是给出它的原点位置和三个轴的方向（<strong>基向量</strong>），都用父坐标系的坐标表示。</li>
+<li>坐标系转换：已知点在某个坐标系中的坐标，求它在另一个坐标系中的坐标。</li>
+<li>理解变换有两种视角：<strong>变换物体</strong>（物体动、坐标系不动）和<strong>变换坐标系</strong>（物体不动、坐标系动）。二者等价，方向相反：把物体顺时针转20°，等于把坐标系逆时针转20°。</li>
+</ul>
+<p><strong>请记住：</strong></p>
+<blockquote>
+<ul>
+<li>选对坐标系能让问题变简单；计算前先统一坐标系。</li>
+<li>世界、物体、摄像机、惯性坐标系是最常用的四种；惯性坐标系把物体→世界拆成“先旋转、再平移”。</li>
+<li>变换物体与变换坐标系是同一件事的两种视角，方向相反。</li>
+</ul>
+</blockquote>
+<br/>
+
+<h1 id="三、向量"><a href="#三、向量" class="headerlink" title="三、向量"></a>三、向量</h1><h2 id="1-数学定义"><a href="#1-数学定义" class="headerlink" title="1. 数学定义"></a>1. 数学定义</h2><ul>
+<li>向量就是一个<strong>数字列表</strong>，维度是数字的个数。标量是普通的数。</li>
+<li>写法：行向量<code>[1 2 3]</code>或列向量（竖着写）。本书默认用行向量。</li>
+<li>分量用下标表示：<code>v = [vx vy vz]</code>。</li>
+</ul>
+<h2 id="2-几何定义"><a href="#2-几何定义" class="headerlink" title="2. 几何定义"></a>2. 几何定义</h2><ul>
+<li>向量是有<strong>大小</strong>和<strong>方向</strong>的有向线段（箭头），<strong>没有位置</strong>。</li>
+<li>箭头可以放在任何位置，只要大小和方向相同，就是同一个向量。</li>
+<li>几何意义是<strong>位移</strong>：<code>[1 -3 4]</code>表示向右1、向下3、向前4，三步顺序无关。</li>
+<li>速度、加速度、力都是向量。</li>
+</ul>
+<h2 id="3-向量与点"><a href="#3-向量与点" class="headerlink" title="3. 向量与点"></a>3. 向量与点</h2><ul>
+<li>点表示<strong>位置</strong>，向量表示<strong>位移</strong>。</li>
+<li>任意点都可以表示为从原点出发的向量：点<code>(x, y)</code>对应向量<code>[x y]</code>。</li>
+<li>位置只有相对意义，描述点的坐标本身就是“相对原点的位移”。所以点和向量在数学上写法相同，概念上不同。</li>
+</ul>
+<p><strong>请记住：</strong></p>
+<blockquote>
+<ul>
+<li>向量有大小和方向，没有位置，几何上表示位移。</li>
+<li>点是位置，可以看作从原点出发的位移向量。</li>
+</ul>
+</blockquote>
+<br/>
+
+<h1 id="四、向量运算"><a href="#四、向量运算" class="headerlink" title="四、向量运算"></a>四、向量运算</h1><p>线性代数把向量当成数组来运算，几何把它们当成箭头。每种运算都要同时理解代数公式和几何意义。</p>
+<h2 id="1-零向量和负向量"><a href="#1-零向量和负向量" class="headerlink" title="1. 零向量和负向量"></a>1. 零向量和负向量</h2><ul>
+<li><strong>零向量</strong>：<code>[0 0 0]</code>，唯一没有方向的向量，表示“没有位移”。</li>
+<li><strong>负向量</strong>：<code>-v = [-vx -vy -vz]</code>，大小相同、方向相反。<code>v + (-v) = 0</code>。</li>
+</ul>
+<h2 id="2-向量大小（模）"><a href="#2-向量大小（模）" class="headerlink" title="2. 向量大小（模）"></a>2. 向量大小（模）</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">|v| = sqrt(vx² + vy² + vz²)</span><br></pre></td></tr></table></figure>
+
+<p>几何上就是勾股定理：分量是直角边，向量是斜边。</p>
+<h2 id="3-标量与向量的乘法"><a href="#3-标量与向量的乘法" class="headerlink" title="3. 标量与向量的乘法"></a>3. 标量与向量的乘法</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">k·v = [k·vx  k·vy  k·vz]</span><br><span class="line">v / k = v · (1/k)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>几何意义：长度缩放<code>|k|</code>倍，<code>k &lt; 0</code>时方向反转。</li>
+<li>标量不能除以向量，向量也不能加标量。</li>
+</ul>
+<h2 id="4-标准化向量"><a href="#4-标准化向量" class="headerlink" title="4. 标准化向量"></a>4. 标准化向量</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">v_norm = v / |v|      （v ≠ 0）</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>得到大小为1的<strong>单位向量</strong>（又叫法线），用于只关心方向的场合。</li>
+<li>零向量不能标准化。</li>
+</ul>
+<h2 id="5-向量加法和减法"><a href="#5-向量加法和减法" class="headerlink" title="5. 向量加法和减法"></a>5. 向量加法和减法</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a + b = [ax+bx  ay+by  az+bz]</span><br><span class="line">a - b = a + (-b)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>几何：<strong>三角形法则</strong>——把b的尾接到a的头，从a尾指向b头的向量就是<code>a + b</code>。</li>
+<li><code>a - b</code>是从b的头指向a的头的向量。</li>
+<li>**从点a到点b的向量是<code>b - a</code>**。</li>
+</ul>
+<h2 id="6-距离公式"><a href="#6-距离公式" class="headerlink" title="6. 距离公式"></a>6. 距离公式</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">distance(a, b) = |b - a| = sqrt((bx-ax)² + (by-ay)² + (bz-az)²)</span><br></pre></td></tr></table></figure>
+
+<h2 id="7-点乘"><a href="#7-点乘" class="headerlink" title="7. 点乘"></a>7. 点乘</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a · b = ax·bx + ay·by + az·bz          （结果是标量）</span><br><span class="line">a · b = |a| |b| cosθ</span><br><span class="line">θ = arccos( (a · b) / (|a| |b|) )      （单位向量可省去分母）</span><br></pre></td></tr></table></figure>
+
+<p><strong>几何意义：</strong> 点乘可以判断两向量的方向关系：</p>
+<table>
+<thead>
+<tr>
+<th>a·b</th>
+<th>夹角θ</th>
+<th>关系</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>&gt; 0</td>
+<td>0° ≤ θ &lt; 90°</td>
+<td>方向基本相同</td>
+</tr>
+<tr>
+<td>&#x3D; 0</td>
+<td>θ &#x3D; 90°</td>
+<td>垂直</td>
+</tr>
+<tr>
+<td>&lt; 0</td>
+<td>90° &lt; θ ≤ 180°</td>
+<td>方向基本相反</td>
+</tr>
+</tbody></table>
+<p><strong>投影：</strong> 把v分解为平行于n和垂直于n的两个分量：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">v∥ = n · (v·n) / |n|²       （n为单位向量时：v∥ = (v·n)·n）</span><br><span class="line">v⊥ = v - v∥</span><br></pre></td></tr></table></figure>
+
+<h2 id="8-叉乘"><a href="#8-叉乘" class="headerlink" title="8. 叉乘"></a>8. 叉乘</h2><p>仅用于3D向量，结果是向量：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">a × b = [ ay·bz - az·by,</span><br><span class="line">          az·bx - ax·bz,</span><br><span class="line">          ax·by - ay·bx ]</span><br><span class="line">|a × b| = |a| |b| sinθ</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>a × b</code><strong>垂直于a和b</strong>。</li>
+<li>长度等于以a、b为两边的<strong>平行四边形面积</strong>。</li>
+<li>方向：左手系中，如果a和b首尾相接后呈<strong>顺时针</strong>，<code>a × b</code>指向你；逆时针则背离你（右手系相反）。</li>
+<li><code>a × b = 0</code>表示a、b平行（或有零向量）。</li>
+<li>不满足交换律：<code>a × b = -(b × a)</code>；也不满足结合律。</li>
+<li>主要用途：求平面、三角形、多边形的<strong>法向量</strong>。</li>
+</ul>
+<h2 id="9-线性代数公式"><a href="#9-线性代数公式" class="headerlink" title="9. 线性代数公式"></a>9. 线性代数公式</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">a + b = b + a                    （加法交换律）</span><br><span class="line">(a + b) + c = a + (b + c)        （加法结合律）</span><br><span class="line">k(a + b) = ka + kb               （数乘分配律）</span><br><span class="line">|ka| = |k| |a|</span><br><span class="line">|a + b| ≤ |a| + |b|              （三角不等式）</span><br><span class="line">a · b = b · a</span><br><span class="line">a · (b + c) = a·b + a·c</span><br><span class="line">a · a = |a|²</span><br><span class="line">a × b = -(b × a)</span><br><span class="line">a × (b + c) = a×b + a×c</span><br><span class="line">a · (a × b) = 0                  （叉乘结果垂直于原向量）</span><br></pre></td></tr></table></figure>
+
+<p><strong>请记住：</strong></p>
+<blockquote>
+<ul>
+<li>从点a到点b的向量是<code>b - a</code>，两点距离是它的模。</li>
+<li>点乘得标量，<code>a·b = |a||b|cosθ</code>，用于判断夹角、求投影。</li>
+<li>叉乘得垂直向量，长度为平行四边形面积，用于求法线；它不满足交换律。</li>
+</ul>
+</blockquote>
+<br/>
+
+<h1 id="五、一个简单的3D向量类"><a href="#五、一个简单的3D向量类" class="headerlink" title="五、一个简单的3D向量类"></a>五、一个简单的3D向量类</h1><h2 id="1-设计取舍"><a href="#1-设计取舍" class="headerlink" title="1. 设计取舍"></a>1. 设计取舍</h2><ul>
+<li>用<code>float</code>而不是<code>double</code>：精度够用，内存和速度更好。</li>
+<li><strong>不用虚函数</strong>：避免每个对象多一个虚表指针，向量会被大量创建。</li>
+<li><strong>成员公开</strong>：<code>x, y, z</code>直接访问，向量没有需要保护的不变量。</li>
+<li><strong>默认构造函数不初始化</strong>：初始化有开销，向量常被创建后立刻赋值。</li>
+<li>不检查除零：调用者负责。</li>
+<li>用运算符重载让代码读起来像数学公式；点乘重载<code>*</code>，叉乘用普通函数，避免歧义。</li>
+<li>只做3D向量，不写模板通用版本，保持简单高效。</li>
+</ul>
+<h2 id="2-代码"><a href="#2-代码" class="headerlink" title="2. 代码"></a>2. 代码</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;math.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Vector3</span></span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="type">float</span> x, y, z;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">Vector3</span>() &#123;&#125;                         <span class="comment">//不初始化，出于性能考虑</span></span><br><span class="line">    <span class="built_in">Vector3</span>(<span class="type">const</span> Vector3 &amp;a) : <span class="built_in">x</span>(a.x), <span class="built_in">y</span>(a.y), <span class="built_in">z</span>(a.z) &#123;&#125;</span><br><span class="line">    <span class="built_in">Vector3</span>(<span class="type">float</span> nx, <span class="type">float</span> ny, <span class="type">float</span> nz) : <span class="built_in">x</span>(nx), <span class="built_in">y</span>(ny), <span class="built_in">z</span>(nz) &#123;&#125;</span><br><span class="line"></span><br><span class="line">    Vector3 &amp;<span class="keyword">operator</span> =(<span class="type">const</span> Vector3 &amp;a) &#123; x = a.x; y = a.y; z = a.z; <span class="keyword">return</span> *<span class="keyword">this</span>; &#125;</span><br><span class="line">    <span class="type">bool</span> <span class="keyword">operator</span> ==(<span class="type">const</span> Vector3 &amp;a) <span class="type">const</span> &#123; <span class="keyword">return</span> x == a.x &amp;&amp; y == a.y &amp;&amp; z == a.z; &#125;</span><br><span class="line">    <span class="type">bool</span> <span class="keyword">operator</span> !=(<span class="type">const</span> Vector3 &amp;a) <span class="type">const</span> &#123; <span class="keyword">return</span> x != a.x || y != a.y || z != a.z; &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">zero</span><span class="params">()</span> </span>&#123; x = y = z = <span class="number">0.0f</span>; &#125;</span><br><span class="line"></span><br><span class="line">    Vector3 <span class="keyword">operator</span> -() <span class="type">const</span> &#123; <span class="keyword">return</span> <span class="built_in">Vector3</span>(-x, -y, -z); &#125;</span><br><span class="line">    Vector3 <span class="keyword">operator</span> +(<span class="type">const</span> Vector3 &amp;a) <span class="type">const</span> &#123; <span class="keyword">return</span> <span class="built_in">Vector3</span>(x + a.x, y + a.y, z + a.z); &#125;</span><br><span class="line">    Vector3 <span class="keyword">operator</span> -(<span class="type">const</span> Vector3 &amp;a) <span class="type">const</span> &#123; <span class="keyword">return</span> <span class="built_in">Vector3</span>(x - a.x, y - a.y, z - a.z); &#125;</span><br><span class="line">    Vector3 <span class="keyword">operator</span> *(<span class="type">float</span> a) <span class="type">const</span> &#123; <span class="keyword">return</span> <span class="built_in">Vector3</span>(x * a, y * a, z * a); &#125;</span><br><span class="line">    Vector3 <span class="keyword">operator</span> /(<span class="type">float</span> a) <span class="type">const</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">float</span> oneOverA = <span class="number">1.0f</span> / a;       <span class="comment">//不检查除零</span></span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">Vector3</span>(x * oneOverA, y * oneOverA, z * oneOverA);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    Vector3 &amp;<span class="keyword">operator</span> +=(<span class="type">const</span> Vector3 &amp;a) &#123; x += a.x; y += a.y; z += a.z; <span class="keyword">return</span> *<span class="keyword">this</span>; &#125;</span><br><span class="line">    Vector3 &amp;<span class="keyword">operator</span> -=(<span class="type">const</span> Vector3 &amp;a) &#123; x -= a.x; y -= a.y; z -= a.z; <span class="keyword">return</span> *<span class="keyword">this</span>; &#125;</span><br><span class="line">    Vector3 &amp;<span class="keyword">operator</span> *=(<span class="type">float</span> a) &#123; x *= a; y *= a; z *= a; <span class="keyword">return</span> *<span class="keyword">this</span>; &#125;</span><br><span class="line">    Vector3 &amp;<span class="keyword">operator</span> /=(<span class="type">float</span> a)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">float</span> oneOverA = <span class="number">1.0f</span> / a;</span><br><span class="line">        x *= oneOverA; y *= oneOverA; z *= oneOverA;</span><br><span class="line">        <span class="keyword">return</span> *<span class="keyword">this</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">normalize</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="type">float</span> magSq = x * x + y * y + z * z;</span><br><span class="line">        <span class="keyword">if</span> (magSq &gt; <span class="number">0.0f</span>)                <span class="comment">//零向量不处理</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="type">float</span> oneOverMag = <span class="number">1.0f</span> / <span class="built_in">sqrt</span>(magSq);</span><br><span class="line">            x *= oneOverMag; y *= oneOverMag; z *= oneOverMag;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//点乘</span></span><br><span class="line">    <span class="type">float</span> <span class="keyword">operator</span> *(<span class="type">const</span> Vector3 &amp;a) <span class="type">const</span> &#123; <span class="keyword">return</span> x * a.x + y * a.y + z * a.z; &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">//模</span></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="type">float</span> <span class="title">vectorMag</span><span class="params">(<span class="type">const</span> Vector3 &amp;a)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">sqrt</span>(a.x * a.x + a.y * a.y + a.z * a.z);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//叉乘</span></span><br><span class="line"><span class="function"><span class="keyword">inline</span> Vector3 <span class="title">crossProduct</span><span class="params">(<span class="type">const</span> Vector3 &amp;a, <span class="type">const</span> Vector3 &amp;b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">Vector3</span>(a.y * b.z - a.z * b.y,</span><br><span class="line">                   a.z * b.x - a.x * b.z,</span><br><span class="line">                   a.x * b.y - a.y * b.x);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//标量左乘</span></span><br><span class="line"><span class="keyword">inline</span> Vector3 <span class="keyword">operator</span> *(<span class="type">float</span> k, <span class="type">const</span> Vector3 &amp;v)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">Vector3</span>(k * v.x, k * v.y, k * v.z);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//两点距离</span></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="type">float</span> <span class="title">distance</span><span class="params">(<span class="type">const</span> Vector3 &amp;a, <span class="type">const</span> Vector3 &amp;b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">float</span> dx = a.x - b.x, dy = a.y - b.y, dz = a.z - b.z;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">sqrt</span>(dx * dx + dy * dy + dz * dz);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//全局零向量</span></span><br><span class="line"><span class="keyword">extern</span> <span class="type">const</span> Vector3 kZeroVector;</span><br></pre></td></tr></table></figure>
+
+<p><strong>请记住：</strong></p>
+<blockquote>
+<ul>
+<li>数学类以效率为先：float、无虚函数、成员公开、构造时不初始化。</li>
+<li>运算符重载让代码贴近公式；点乘用<code>*</code>，叉乘用函数。</li>
+</ul>
+</blockquote>
+<br/>
+
+<h1 id="六、矩阵"><a href="#六、矩阵" class="headerlink" title="六、矩阵"></a>六、矩阵</h1><h2 id="1-数学定义-1"><a href="#1-数学定义-1" class="headerlink" title="1. 数学定义"></a>1. 数学定义</h2><ul>
+<li><strong>矩阵</strong>是按行和列排列的数字块，可以看作二维数组。r×c矩阵有r行c列。</li>
+<li>元素<code>mij</code>表示第i行第j列，<strong>下标从1开始</strong>。</li>
+<li><strong>方阵</strong>：行数等于列数。行列号相同的元素是<strong>对角线元素</strong>。</li>
+<li><strong>对角矩阵</strong>：非对角线元素全为0。</li>
+<li><strong>单位矩阵I</strong>：对角线为1、其余为0的方阵。任何矩阵乘以I都不变，地位相当于标量中的1。</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">     | 1 0 0 |</span><br><span class="line">I3 = | 0 1 0 |</span><br><span class="line">     | 0 0 1 |</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>向量是特殊的矩阵</strong>：行向量是1×n矩阵，列向量是n×1矩阵。</li>
+</ul>
+<h2 id="2-转置"><a href="#2-转置" class="headerlink" title="2. 转置"></a>2. 转置</h2><p>把行变成列：<code>(Mᵀ)ij = Mji</code>。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(Mᵀ)ᵀ = M</span><br><span class="line">Dᵀ = D                （对角矩阵）</span><br><span class="line">(AB)ᵀ = BᵀAᵀ          （顺序反转）</span><br></pre></td></tr></table></figure>
+
+<p>行向量转置就是列向量。</p>
+<h2 id="3-标量与矩阵相乘"><a href="#3-标量与矩阵相乘" class="headerlink" title="3. 标量与矩阵相乘"></a>3. 标量与矩阵相乘</h2><p>每个元素都乘以该标量：<code>(kM)ij = k·mij</code>。</p>
+<h2 id="4-矩阵乘法"><a href="#4-矩阵乘法" class="headerlink" title="4. 矩阵乘法"></a>4. 矩阵乘法</h2><p>r×n矩阵A乘以n×c矩阵B，得到r×c矩阵：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(AB)ij = A的第i行 · B的第j列  =  Σk aik·bkj</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>A的列数必须等于B的行数</strong>，否则无定义。</li>
+<li><strong>不满足交换律</strong>：一般<code>AB ≠ BA</code>。</li>
+<li>满足结合律：<code>(AB)C = A(BC)</code>；满足数乘结合：<code>(kA)B = k(AB) = A(kB)</code>。</li>
+<li><code>MI = IM = M</code>。</li>
+</ul>
+<h2 id="5-向量与矩阵相乘"><a href="#5-向量与矩阵相乘" class="headerlink" title="5. 向量与矩阵相乘"></a>5. 向量与矩阵相乘</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">行向量：[x y z] · M  →  结果是行向量</span><br><span class="line">列向量：M · [x y z]ᵀ →  结果是列向量</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>行向量只能左乘矩阵（<code>vM</code>），列向量只能被矩阵左乘（<code>Mv</code>）。</li>
+<li>两种写法结果的元素相同，只差一次转置，对应的矩阵互为转置。</li>
+<li>行向量的优点：多个变换从左往右读<code>vABC</code>就是先A再B后C。列向量要写成<code>CBAv</code>，从右往左读。</li>
+<li><strong>DirectX用行向量，OpenGL用列向量。</strong> 看别人的公式时要先确认约定，必要时转置矩阵。</li>
+</ul>
+<h2 id="6-矩阵的几何解释"><a href="#6-矩阵的几何解释" class="headerlink" title="6. 矩阵的几何解释"></a>6. 矩阵的几何解释</h2><ul>
+<li>方阵可以描述<strong>线性变换</strong>：旋转、缩放、投影、镜像、切变。线性变换保持直线和原点不变，网格线不会弯曲。</li>
+<li>关键：<strong>矩阵的每一行就是变换后的基向量</strong>。</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[x y z] · | p |       p, q, r 是 M 的三行</span><br><span class="line">          | q |   =  x·p + y·q + z·r</span><br><span class="line">          | r |</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>原来的x轴<code>[1 0 0]</code>乘M后就是第一行p，y轴变成q，z轴变成r。</li>
+<li>所以只要知道变换后基向量去了哪里，就能直接写出矩阵；反过来，看矩阵每一行就能“看出”它做了什么（画出变换后的坐标轴）。</li>
+</ul>
+<p><strong>请记住：</strong></p>
+<blockquote>
+<ul>
+<li>矩阵乘法要求左矩阵列数等于右矩阵行数；不满足交换律，满足结合律；<code>(AB)ᵀ = BᵀAᵀ</code>。</li>
+<li>行向量写<code>vM</code>，变换从左往右读；列向量写<code>Mv</code>，两者矩阵互为转置。</li>
+<li>矩阵每一行是变换后的基向量，这是理解所有变换矩阵的钥匙。</li>
+</ul>
+</blockquote>
+<br/>
+
+<h1 id="七、矩阵和线性变换"><a href="#七、矩阵和线性变换" class="headerlink" title="七、矩阵和线性变换"></a>七、矩阵和线性变换</h1><p>本章用3×3矩阵表示3D线性变换（2×2对应2D），都以原点为中心，<strong>不包括平移</strong>。</p>
+<h2 id="1-变换物体与变换坐标系"><a href="#1-变换物体与变换坐标系" class="headerlink" title="1. 变换物体与变换坐标系"></a>1. 变换物体与变换坐标系</h2><ul>
+<li>变换物体：物体上的点在同一个坐标系中被移动到新位置。</li>
+<li>变换坐标系：点不动，只是用另一个坐标系重新描述它。</li>
+<li>两者互逆：把物体旋转θ，等价于把坐标系旋转-θ。本章公式都按“变换物体”给出。</li>
+</ul>
+<h2 id="2-旋转"><a href="#2-旋转" class="headerlink" title="2. 旋转"></a>2. 旋转</h2><p><strong>2D旋转</strong>（逆时针为正）：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">R(θ) = |  cosθ  sinθ |</span><br><span class="line">       | -sinθ  cosθ |</span><br></pre></td></tr></table></figure>
+
+<p><strong>3D绕坐标轴旋转</strong>（左手法则确定正方向）：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Rx(θ) = | 1     0      0    |</span><br><span class="line">        | 0   cosθ   sinθ   |</span><br><span class="line">        | 0  -sinθ   cosθ   |</span><br><span class="line"></span><br><span class="line">Ry(θ) = | cosθ  0  -sinθ |</span><br><span class="line">        |  0    1    0   |</span><br><span class="line">        | sinθ  0   cosθ |</span><br><span class="line"></span><br><span class="line">Rz(θ) = |  cosθ  sinθ  0 |</span><br><span class="line">        | -sinθ  cosθ  0 |</span><br><span class="line">        |   0     0    1 |</span><br></pre></td></tr></table></figure>
+
+<p>推导方法都一样：想清楚两个非旋转轴的基向量转到哪里，写成矩阵的行。</p>
+<p><strong>3D绕任意轴旋转</strong>：轴过原点，方向为单位向量n，旋转角θ。把v分解为平行于n和垂直于n的分量，只旋转垂直分量：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">v&#x27; = cosθ·(v - (v·n)n) + sinθ·(n × v) + (v·n)n</span><br></pre></td></tr></table></figure>
+
+<p>写成矩阵（记 c &#x3D; cosθ，s &#x3D; sinθ）：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">       | nx²(1-c)+c       nx·ny(1-c)+nz·s   nx·nz(1-c)-ny·s |</span><br><span class="line">R(n,θ)=| nx·ny(1-c)-nz·s  ny²(1-c)+c        ny·nz(1-c)+nx·s |</span><br><span class="line">       | nx·nz(1-c)+ny·s  ny·nz(1-c)-nx·s   nz²(1-c)+c      |</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-缩放"><a href="#3-缩放" class="headerlink" title="3. 缩放"></a>3. 缩放</h2><p><strong>沿坐标轴缩放</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">S(kx, ky, kz) = | kx  0   0  |</span><br><span class="line">                | 0   ky  0  |</span><br><span class="line">                | 0   0   kz |</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>各轴缩放因子相等为<strong>均匀缩放</strong>，保持形状和角度；否则为<strong>非均匀缩放</strong>，角度会变。</li>
+<li>k &gt; 1 放大，0 &lt; k &lt; 1 缩小，k &lt; 0 产生镜像，k &#x3D; 0 产生投影。</li>
+</ul>
+<p><strong>沿任意方向n缩放k倍</strong>（n为单位向量）：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">v&#x27; = v + (k-1)(v·n)n</span><br><span class="line"></span><br><span class="line">          | 1+(k-1)nx²    (k-1)nx·ny    (k-1)nx·nz |</span><br><span class="line">S(n,k) =  | (k-1)nx·ny    1+(k-1)ny²    (k-1)ny·nz |</span><br><span class="line">          | (k-1)nx·nz    (k-1)ny·nz    1+(k-1)nz² |</span><br></pre></td></tr></table></figure>
+
+<h2 id="4-正交投影"><a href="#4-正交投影" class="headerlink" title="4. 正交投影"></a>4. 正交投影</h2><p>投影就是<strong>降维</strong>。在某个方向上用0作为缩放因子，叫<strong>正交投影</strong>（又叫平行投影），所有点沿平行的投影线投到平面上。</p>
+<ul>
+<li>投影到坐标平面，直接把对应轴缩放为0。例如投影到xy平面：<code>P = S(1, 1, 0)</code>。</li>
+<li>投影到过原点、法向量为n的平面：</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">P(n) = S(n, 0)：</span><br><span class="line">        | 1-nx²     -nx·ny    -nx·nz |</span><br><span class="line">P(n) =  | -nx·ny    1-ny²     -ny·nz |</span><br><span class="line">        | -nx·nz    -ny·nz    1-nz²  |</span><br></pre></td></tr></table></figure>
+
+<p>注意n是<strong>垂直于投影平面</strong>的方向，不是平面内的方向。</p>
+<h2 id="5-镜像"><a href="#5-镜像" class="headerlink" title="5. 镜像"></a>5. 镜像</h2><p>沿平面（3D）或直线（2D）翻折，就是在法线方向上缩放-1：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">         | 1-2nx²     -2nx·ny    -2nx·nz |</span><br><span class="line">R(n) =   | -2nx·ny    1-2ny²     -2ny·nz |</span><br><span class="line">         | -2nx·nz    -2ny·nz    1-2nz²  |</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>一个物体镜像两次等于旋转。</li>
+<li>镜像会改变三角形顶点的绕序（顺时针变逆时针），渲染时要注意背面剔除。</li>
+</ul>
+<h2 id="6-切变"><a href="#6-切变" class="headerlink" title="6. 切变"></a>6. 切变</h2><p>把一个坐标乘以因子后加到另一个坐标上，坐标系被“扭曲”，角度改变，但<strong>面积和体积不变</strong>。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">2D：x&#x27; = x + s·y</span><br><span class="line">Hx(s) = | 1  0 |</span><br><span class="line">        | s  1 |</span><br><span class="line"></span><br><span class="line">3D：x&#x27; = x + s·z，y&#x27; = y + t·z</span><br><span class="line">Hxy(s,t) = | 1  0  0 |</span><br><span class="line">           | 0  1  0 |</span><br><span class="line">           | s  t  1 |</span><br></pre></td></tr></table></figure>
+
+<p>同理有<code>Hxz</code>、<code>Hyz</code>。切变很少用，旋转与非均匀缩放组合也能得到切变效果。</p>
+<h2 id="7-变换的组合"><a href="#7-变换的组合" class="headerlink" title="7. 变换的组合"></a>7. 变换的组合</h2><p>矩阵乘法满足结合律，所以一系列变换可以先把矩阵相乘：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">v&#x27; = ((v·M1)·M2)·M3 = v·(M1·M2·M3)</span><br></pre></td></tr></table></figure>
+
+<p>例如渲染时：物体坐标系 → 世界坐标系（<code>Mobj→world</code>），再 → 摄像机坐标系（<code>Mworld→cam</code>），先算<code>M = Mobj→world · Mworld→cam</code>，每个顶点只需乘一次M。</p>
+<p>几何上：每个矩阵把基向量变换一次，组合矩阵的行就是依次变换后的基向量。</p>
+<h2 id="8-变换分类"><a href="#8-变换分类" class="headerlink" title="8. 变换分类"></a>8. 变换分类</h2><ul>
+<li><strong>线性变换</strong>：满足<code>F(a+b) = F(a) + F(b)</code>、<code>F(ka) = kF(a)</code>。原点不动，可用3×3矩阵表示。</li>
+<li><strong>仿射变换</strong>：线性变换后接平移，<code>v&#39; = vM + b</code>。平移不是线性变换。</li>
+<li><strong>可逆变换</strong>：存在逆变换能“撤销”它。投影不可逆（丢失了一个维度的信息）。</li>
+<li><strong>等角变换</strong>：保持角度大小和方向。平移、旋转、均匀缩放。</li>
+<li><strong>正交变换</strong>：轴保持互相垂直且长度不变。平移、旋转、镜像。</li>
+<li><strong>刚体变换</strong>：只改变位置和方向，不改变形状和大小。只有平移和旋转（不含镜像）。</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>变换</th>
+<th>线性</th>
+<th>仿射</th>
+<th>可逆</th>
+<th>等角</th>
+<th>正交</th>
+<th>刚体</th>
+<th>长度不变</th>
+<th>角度不变</th>
+<th>面积&#x2F;体积不变</th>
+<th>行列式</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>线性变换</td>
+<td>✓</td>
+<td>✓</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>仿射变换</td>
+<td></td>
+<td>✓</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>≠0</td>
+</tr>
+<tr>
+<td>可逆变换</td>
+<td></td>
+<td>✓</td>
+<td>✓</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>≠0</td>
+</tr>
+<tr>
+<td>等角变换</td>
+<td></td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td></td>
+<td></td>
+<td></td>
+<td>✓</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>正交变换</td>
+<td></td>
+<td>✓</td>
+<td>✓</td>
+<td></td>
+<td>✓</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>±1</td>
+</tr>
+<tr>
+<td>刚体变换</td>
+<td></td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>1</td>
+</tr>
+<tr>
+<td>平移</td>
+<td></td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>1</td>
+</tr>
+<tr>
+<td>旋转</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>1</td>
+</tr>
+<tr>
+<td>均匀缩放</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td></td>
+<td></td>
+<td></td>
+<td>✓</td>
+<td></td>
+<td>kⁿ</td>
+</tr>
+<tr>
+<td>非均匀缩放</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>正交投影</td>
+<td>✓</td>
+<td>✓</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>0</td>
+</tr>
+<tr>
+<td>镜像</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td></td>
+<td>✓</td>
+<td></td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>-1</td>
+</tr>
+<tr>
+<td>切变</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>✓</td>
+<td>1</td>
+</tr>
+</tbody></table>
+<p><strong>请记住：</strong></p>
+<blockquote>
+<ul>
+<li>3×3矩阵只能表示线性变换，原点不动，不包括平移。</li>
+<li>旋转、缩放、投影、镜像、切变都能从“基向量去了哪里”推出矩阵；任意方向缩放的通式是<code>v + (k-1)(v·n)n</code>，k&#x3D;0是投影，k&#x3D;-1是镜像。</li>
+<li>多个变换可预先合并成一个矩阵。</li>
+<li>刚体变换只有平移和旋转；正交变换还包括镜像；等角变换还包括均匀缩放。</li>
+</ul>
+</blockquote>
+<br/>
+
+<h1 id="八、矩阵的更多知识"><a href="#八、矩阵的更多知识" class="headerlink" title="八、矩阵的更多知识"></a>八、矩阵的更多知识</h1><h2 id="1-行列式"><a href="#1-行列式" class="headerlink" title="1. 行列式"></a>1. 行列式</h2><p>只有方阵有行列式，记作<code>|M|</code>或<code>det M</code>。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">2×2：| a  b |  = ad - bc</span><br><span class="line">     | c  d |</span><br><span class="line"></span><br><span class="line">3×3：| m11 m12 m13 |</span><br><span class="line">     | m21 m22 m23 | = m11(m22·m33 - m23·m32)</span><br><span class="line">     | m31 m32 m33 |   + m12(m23·m31 - m21·m33)</span><br><span class="line">                       + m13(m21·m32 - m22·m31)</span><br></pre></td></tr></table></figure>
+
+<p>3×3行列式也等于三行的<strong>混合积</strong>：<code>(r1 × r2) · r3</code>。</p>
+<p><strong>余子式与代数余子式（用于任意n×n）：</strong></p>
+<ul>
+<li>余子式<code>M&#123;ij&#125;</code>：删掉第i行第j列后剩下的矩阵。</li>
+<li>代数余子式：<code>cij = (-1)^(i+j) · |M&#123;ij&#125;|</code>。</li>
+<li>按任意一行（或列）展开：<code>|M| = Σj mij·cij</code>。</li>
+<li>计算量随阶数指数增长；还有“主元选择”等更快的方法。</li>
+</ul>
+<p><strong>性质：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">|AB| = |A| |B|</span><br><span class="line">|Mᵀ| = |M|</span><br><span class="line">某一行（列）全为0  →  |M| = 0</span><br><span class="line">交换任意两行（列） →  行列式变号</span><br><span class="line">某行（列）的倍数加到另一行（列） →  行列式不变</span><br></pre></td></tr></table></figure>
+
+<p><strong>几何意义：</strong> 2D中是以基向量为边的平行四边形的<strong>有符号面积</strong>，3D中是平行六面体的<strong>有符号体积</strong>。也就是变换带来的面积&#x2F;体积缩放比例。</p>
+<ul>
+<li><code>|M| = 0</code>：矩阵包含投影（压扁了一个维度）。</li>
+<li><code>|M| &lt; 0</code>：矩阵包含镜像（翻转）。</li>
+</ul>
+<h2 id="2-矩阵的逆"><a href="#2-矩阵的逆" class="headerlink" title="2. 矩阵的逆"></a>2. 矩阵的逆</h2><p><code>M·M⁻¹ = M⁻¹·M = I</code>。</p>
+<ul>
+<li>只有方阵可能可逆。<strong>行列式不为0的矩阵可逆</strong>（非奇异），行列式为0的不可逆（奇异）。</li>
+<li>用<strong>标准伴随矩阵</strong>求逆：</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">adj M = 代数余子式矩阵的转置</span><br><span class="line">M⁻¹ = adj M / |M|</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>对3×3、4×4这样的小矩阵，伴随矩阵法通常最快；大矩阵用高斯消元等方法。</li>
+</ul>
+<p><strong>性质：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">(M⁻¹)⁻¹ = M</span><br><span class="line">I⁻¹ = I</span><br><span class="line">(Mᵀ)⁻¹ = (M⁻¹)ᵀ</span><br><span class="line">(AB)⁻¹ = B⁻¹A⁻¹     （顺序反转）</span><br></pre></td></tr></table></figure>
+
+<p><strong>几何意义：</strong> 逆矩阵就是撤销原变换：<code>(vM)M⁻¹ = v</code>。</p>
+<h2 id="3-正交矩阵"><a href="#3-正交矩阵" class="headerlink" title="3. 正交矩阵"></a>3. 正交矩阵</h2><p>定义：<code>M·Mᵀ = I</code>，即<strong>逆矩阵等于转置</strong>，求逆几乎没有开销。</p>
+<p><strong>判定：</strong> 矩阵的每一行都是<strong>单位向量</strong>，且各行<strong>两两垂直</strong>（列同理）。</p>
+<ul>
+<li><strong>旋转矩阵和镜像矩阵是正交的。</strong></li>
+<li>事先不知道是否正交时，不要专门去检测——检测的计算量和直接求逆差不多，检测失败还白算。</li>
+</ul>
+<p><strong>正交化：</strong> 外部坏数据或浮点误差累积（称为<strong>矩阵蠕变</strong>）会让矩阵略微不正交，需要正交化。常用<strong>施密特正交化</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">r1&#x27; = r1</span><br><span class="line">r2&#x27; = r2 - (r2·r1&#x27;)/(r1&#x27;·r1&#x27;) · r1&#x27;</span><br><span class="line">r3&#x27; = r3 - (r3·r1&#x27;)/(r1&#x27;·r1&#x27;) · r1&#x27; - (r3·r2&#x27;)/(r2&#x27;·r2&#x27;) · r2&#x27;</span><br><span class="line">最后把 r1&#x27;、r2&#x27;、r3&#x27; 标准化</span><br></pre></td></tr></table></figure>
+
+<p>缺点是偏向第一行（r1完全不变）。<strong>不偏的方法</strong>是每次只减去一小部分k（如1&#x2F;4）的投影，所有基向量轮流调整，迭代多次直到收敛。</p>
+<h2 id="4-4×4齐次矩阵"><a href="#4-4×4齐次矩阵" class="headerlink" title="4. 4×4齐次矩阵"></a>4. 4×4齐次矩阵</h2><p><strong>齐次坐标：</strong> 在3D向量后加一个分量w：<code>[x y z w]</code>，对应3D点<code>[x/w  y/w  z/w]</code>。</p>
+<ul>
+<li>同一个3D点有无数种齐次表示（w取不同值），取w &#x3D; 1时最简单。</li>
+<li><strong>w &#x3D; 0</strong>时除法无定义，表示<strong>方向</strong>（无穷远点），而不是位置。</li>
+</ul>
+<p><strong>为什么需要4×4矩阵：</strong> 3×3矩阵只能表示线性变换，原点永远不动，无法表示<strong>平移</strong>。加入第四维后，平移可以写成矩阵乘法：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">                  | 1   0   0   0 |</span><br><span class="line">[x y z 1] ·       | 0   1   0   0 |   =  [x+Δx  y+Δy  z+Δz  1]</span><br><span class="line">                  | 0   0   1   0 |</span><br><span class="line">                  | Δx  Δy  Δz  1 |</span><br></pre></td></tr></table></figure>
+
+<p><strong>仿射变换矩阵：</strong> 线性变换R放在左上3×3，平移t放在第四行：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">| R   0 |</span><br><span class="line">| t   1 |</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>点用 w &#x3D; 1，会被平移；向量（方向）用 w &#x3D; 0，<strong>不受平移影响</strong>。这正好符合“向量没有位置”。</li>
+<li>先线性变换再平移：<code>[R 0; 0 1] · [I 0; t 1] = [R 0; t 1]</code>。</li>
+<li>绕任意点p（不过原点）旋转：先平移<code>-p</code>把p移到原点，旋转，再平移回<code>p</code>：<code>M = T(-p) · R · T(p)</code>。</li>
+<li>仿射变换矩阵最后一列恒为<code>[0 0 0 1]ᵀ</code>，所以实现时可以只存4×3矩阵（见第十章）。</li>
+</ul>
+<h2 id="5-透视投影"><a href="#5-透视投影" class="headerlink" title="5. 透视投影"></a>5. 透视投影</h2><ul>
+<li><strong>正交投影</strong>：投影线平行，物体大小不随远近变化。</li>
+<li><strong>透视投影</strong>：投影线交于一点（<strong>投影中心</strong>），物体<strong>近大远小</strong>，更真实。</li>
+</ul>
+<p><strong>针孔摄像机模型：</strong> 投影中心在原点，投影平面在<code>z = d</code>处（放在投影中心前面，消除负号）。由相似三角形：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">p = [x y z]  →  p&#x27; = [ d·x/z   d·y/z   d ]</span><br></pre></td></tr></table></figure>
+
+<p><strong>用4×4矩阵实现：</strong> 把除以z的操作交给齐次坐标的w：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">p&#x27; = [x  y  z  z/d]   （齐次形式，除以w后就是上面的结果）</span><br><span class="line"></span><br><span class="line">               | 1  0  0   0  |</span><br><span class="line">[x y z 1] ·    | 0  1  0   0  |   =  [x  y  z  z/d]</span><br><span class="line">               | 0  0  1  1/d |</span><br><span class="line">               | 0  0  0   0  |</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>这个矩阵把w变成<code>z/d</code>，最后的齐次除法完成“除以z”。</li>
+<li>投影矩阵的行列式为0（投影不可逆）；真实图形API的投影矩阵还要处理近远裁剪面、深度值（见第十四章“裁剪矩阵”）。</li>
+</ul>
+<p><strong>请记住：</strong></p>
+<blockquote>
+<ul>
+<li>行列式是有符号面积&#x2F;体积缩放比：为0含投影（不可逆），为负含镜像。</li>
+<li><code>M⁻¹ = adj M / |M|</code>；<code>(AB)⁻¹ = B⁻¹A⁻¹</code>；逆矩阵就是撤销变换。</li>
+<li>正交矩阵的逆等于转置，旋转和镜像都是正交的；用施密特正交化修复矩阵蠕变。</li>
+<li>齐次坐标让平移和透视投影都能用矩阵表示：点w&#x3D;1，方向w&#x3D;0。</li>
+</ul>
+</blockquote>
+<br/>
+
+<h1 id="九、3D中的方位与角位移"><a href="#九、3D中的方位与角位移" class="headerlink" title="九、3D中的方位与角位移"></a>九、3D中的方位与角位移</h1><h2 id="1-方位与角位移"><a href="#1-方位与角位移" class="headerlink" title="1. 方位与角位移"></a>1. 方位与角位移</h2><ul>
+<li><strong>方位</strong>：物体的朝向。向量只有方向没有方位——让向量绕自身旋转，它不会变化；物体绕自身旋转，朝向就变了。</li>
+<li><strong>角位移</strong>：两个方位之间的旋转量。和位置一样，方位不能用绝对量描述，只能通过相对某个参考方位的<strong>旋转</strong>来描述。</li>
+<li>方位和角位移的关系类似点和向量：方位描述“朝向哪里”，角位移描述“从一个方位转到另一个方位”。数学上二者等价。</li>
+<li>常用三种表示方法：<strong>矩阵、欧拉角、四元数</strong>。</li>
+</ul>
+<h2 id="2-矩阵形式"><a href="#2-矩阵形式" class="headerlink" title="2. 矩阵形式"></a>2. 矩阵形式</h2><p>用3×3旋转矩阵表示，矩阵的行是物体坐标系的三个基向量在惯性坐标系中的表示（又叫<strong>方向余弦矩阵</strong>）。</p>
+<ul>
+<li>要明确方向：<strong>惯性→物体</strong>和<strong>物体→惯性</strong>两个矩阵<strong>互为转置</strong>。</li>
+</ul>
+<p><strong>优点：</strong></p>
+<ul>
+<li>可以立即旋转向量。</li>
+<li>图形API使用矩阵，其他形式最终都要转换成矩阵。</li>
+<li>多个角位移可以直接连接（矩阵相乘）。</li>
+<li>求逆简单（正交矩阵，转置即可）。</li>
+</ul>
+<p><strong>缺点：</strong></p>
+<ul>
+<li><strong>占内存多</strong>：9个数，实际只需3个。动画数据量大时代价明显。例如15个骨骼、15Hz动画：矩阵每秒<code>4×9×225 = 8100</code>字节，欧拉角只要<code>2700</code>字节。</li>
+<li><strong>难用、不直观</strong>：人用角度思考方位，矩阵用的是向量。</li>
+<li><strong>可能非法</strong>：9个数中只有3个自由度，随便给9个数通常不是合法旋转矩阵；坏数据或矩阵蠕变会让它不再正交。</li>
+</ul>
+<h2 id="3-欧拉角"><a href="#3-欧拉角" class="headerlink" title="3. 欧拉角"></a>3. 欧拉角</h2><p><strong>定义：</strong> 把方位分解为绕三个互相垂直轴的三次旋转。本书约定：</p>
+<ul>
+<li><strong>heading-pitch-bank</strong>：heading绕y轴，pitch绕x轴，bank绕z轴，旋转轴是<strong>物体坐标系</strong>的轴。</li>
+<li>从惯性坐标系开始（与物体坐标系重合），依次heading、pitch、bank，就得到物体方位。</li>
+<li>正方向：heading从上往下看顺时针为正（向右转）；pitch向下为正（低头）；bank从物体前方往原点看逆时针为正。</li>
+<li>别名：飞行领域常用<strong>yaw-pitch-roll</strong>，yaw对应heading，roll对应bank。</li>
+<li>如果绕惯性坐标系的轴旋转，顺序就要反过来：bank、pitch、heading。</li>
+</ul>
+<p><strong>优点：</strong></p>
+<ul>
+<li>最直观，数据就是角度，便于输入、调试。</li>
+<li>最省内存，3个数。</li>
+<li><strong>任意三个数都是合法的</strong>欧拉角。</li>
+</ul>
+<p><strong>缺点：</strong></p>
+<ol>
+<li><p><strong>别名问题</strong>：同一方位有多种表示。</p>
+<ul>
+<li>角度加360°的倍数方位不变。</li>
+<li>三个角不独立：pitch 135° 等价于 heading 180°、pitch 45°、bank 180°。</li>
+<li>解决：<strong>限制欧拉角</strong>——heading、bank在<code>[-180°, 180°]</code>，pitch在<code>[-90°, 90°]</code>。</li>
+</ul>
+</li>
+<li><p><strong>万向锁</strong>：pitch &#x3D; ±90° 时，heading和bank绕的是同一个轴（竖直轴），少了一个自由度。例如“heading 45°，pitch 90°”与“pitch 90°，bank 45°”等价。约定：<strong>pitch &#x3D; ±90° 时 bank &#x3D; 0</strong>，旋转全部放进heading。这就是<strong>限制欧拉角</strong>的完整定义。</p>
+</li>
+<li><p><strong>插值困难</strong>：</p>
+<ul>
+<li>不限制欧拉角时，两个只差45°的方位可能插值转好几圈。</li>
+<li>即使限制了，heading从-170°到170°实际只差20°，直接插值会绕340°的长弧。可以把差值折回<code>[-180°, 180°]</code>：</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Δθ = wrapPi(θ1 - θ0)</span><br><span class="line">θt = θ0 + t·Δθ</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>最根本的是<strong>万向锁导致插值抖动、路径不自然</strong>，角速度不恒定。这是任何用三个数表示3D方位的系统都无法回避的问题，只能用四元数解决。</li>
+</ul>
+</li>
+</ol>
+<h2 id="4-四元数"><a href="#4-四元数" class="headerlink" title="4. 四元数"></a>4. 四元数</h2><h3 id="4-1-记法"><a href="#4-1-记法" class="headerlink" title="4.1 记法"></a>4.1 记法</h3><p>四元数由一个标量w和一个3D向量v组成：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">q = [w  v] = [w  (x y z)]</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-2-与复数的关系"><a href="#4-2-与复数的关系" class="headerlink" title="4.2 与复数的关系"></a>4.2 与复数的关系</h3><ul>
+<li>复数<code>a + bi</code>（<code>i² = -1</code>）可以看作2D平面上的点。</li>
+<li>乘以单位复数<code>cosθ + i·sinθ</code>就是在2D平面上旋转θ，效果与2D旋转矩阵相同。</li>
+<li>四元数把复数扩展到3D，用三个虚部：</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">q = w + xi + yj + zk</span><br><span class="line">i² = j² = k² = -1</span><br><span class="line">ij = k,  ji = -k</span><br><span class="line">jk = i,  kj = -i</span><br><span class="line">ki = j,  ik = -j</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-3-几何意义"><a href="#4-3-几何意义" class="headerlink" title="4.3 几何意义"></a>4.3 几何意义</h3><p><strong>欧拉旋转定理</strong>：任意3D角位移都可以表示为<strong>绕某个轴n旋转θ角</strong>（轴-角对）。对应的单位四元数：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">q = [ cos(θ/2)   sin(θ/2)·n ]</span><br></pre></td></tr></table></figure>
+
+<p>注意用的是<strong>半角</strong>。3D图形中用的都是单位四元数。</p>
+<h3 id="4-4-基本运算"><a href="#4-4-基本运算" class="headerlink" title="4.4 基本运算"></a>4.4 基本运算</h3><ul>
+<li><strong>负四元数</strong>：<code>-q = [-w  -v]</code>。<strong>q和-q表示同一个角位移</strong>（相当于θ加了360°），所以任意角位移都有两种四元数表示。</li>
+<li><strong>单位四元数（无旋转）</strong>：<code>[1  0]</code>（以及<code>[-1  0]</code>）。</li>
+<li><strong>模</strong>：<code>|q| = sqrt(w² + x² + y² + z²)</code>，旋转用的四元数模为1。</li>
+<li><strong>共轭</strong>：<code>q* = [w  -v]</code>，表示<strong>相反的角位移</strong>（绕同一轴反方向转）。</li>
+<li><strong>逆</strong>：<code>q⁻¹ = q* / |q|</code>，单位四元数的逆就是共轭。</li>
+<li><strong>点乘</strong>：<code>q1 · q2 = w1w2 + x1x2 + y1y2 + z1z2</code>，<code>|q1·q2|</code>越大，两个角位移越接近。</li>
+</ul>
+<h3 id="4-5-四元数乘法"><a href="#4-5-四元数乘法" class="headerlink" title="4.5 四元数乘法"></a>4.5 四元数乘法</h3><p><strong>标准定义：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[w1 v1][w2 v2] = [ w1w2 - v1·v2,   w1v2 + w2v1 + v1×v2 ]</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>满足结合律，不满足交换律；<code>|q1q2| = |q1||q2|</code>；<code>(ab)⁻¹ = b⁻¹a⁻¹</code>。</li>
+<li>用四元数旋转向量p：把p扩展为<code>[0 p]</code>，计算<code>p&#39; = q p q⁻¹</code>。</li>
+<li>连接旋转：先a后b，按标准定义是<code>p&#39; = b(a p a⁻¹)b⁻¹ = (ba) p (ba)⁻¹</code>，组合四元数是<code>ba</code>——<strong>顺序是从右往左</strong>。</li>
+</ul>
+<p><strong>本书的定义：</strong> 为了和行向量矩阵一样“从左往右读”，书中把叉乘项反过来：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[w1 v1][w2 v2] = [ w1w2 - v1·v2,   w1v2 + w2v1 + v2×v1 ]</span><br></pre></td></tr></table></figure>
+
+<p>这样旋转写作<code>p&#39; = q⁻¹ p q</code>，先a后b的组合就是<code>ab</code>。本文后续公式都采用本书的定义。</p>
+<h3 id="4-6-四元数的“差”"><a href="#4-6-四元数的“差”" class="headerlink" title="4.6 四元数的“差”"></a>4.6 四元数的“差”</h3><p>从方位a到方位b的角位移d满足<code>ad = b</code>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">d = a⁻¹ b</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-7-对数、指数和标量乘"><a href="#4-7-对数、指数和标量乘" class="headerlink" title="4.7 对数、指数和标量乘"></a>4.7 对数、指数和标量乘</h3><p>设 <code>q = [cosα  n·sinα]</code>（α &#x3D; θ&#x2F;2）：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">log q = [ 0   α·n ]</span><br><span class="line">exp [0  α·n] = [ cosα   n·sinα ]      （exp是log的逆运算）</span><br><span class="line">k·q = [ k·w   k·v ]                 （结果一般不再是单位四元数）</span><br></pre></td></tr></table></figure>
+
+<p>很少直接用，但它们是求幂和插值的基础。</p>
+<h3 id="4-8-求幂"><a href="#4-8-求幂" class="headerlink" title="4.8 求幂"></a>4.8 求幂</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">qᵗ = exp( t · log q ) = [ cos(tα)   n·sin(tα) ]</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>作用：<strong>提取角位移的一部分</strong>。<code>q^(1/3)</code>表示q的三分之一旋转；<code>q²</code>表示转两倍。</li>
+<li>注意：因为q和-q等价，求幂结果不一定是最短路径。</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//输入输出四元数</span></span><br><span class="line"><span class="type">float</span> w, x, y, z;</span><br><span class="line"><span class="comment">//指数</span></span><br><span class="line"><span class="type">float</span> exponent;</span><br><span class="line"></span><br><span class="line"><span class="comment">//单位四元数（w≈±1）时直接返回，避免除零</span></span><br><span class="line"><span class="keyword">if</span> (<span class="built_in">fabs</span>(w) &lt; <span class="number">0.9999f</span>)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">float</span> alpha = <span class="built_in">acos</span>(w);              <span class="comment">//半角α</span></span><br><span class="line">    <span class="type">float</span> newAlpha = alpha * exponent;  <span class="comment">//新的半角</span></span><br><span class="line">    w = <span class="built_in">cos</span>(newAlpha);</span><br><span class="line"></span><br><span class="line">    <span class="type">float</span> mult = <span class="built_in">sin</span>(newAlpha) / <span class="built_in">sin</span>(alpha);</span><br><span class="line">    x *= mult;</span><br><span class="line">    y *= mult;</span><br><span class="line">    z *= mult;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-9-球面线性插值（slerp）"><a href="#4-9-球面线性插值（slerp）" class="headerlink" title="4.9 球面线性插值（slerp）"></a>4.9 球面线性插值（slerp）</h3><p>四元数存在的最大理由：在两个方位间<strong>平滑插值</strong>，角速度恒定，没有欧拉角的任何问题。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">slerp(q0, q1, t) = q0 (q0⁻¹ q1)ᵗ          （理论形式）</span><br><span class="line"></span><br><span class="line">实际计算：cosω = q0 · q1</span><br><span class="line">slerp(q0, q1, t) = sin((1-t)ω)/sinω · q0 + sin(tω)/sinω · q1</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>如果<code>q0·q1 &lt; 0</code>，把q1取反，保证走<strong>较短的弧</strong>。</li>
+<li>两者非常接近时sinω≈0，退化为线性插值，避免除零。</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//两个输入四元数</span></span><br><span class="line"><span class="type">float</span> w0, x0, y0, z0;</span><br><span class="line"><span class="type">float</span> w1, x1, y1, z1;</span><br><span class="line"><span class="comment">//插值参数t∈[0,1]</span></span><br><span class="line"><span class="type">float</span> t;</span><br><span class="line"><span class="comment">//输出四元数</span></span><br><span class="line"><span class="type">float</span> w, x, y, z;</span><br><span class="line"></span><br><span class="line"><span class="comment">//用点乘求夹角余弦</span></span><br><span class="line"><span class="type">float</span> cosOmega = w0 * w1 + x0 * x1 + y0 * y1 + z0 * z1;</span><br><span class="line"></span><br><span class="line"><span class="comment">//点乘为负则反转一个四元数，取较短的弧</span></span><br><span class="line"><span class="keyword">if</span> (cosOmega &lt; <span class="number">0.0f</span>)</span><br><span class="line">&#123;</span><br><span class="line">    w1 = -w1; x1 = -x1; y1 = -y1; z1 = -z1;</span><br><span class="line">    cosOmega = -cosOmega;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">float</span> k0, k1;</span><br><span class="line"><span class="keyword">if</span> (cosOmega &gt; <span class="number">0.9999f</span>)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">//非常接近，直接线性插值</span></span><br><span class="line">    k0 = <span class="number">1.0f</span> - t;</span><br><span class="line">    k1 = t;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">float</span> sinOmega = <span class="built_in">sqrt</span>(<span class="number">1.0f</span> - cosOmega * cosOmega);</span><br><span class="line">    <span class="type">float</span> omega = <span class="built_in">atan2</span>(sinOmega, cosOmega);</span><br><span class="line">    <span class="type">float</span> oneOverSinOmega = <span class="number">1.0f</span> / sinOmega;</span><br><span class="line">    k0 = <span class="built_in">sin</span>((<span class="number">1.0f</span> - t) * omega) * oneOverSinOmega;</span><br><span class="line">    k1 = <span class="built_in">sin</span>(t * omega) * oneOverSinOmega;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">w = w0 * k0 + w1 * k1;</span><br><span class="line">x = x0 * k0 + x1 * k1;</span><br><span class="line">y = y0 * k0 + y1 * k1;</span><br><span class="line">z = z0 * k0 + z1 * k1;</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-10-四元数样条（squad）"><a href="#4-10-四元数样条（squad）" class="headerlink" title="4.10 四元数样条（squad）"></a>4.10 四元数样条（squad）</h3><p>slerp只在两个方位间插值。对一串方位<code>q1, q2, ..., qn</code>逐段slerp，在控制点处角速度会突变。squad在每段之间构造平滑曲线：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">squad(qi, qi+1, si, si+1, h) = slerp( slerp(qi, qi+1, h),  slerp(si, si+1, h),  2h(1-h) )</span><br><span class="line"></span><br><span class="line">其中控制点：si = qi · exp( -( log(qi⁻¹qi+1) + log(qi⁻¹qi-1) ) / 4 )</span><br></pre></td></tr></table></figure>
+
+<p>h从0到1变化，曲线经过所有控制方位，且在控制点处平滑过渡。</p>
+<h3 id="4-11-四元数的优缺点"><a href="#4-11-四元数的优缺点" class="headerlink" title="4.11 四元数的优缺点"></a>4.11 四元数的优缺点</h3><p><strong>优点：</strong></p>
+<ol>
+<li>平滑插值（slerp、squad），这是其他形式做不到的。</li>
+<li>连接和求逆比矩阵快。</li>
+<li>能快速转换成矩阵。</li>
+<li>只用4个数。</li>
+</ol>
+<p><strong>缺点：</strong></p>
+<ol>
+<li>比欧拉角多一个数（多33%内存）。</li>
+<li>可能不合法：坏数据或浮点误差会让模偏离1，需要重新标准化。</li>
+<li>三种形式中最难直接理解和使用。</li>
+</ol>
+<h2 id="5-各方法比较"><a href="#5-各方法比较" class="headerlink" title="5. 各方法比较"></a>5. 各方法比较</h2><table>
+<thead>
+<tr>
+<th>任务&#x2F;性质</th>
+<th>矩阵</th>
+<th>欧拉角</th>
+<th>四元数</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>在坐标系间旋转点</td>
+<td>能</td>
+<td>不能（要先转矩阵）</td>
+<td>不能（要先转矩阵）</td>
+</tr>
+<tr>
+<td>连接或增量旋转</td>
+<td>能，但比四元数慢</td>
+<td>不能</td>
+<td>能，比矩阵快</td>
+</tr>
+<tr>
+<td>插值</td>
+<td>基本不能</td>
+<td>能，但有万向锁等问题</td>
+<td>slerp，平滑插值</td>
+</tr>
+<tr>
+<td>易用程度</td>
+<td>难</td>
+<td>易</td>
+<td>难</td>
+</tr>
+<tr>
+<td>内存</td>
+<td>9个数</td>
+<td>3个数</td>
+<td>4个数</td>
+</tr>
+<tr>
+<td>给定方位的表示是否唯一</td>
+<td>唯一</td>
+<td>不唯一（有无数种）</td>
+<td>不唯一（q与-q两种）</td>
+</tr>
+<tr>
+<td>可能非法</td>
+<td>可能（矩阵蠕变）</td>
+<td>任意三个数都合法</td>
+<td>可能（误差积累）</td>
+</tr>
+</tbody></table>
+<p><strong>选择建议：</strong></p>
+<ul>
+<li><strong>欧拉角最容易使用</strong>：为物体指定方位、键盘输入、代码中设置摄像机、调试测试。不要为了名义上的优化牺牲易用性。</li>
+<li><strong>在坐标系间转换向量用矩阵</strong>：其他形式存储，需要时再转成矩阵。</li>
+<li><strong>大量存储方位数据（如动画）用欧拉角或四元数</strong>：欧拉角省25%内存，但转矩阵稍慢；需要连接嵌套坐标系时四元数更快。</li>
+<li><strong>平滑插值只能用四元数</strong>：可以用其他形式存储，插值时转四元数，再转回来。</li>
+</ul>
+<h2 id="6-各方法之间的转换"><a href="#6-各方法之间的转换" class="headerlink" title="6. 各方法之间的转换"></a>6. 各方法之间的转换</h2><p>以下用 ch、sh 表示 cos(h)、sin(h)，p、b 同理。</p>
+<h3 id="6-1-欧拉角-→-矩阵"><a href="#6-1-欧拉角-→-矩阵" class="headerlink" title="6.1 欧拉角 → 矩阵"></a>6.1 欧拉角 → 矩阵</h3><p>物体→惯性：依次应用bank、pitch、heading的旋转矩阵（<code>M = Rz(b)·Rx(p)·Ry(h)</code>）：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">                 | ch·cb + sh·sp·sb    sb·cp    -sh·cb + ch·sp·sb |</span><br><span class="line">M物体→惯性    =   | -ch·sb + sh·sp·cb   cb·cp     sb·sh + ch·sp·cb  |</span><br><span class="line">                 | sh·cp               -sp       ch·cp             |</span><br></pre></td></tr></table></figure>
+
+<p>惯性→物体的矩阵是它的转置。</p>
+<h3 id="6-2-矩阵-→-欧拉角"><a href="#6-2-矩阵-→-欧拉角" class="headerlink" title="6.2 矩阵 → 欧拉角"></a>6.2 矩阵 → 欧拉角</h3><p>对照上面的矩阵逐个解出角度。以<strong>惯性→物体</strong>矩阵（上面矩阵的转置）为例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">p = asin(-m23)</span><br><span class="line">cp ≠ 0 时：  h = atan2(m13, m33)     b = atan2(m21, m22)</span><br><span class="line">cp = 0 时（万向锁）：b = 0，h = atan2(-m31, m11)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//输入：惯性→物体旋转矩阵</span></span><br><span class="line"><span class="type">float</span> m11, m12, m13;</span><br><span class="line"><span class="type">float</span> m21, m22, m23;</span><br><span class="line"><span class="type">float</span> m31, m32, m33;</span><br><span class="line"><span class="comment">//输出：欧拉角（弧度）</span></span><br><span class="line"><span class="type">float</span> h, p, b;</span><br><span class="line"></span><br><span class="line"><span class="comment">//从m23求pitch，先夹紧到合法范围防止浮点误差</span></span><br><span class="line"><span class="type">float</span> sp = -m23;</span><br><span class="line"><span class="keyword">if</span> (sp &lt;= <span class="number">-1.0f</span>)      p = <span class="number">-1.570796f</span>;   <span class="comment">//-90°</span></span><br><span class="line"><span class="keyword">else</span> <span class="keyword">if</span> (sp &gt;= <span class="number">1.0f</span>)  p = <span class="number">1.570796f</span>;    <span class="comment">//+90°</span></span><br><span class="line"><span class="keyword">else</span>                  p = <span class="built_in">asin</span>(sp);</span><br><span class="line"></span><br><span class="line"><span class="comment">//检查万向锁</span></span><br><span class="line"><span class="keyword">if</span> (<span class="built_in">fabs</span>(sp) &gt; <span class="number">0.9999f</span>)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">//向正上方或正下方看：bank置0，旋转全部放进heading</span></span><br><span class="line">    b = <span class="number">0.0f</span>;</span><br><span class="line">    h = <span class="built_in">atan2</span>(-m31, m11);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">&#123;</span><br><span class="line">    h = <span class="built_in">atan2</span>(m13, m33);</span><br><span class="line">    b = <span class="built_in">atan2</span>(m21, m22);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="6-3-四元数-→-矩阵"><a href="#6-3-四元数-→-矩阵" class="headerlink" title="6.3 四元数 → 矩阵"></a>6.3 四元数 → 矩阵</h3><p>由轴-角旋转矩阵代入<code>w = cos(θ/2)</code>、<code>[x y z] = n·sin(θ/2)</code>化简（本书乘法约定）：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">| 1-2y²-2z²    2xy+2wz      2xz-2wy   |</span><br><span class="line">| 2xy-2wz      1-2x²-2z²    2yz+2wx   |</span><br><span class="line">| 2xz+2wy      2yz-2wx      1-2x²-2y² |</span><br></pre></td></tr></table></figure>
+
+<h3 id="6-4-矩阵-→-四元数"><a href="#6-4-矩阵-→-四元数" class="headerlink" title="6.4 矩阵 → 四元数"></a>6.4 矩阵 → 四元数</h3><p>利用矩阵的<strong>迹</strong>（对角线之和）：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">m11 + m22 + m33 = 4w² - 1    →  w = sqrt(m11 + m22 + m33 + 1) / 2</span><br><span class="line">m11 - m22 - m33 = 4x² - 1    →  x = sqrt(m11 - m22 - m33 + 1) / 2</span><br><span class="line">-m11 + m22 - m33 = 4y² - 1   →  y = sqrt(-m11 + m22 - m33 + 1) / 2</span><br><span class="line">-m11 - m22 + m33 = 4z² - 1   →  z = sqrt(-m11 - m22 + m33 + 1) / 2</span><br></pre></td></tr></table></figure>
+
+<p>问题：开平方只能得到正值，无法确定各分量的符号；某个分量接近0时还有数值问题。</p>
+<p>改进：<strong>只对绝对值最大的分量开平方</strong>，其他分量用非对角元素求出：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">4wx = m23 - m32     4wy = m31 - m13     4wz = m12 - m21</span><br><span class="line">4xy = m12 + m21     4xz = m31 + m13     4yz = m23 + m32</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//输入矩阵</span></span><br><span class="line"><span class="type">float</span> m11, m12, m13;</span><br><span class="line"><span class="type">float</span> m21, m22, m23;</span><br><span class="line"><span class="type">float</span> m31, m32, m33;</span><br><span class="line"><span class="comment">//输出四元数</span></span><br><span class="line"><span class="type">float</span> w, x, y, z;</span><br><span class="line"></span><br><span class="line"><span class="comment">//找出 w、x、y、z 中绝对值最大的</span></span><br><span class="line"><span class="type">float</span> fourWSquaredMinus1 = m11 + m22 + m33;</span><br><span class="line"><span class="type">float</span> fourXSquaredMinus1 = m11 - m22 - m33;</span><br><span class="line"><span class="type">float</span> fourYSquaredMinus1 = m22 - m11 - m33;</span><br><span class="line"><span class="type">float</span> fourZSquaredMinus1 = m33 - m11 - m22;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> biggestIndex = <span class="number">0</span>;</span><br><span class="line"><span class="type">float</span> fourBiggestSquaredMinus1 = fourWSquaredMinus1;</span><br><span class="line"><span class="keyword">if</span> (fourXSquaredMinus1 &gt; fourBiggestSquaredMinus1) &#123; fourBiggestSquaredMinus1 = fourXSquaredMinus1; biggestIndex = <span class="number">1</span>; &#125;</span><br><span class="line"><span class="keyword">if</span> (fourYSquaredMinus1 &gt; fourBiggestSquaredMinus1) &#123; fourBiggestSquaredMinus1 = fourYSquaredMinus1; biggestIndex = <span class="number">2</span>; &#125;</span><br><span class="line"><span class="keyword">if</span> (fourZSquaredMinus1 &gt; fourBiggestSquaredMinus1) &#123; fourBiggestSquaredMinus1 = fourZSquaredMinus1; biggestIndex = <span class="number">3</span>; &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//只开一次平方</span></span><br><span class="line"><span class="type">float</span> biggestVal = <span class="built_in">sqrt</span>(fourBiggestSquaredMinus1 + <span class="number">1.0f</span>) * <span class="number">0.5f</span>;</span><br><span class="line"><span class="type">float</span> mult = <span class="number">0.25f</span> / biggestVal;</span><br><span class="line"></span><br><span class="line"><span class="keyword">switch</span> (biggestIndex)</span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">case</span> <span class="number">0</span>:</span><br><span class="line">    w = biggestVal;</span><br><span class="line">    x = (m23 - m32) * mult;</span><br><span class="line">    y = (m31 - m13) * mult;</span><br><span class="line">    z = (m12 - m21) * mult;</span><br><span class="line">    <span class="keyword">break</span>;</span><br><span class="line"><span class="keyword">case</span> <span class="number">1</span>:</span><br><span class="line">    x = biggestVal;</span><br><span class="line">    w = (m23 - m32) * mult;</span><br><span class="line">    y = (m12 + m21) * mult;</span><br><span class="line">    z = (m31 + m13) * mult;</span><br><span class="line">    <span class="keyword">break</span>;</span><br><span class="line"><span class="keyword">case</span> <span class="number">2</span>:</span><br><span class="line">    y = biggestVal;</span><br><span class="line">    w = (m31 - m13) * mult;</span><br><span class="line">    x = (m12 + m21) * mult;</span><br><span class="line">    z = (m23 + m32) * mult;</span><br><span class="line">    <span class="keyword">break</span>;</span><br><span class="line"><span class="keyword">case</span> <span class="number">3</span>:</span><br><span class="line">    z = biggestVal;</span><br><span class="line">    w = (m12 - m21) * mult;</span><br><span class="line">    x = (m31 + m13) * mult;</span><br><span class="line">    y = (m23 + m32) * mult;</span><br><span class="line">    <span class="keyword">break</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="6-5-欧拉角-→-四元数"><a href="#6-5-欧拉角-→-四元数" class="headerlink" title="6.5 欧拉角 → 四元数"></a>6.5 欧拉角 → 四元数</h3><p>把三个旋转分别写成四元数再相乘。以下用半角，ch表示cos(h&#x2F;2)、sh表示sin(h&#x2F;2)，p、b同理：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">h = [ch  (0 sh 0)]      p = [cp  (sp 0 0)]      b = [cb  (0 0 sb)]</span><br><span class="line"></span><br><span class="line">物体→惯性：</span><br><span class="line">w =  ch·cp·cb + sh·sp·sb</span><br><span class="line">x =  ch·sp·cb + sh·cp·sb</span><br><span class="line">y =  sh·cp·cb - ch·sp·sb</span><br><span class="line">z =  ch·cp·sb - sh·sp·cb</span><br><span class="line"></span><br><span class="line">惯性→物体：是上面的共轭（x、y、z取负）</span><br><span class="line">w =  ch·cp·cb + sh·sp·sb</span><br><span class="line">x = -ch·sp·cb - sh·cp·sb</span><br><span class="line">y =  ch·sp·sb - sh·cb·cp</span><br><span class="line">z =  sh·sp·cb - ch·cp·sb</span><br></pre></td></tr></table></figure>
+
+<h3 id="6-6-四元数-→-欧拉角"><a href="#6-6-四元数-→-欧拉角" class="headerlink" title="6.6 四元数 → 欧拉角"></a>6.6 四元数 → 欧拉角</h3><p>把四元数转矩阵的公式代入矩阵转欧拉角的公式：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//输入：惯性→物体四元数；输出：欧拉角</span></span><br><span class="line"><span class="type">float</span> w, x, y, z;</span><br><span class="line"><span class="type">float</span> h, p, b;</span><br><span class="line"></span><br><span class="line"><span class="comment">//sin(pitch)</span></span><br><span class="line"><span class="type">float</span> sp = <span class="number">-2.0f</span> * (y * z + w * x);</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (<span class="built_in">fabs</span>(sp) &gt; <span class="number">0.9999f</span>)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">//万向锁：bank置0</span></span><br><span class="line">    p = <span class="number">1.570796f</span> * sp;   <span class="comment">//±90°</span></span><br><span class="line">    h = <span class="built_in">atan2</span>(-x * z - w * y, <span class="number">0.5f</span> - y * y - z * z);</span><br><span class="line">    b = <span class="number">0.0f</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">&#123;</span><br><span class="line">    p = <span class="built_in">asin</span>(sp);</span><br><span class="line">    h = <span class="built_in">atan2</span>(x * z - w * y, <span class="number">0.5f</span> - x * x - y * y);</span><br><span class="line">    b = <span class="built_in">atan2</span>(x * y - w * z, <span class="number">0.5f</span> - x * x - z * z);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>物体→惯性四元数是共轭，把上面式子中x、y、z的符号取反：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">float</span> sp = <span class="number">-2.0f</span> * (y * z - w * x);</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (<span class="built_in">fabs</span>(sp) &gt; <span class="number">0.9999f</span>)</span><br><span class="line">&#123;</span><br><span class="line">    p = <span class="number">1.570796f</span> * sp;</span><br><span class="line">    h = <span class="built_in">atan2</span>(-x * z + w * y, <span class="number">0.5f</span> - y * y - z * z);</span><br><span class="line">    b = <span class="number">0.0f</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">&#123;</span><br><span class="line">    p = <span class="built_in">asin</span>(sp);</span><br><span class="line">    h = <span class="built_in">atan2</span>(x * z + w * y, <span class="number">0.5f</span> - x * x - y * y);</span><br><span class="line">    b = <span class="built_in">atan2</span>(x * y + w * z, <span class="number">0.5f</span> - x * x - z * z);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>请记住：</strong></p>
+<blockquote>
+<ul>
+<li>方位通过相对旋转描述，这个旋转量就是角位移；有矩阵、欧拉角、四元数三种表示。</li>
+<li>矩阵：旋转向量快、API通用，但占内存、不直观、可能非法；惯性→物体与物体→惯性互为转置。</li>
+<li>欧拉角：直观、最省内存、任意值合法，但有别名、万向锁、插值困难；用限制欧拉角保证唯一。</li>
+<li>四元数<code>[cos(θ/2)  sin(θ/2)n]</code>：slerp平滑插值、连接快，但难直接使用；q和-q表示同一角位移。</li>
+<li>交互用欧拉角，变换向量用矩阵，插值用四元数，三者可以相互转换。</li>
+</ul>
+</blockquote>
+<br/>
+
+<h1 id="十、C-实现"><a href="#十、C-实现" class="headerlink" title="十、C++实现"></a>十、C++实现</h1><p>本章把前面的数学封装成可直接用于游戏的类。</p>
+<h2 id="1-设计原则"><a href="#1-设计原则" class="headerlink" title="1. 设计原则"></a>1. 设计原则</h2><ul>
+<li><strong>每个类只做一件事，名字说明意图</strong>：不用一个通用的“Matrix”类表示所有东西，而是分为专门表示方位的类和表示一般变换的类。</li>
+<li>旋转方向要明确：函数名中写清楚是“惯性→物体”还是“物体→惯性”，避免转置错误。</li>
+<li>不用通用的4×4矩阵：仿射变换最后一列恒为<code>[0 0 0 1]ᵀ</code>，用<strong>4×3矩阵</strong>节省存储和运算。</li>
+</ul>
+<h2 id="2-工具函数（MathUtil）"><a href="#2-工具函数（MathUtil）" class="headerlink" title="2. 工具函数（MathUtil）"></a>2. 工具函数（MathUtil）</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">const</span> <span class="type">float</span> kPi = <span class="number">3.14159265f</span>;</span><br><span class="line"><span class="type">const</span> <span class="type">float</span> k2Pi = kPi * <span class="number">2.0f</span>;</span><br><span class="line"><span class="type">const</span> <span class="type">float</span> kPiOver2 = kPi / <span class="number">2.0f</span>;</span><br><span class="line"><span class="type">const</span> <span class="type">float</span> k1OverPi = <span class="number">1.0f</span> / kPi;</span><br><span class="line"><span class="type">const</span> <span class="type">float</span> k1Over2Pi = <span class="number">1.0f</span> / k2Pi;</span><br><span class="line"></span><br><span class="line"><span class="comment">//把角度限制在 -π 到 π 之间（加上适当的2π倍数）</span></span><br><span class="line"><span class="function"><span class="type">float</span> <span class="title">wrapPi</span><span class="params">(<span class="type">float</span> theta)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    theta += kPi;</span><br><span class="line">    theta -= <span class="built_in">floor</span>(theta * k1Over2Pi) * k2Pi;</span><br><span class="line">    theta -= kPi;</span><br><span class="line">    <span class="keyword">return</span> theta;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//安全的反余弦：输入超出[-1,1]时夹紧，避免浮点误差导致NaN</span></span><br><span class="line"><span class="function"><span class="type">float</span> <span class="title">safeAcos</span><span class="params">(<span class="type">float</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (x &lt;= <span class="number">-1.0f</span>) <span class="keyword">return</span> kPi;</span><br><span class="line">    <span class="keyword">if</span> (x &gt;= <span class="number">1.0f</span>) <span class="keyword">return</span> <span class="number">0.0f</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">acos</span>(x);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//同时计算sin和cos，某些平台可一次完成</span></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="type">void</span> <span class="title">sinCos</span><span class="params">(<span class="type">float</span> *returnSin, <span class="type">float</span> *returnCos, <span class="type">float</span> theta)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    *returnSin = <span class="built_in">sin</span>(theta);</span><br><span class="line">    *returnCos = <span class="built_in">cos</span>(theta);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-EulerAngles类"><a href="#3-EulerAngles类" class="headerlink" title="3. EulerAngles类"></a>3. EulerAngles类</h2><p>保存heading、pitch、bank（弧度），负责与其他形式互相转换：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">EulerAngles</span></span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="type">float</span> heading;</span><br><span class="line">    <span class="type">float</span> pitch;</span><br><span class="line">    <span class="type">float</span> bank;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">EulerAngles</span>() &#123;&#125;</span><br><span class="line">    <span class="built_in">EulerAngles</span>(<span class="type">float</span> h, <span class="type">float</span> p, <span class="type">float</span> b) : <span class="built_in">heading</span>(h), <span class="built_in">pitch</span>(p), <span class="built_in">bank</span>(b) &#123;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">identity</span><span class="params">()</span> </span>&#123; pitch = bank = heading = <span class="number">0.0f</span>; &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//变换为限制欧拉角：heading、bank∈[-π,π]，pitch∈[-π/2,π/2]，万向锁时bank=0</span></span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">canonize</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//从四元数转换</span></span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">fromObjectToInertialQuaternion</span><span class="params">(<span class="type">const</span> Quaternion &amp;q)</span></span>;</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">fromInertialToObjectQuaternion</span><span class="params">(<span class="type">const</span> Quaternion &amp;q)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//从矩阵转换（平移部分被忽略，假设矩阵正交）</span></span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">fromObjectToWorldMatrix</span><span class="params">(<span class="type">const</span> Matrix4x3 &amp;m)</span></span>;</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">fromWorldToObjectMatrix</span><span class="params">(<span class="type">const</span> Matrix4x3 &amp;m)</span></span>;</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">fromRotationMatrix</span><span class="params">(<span class="type">const</span> RotationMatrix &amp;m)</span></span>;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p><code>canonize()</code>的思路：先把pitch折到<code>[-π, π]</code>；若pitch超出<code>[-π/2, π/2]</code>，用“pitch &#x3D; π - pitch，heading和bank各加π”换成等价表示；再检查万向锁（bank并入heading）；最后用<code>wrapPi</code>处理heading和bank。</p>
+<h2 id="4-Quaternion类"><a href="#4-Quaternion类" class="headerlink" title="4. Quaternion类"></a>4. Quaternion类</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Quaternion</span></span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="type">float</span> w, x, y, z;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">identity</span><span class="params">()</span> </span>&#123; w = <span class="number">1.0f</span>; x = y = z = <span class="number">0.0f</span>; &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//构造执行特定旋转的四元数</span></span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">setToRotateAboutX</span><span class="params">(<span class="type">float</span> theta)</span></span>;</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">setToRotateAboutY</span><span class="params">(<span class="type">float</span> theta)</span></span>;</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">setToRotateAboutZ</span><span class="params">(<span class="type">float</span> theta)</span></span>;</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">setToRotateAboutAxis</span><span class="params">(<span class="type">const</span> Vector3 &amp;axis, <span class="type">float</span> theta)</span></span>;  <span class="comment">//axis须为单位向量</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">//由欧拉角构造</span></span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">setToRotateObjectToInertial</span><span class="params">(<span class="type">const</span> EulerAngles &amp;orientation)</span></span>;</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">setToRotateInertialToObject</span><span class="params">(<span class="type">const</span> EulerAngles &amp;orientation)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//叉乘：按本书约定，a*b 表示先a后b</span></span><br><span class="line">    Quaternion <span class="keyword">operator</span> *(<span class="type">const</span> Quaternion &amp;a) <span class="type">const</span>;</span><br><span class="line">    Quaternion &amp;<span class="keyword">operator</span> *=(<span class="type">const</span> Quaternion &amp;a);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//标准化，修正浮点误差</span></span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">normalize</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//提取旋转角和旋转轴</span></span><br><span class="line">    <span class="function"><span class="type">float</span> <span class="title">getRotationAngle</span><span class="params">()</span> <span class="type">const</span></span>;</span><br><span class="line">    <span class="function">Vector3 <span class="title">getRotationAxis</span><span class="params">()</span> <span class="type">const</span></span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">extern</span> <span class="type">const</span> Quaternion kQuaternionIdentity;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">float</span> <span class="title">dotProduct</span><span class="params">(<span class="type">const</span> Quaternion &amp;a, <span class="type">const</span> Quaternion &amp;b)</span></span>;</span><br><span class="line"><span class="function">Quaternion <span class="title">slerp</span><span class="params">(<span class="type">const</span> Quaternion &amp;p, <span class="type">const</span> Quaternion &amp;q, <span class="type">float</span> t)</span></span>;</span><br><span class="line"><span class="function">Quaternion <span class="title">conjugate</span><span class="params">(<span class="type">const</span> Quaternion &amp;q)</span></span>;</span><br><span class="line"><span class="function">Quaternion <span class="title">pow</span><span class="params">(<span class="type">const</span> Quaternion &amp;q, <span class="type">float</span> exponent)</span></span>;</span><br></pre></td></tr></table></figure>
+
+<p>例如绕任意轴旋转：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">Quaternion::setToRotateAboutAxis</span><span class="params">(<span class="type">const</span> Vector3 &amp;axis, <span class="type">float</span> theta)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">assert</span>(<span class="built_in">fabs</span>(<span class="built_in">vectorMag</span>(axis) - <span class="number">1.0f</span>) &lt; <span class="number">.01</span>f);   <span class="comment">//轴必须标准化</span></span><br><span class="line"></span><br><span class="line">    <span class="type">float</span> thetaOver2 = theta * <span class="number">.5</span>f;</span><br><span class="line">    <span class="type">float</span> sinThetaOver2 = <span class="built_in">sin</span>(thetaOver2);</span><br><span class="line"></span><br><span class="line">    w = <span class="built_in">cos</span>(thetaOver2);</span><br><span class="line">    x = axis.x * sinThetaOver2;</span><br><span class="line">    y = axis.y * sinThetaOver2;</span><br><span class="line">    z = axis.z * sinThetaOver2;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">float</span> <span class="title">Quaternion::getRotationAngle</span><span class="params">()</span> <span class="type">const</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">float</span> thetaOver2 = <span class="built_in">safeAcos</span>(w);   <span class="comment">//w = cos(θ/2)</span></span><br><span class="line">    <span class="keyword">return</span> thetaOver2 * <span class="number">2.0f</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="5-RotationMatrix类"><a href="#5-RotationMatrix类" class="headerlink" title="5. RotationMatrix类"></a>5. RotationMatrix类</h2><p><strong>只</strong>用来表示旋转（正交矩阵），方向由函数名决定，矩阵本身按“惯性→物体”存储：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">RotationMatrix</span></span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="type">float</span> m11, m12, m13;</span><br><span class="line">    <span class="type">float</span> m21, m22, m23;</span><br><span class="line">    <span class="type">float</span> m31, m32, m33;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">identity</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//由欧拉角构造</span></span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">setup</span><span class="params">(<span class="type">const</span> EulerAngles &amp;orientation)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//由四元数构造（假设四元数代表对应方向的旋转）</span></span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">fromInertialToObjectQuaternion</span><span class="params">(<span class="type">const</span> Quaternion &amp;q)</span></span>;</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">fromObjectToInertialQuaternion</span><span class="params">(<span class="type">const</span> Quaternion &amp;q)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//执行旋转：惯性→物体乘矩阵，物体→惯性乘转置（正交矩阵）</span></span><br><span class="line">    <span class="function">Vector3 <span class="title">inertialToObject</span><span class="params">(<span class="type">const</span> Vector3 &amp;v)</span> <span class="type">const</span></span>;</span><br><span class="line">    <span class="function">Vector3 <span class="title">objectToInertial</span><span class="params">(<span class="type">const</span> Vector3 &amp;v)</span> <span class="type">const</span></span>;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="6-Matrix4x3类"><a href="#6-Matrix4x3类" class="headerlink" title="6. Matrix4x3类"></a>6. Matrix4x3类</h2><p>表示一般的仿射变换：左上3×3为线性部分，第四行<code>tx ty tz</code>为平移。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Matrix4x3</span></span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="type">float</span> m11, m12, m13;</span><br><span class="line">    <span class="type">float</span> m21, m22, m23;</span><br><span class="line">    <span class="type">float</span> m31, m32, m33;</span><br><span class="line">    <span class="type">float</span> tx,  ty,  tz;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">identity</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//平移部分</span></span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">zeroTranslation</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">setTranslation</span><span class="params">(<span class="type">const</span> Vector3 &amp;d)</span></span>;</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">setupTranslation</span><span class="params">(<span class="type">const</span> Vector3 &amp;d)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//父空间 ↔ 局部空间：由位置和方位构造</span></span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">setupLocalToParent</span><span class="params">(<span class="type">const</span> Vector3 &amp;pos, <span class="type">const</span> EulerAngles &amp;orient)</span></span>;</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">setupLocalToParent</span><span class="params">(<span class="type">const</span> Vector3 &amp;pos, <span class="type">const</span> RotationMatrix &amp;orient)</span></span>;</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">setupParentToLocal</span><span class="params">(<span class="type">const</span> Vector3 &amp;pos, <span class="type">const</span> EulerAngles &amp;orient)</span></span>;</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">setupParentToLocal</span><span class="params">(<span class="type">const</span> Vector3 &amp;pos, <span class="type">const</span> RotationMatrix &amp;orient)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//各种线性变换（平移部分置0）</span></span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">setupRotate</span><span class="params">(<span class="type">int</span> axis, <span class="type">float</span> theta)</span></span>;            <span class="comment">//绕坐标轴</span></span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">setupRotate</span><span class="params">(<span class="type">const</span> Vector3 &amp;axis, <span class="type">float</span> theta)</span></span>; <span class="comment">//绕任意轴</span></span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">fromQuaternion</span><span class="params">(<span class="type">const</span> Quaternion &amp;q)</span></span>;</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">setupScale</span><span class="params">(<span class="type">const</span> Vector3 &amp;s)</span></span>;</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">setupScaleAlongAxis</span><span class="params">(<span class="type">const</span> Vector3 &amp;axis, <span class="type">float</span> k)</span></span>;</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">setupShear</span><span class="params">(<span class="type">int</span> axis, <span class="type">float</span> s, <span class="type">float</span> t)</span></span>;</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">setupProject</span><span class="params">(<span class="type">const</span> Vector3 &amp;n)</span></span>;                <span class="comment">//投影到过原点的平面</span></span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">setupReflect</span><span class="params">(<span class="type">int</span> axis, <span class="type">float</span> k = <span class="number">0.0f</span>)</span></span>;        <span class="comment">//沿平行于坐标平面的平面镜像</span></span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">setupReflect</span><span class="params">(<span class="type">const</span> Vector3 &amp;n)</span></span>;                <span class="comment">//沿任意过原点平面镜像</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">//变换点：p * M</span></span><br><span class="line">Vector3 <span class="keyword">operator</span> *(<span class="type">const</span> Vector3 &amp;p, <span class="type">const</span> Matrix4x3 &amp;m);</span><br><span class="line">Vector3 &amp;<span class="keyword">operator</span> *=(Vector3 &amp;p, <span class="type">const</span> Matrix4x3 &amp;m);</span><br><span class="line"></span><br><span class="line"><span class="comment">//连接矩阵：A * B 表示先A后B</span></span><br><span class="line">Matrix4x3 <span class="keyword">operator</span> *(<span class="type">const</span> Matrix4x3 &amp;a, <span class="type">const</span> Matrix4x3 &amp;b);</span><br><span class="line">Matrix4x3 &amp;<span class="keyword">operator</span> *=(Matrix4x3 &amp;a, <span class="type">const</span> Matrix4x3 &amp;b);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">float</span> <span class="title">determinant</span><span class="params">(<span class="type">const</span> Matrix4x3 &amp;m)</span></span>;     <span class="comment">//左上3×3的行列式</span></span><br><span class="line"><span class="function">Matrix4x3 <span class="title">inverse</span><span class="params">(<span class="type">const</span> Matrix4x3 &amp;m)</span></span>;</span><br><span class="line"><span class="function">Vector3 <span class="title">getTranslation</span><span class="params">(<span class="type">const</span> Matrix4x3 &amp;m)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//从父→局部或局部→父矩阵中提取物体位置（假设是刚体变换）</span></span><br><span class="line"><span class="function">Vector3 <span class="title">getPositionFromParentToLocalMatrix</span><span class="params">(<span class="type">const</span> Matrix4x3 &amp;m)</span></span>;</span><br><span class="line"><span class="function">Vector3 <span class="title">getPositionFromLocalToParentMatrix</span><span class="params">(<span class="type">const</span> Matrix4x3 &amp;m)</span></span>;</span><br></pre></td></tr></table></figure>
+
+<p>要点：</p>
+<ul>
+<li><strong>局部→父</strong>：先旋转（物体→惯性），再平移到物体位置。</li>
+<li><strong>父→局部</strong>：先平移<code>-pos</code>，再旋转（惯性→物体，即转置）。</li>
+<li>变换点的实现：<code>x&#39; = x·m11 + y·m21 + z·m31 + tx</code>，y、z同理。</li>
+<li>求逆：对3×3部分用伴随矩阵求逆，再用<code>-t·M⁻¹</code>得到新平移。</li>
+</ul>
+<p><strong>请记住：</strong></p>
+<blockquote>
+<ul>
+<li>用专门的类表示方位（EulerAngles、Quaternion、RotationMatrix）和一般变换（Matrix4x3），名字表明意图和方向。</li>
+<li>仿射变换用4×3矩阵就够了，省去恒定的最后一列。</li>
+<li>局部→父：先旋转后平移；父→局部：先平移后旋转（转置）。</li>
+<li><code>wrapPi</code>、<code>safeAcos</code>这类小工具能避免大量浮点和角度边界问题。</li>
+</ul>
+</blockquote>
+<br/>
+
+<h1 id="十一、几何图元"><a href="#十一、几何图元" class="headerlink" title="十一、几何图元"></a>十一、几何图元</h1><h2 id="1-表示方法"><a href="#1-表示方法" class="headerlink" title="1. 表示方法"></a>1. 表示方法</h2><ul>
+<li><strong>隐式表示</strong>：给出一个判定点是否在图元上的方程<code>f(x,y,z) = 0</code>。例如单位球：<code>x² + y² + z² = 1</code>。便于判断点在内、在外还是在面上。</li>
+<li><strong>参数形式</strong>：用参数t（或s、t）生成图元上的点。例如圆：<code>x(t) = cos2πt, y(t) = sin2πt</code>，t∈[0,1]。一个参数描述曲线，两个参数描述曲面。</li>
+<li><strong>直接形式</strong>：直接给出几何特征，如“线段两端点”“球心和半径”，最直观，计算时通常要转换成其他形式。</li>
+<li><strong>自由度</strong>：确定图元所需的最少参数个数。例如3D平面有3个自由度，球有4个。</li>
+</ul>
+<h2 id="2-直线和射线"><a href="#2-直线和射线" class="headerlink" title="2. 直线和射线"></a>2. 直线和射线</h2><ul>
+<li>直线：两端无限延伸；线段：两端有限；<strong>射线</strong>：在几何中有起点、单向无限；在本书（计算几何）中，射线就是<strong>有向线段</strong>，有起点和终点。</li>
+</ul>
+<p><strong>两点表示：</strong> 起点<code>porg</code>和终点<code>pend</code>。</p>
+<p><strong>参数形式：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">p(t) = p0 + t·d          t∈[0,1]</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>d的长度就是射线长度，t&#x3D;0为起点，t&#x3D;1为终点。</li>
+<li>也可以让d为单位向量，t从0变化到射线长度l。</li>
+</ul>
+<p><strong>2D直线的其他表示：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">隐式：      a·x + b·y = d     或  p · n = d（n为法向量）</span><br><span class="line">斜截式：    y = m·x + b       （m为斜率，不能表示竖直线）</span><br><span class="line">法向量+距离：n为单位法向量，d为原点到直线的有符号距离</span><br><span class="line">中垂线：    与线段qr中点等距的点的集合</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-球和圆"><a href="#3-球和圆" class="headerlink" title="3. 球和圆"></a>3. 球和圆</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">隐式：|p - c| = r          （c为球心，r为半径）</span><br><span class="line">直径 D = 2r</span><br><span class="line">圆周长 = 2πr       圆面积 = πr²</span><br><span class="line">球表面积 = 4πr²    球体积 = 4/3·πr³</span><br></pre></td></tr></table></figure>
+
+<p>球常用作<strong>包围体</strong>：检测简单，与方位无关（旋转不变）。</p>
+<h2 id="4-矩形边界框（AABB）"><a href="#4-矩形边界框（AABB）" class="headerlink" title="4. 矩形边界框（AABB）"></a>4. 矩形边界框（AABB）</h2><p><strong>轴对齐矩形边界框</strong>（Axially Aligned Bounding Box）：各边平行于坐标轴的长方体。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">用两个点表示：pmin = [xmin ymin zmin]，pmax = [xmax ymax zmax]</span><br><span class="line">中心 c = (pmin + pmax) / 2</span><br><span class="line">尺寸 s = pmax - pmin</span><br><span class="line">半径向量 r = pmax - c</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>构造</strong>：初始化为“空”（min设为极大、max设为极小），逐点扩展。</li>
+<li><strong>AABB与包围球</strong>：AABB检测同样简单；对细长物体AABB通常比球紧凑得多；球的优点是旋转不变。</li>
+<li><strong>变换AABB</strong>：物体旋转后，原AABB不再轴对齐。两种做法：<ul>
+<li>变换8个顶点后重新算AABB：简单但浮点计算多。</li>
+<li><strong>快速方法</strong>：利用矩阵元素的正负直接求新AABB，结果和变换8个角点一样（但比重新计算原始顶点得到的AABB大）：</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//box为原AABB，m为变换矩阵（行向量约定：x&#x27; = x·m11 + y·m21 + z·m31 + tx）</span></span><br><span class="line"><span class="comment">//新AABB的起点是平移量</span></span><br><span class="line">newMin = newMax = <span class="built_in">Vector3</span>(m.tx, m.ty, m.tz);</span><br><span class="line"></span><br><span class="line"><span class="comment">//对每个矩阵元素：正数时min乘min、max乘max；负数时交换</span></span><br><span class="line"><span class="keyword">if</span> (m.m11 &gt; <span class="number">0.0f</span>) &#123; newMin.x += m.m11 * box.min.x; newMax.x += m.m11 * box.max.x; &#125;</span><br><span class="line"><span class="keyword">else</span>              &#123; newMin.x += m.m11 * box.max.x; newMax.x += m.m11 * box.min.x; &#125;</span><br><span class="line"><span class="keyword">if</span> (m.m21 &gt; <span class="number">0.0f</span>) &#123; newMin.x += m.m21 * box.min.y; newMax.x += m.m21 * box.max.y; &#125;</span><br><span class="line"><span class="keyword">else</span>              &#123; newMin.x += m.m21 * box.max.y; newMax.x += m.m21 * box.min.y; &#125;</span><br><span class="line"><span class="keyword">if</span> (m.m31 &gt; <span class="number">0.0f</span>) &#123; newMin.x += m.m31 * box.min.z; newMax.x += m.m31 * box.max.z; &#125;</span><br><span class="line"><span class="keyword">else</span>              &#123; newMin.x += m.m31 * box.max.z; newMax.x += m.m31 * box.min.z; &#125;</span><br><span class="line"><span class="comment">//y分量用m12、m22、m32，z分量用m13、m23、m33，同理……</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="5-平面"><a href="#5-平面" class="headerlink" title="5. 平面"></a>5. 平面</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">隐式：p · n = d       （n为法向量，单位化后d是原点到平面的有符号距离）</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>n指向的一侧为<strong>正面</strong>。</li>
+</ul>
+<p><strong>三点确定平面</strong>（左手系中，从正面看顶点按顺时针排列）：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">e3 = p2 - p1</span><br><span class="line">e1 = p3 - p2</span><br><span class="line">n = normalize(e3 × e1)</span><br><span class="line">d = p1 · n</span><br></pre></td></tr></table></figure>
+
+<p><strong>多于三个点的“最佳”平面</strong>：多边形顶点可能不完全共面，用所有边求平均法向量（避免三点共线导致叉乘为0）：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">nx = Σ (zi + zi+1)(yi - yi+1)</span><br><span class="line">ny = Σ (xi + xi+1)(zi - zi+1)</span><br><span class="line">nz = Σ (yi + yi+1)(xi - xi+1)</span><br><span class="line">（i+1在最后一个点时回到第一个点），再标准化</span><br><span class="line">d = 所有点与n点乘的平均值</span><br></pre></td></tr></table></figure>
+
+<p><strong>点到平面的距离：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a = q · n - d       （n为单位向量；a&gt;0在正面，a&lt;0在背面）</span><br></pre></td></tr></table></figure>
+
+<h2 id="6-三角形"><a href="#6-三角形" class="headerlink" title="6. 三角形"></a>6. 三角形</h2><p>用三个顶点<code>v1, v2, v3</code>表示，左手系中从正面看是<strong>顺时针</strong>。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">边向量：e1 = v3 - v2   e2 = v1 - v3   e3 = v2 - v1</span><br><span class="line">边长：  li = |ei|</span><br><span class="line">周长：  p = l1 + l2 + l3</span><br></pre></td></tr></table></figure>
+
+<p><strong>面积：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">叉乘：  A = |e1 × e2| / 2</span><br><span class="line">海伦公式：s = (l1 + l2 + l3) / 2</span><br><span class="line">          A = sqrt( s(s-l1)(s-l2)(s-l3) )</span><br></pre></td></tr></table></figure>
+
+<p>2D中还可以对每条边与x轴围成的梯形求有符号面积再相加，得到有符号面积（也适用于任意简单多边形）：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">A = [ (y1+y2)(x2-x1) + (y2+y3)(x3-x2) + (y3+y1)(x1-x3) ] / 2</span><br></pre></td></tr></table></figure>
+
+<p><strong>重心坐标：</strong> 三角形平面上的任意点可以表示为顶点的加权平均：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">p = b1·v1 + b2·v2 + b3·v3      b1 + b2 + b3 = 1</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>(1,0,0)</code>就是v1；三个分量都在[0,1]内时点在三角形内；有负值则在外。</li>
+<li>几何意义：<code>bi = 顶点vi对面的子三角形面积 / 整个三角形面积</code>。</li>
+<li>3D中计算（di &#x3D; p - vi，n为法向量）：</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">b1 = ((e1 × d3) · n) / ((e1 × e2) · n)</span><br><span class="line">b2 = ((e2 × d1) · n) / ((e1 × e2) · n)</span><br><span class="line">b3 = ((e3 × d2) · n) / ((e1 × e2) · n)</span><br></pre></td></tr></table></figure>
+
+<p>  也可以把三角形投影到法向量最大分量对应的坐标平面，在2D中计算，更快。</p>
+<ul>
+<li>用途：在三角形内插值任何顶点属性（颜色、纹理坐标、法向量）。</li>
+</ul>
+<p><strong>特殊点：</strong></p>
+<ul>
+<li><strong>重心</strong>：三条中线交点，重心坐标<code>(1/3, 1/3, 1/3)</code>。</li>
+<li><strong>内心</strong>：内切圆圆心（到三边距离相等），重心坐标<code>(l1/p, l2/p, l3/p)</code>。</li>
+<li><strong>外心</strong>：外接圆圆心（到三个顶点距离相等），公式较复杂，可由三条边的中垂线求得。</li>
+</ul>
+<h2 id="7-多边形"><a href="#7-多边形" class="headerlink" title="7. 多边形"></a>7. 多边形</h2><ul>
+<li><strong>简单多边形</strong>：没有“洞”的多边形；<strong>复杂多边形</strong>：有洞。复杂多边形可以通过加一对重合的“切口”边变成简单多边形。</li>
+<li><strong>自相交多边形</strong>：边相互交叉，通常不使用。</li>
+<li><strong>凸多边形</strong>：任意两点连线都在多边形内；否则为<strong>凹多边形</strong>。凸多边形更好处理（扇形分割、相交检测都更简单）。</li>
+<li><strong>凸性检测</strong>：<ul>
+<li>内角和：凸多边形内角和为<code>(n-2)·180°</code>，凹多边形会更大（内角按小于180°计算的情况下）。</li>
+<li>更常用：检查每个顶点处相邻两边叉乘的方向是否一致，出现相反方向就是凹顶点。</li>
+</ul>
+</li>
+<li><strong>三角分解</strong>：<ul>
+<li>凸多边形：从一个顶点出发做<strong>扇形分解</strong>，得到n-2个三角形。</li>
+<li>凹多边形或要求更好质量：不断找到“可以切掉的耳朵”，或每次连接最短对角线，避免细长三角形。</li>
+</ul>
+</li>
+</ul>
+<p><strong>请记住：</strong></p>
+<blockquote>
+<ul>
+<li>图元有隐式、参数、直接三种表示，按需要转换。</li>
+<li>射线用<code>p0 + t·d</code>表示；平面用<code>p·n = d</code>表示，点到平面距离是<code>q·n - d</code>。</li>
+<li>AABB用min&#x2F;max表示，变换后用矩阵元素符号快速求新AABB。</li>
+<li>三角形面积用叉乘的一半；重心坐标是子三角形面积比，用于判断点在内和插值顶点属性。</li>
+</ul>
+</blockquote>
+<br/>
+
+<h1 id="十二、几何检测"><a href="#十二、几何检测" class="headerlink" title="十二、几何检测"></a>十二、几何检测</h1><h2 id="1-最近点"><a href="#1-最近点" class="headerlink" title="1. 最近点"></a>1. 最近点</h2><p><strong>2D直线上的最近点</strong>（直线<code>p·n = d</code>，n为单位向量）：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">q&#x27; = q + (d - q·n)·n</span><br></pre></td></tr></table></figure>
+
+<p><strong>参数射线上的最近点</strong>（<code>p(t) = porg + t·d</code>，d为单位向量，长度l）：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">t = d · (q - porg)</span><br><span class="line">把t夹紧到[0, l]，q&#x27; = porg + t·d</span><br></pre></td></tr></table></figure>
+
+<p><strong>平面上的最近点</strong>（<code>p·n = d</code>）：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">q&#x27; = q - (q·n - d)·n</span><br></pre></td></tr></table></figure>
+
+<p><strong>圆&#x2F;球上的最近点</strong>（球心c，半径r）：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">b = c - q</span><br><span class="line">q&#x27; = q + b·(|b| - r)/|b|</span><br><span class="line">（q在球内时|b| &lt; r，若要“球内的最近点”就是q本身）</span><br></pre></td></tr></table></figure>
+
+<p><strong>AABB中的最近点</strong>：把q的每个坐标分别夹紧到<code>[min, max]</code>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">if (q.x &lt; min.x) q&#x27;.x = min.x</span><br><span class="line">else if (q.x &gt; max.x) q&#x27;.x = max.x</span><br><span class="line">else q&#x27;.x = q.x</span><br><span class="line">（y、z同理）</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-相交检测分类"><a href="#2-相交检测分类" class="headerlink" title="2. 相交检测分类"></a>2. 相交检测分类</h2><ul>
+<li><strong>静态检测</strong>：两个静止图元是否相交，返回布尔值（有时也给出交点）。</li>
+<li><strong>动态检测</strong>：两个运动图元在某段时间内是否、何时第一次接触，返回接触时间t。</li>
+<li>常用技巧：把一个物体的运动转换为另一个物体的相对运动，变成“一个静止、一个运动”的问题。</li>
+</ul>
+<h2 id="3-2D直线相交"><a href="#3-2D直线相交" class="headerlink" title="3. 2D直线相交"></a>3. 2D直线相交</h2><p>两条隐式直线<code>a1x + b1y = d1</code>、<code>a2x + b2y = d2</code>，解方程组：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">x = (b2·d1 - b1·d2) / (a1·b2 - a2·b1)</span><br><span class="line">y = (a1·d2 - a2·d1) / (a1·b2 - a2·b1)</span><br><span class="line">分母为0：平行（d也相同则重合）</span><br></pre></td></tr></table></figure>
+
+<h2 id="4-3D中两条射线相交"><a href="#4-3D中两条射线相交" class="headerlink" title="4. 3D中两条射线相交"></a>4. 3D中两条射线相交</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">r1(t1) = p1 + t1·d1</span><br><span class="line">r2(t2) = p2 + t2·d2</span><br><span class="line"></span><br><span class="line">t1 = ((p2 - p1) × d2) · (d1 × d2) / |d1 × d2|²</span><br><span class="line">t2 = ((p2 - p1) × d1) · (d1 × d2) / |d1 × d2|²</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>d1 × d2 = 0</code>：平行或重合。</li>
+<li>3D中两条直线通常<strong>不相交（异面）</strong>，此时<code>r1(t1)</code>和<code>r2(t2)</code>是两直线上<strong>最近的两点</strong>，比较它们的距离即可。</li>
+<li>对射线还要检查t1、t2是否在合法范围内。</li>
+</ul>
+<h2 id="5-射线和平面"><a href="#5-射线和平面" class="headerlink" title="5. 射线和平面"></a>5. 射线和平面</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">平面 p·n = d，射线 p(t) = p0 + t·d̂</span><br><span class="line">t = (d - p0·n) / (d̂·n)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>d̂·n = 0</code>：射线与平面平行，无交点（或在平面上）。</li>
+<li>通常只关心从正面射入：要求<code>d̂·n &lt; 0</code>。</li>
+<li>t不在射线范围内则不相交。</li>
+</ul>
+<h2 id="6-AABB和平面"><a href="#6-AABB和平面" class="headerlink" title="6. AABB和平面"></a>6. AABB和平面</h2><p>计算AABB各顶点到平面的最小和最大<code>p·n</code>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">n.x &gt; 0：minD += n.x·min.x，maxD += n.x·max.x；否则交换min、max</span><br><span class="line">（y、z同理）</span><br><span class="line"></span><br><span class="line">minD ≥ d：AABB完全在平面正面</span><br><span class="line">maxD ≤ d：AABB完全在背面</span><br><span class="line">否则：相交</span><br></pre></td></tr></table></figure>
+
+<p>动态检测（AABB沿某方向运动）：求出最先接触平面的那个角点，然后变成射线和平面的检测。</p>
+<h2 id="7-三个平面的交点"><a href="#7-三个平面的交点" class="headerlink" title="7. 三个平面的交点"></a>7. 三个平面的交点</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">p = ( d1(n2 × n3) + d2(n3 × n1) + d3(n1 × n2) ) / ( n1 · (n2 × n3) )</span><br></pre></td></tr></table></figure>
+
+<p>分母为0时，至少两个平面平行，没有唯一交点。</p>
+<h2 id="8-射线和圆-x2F-球"><a href="#8-射线和圆-x2F-球" class="headerlink" title="8. 射线和圆&#x2F;球"></a>8. 射线和圆&#x2F;球</h2><p>射线<code>p(t) = p0 + t·d</code>（d为单位向量），球心c，半径r：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">e = c - p0</span><br><span class="line">a = e · d                        （球心在射线上的投影长度）</span><br><span class="line">f² = r² - |e|² + a²</span><br><span class="line">f² &lt; 0：不相交</span><br><span class="line">否则：t = a - sqrt(f²)           （第一个交点）</span><br></pre></td></tr></table></figure>
+
+<p>如果p0在球内（<code>|e| &lt; r</code>），t为负值，需要单独处理。</p>
+<h2 id="9-两个圆-x2F-球"><a href="#9-两个圆-x2F-球" class="headerlink" title="9. 两个圆&#x2F;球"></a>9. 两个圆&#x2F;球</h2><p><strong>静态：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">|c2 - c1| &lt; r1 + r2  →  相交</span><br><span class="line">（可以比较距离的平方，避免开方）</span><br></pre></td></tr></table></figure>
+
+<p><strong>动态：</strong> 把两者运动转为相对运动，球1静止、球2在时间段内位移d（d &#x3D; d2 - d1），e &#x3D; c2 - c1，r &#x3D; r1 + r2：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">|e + t·d| = r</span><br><span class="line">t = ( -e·d - sqrt( (e·d)² - |d|²(|e|² - r²) ) ) / |d|²</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>根号内为负：不会接触。</li>
+<li>t在[0,1]内：在这段时间内的t时刻第一次接触。</li>
+<li>开始时就已相交（<code>|e| &lt; r</code>）需要单独判断。</li>
+</ul>
+<h2 id="10-球和AABB"><a href="#10-球和AABB" class="headerlink" title="10. 球和AABB"></a>10. 球和AABB</h2><p>求AABB上离球心最近的点（夹紧），判断距离是否小于r：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">p = AABB中离c最近的点</span><br><span class="line">|p - c|² &lt; r²  →  相交</span><br></pre></td></tr></table></figure>
+
+<p>动态检测比较复杂，通常简化处理。</p>
+<h2 id="11-球和平面"><a href="#11-球和平面" class="headerlink" title="11. 球和平面"></a>11. 球和平面</h2><p><strong>静态：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">a = c · n - d</span><br><span class="line">|a| &lt; r：相交</span><br><span class="line">a ≥ r：完全在正面</span><br><span class="line">a ≤ -r：完全在背面</span><br></pre></td></tr></table></figure>
+
+<p><strong>动态</strong>（球沿单位向量d̂移动，从正面靠近）：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">t = (d + r - c·n) / (d̂·n)</span><br></pre></td></tr></table></figure>
+
+<p>t为球心沿d̂移动的距离，球心到平面距离恰为r时接触。</p>
+<h2 id="12-射线和三角形"><a href="#12-射线和三角形" class="headerlink" title="12. 射线和三角形"></a>12. 射线和三角形</h2><p>最常用的检测之一（拾取、子弹命中、光线追踪）。步骤：</p>
+<ol>
+<li>求三角形所在平面的法向量<code>n = e1 × e2</code>（不必标准化）。</li>
+<li>计算<code>n · d</code>。若≥0，射线与平面平行或从背面射入，直接拒绝（单面三角形）。</li>
+<li>求平面方程中的d，计算交点参数t；t不在[0, 当前最近交点]范围内就拒绝（尽早退出）。</li>
+<li>求交点p，计算p的<strong>重心坐标</strong>（投影到法向量最大分量对应的2D平面上算更快）。</li>
+<li>任一重心坐标小于0，交点在三角形外，拒绝；否则相交，同时得到了重心坐标可用于插值。</li>
+</ol>
+<p>关键在于<strong>尽早拒绝</strong>，把最便宜、最常失败的检测放在前面。</p>
+<h2 id="13-两个AABB"><a href="#13-两个AABB" class="headerlink" title="13. 两个AABB"></a>13. 两个AABB</h2><p><strong>静态：</strong> 三个轴上的区间都重叠才相交：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">相交 ⇔ min1.x ≤ max2.x 且 max1.x ≥ min2.x</span><br><span class="line">       且 y、z 同理</span><br></pre></td></tr></table></figure>
+
+<p>两个AABB的交集也是AABB：每个轴上min取较大值、max取较小值。</p>
+<p><strong>动态：</strong> 在每个轴上分别求出两个区间开始重叠和结束重叠的时间，三个轴的重叠时间段的交集就是相交时间段；交集非空则相交，最早的时刻就是接触时间。</p>
+<h2 id="14-射线和AABB"><a href="#14-射线和AABB" class="headerlink" title="14. 射线和AABB"></a>14. 射线和AABB</h2><p>Woo的方法：</p>
+<ol>
+<li>在每个轴上，根据射线起点相对盒子的位置选出一个“候选面”：起点在<code>min.x</code>左边就选<code>min.x</code>面，在<code>max.x</code>右边就选<code>max.x</code>面；三个轴都在盒内则起点在盒子内部。</li>
+<li>计算射线到每个候选面的参数t。</li>
+<li>取<strong>最大的t</strong>（射线必须穿过所有候选面才能进入盒子）。</li>
+<li>算出该t对应的交点，检查它在另外两个轴上是否位于盒子范围内。</li>
+</ol>
+<h2 id="15-其他检测"><a href="#15-其他检测" class="headerlink" title="15. 其他检测"></a>15. 其他检测</h2><ul>
+<li><strong>AABB和球、平面</strong>见上文。</li>
+<li><strong>三角形和三角形</strong>、<strong>OBB（有向包围盒）</strong>等检测更复杂，书中只介绍思路：<ul>
+<li>分离轴定理：两个凸体不相交，当且仅当存在一个轴，它们在该轴上的投影不重叠。</li>
+</ul>
+</li>
+<li>实际中先用包围球、AABB这类便宜的检测排除大部分情况，再做精确检测。</li>
+</ul>
+<p><strong>请记住：</strong></p>
+<blockquote>
+<ul>
+<li>最近点问题大多是“投影”或“夹紧”。</li>
+<li>相交检测分静态和动态；动态问题先转化为相对运动。</li>
+<li>射线是相交检测的核心工具：射线-平面、射线-球、射线-三角形、射线-AABB要熟练。</li>
+<li>两个AABB在每个轴上都重叠才相交；包围体检测用于快速排除，精确检测放在后面。</li>
+</ul>
+</blockquote>
+<br/>
+
+<h1 id="十三、三角网格"><a href="#十三、三角网格" class="headerlink" title="十三、三角网格"></a>十三、三角网格</h1><h2 id="1-表示方法-1"><a href="#1-表示方法-1" class="headerlink" title="1. 表示方法"></a>1. 表示方法</h2><p><strong>三角形列表：</strong> 每个三角形直接存三个顶点坐标。简单，但共享顶点重复存储，浪费内存，也无法知道三角形之间的连接关系。</p>
+<p><strong>索引三角网格：</strong> 最常用。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//顶点</span></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">Vertex</span></span><br><span class="line">&#123;</span><br><span class="line">    Vector3 p;      <span class="comment">//位置</span></span><br><span class="line">    <span class="comment">//其他信息：纹理坐标、法向量、光照值……</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">//三角形</span></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">Triangle</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> vertex[<span class="number">3</span>];  <span class="comment">//顶点索引（顺时针为正面）</span></span><br><span class="line">    <span class="comment">//其他信息：法向量、材质……</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">//三角网格</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">TriangleMesh</span></span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="type">int</span> vertexCount;</span><br><span class="line">    Vertex *vertexList;</span><br><span class="line"></span><br><span class="line">    <span class="type">int</span> triangleCount;</span><br><span class="line">    Triangle *triangleList;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>共享顶点只存一次，三角形用索引引用。</li>
+<li>可以额外存<strong>边列表</strong>等邻接信息，加速某些操作（如找相邻三角形）。</li>
+</ul>
+<p><strong>针对渲染的特殊格式：</strong></p>
+<ul>
+<li><strong>三角带</strong>：前三个顶点组成第一个三角形，之后每增加一个顶点就和前两个顶点组成新三角形。n个顶点表示n-2个三角形。注意相邻三角形的顶点顺序交替，要处理绕序。</li>
+<li><strong>三角扇</strong>：所有三角形共享第一个顶点，适合凸多边形。</li>
+<li>需要“跳转”时可以插入<strong>退化三角形</strong>（面积为0）把多个带连起来。</li>
+<li>现代硬件有<strong>顶点缓存</strong>，索引三角形列表只要排列好顺序，效率与三角带相当。</li>
+</ul>
+<h2 id="2-额外信息"><a href="#2-额外信息" class="headerlink" title="2. 额外信息"></a>2. 额外信息</h2><ul>
+<li><strong>纹理映射坐标</strong>（UV）：每个顶点存一组或多组。</li>
+<li><strong>表面法向量</strong>：<ul>
+<li>三角形法向量：由边的叉乘得到。</li>
+<li><strong>顶点法向量</strong>：用于光照计算和平滑着色。通常取相邻三角形法向量的平均（可按面积或角度加权）。</li>
+<li>平均法向量在<strong>硬边</strong>（如立方体的棱）处会让棱角变得圆滑，此时需要拆分顶点，让每个面有自己的法向量。</li>
+</ul>
+</li>
+<li><strong>光照值</strong>：预先计算好的顶点颜色等。</li>
+</ul>
+<h2 id="3-拓扑和一致性"><a href="#3-拓扑和一致性" class="headerlink" title="3. 拓扑和一致性"></a>3. 拓扑和一致性</h2><ul>
+<li><strong>拓扑</strong>：三角形之间如何连接；<strong>几何</strong>：顶点在哪里。</li>
+<li><strong>闭合网格</strong>：每条边恰好被两个三角形共享，没有缝隙，能区分内外（实体）。</li>
+<li>常见缺陷：<ul>
+<li><strong>孤立顶点</strong>：没有被任何三角形使用。</li>
+<li><strong>重复顶点</strong>：位置相同但索引不同，导致网格在拓扑上“断开”。</li>
+<li><strong>退化三角形</strong>：面积为0（两个索引相同或三点共线）。</li>
+<li><strong>开放边</strong>：只被一个三角形使用的边（网格不封闭）。</li>
+<li><strong>T型连接</strong>：一个顶点位于另一个三角形的边上而不是端点上，渲染时会出现细缝。</li>
+</ul>
+</li>
+<li>很多算法要求网格满足一致性，导入外部模型后应先检查和修复。</li>
+</ul>
+<h2 id="4-网格操作"><a href="#4-网格操作" class="headerlink" title="4. 网格操作"></a>4. 网格操作</h2><ul>
+<li><strong>逐顶点&#x2F;逐面操作</strong>：对所有顶点做变换，对所有三角形做翻转（改变绕序）等，最简单。</li>
+<li><strong>焊接顶点</strong>：把位置足够接近（在容差内）的顶点合并为一个，修复重复顶点。<ul>
+<li>只比较位置可能错误合并UV或法向量不同的顶点。</li>
+<li>需要高效查找邻近顶点（排序、哈希、网格划分），避免O(n²)。</li>
+<li>焊接后要更新三角形索引，删除因此产生的退化三角形。</li>
+</ul>
+</li>
+<li><strong>拆分顶点</strong>：焊接的反操作，在法向量、纹理坐标等不连续的地方（硬边、UV接缝）复制顶点，让每侧有独立属性。</li>
+<li><strong>边折叠</strong>：把一条边的两个顶点合并为一个，这条边相邻的两个三角形随之退化被删除。</li>
+<li><strong>网格消减（LOD）</strong>：反复做边折叠，每次选择对外观影响最小的边，得到不同精细程度的模型。距离远时用低精度模型。</li>
+<li><strong>顶点缓存优化</strong>：调整三角形顺序，让顶点在缓存中尽可能被复用。</li>
+</ul>
+<p><strong>请记住：</strong></p>
+<blockquote>
+<ul>
+<li>索引三角网格是最通用的表示：顶点列表 + 三角形索引列表。</li>
+<li>顶点法向量是相邻面法向量的平均，硬边处要拆分顶点。</li>
+<li>外部模型常有重复顶点、退化三角形、T型连接等问题，用焊接、清理等操作修复。</li>
+<li>边折叠是网格消减和LOD的基础。</li>
+</ul>
+</blockquote>
+<br/>
+
+<h1 id="十四、图形数学"><a href="#十四、图形数学" class="headerlink" title="十四、图形数学"></a>十四、图形数学</h1><h2 id="1-图形管道概述"><a href="#1-图形管道概述" class="headerlink" title="1. 图形管道概述"></a>1. 图形管道概述</h2><p>渲染一帧大致经过以下步骤：</p>
+<ol>
+<li><strong>建立场景</strong>：设置摄像机、光源、雾等全局状态，清空缓冲区。</li>
+<li><strong>可见性检测</strong>：粗略判断哪些物体可能可见，不可见的直接跳过（见第十五章）。</li>
+<li><strong>设置物体级渲染状态</strong>：纹理、材质等。</li>
+<li><strong>几何体生成与提交</strong>：把物体的三角形和顶点数据提交给API。</li>
+<li><strong>变换和光照</strong>：顶点从模型空间变换到裁剪空间，并计算顶点光照。</li>
+<li><strong>背面剔除和裁剪</strong>：去掉背对摄像机的三角形，裁掉视锥外的部分。</li>
+<li><strong>投影到屏幕空间</strong>：齐次除法，映射到屏幕坐标。</li>
+<li><strong>光栅化</strong>：确定三角形覆盖哪些像素，插值顶点属性。</li>
+<li><strong>像素着色</strong>：计算每个像素的颜色，进行深度测试、alpha混合，写入帧缓冲。</li>
+</ol>
+<p>步骤5~9通常由硬件完成。</p>
+<h2 id="2-设置视图参数"><a href="#2-设置视图参数" class="headerlink" title="2. 设置视图参数"></a>2. 设置视图参数</h2><p><strong>窗口：</strong></p>
+<ul>
+<li>渲染输出的矩形区域（可以是整个屏幕，也可以是一部分，如分屏）。</li>
+<li>窗口的位置和大小（像素），以及<strong>像素纵横比</strong>（物理宽高比，现代显示器通常是1:1）。</li>
+</ul>
+<p><strong>视锥：</strong></p>
+<ul>
+<li>摄像机能看到的空间区域，是一个被截去顶部的四棱锥，由六个面组成：上、下、左、右，以及<strong>近裁剪面</strong>和<strong>远裁剪面</strong>。</li>
+<li>近裁剪面避免除以0和物体贴脸；远裁剪面限制绘制距离，也影响深度缓冲精度。</li>
+</ul>
+<p><strong>视场与缩放：</strong></p>
+<ul>
+<li><strong>视场（FOV）</strong>：视锥的张角。人眼视场很大，但游戏中常用60°~90°。</li>
+<li><strong>缩放（zoom）</strong>：<code>zoom = 1 / tan(fov/2)</code>，比视场角更便于计算。</li>
+<li>水平和垂直的缩放必须和窗口比例一致，否则画面会拉伸：</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">zoomY / zoomX = (winResX · pixPhysX) / (winResY · pixPhysY)</span><br><span class="line">像素为正方形时：zoomY = zoomX · winResX / winResY</span><br></pre></td></tr></table></figure>
+
+<p><strong>正交投影：</strong> 没有透视效果，用于2D游戏、工程图、编辑器视图，用视图的物理尺寸代替视场。</p>
+<h2 id="3-坐标空间"><a href="#3-坐标空间" class="headerlink" title="3. 坐标空间"></a>3. 坐标空间</h2><p>渲染中依次经过：</p>
+<ol>
+<li><strong>模型空间</strong>：模型自己的坐标系（物体坐标系）。</li>
+<li><strong>世界空间</strong>：所有物体放在一起。</li>
+<li><strong>摄像机空间</strong>：以摄像机为原点，+z为视线方向，+x右，+y上。用于剔除和光照。</li>
+<li><strong>裁剪空间</strong>：用<strong>裁剪矩阵</strong>变换后的4D齐次空间，视锥变成规则形状，方便裁剪。</li>
+<li><strong>屏幕空间</strong>：齐次除法后映射到像素坐标。</li>
+</ol>
+<p><strong>裁剪矩阵（透视投影）</strong>：把视锥映射为<code>-w ≤ x, y, z ≤ w</code>的区域（n、f为近远裁剪面距离）：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">| zoomX    0         0             0 |</span><br><span class="line">|   0    zoomY       0             0 |</span><br><span class="line">|   0      0    (f+n)/(f-n)        1 |</span><br><span class="line">|   0      0    -2nf/(f-n)         0 |</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>第三列为1，使<code>w = z</code>，为透视除法做准备。</li>
+<li>裁剪空间中，点在视锥内当且仅当：<code>-w ≤ x ≤ w</code>、<code>-w ≤ y ≤ w</code>、<code>-w ≤ z ≤ w</code>。</li>
+<li>正交投影的裁剪矩阵不改变w（w始终为1）。</li>
+</ul>
+<p><strong>屏幕空间：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">screenX =  clipX · winResX / (2·clipW) + winCenterX</span><br><span class="line">screenY = -clipY · winResY / (2·clipW) + winCenterY    （屏幕y轴向下）</span><br></pre></td></tr></table></figure>
+
+<p>z和w也保留下来，用于深度缓冲和透视校正插值。</p>
+<h2 id="4-多边形网格"><a href="#4-多边形网格" class="headerlink" title="4. 多边形网格"></a>4. 多边形网格</h2><ul>
+<li>渲染单元通常是三角形。</li>
+<li>一个物体由多个三角网格组成，每块网格对应一种材质（纹理、光照参数）。</li>
+<li>绕序决定正面，用于背面剔除。</li>
+</ul>
+<h2 id="5-纹理映射"><a href="#5-纹理映射" class="headerlink" title="5. 纹理映射"></a>5. 纹理映射</h2><ul>
+<li><strong>纹理</strong>：贴到表面上的位图，每个像素叫<strong>纹素</strong>（texel）。</li>
+<li><strong>纹理坐标（UV）</strong>：每个顶点指定它对应纹理上的位置，通常归一化到[0,1]，与纹理分辨率无关。</li>
+<li>光栅化时在三角形内插值UV，取出对应纹素颜色。</li>
+<li>UV超出[0,1]时：<ul>
+<li><strong>重复（wrap）</strong>：纹理平铺。</li>
+<li><strong>截断（clamp）</strong>：使用边缘的纹素。</li>
+</ul>
+</li>
+<li>透视投影下UV必须做<strong>透视校正插值</strong>（插值<code>u/w</code>、<code>v/w</code>、<code>1/w</code>），否则纹理会扭曲。</li>
+</ul>
+<h2 id="6-光照和雾化"><a href="#6-光照和雾化" class="headerlink" title="6. 光照和雾化"></a>6. 光照和雾化</h2><p><strong>颜色运算：</strong> 颜色用RGB三元组表示，范围[0,1]。两个颜色相乘是分量分别相乘（<code>⊗</code>），表示光被表面过滤。</p>
+<p><strong>标准光照方程：</strong> 局部光照模型，只考虑光源直接照射：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">clit = cspec + cdiff + camb      （有的模型再加上自发光）</span><br></pre></td></tr></table></figure>
+
+<p><strong>镜面反射分量</strong>（高光，与观察方向有关）：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Phong模型：</span><br><span class="line">r = 2(n·l)n - l                                  （l为指向光源的单位向量）</span><br><span class="line">cspec = (sspec ⊗ mspec) · max(v·r, 0)^mgls</span><br><span class="line"></span><br><span class="line">Blinn模型（更常用，计算更快）：</span><br><span class="line">h = (v + l) / |v + l|                            （v为指向观察者的单位向量）</span><br><span class="line">cspec = (sspec ⊗ mspec) · max(n·h, 0)^mgls</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>sspec</code>：光源的镜面颜色；<code>mspec</code>：材质的镜面颜色。</li>
+<li><code>mgls</code>：<strong>光泽度</strong>，越大高光越小越锐利。</li>
+</ul>
+<p><strong>漫反射分量</strong>（Lambert定律，与观察方向无关）：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cdiff = (sdiff ⊗ mdiff) · max(n·l, 0)</span><br></pre></td></tr></table></figure>
+
+<p>光线与表面越垂直，单位面积接收的光越多。</p>
+<p><strong>环境光分量</strong>：模拟经多次反射的间接光，常数：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">camb = gamb ⊗ mamb</span><br></pre></td></tr></table></figure>
+
+<p><strong>多个光源：</strong> 镜面和漫反射分量按每个光源分别计算后相加。</p>
+<p><strong>光源类型：</strong></p>
+<ul>
+<li><strong>点光源</strong>：从一点向所有方向发光，有位置。</li>
+<li><strong>平行光（方向光）</strong>：无限远、方向一致，如太阳。</li>
+<li><strong>聚光灯</strong>：有位置和方向，光照集中在一个圆锥内。</li>
+<li><strong>环境光</strong>：全局常量。</li>
+</ul>
+<p><strong>光的衰减：</strong> 现实中光强与距离平方成反比，但游戏常用更易控制的线性衰减：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">       | 1                                  d ≤ dmin</span><br><span class="line">i(d) = | (dmax - d) / (dmax - dmin)         dmin &lt; d &lt; dmax</span><br><span class="line">       | 0                                  d ≥ dmax</span><br></pre></td></tr></table></figure>
+
+<p>聚光灯还会根据偏离中心方向的角度再衰减。</p>
+<p><strong>雾化：</strong> 模拟大气中的粒子，远处物体逐渐融入雾色，也能掩盖远裁剪面造成的“突然出现”。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">雾密度 f = (d - fogStart) / (fogEnd - fogStart)，夹紧到[0,1]</span><br><span class="line">最终颜色 = lerp(clit, gfog, f) = clit + f·(gfog - clit)</span><br></pre></td></tr></table></figure>
+
+<p>d可以用摄像机空间的z，或到摄像机的真实距离。</p>
+<p><strong>着色模式（在哪里计算光照）：</strong></p>
+<ul>
+<li><strong>平面着色（flat）</strong>：每个三角形算一次光照，整个三角形同色，有明显的棱面感。</li>
+<li><strong>Gouraud着色</strong>：在每个顶点计算光照，三角形内插值颜色。速度快，但高光容易丢失或形状不对（高光可能落在三角形中间）。</li>
+<li><strong>Phong着色</strong>：插值法向量，逐像素计算光照，效果最好，开销最大。</li>
+</ul>
+<h2 id="7-缓冲区"><a href="#7-缓冲区" class="headerlink" title="7. 缓冲区"></a>7. 缓冲区</h2><ul>
+<li><strong>帧缓冲</strong>：保存要显示的像素颜色。</li>
+<li><strong>双缓冲</strong>：在后台缓冲渲染，完成后与前台缓冲交换，避免画面撕裂和闪烁。</li>
+<li><strong>深度缓冲（z-buffer）</strong>：保存每个像素当前最近表面的深度。新像素比已有深度更近才写入，从而正确处理遮挡，不必按远近排序三角形。</li>
+<li><strong>模板缓冲</strong>：按像素做标记，用于阴影、镜面、轮廓等特殊效果。</li>
+</ul>
+<h2 id="8-背面剔除与裁剪"><a href="#8-背面剔除与裁剪" class="headerlink" title="8. 背面剔除与裁剪"></a>8. 背面剔除与裁剪</h2><p><strong>背面剔除：</strong> 闭合物体背对摄像机的三角形一定被正面三角形挡住，可以直接丢弃，大约省一半工作量。</p>
+<ul>
+<li>判断方法：<ul>
+<li><strong>屏幕空间</strong>：投影后顶点为逆时针（本书约定正面为顺时针）就是背面。</li>
+<li><strong>摄像机&#x2F;物体空间</strong>：<code>(p - 摄像机位置) · n &gt; 0</code>（从摄像机看向三角形的方向与法向量同向）就是背面，可以在变换前就剔除，更省时间。</li>
+</ul>
+</li>
+</ul>
+<p><strong>裁剪：</strong> 三角形部分在视锥外时，必须裁掉外部部分，否则会出现除零和错误的投影。</p>
+<ul>
+<li>常用<strong>Sutherland-Hodgman多边形裁剪</strong>：每次用一个裁剪平面裁剪多边形。依次检查每条边：<ul>
+<li>两端都在内：保留终点。</li>
+<li>从内到外：保留交点。</li>
+<li>从外到内：保留交点和终点。</li>
+<li>两端都在外：什么也不保留。</li>
+</ul>
+</li>
+<li>一个三角形被多个平面裁剪后可能变成多边形，再三角化渲染。</li>
+<li>在裁剪空间裁剪最简单，因为六个平面都是<code>±w</code>的形式。</li>
+</ul>
+<h2 id="9-光栅化"><a href="#9-光栅化" class="headerlink" title="9. 光栅化"></a>9. 光栅化</h2><ul>
+<li><p><strong>扫描转换</strong>：确定三角形覆盖了哪些像素（常用的是逐扫描线填充）。</p>
+</li>
+<li><p>对覆盖的每个像素：</p>
+<ol>
+<li>插值深度、颜色、UV等属性。</li>
+<li><strong>深度测试</strong>：比深度缓冲中的值更远就丢弃。</li>
+<li>计算颜色（纹理采样、光照、雾化）。</li>
+<li><strong>alpha混合</strong>：半透明物体与已有颜色混合：</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">输出颜色 = α·源颜色 + (1-α)·目标颜色</span><br></pre></td></tr></table></figure>
+
+<ol start="5">
+<li>写入帧缓冲和深度缓冲。</li>
+</ol>
+</li>
+<li><p>半透明物体需要在不透明物体之后，<strong>从远到近</strong>渲染。</p>
+</li>
+</ul>
+<p><strong>请记住：</strong></p>
+<blockquote>
+<ul>
+<li>图形管道：场景 → 可见性 → 状态 → 提交 → 变换与光照 → 剔除与裁剪 → 投影 → 光栅化 → 着色。</li>
+<li>坐标空间：模型 → 世界 → 摄像机 → 裁剪 → 屏幕；裁剪矩阵把视锥变成<code>-w ≤ x,y,z ≤ w</code>。</li>
+<li>标准光照 &#x3D; 镜面（Phong&#x2F;Blinn）+ 漫反射（Lambert）+ 环境光；着色方式有平面、Gouraud、Phong。</li>
+<li>深度缓冲解决遮挡；背面剔除省掉一半三角形；裁剪处理跨越视锥的三角形。</li>
+</ul>
+</blockquote>
+<br/>
+
+<h1 id="十五、可见性检测"><a href="#十五、可见性检测" class="headerlink" title="十五、可见性检测"></a>十五、可见性检测</h1><p>可见性检测在渲染之前<strong>粗略</strong>地排除不可见的物体，减少提交给硬件的数据。目标不是精确，而是<strong>保守</strong>：可能可见的必须保留，明显不可见的尽量剔除。</p>
+<h2 id="1-包围体检测"><a href="#1-包围体检测" class="headerlink" title="1. 包围体检测"></a>1. 包围体检测</h2><p><strong>用包围体代替复杂物体：</strong> 先检测物体的包围球或AABB，包围体不可见，物体一定不可见。</p>
+<p><strong>视锥剔除：</strong></p>
+<ul>
+<li><strong>包围球</strong>：分别求球心到视锥六个平面的距离，若对任一平面完全在外侧（距离 &lt; -r）就剔除。</li>
+<li><strong>裁剪空间区域码</strong>：把包围体的8个角点变换到裁剪空间，每个点按六个条件生成6位编码：</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">bit0: x &lt; -w     bit1: x &gt; w</span><br><span class="line">bit2: y &lt; -w     bit3: y &gt; w</span><br><span class="line">bit4: z &lt; -w     bit5: z &gt; w</span><br><span class="line"></span><br><span class="line">所有点的编码按位与 ≠ 0：所有点都在同一个平面外侧 → 完全不可见，剔除</span><br><span class="line">所有点的编码按位或 = 0：完全在视锥内，渲染时可跳过裁剪</span><br><span class="line">否则：部分可见</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>按位与为0不代表一定可见（包围体可能跨过视锥的角落），但作为保守剔除足够了。</li>
+</ul>
+<p><strong>遮挡剔除：</strong> 物体在视锥内，也可能被其他物体挡住。遮挡检测更复杂，通常依赖空间结构（如入口技术）或预计算（PVS）。</p>
+<h2 id="2-空间分割"><a href="#2-空间分割" class="headerlink" title="2. 空间分割"></a>2. 空间分割</h2><p>逐个检测每个物体的包围体，开销仍随物体数线性增长。空间分割把世界划分成区域，<strong>一次排除整个区域</strong>，并加速射线检测、碰撞查询（“这附近有什么”）。</p>
+<h2 id="3-网格系统"><a href="#3-网格系统" class="headerlink" title="3. 网格系统"></a>3. 网格系统</h2><ul>
+<li>把世界划分成规则的2D或3D网格，每个格子保存其中的物体列表；跨多个格子的物体在每个格子中都登记（或只登记在一个格子中并扩大查询范围）。</li>
+<li>查询时只需检测视锥或射线经过的格子。</li>
+<li>优点：简单、查询定位快（直接计算格子索引）。</li>
+<li>缺点：格子大小难选；物体分布不均时，很多格子空着浪费内存，密集处效率差。</li>
+</ul>
+<h2 id="4-四叉树和八叉树"><a href="#4-四叉树和八叉树" class="headerlink" title="4. 四叉树和八叉树"></a>4. 四叉树和八叉树</h2><ul>
+<li><strong>四叉树</strong>（2D）：每个节点是一个正方形区域，细分为4个相等的子区域；<strong>八叉树</strong>（3D）：每个节点细分为8个子立方体。</li>
+<li>只在需要的地方细分（物体多就继续分，物体少就停），自适应地处理分布不均的世界。</li>
+<li>物体放在<strong>能完全包含它的最小节点</strong>中。问题：跨越分割线的小物体会停留在很高层的节点。解决：<strong>松散四叉树&#x2F;八叉树</strong>——每个节点的包围盒适当放大，允许物体稍微超出。</li>
+<li><strong>视锥剔除</strong>：从根节点递归，节点包围盒完全不可见就跳过整棵子树；完全可见则整棵子树都可见，不再检测。</li>
+<li><strong>射线检测</strong>：只进入射线穿过的节点，按射线经过的顺序访问，找到最近交点后可提前结束。</li>
+</ul>
+<h2 id="5-BSP树"><a href="#5-BSP树" class="headerlink" title="5. BSP树"></a>5. BSP树</h2><ul>
+<li><strong>BSP（二叉空间分割）树</strong>：每个节点用一个<strong>任意平面</strong>把空间分成正面和背面两半，递归直到满足终止条件。</li>
+<li>比八叉树更灵活：分割平面可以贴合场景几何（如墙面）。</li>
+<li>经典用法：用场景中的多边形作为分割平面，可以在任意视点下得到严格的<strong>从后到前</strong>绘制顺序（画家算法），不需要深度缓冲；也用于碰撞检测。</li>
+<li>跨越分割平面的多边形要被<strong>切分</strong>成两部分。</li>
+<li>构造关键是<strong>选择分割平面</strong>：要平衡（树的深度小）又要减少切分（多边形数量少），两者通常需要折中，常用启发式评分。</li>
+<li>BSP树构造慢，一般<strong>预计算</strong>，适合静态场景。</li>
+</ul>
+<h2 id="6-入口技术"><a href="#6-入口技术" class="headerlink" title="6. 入口技术"></a>6. 入口技术</h2><ul>
+<li>适用于<strong>室内场景</strong>：把世界分成<strong>房间（cell）</strong>，房间之间通过<strong>入口（portal）</strong>（门、窗、走廊口等多边形）连接。</li>
+<li>渲染时：<ol>
+<li>渲染摄像机所在的房间。</li>
+<li>对房间中的每个入口，若它在当前视锥内可见，就用入口的边界<strong>缩小视锥</strong>。</li>
+<li>用缩小后的视锥递归渲染入口另一侧的房间。</li>
+</ol>
+</li>
+<li>被墙挡住的房间根本不会被访问，天然实现了遮挡剔除。</li>
+<li>也可以用屏幕空间的矩形近似入口，简化计算。</li>
+<li>还可以实现镜子、传送门等效果（让入口通向变换后的另一个空间）。</li>
+</ul>
+<h2 id="7-潜在可见集（PVS）"><a href="#7-潜在可见集（PVS）" class="headerlink" title="7. 潜在可见集（PVS）"></a>7. 潜在可见集（PVS）</h2><ul>
+<li>预先为每个区域计算一个列表：从该区域内任意位置可能看到哪些区域（或物体）。</li>
+<li>运行时只渲染PVS中的内容，再配合视锥剔除。</li>
+<li>预计算很耗时，结果需要存储空间，只适用于静态场景。</li>
+<li>常与BSP树或入口技术结合使用。</li>
+</ul>
+<p><strong>请记住：</strong></p>
+<blockquote>
+<ul>
+<li>可见性检测追求保守和快速：宁可多画，不能漏画。</li>
+<li>包围体 + 视锥剔除是基础；裁剪空间区域码按位与非零即可剔除。</li>
+<li>网格、四叉树&#x2F;八叉树、BSP树通过空间分割一次排除大片区域；BSP能给出严格的前后顺序。</li>
+<li>室内场景用入口技术逐房间缩小视锥；静态场景可预计算PVS。</li>
+</ul>
+</blockquote>
+<br/>
+
+<h1 id="十六、后记与数学基础"><a href="#十六、后记与数学基础" class="headerlink" title="十六、后记与数学基础"></a>十六、后记与数学基础</h1><h2 id="1-后记"><a href="#1-后记" class="headerlink" title="1. 后记"></a>1. 后记</h2><p>本书介绍的是3D数学中最基础、最常用的部分。继续深入可以学习：曲线与曲面（样条、贝塞尔）、物理模拟、碰撞检测、高级渲染（阴影、全局光照）、人工智能等。书中强调的方法比具体公式更重要：<strong>先理解几何意义，再写代码</strong>。</p>
+<h2 id="2-附录A：数学基础"><a href="#2-附录A：数学基础" class="headerlink" title="2. 附录A：数学基础"></a>2. 附录A：数学基础</h2><p><strong>求和记号：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Σ(i=1..n) ai = a1 + a2 + ... + an</span><br></pre></td></tr></table></figure>
+
+<p><strong>角度与弧度：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">360° = 2π 弧度</span><br><span class="line">弧度 = 角度 × π / 180</span><br><span class="line">角度 = 弧度 × 180 / π</span><br></pre></td></tr></table></figure>
+
+<p>一个弧度对应的圆弧长等于半径。计算中统一使用弧度。</p>
+<p><strong>三角函数（直角三角形，θ为锐角，x为邻边、y为对边、r为斜边）：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sinθ = y / r      cosθ = x / r      tanθ = y / x = sinθ / cosθ</span><br><span class="line">cscθ = 1/sinθ     secθ = 1/cosθ     cotθ = 1/tanθ</span><br></pre></td></tr></table></figure>
+
+<p>在单位圆上，角θ对应的点就是<code>(cosθ, sinθ)</code>。</p>
+<p><strong>常用恒等式：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">sin²θ + cos²θ = 1</span><br><span class="line">sin(-θ) = -sinθ      cos(-θ) = cosθ      tan(-θ) = -tanθ</span><br><span class="line">sin(π/2 - θ) = cosθ  cos(π/2 - θ) = sinθ</span><br><span class="line"></span><br><span class="line">sin(a + b) = sin a·cos b + cos a·sin b</span><br><span class="line">sin(a - b) = sin a·cos b - cos a·sin b</span><br><span class="line">cos(a + b) = cos a·cos b - sin a·sin b</span><br><span class="line">cos(a - b) = cos a·cos b + sin a·sin b</span><br><span class="line">tan(a + b) = (tan a + tan b) / (1 - tan a·tan b)</span><br><span class="line"></span><br><span class="line">sin2θ = 2·sinθ·cosθ</span><br><span class="line">cos2θ = cos²θ - sin²θ = 2cos²θ - 1 = 1 - 2sin²θ</span><br></pre></td></tr></table></figure>
+
+<p><strong>勾股定理：</strong> 直角三角形中<code>a² + b² = c²</code>。</p>
+<p><strong>任意三角形（边a、b、c对应角A、B、C）：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">正弦定理：a / sinA = b / sinB = c / sinC</span><br><span class="line">余弦定理：a² = b² + c² - 2bc·cosA</span><br></pre></td></tr></table></figure>
+
+<p><strong>请记住：</strong></p>
+<blockquote>
+<ul>
+<li>统一使用弧度，<code>π弧度 = 180°</code>。</li>
+<li><code>sin² + cos² = 1</code>、和角公式、倍角公式、正弦定理、余弦定理覆盖了书中绝大多数推导。</li>
+</ul>
+</blockquote>
+
+    </div>
+    
+    <div class="post-footer">
+        <div>
+            
+            转载声明：
+            商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">cxx</a>
+            
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+<div class="article-nav prev-next-wrap clearfix">
+    
+    <a href="/2026/11/17/fpga/C++%E7%A8%8B%E5%BA%8F%E5%91%98%E8%A7%86%E8%A7%92%E5%A6%82%E4%BD%95%E7%9C%8BFPGA/" class="pre-post btn btn-default" title='C++程序员视角如何看FPGA'>
+        <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+        <span class="hidden-xs">
+            C++程序员视角如何看FPGA</span>
+    </a>
+    
+    
+    <a href="/2024/01/08/notes/%E6%B8%B8%E6%88%8F%E7%BC%96%E7%A8%8B%E6%A8%A1%E5%BC%8F/" class="next-post btn btn-default" title='《游戏编程模式》全书内容提炼总结'>
+        <span class="hidden-lg">下一篇</span>
+        <span class="hidden-xs">
+            《游戏编程模式》全书内容提炼总结</span><i class="fa fa-angle-right fa-fw"></i>
+    </a>
+    
+</div>
+
+<div id="comments">
+    
+    <script src="https://giscus.app/client.js"
+        data-repo="cxxlog/myblog-comment"
+        data-repo-id="R_kgDOVzxsBw"
+        data-category="Announcements"
+        data-category-id="DIC_kwDOVzxsB84DLdxb"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="bottom"
+        data-theme="light"
+        data-lang="zh-CN"
+        crossorigin="anonymous"
+        async>
+    </script>
+
+</div>
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">
+            文章目录
+        </h3>
+        
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E7%AC%9B%E5%8D%A1%E5%B0%94%E5%9D%90%E6%A0%87%E7%B3%BB"><span class="toc-text">一、笛卡尔坐标系</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1D%E6%95%B0%E5%AD%A6"><span class="toc-text">1. 1D数学</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2D%E7%AC%9B%E5%8D%A1%E5%B0%94%E5%9D%90%E6%A0%87%E7%B3%BB"><span class="toc-text">2. 2D笛卡尔坐标系</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-3D%E7%AC%9B%E5%8D%A1%E5%B0%94%E5%9D%90%E6%A0%87%E7%B3%BB"><span class="toc-text">3. 3D笛卡尔坐标系</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%A4%9A%E5%9D%90%E6%A0%87%E7%B3%BB"><span class="toc-text">二、多坐标系</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81%E5%A4%9A%E4%B8%AA%E5%9D%90%E6%A0%87%E7%B3%BB"><span class="toc-text">1. 为什么需要多个坐标系</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E5%B8%B8%E7%94%A8%E5%9D%90%E6%A0%87%E7%B3%BB"><span class="toc-text">2. 常用坐标系</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E5%B5%8C%E5%A5%97%E5%BC%8F%E5%9D%90%E6%A0%87%E7%B3%BB"><span class="toc-text">3. 嵌套式坐标系</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E6%8F%8F%E8%BF%B0%E5%9D%90%E6%A0%87%E7%B3%BB%E4%B8%8E%E5%9D%90%E6%A0%87%E7%B3%BB%E8%BD%AC%E6%8D%A2"><span class="toc-text">4. 描述坐标系与坐标系转换</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E5%90%91%E9%87%8F"><span class="toc-text">三、向量</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E6%95%B0%E5%AD%A6%E5%AE%9A%E4%B9%89"><span class="toc-text">1. 数学定义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E5%87%A0%E4%BD%95%E5%AE%9A%E4%B9%89"><span class="toc-text">2. 几何定义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E5%90%91%E9%87%8F%E4%B8%8E%E7%82%B9"><span class="toc-text">3. 向量与点</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E5%90%91%E9%87%8F%E8%BF%90%E7%AE%97"><span class="toc-text">四、向量运算</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E9%9B%B6%E5%90%91%E9%87%8F%E5%92%8C%E8%B4%9F%E5%90%91%E9%87%8F"><span class="toc-text">1. 零向量和负向量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E5%90%91%E9%87%8F%E5%A4%A7%E5%B0%8F%EF%BC%88%E6%A8%A1%EF%BC%89"><span class="toc-text">2. 向量大小（模）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E6%A0%87%E9%87%8F%E4%B8%8E%E5%90%91%E9%87%8F%E7%9A%84%E4%B9%98%E6%B3%95"><span class="toc-text">3. 标量与向量的乘法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E6%A0%87%E5%87%86%E5%8C%96%E5%90%91%E9%87%8F"><span class="toc-text">4. 标准化向量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E5%90%91%E9%87%8F%E5%8A%A0%E6%B3%95%E5%92%8C%E5%87%8F%E6%B3%95"><span class="toc-text">5. 向量加法和减法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-%E8%B7%9D%E7%A6%BB%E5%85%AC%E5%BC%8F"><span class="toc-text">6. 距离公式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-%E7%82%B9%E4%B9%98"><span class="toc-text">7. 点乘</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-%E5%8F%89%E4%B9%98"><span class="toc-text">8. 叉乘</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9-%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0%E5%85%AC%E5%BC%8F"><span class="toc-text">9. 线性代数公式</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%9A%843D%E5%90%91%E9%87%8F%E7%B1%BB"><span class="toc-text">五、一个简单的3D向量类</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E8%AE%BE%E8%AE%A1%E5%8F%96%E8%88%8D"><span class="toc-text">1. 设计取舍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E4%BB%A3%E7%A0%81"><span class="toc-text">2. 代码</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%85%AD%E3%80%81%E7%9F%A9%E9%98%B5"><span class="toc-text">六、矩阵</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E6%95%B0%E5%AD%A6%E5%AE%9A%E4%B9%89-1"><span class="toc-text">1. 数学定义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E8%BD%AC%E7%BD%AE"><span class="toc-text">2. 转置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E6%A0%87%E9%87%8F%E4%B8%8E%E7%9F%A9%E9%98%B5%E7%9B%B8%E4%B9%98"><span class="toc-text">3. 标量与矩阵相乘</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E7%9F%A9%E9%98%B5%E4%B9%98%E6%B3%95"><span class="toc-text">4. 矩阵乘法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E5%90%91%E9%87%8F%E4%B8%8E%E7%9F%A9%E9%98%B5%E7%9B%B8%E4%B9%98"><span class="toc-text">5. 向量与矩阵相乘</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-%E7%9F%A9%E9%98%B5%E7%9A%84%E5%87%A0%E4%BD%95%E8%A7%A3%E9%87%8A"><span class="toc-text">6. 矩阵的几何解释</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%83%E3%80%81%E7%9F%A9%E9%98%B5%E5%92%8C%E7%BA%BF%E6%80%A7%E5%8F%98%E6%8D%A2"><span class="toc-text">七、矩阵和线性变换</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%8F%98%E6%8D%A2%E7%89%A9%E4%BD%93%E4%B8%8E%E5%8F%98%E6%8D%A2%E5%9D%90%E6%A0%87%E7%B3%BB"><span class="toc-text">1. 变换物体与变换坐标系</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E6%97%8B%E8%BD%AC"><span class="toc-text">2. 旋转</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E7%BC%A9%E6%94%BE"><span class="toc-text">3. 缩放</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E6%AD%A3%E4%BA%A4%E6%8A%95%E5%BD%B1"><span class="toc-text">4. 正交投影</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E9%95%9C%E5%83%8F"><span class="toc-text">5. 镜像</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-%E5%88%87%E5%8F%98"><span class="toc-text">6. 切变</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-%E5%8F%98%E6%8D%A2%E7%9A%84%E7%BB%84%E5%90%88"><span class="toc-text">7. 变换的组合</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-%E5%8F%98%E6%8D%A2%E5%88%86%E7%B1%BB"><span class="toc-text">8. 变换分类</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%85%AB%E3%80%81%E7%9F%A9%E9%98%B5%E7%9A%84%E6%9B%B4%E5%A4%9A%E7%9F%A5%E8%AF%86"><span class="toc-text">八、矩阵的更多知识</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E8%A1%8C%E5%88%97%E5%BC%8F"><span class="toc-text">1. 行列式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E7%9F%A9%E9%98%B5%E7%9A%84%E9%80%86"><span class="toc-text">2. 矩阵的逆</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E6%AD%A3%E4%BA%A4%E7%9F%A9%E9%98%B5"><span class="toc-text">3. 正交矩阵</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-4%C3%974%E9%BD%90%E6%AC%A1%E7%9F%A9%E9%98%B5"><span class="toc-text">4. 4×4齐次矩阵</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E9%80%8F%E8%A7%86%E6%8A%95%E5%BD%B1"><span class="toc-text">5. 透视投影</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B9%9D%E3%80%813D%E4%B8%AD%E7%9A%84%E6%96%B9%E4%BD%8D%E4%B8%8E%E8%A7%92%E4%BD%8D%E7%A7%BB"><span class="toc-text">九、3D中的方位与角位移</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E6%96%B9%E4%BD%8D%E4%B8%8E%E8%A7%92%E4%BD%8D%E7%A7%BB"><span class="toc-text">1. 方位与角位移</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E7%9F%A9%E9%98%B5%E5%BD%A2%E5%BC%8F"><span class="toc-text">2. 矩阵形式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E6%AC%A7%E6%8B%89%E8%A7%92"><span class="toc-text">3. 欧拉角</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E5%9B%9B%E5%85%83%E6%95%B0"><span class="toc-text">4. 四元数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-%E8%AE%B0%E6%B3%95"><span class="toc-text">4.1 记法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-%E4%B8%8E%E5%A4%8D%E6%95%B0%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="toc-text">4.2 与复数的关系</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-3-%E5%87%A0%E4%BD%95%E6%84%8F%E4%B9%89"><span class="toc-text">4.3 几何意义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-4-%E5%9F%BA%E6%9C%AC%E8%BF%90%E7%AE%97"><span class="toc-text">4.4 基本运算</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-5-%E5%9B%9B%E5%85%83%E6%95%B0%E4%B9%98%E6%B3%95"><span class="toc-text">4.5 四元数乘法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-6-%E5%9B%9B%E5%85%83%E6%95%B0%E7%9A%84%E2%80%9C%E5%B7%AE%E2%80%9D"><span class="toc-text">4.6 四元数的“差”</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-7-%E5%AF%B9%E6%95%B0%E3%80%81%E6%8C%87%E6%95%B0%E5%92%8C%E6%A0%87%E9%87%8F%E4%B9%98"><span class="toc-text">4.7 对数、指数和标量乘</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-8-%E6%B1%82%E5%B9%82"><span class="toc-text">4.8 求幂</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-9-%E7%90%83%E9%9D%A2%E7%BA%BF%E6%80%A7%E6%8F%92%E5%80%BC%EF%BC%88slerp%EF%BC%89"><span class="toc-text">4.9 球面线性插值（slerp）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-10-%E5%9B%9B%E5%85%83%E6%95%B0%E6%A0%B7%E6%9D%A1%EF%BC%88squad%EF%BC%89"><span class="toc-text">4.10 四元数样条（squad）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-11-%E5%9B%9B%E5%85%83%E6%95%B0%E7%9A%84%E4%BC%98%E7%BC%BA%E7%82%B9"><span class="toc-text">4.11 四元数的优缺点</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E5%90%84%E6%96%B9%E6%B3%95%E6%AF%94%E8%BE%83"><span class="toc-text">5. 各方法比较</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-%E5%90%84%E6%96%B9%E6%B3%95%E4%B9%8B%E9%97%B4%E7%9A%84%E8%BD%AC%E6%8D%A2"><span class="toc-text">6. 各方法之间的转换</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#6-1-%E6%AC%A7%E6%8B%89%E8%A7%92-%E2%86%92-%E7%9F%A9%E9%98%B5"><span class="toc-text">6.1 欧拉角 → 矩阵</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-2-%E7%9F%A9%E9%98%B5-%E2%86%92-%E6%AC%A7%E6%8B%89%E8%A7%92"><span class="toc-text">6.2 矩阵 → 欧拉角</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-3-%E5%9B%9B%E5%85%83%E6%95%B0-%E2%86%92-%E7%9F%A9%E9%98%B5"><span class="toc-text">6.3 四元数 → 矩阵</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-4-%E7%9F%A9%E9%98%B5-%E2%86%92-%E5%9B%9B%E5%85%83%E6%95%B0"><span class="toc-text">6.4 矩阵 → 四元数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-5-%E6%AC%A7%E6%8B%89%E8%A7%92-%E2%86%92-%E5%9B%9B%E5%85%83%E6%95%B0"><span class="toc-text">6.5 欧拉角 → 四元数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-6-%E5%9B%9B%E5%85%83%E6%95%B0-%E2%86%92-%E6%AC%A7%E6%8B%89%E8%A7%92"><span class="toc-text">6.6 四元数 → 欧拉角</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8D%81%E3%80%81C-%E5%AE%9E%E7%8E%B0"><span class="toc-text">十、C++实现</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99"><span class="toc-text">1. 设计原则</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E5%B7%A5%E5%85%B7%E5%87%BD%E6%95%B0%EF%BC%88MathUtil%EF%BC%89"><span class="toc-text">2. 工具函数（MathUtil）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-EulerAngles%E7%B1%BB"><span class="toc-text">3. EulerAngles类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-Quaternion%E7%B1%BB"><span class="toc-text">4. Quaternion类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-RotationMatrix%E7%B1%BB"><span class="toc-text">5. RotationMatrix类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-Matrix4x3%E7%B1%BB"><span class="toc-text">6. Matrix4x3类</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8D%81%E4%B8%80%E3%80%81%E5%87%A0%E4%BD%95%E5%9B%BE%E5%85%83"><span class="toc-text">十一、几何图元</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E8%A1%A8%E7%A4%BA%E6%96%B9%E6%B3%95"><span class="toc-text">1. 表示方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E7%9B%B4%E7%BA%BF%E5%92%8C%E5%B0%84%E7%BA%BF"><span class="toc-text">2. 直线和射线</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E7%90%83%E5%92%8C%E5%9C%86"><span class="toc-text">3. 球和圆</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E7%9F%A9%E5%BD%A2%E8%BE%B9%E7%95%8C%E6%A1%86%EF%BC%88AABB%EF%BC%89"><span class="toc-text">4. 矩形边界框（AABB）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E5%B9%B3%E9%9D%A2"><span class="toc-text">5. 平面</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-%E4%B8%89%E8%A7%92%E5%BD%A2"><span class="toc-text">6. 三角形</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-%E5%A4%9A%E8%BE%B9%E5%BD%A2"><span class="toc-text">7. 多边形</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8D%81%E4%BA%8C%E3%80%81%E5%87%A0%E4%BD%95%E6%A3%80%E6%B5%8B"><span class="toc-text">十二、几何检测</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E6%9C%80%E8%BF%91%E7%82%B9"><span class="toc-text">1. 最近点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E7%9B%B8%E4%BA%A4%E6%A3%80%E6%B5%8B%E5%88%86%E7%B1%BB"><span class="toc-text">2. 相交检测分类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-2D%E7%9B%B4%E7%BA%BF%E7%9B%B8%E4%BA%A4"><span class="toc-text">3. 2D直线相交</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-3D%E4%B8%AD%E4%B8%A4%E6%9D%A1%E5%B0%84%E7%BA%BF%E7%9B%B8%E4%BA%A4"><span class="toc-text">4. 3D中两条射线相交</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E5%B0%84%E7%BA%BF%E5%92%8C%E5%B9%B3%E9%9D%A2"><span class="toc-text">5. 射线和平面</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-AABB%E5%92%8C%E5%B9%B3%E9%9D%A2"><span class="toc-text">6. AABB和平面</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-%E4%B8%89%E4%B8%AA%E5%B9%B3%E9%9D%A2%E7%9A%84%E4%BA%A4%E7%82%B9"><span class="toc-text">7. 三个平面的交点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-%E5%B0%84%E7%BA%BF%E5%92%8C%E5%9C%86-x2F-%E7%90%83"><span class="toc-text">8. 射线和圆&#x2F;球</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9-%E4%B8%A4%E4%B8%AA%E5%9C%86-x2F-%E7%90%83"><span class="toc-text">9. 两个圆&#x2F;球</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10-%E7%90%83%E5%92%8CAABB"><span class="toc-text">10. 球和AABB</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#11-%E7%90%83%E5%92%8C%E5%B9%B3%E9%9D%A2"><span class="toc-text">11. 球和平面</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#12-%E5%B0%84%E7%BA%BF%E5%92%8C%E4%B8%89%E8%A7%92%E5%BD%A2"><span class="toc-text">12. 射线和三角形</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#13-%E4%B8%A4%E4%B8%AAAABB"><span class="toc-text">13. 两个AABB</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#14-%E5%B0%84%E7%BA%BF%E5%92%8CAABB"><span class="toc-text">14. 射线和AABB</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#15-%E5%85%B6%E4%BB%96%E6%A3%80%E6%B5%8B"><span class="toc-text">15. 其他检测</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8D%81%E4%B8%89%E3%80%81%E4%B8%89%E8%A7%92%E7%BD%91%E6%A0%BC"><span class="toc-text">十三、三角网格</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E8%A1%A8%E7%A4%BA%E6%96%B9%E6%B3%95-1"><span class="toc-text">1. 表示方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E9%A2%9D%E5%A4%96%E4%BF%A1%E6%81%AF"><span class="toc-text">2. 额外信息</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E6%8B%93%E6%89%91%E5%92%8C%E4%B8%80%E8%87%B4%E6%80%A7"><span class="toc-text">3. 拓扑和一致性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E7%BD%91%E6%A0%BC%E6%93%8D%E4%BD%9C"><span class="toc-text">4. 网格操作</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8D%81%E5%9B%9B%E3%80%81%E5%9B%BE%E5%BD%A2%E6%95%B0%E5%AD%A6"><span class="toc-text">十四、图形数学</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%9B%BE%E5%BD%A2%E7%AE%A1%E9%81%93%E6%A6%82%E8%BF%B0"><span class="toc-text">1. 图形管道概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E8%AE%BE%E7%BD%AE%E8%A7%86%E5%9B%BE%E5%8F%82%E6%95%B0"><span class="toc-text">2. 设置视图参数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E5%9D%90%E6%A0%87%E7%A9%BA%E9%97%B4"><span class="toc-text">3. 坐标空间</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E5%A4%9A%E8%BE%B9%E5%BD%A2%E7%BD%91%E6%A0%BC"><span class="toc-text">4. 多边形网格</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E7%BA%B9%E7%90%86%E6%98%A0%E5%B0%84"><span class="toc-text">5. 纹理映射</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-%E5%85%89%E7%85%A7%E5%92%8C%E9%9B%BE%E5%8C%96"><span class="toc-text">6. 光照和雾化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-%E7%BC%93%E5%86%B2%E5%8C%BA"><span class="toc-text">7. 缓冲区</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-%E8%83%8C%E9%9D%A2%E5%89%94%E9%99%A4%E4%B8%8E%E8%A3%81%E5%89%AA"><span class="toc-text">8. 背面剔除与裁剪</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9-%E5%85%89%E6%A0%85%E5%8C%96"><span class="toc-text">9. 光栅化</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8D%81%E4%BA%94%E3%80%81%E5%8F%AF%E8%A7%81%E6%80%A7%E6%A3%80%E6%B5%8B"><span class="toc-text">十五、可见性检测</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%8C%85%E5%9B%B4%E4%BD%93%E6%A3%80%E6%B5%8B"><span class="toc-text">1. 包围体检测</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E7%A9%BA%E9%97%B4%E5%88%86%E5%89%B2"><span class="toc-text">2. 空间分割</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E7%BD%91%E6%A0%BC%E7%B3%BB%E7%BB%9F"><span class="toc-text">3. 网格系统</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E5%9B%9B%E5%8F%89%E6%A0%91%E5%92%8C%E5%85%AB%E5%8F%89%E6%A0%91"><span class="toc-text">4. 四叉树和八叉树</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-BSP%E6%A0%91"><span class="toc-text">5. BSP树</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-%E5%85%A5%E5%8F%A3%E6%8A%80%E6%9C%AF"><span class="toc-text">6. 入口技术</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-%E6%BD%9C%E5%9C%A8%E5%8F%AF%E8%A7%81%E9%9B%86%EF%BC%88PVS%EF%BC%89"><span class="toc-text">7. 潜在可见集（PVS）</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8D%81%E5%85%AD%E3%80%81%E5%90%8E%E8%AE%B0%E4%B8%8E%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80"><span class="toc-text">十六、后记与数学基础</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%90%8E%E8%AE%B0"><span class="toc-text">1. 后记</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E9%99%84%E5%BD%95A%EF%BC%9A%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80"><span class="toc-text">2. 附录A：数学基础</span></a></li></ol></li></ol>
+        
+    </div>
+</aside>
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+<a id="back-to-top" class="icon-btn hide">
+    <i class="fa fa-chevron-up"></i>
+</a>
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+    访问量:
+    <strong id="busuanzi_value_site_pv">
+        <i class="fa fa-spinner fa-spin"></i>
+    </strong>
+    &nbsp; | &nbsp;
+    访客数:
+    <strong id="busuanzi_value_site_uv">
+        <i class="fa fa-spinner fa-spin"></i>
+    </strong>
+    
+</div>
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy;
+                    2022
+                    
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script async src="//vercount.one/js"></script>
+
+
+<script src="/js/app.js?rev=@@hash.js"></script>
+
+
+<div class="hide">
+    <script type="text/javascript">
+    var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+    document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+</div>
+
+
+
+
+</body>
+</html>

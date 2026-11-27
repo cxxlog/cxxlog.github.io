@@ -1,0 +1,890 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+<head>
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="Hexo">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="theme-version" content="1.0.0">
+    <meta name="root" content="/">
+    <link rel="dns-prefetch" href="https://cxxlog.github.io">
+    <!--SEO-->
+
+<meta name="keywords" content="图形学,GPU编程,Cg语言" />
+
+
+<meta name="description" content="序
+以下为作者康玉之原书序言，完整收录。
+
+26 年前，江汉平原的一个农家女人在身边无人的情况下生下了一名男婴，有人看到后叫来了男孩的外婆，外婆剪断了脐带。起初很多人都以为会是一个女孩，都劝她打..." />
+
+
+<meta name="robots" content="all" />
+<meta name="google" content="all" />
+<meta name="googlebot" content="all" />
+<meta name="verify" content="all" />
+    <!--Title-->
+
+<title>
+    
+    《GPU编程与CG语言》全书内容提炼总结 |
+    
+    Hexo
+</title>
+
+<link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+
+
+<link rel="icon" href="/favicon.ico">
+
+    
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7.css">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.7.0.css">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash.css">
+
+    
+
+<meta name="generator" content="Hexo 6.2.0"></head>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+<body>
+    <header class="main-header"  style="background-image:url(
+    /img/banner.jpg)"
+     >
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title='cxx'>
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+            <!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+            <img src="/img/branding.png" alt="Snippet 博客主题" class="img-responsive center-block">
+            
+        </div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                        <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="https://cxxlog.github.io">
+                        Hexo</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/"><i class="fa "></i>
+                                首页</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/archives/"><i class="fa "></i>
+                                时间轴</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/guestbook/"><i class="fa "></i>
+                                留言</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="《GPU编程与CG语言》全书内容提炼总结">
+            
+            《GPU编程与CG语言》全书内容提炼总结
+            
+        </h1>
+        <div class="post-meta">
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a class="category-link" href="/categories/notes/">notes</a>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+            <a class="tag-none-link" href="/tags/Cg%E8%AF%AD%E8%A8%80/" rel="tag">Cg语言</a> <a class="tag-none-link" href="/tags/GPU%E7%BC%96%E7%A8%8B/" rel="tag">GPU编程</a> <a class="tag-none-link" href="/tags/%E5%9B%BE%E5%BD%A2%E5%AD%A6/" rel="tag">图形学</a>
+            
+        </span>
+    </span>
+    
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-clock-o"></i>
+        <span class="date-meta">
+            2026/11/27</span>
+    </span>
+    
+    <span class="fa-wrap">
+        <i class="fa fa-eye"></i>
+        <span id="busuanzi_value_page_pv"></span>
+    </span>
+    
+    
+</div>
+        
+        
+    </div>
+    
+    <div class="post-body post-content">
+        <h1 id="序"><a href="#序" class="headerlink" title="序"></a>序</h1><blockquote>
+<p>以下为作者康玉之原书序言，完整收录。</p>
+</blockquote>
+<p>26 年前，江汉平原的一个农家女人在身边无人的情况下生下了一名男婴，有人看到后叫来了男孩的外婆，外婆剪断了脐带。起初很多人都以为会是一个女孩，都劝她打掉这个孩子，而她还是坚持生了下来。</p>
+<p>男孩4 岁时，由于家里忙没有功夫照看，于是女人用一卷毯子裹着他去学校报名读书，说他已经7 岁了。</p>
+<p>男孩17 岁那年，考上了武汉大学。爸爸妈妈一起送他到武汉读书，爸爸妈妈还很有力气，扛着几十斤的行李很轻松，男孩那个时候不知道麦当劳，不知道电脑如何开机，不知道什么叫上网。他们对男孩说，要好好读书，多学东西，和同学好好相处，到了大三可以找女朋友。</p>
+<p>5 年前，他来到了北京读研。爸爸妈妈一起送他到北京，那个时候他们头发还没有完全白，扛着行李也觉得有点吃力了，到颐和园玩之前先带上水、方便面和几个馒头。他们对男孩说，等他毕业时，再来北京玩，要慢慢适应北方的天气，多喝水，用菊花和甘草泡水喝，要注意穿衣，不要让人瞧不起。</p>
+<p>2 年前，他毕业了，在一家研究所找了一份工作，拿到了北京户口，爸爸妈妈来北京玩了一次，打算一家人在北京过年，他们的头发白了不少，拿着行李很辛苦，行李里面是吃的、锅、中草药、被子等。他们说，你要做一个好人，亲戚有事情，你要帮忙，不要骄傲，要攒钱买房子，准备结婚。</p>
+<p>你们赐予我生命，一直坚持要我和姐姐都上大学。对于一个普通的家庭而言，同时负担两个孩子上大学，是一件多么艰难的事情！</p>
+<p>二十多年过去有如瞬刹的流水，感谢你们，我的父亲母亲。</p>
+<br/>
+
+<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><blockquote>
+<p>以下为作者原书前言，完整收录。</p>
+</blockquote>
+<p>在我读研期间，对国内的研究风气经历了从期待、到失望的过程。原因在于，工程化的迹象太过明显，我的观点并不排斥工程化，但是以研究的名义，行工程化之实，并将工程化中根深蒂固的“急功近利”带到整个过程中，最后不得不在匆忙中以“略可充数的软件”和“流于表面的技术论文，粉饰以复杂深奥的术语和图表”来结尾，这实在是一种悲哀。对于广大的研究人员和学生而言，已经是一种无奈。</p>
+<p>很多人都说，这是教授的错，也有很多人都说，这是学生的错，学风不正！我最开始也这么认为，随着所见愈多，却又困惑。其实大部分的教授都是希望有一番作为的，也是希望可以严格要求学生的，但是现在的大趋势是“权力决定学术”以及“钻营决定利益”，于是很少有人可以在“所有人都进行利益争食”时，还静心研究，实际上，就算静心研究，也没有这个条件。研究过程需要经费进行保证，而不去钻营，不去附和哪些狗屁不懂的人，就没有办法拿到经费。大量的课题原本应该从实际需求中提炼出来的，但随着行政体制的流转，最后演变成为了“媚上”和“附和”而进行的选美比赛。而申请材料的撰写目标，也变成了为了好看和吸引眼球而组建的“花哨”课题。</p>
+<p>除此之外，研究人员难！很多研究工作需要依靠博士，但是中国博士的待遇低，前途未卜是众所周知的。一个花哨的课题，加上一个每天想着结婚、吃饭的穷博士，结果是可想而知的。</p>
+<p>我工作之后发现，与学校的科研情况相比，社会上的IT混乱情况有过之而无不及。刚工作初，曾在一次很大的项目验收中听到这么一句话“软件鉴定会就是软件追悼会”。再加上国人不重基础研究，在我工作之初，一个很大的苦恼是，很多人都觉得计算机图形学不属于计算机科学，他们认为计算机图形学只是“使用软件去建模，是美工”，当有人发现我从本科到研究生都是计算机系的学生时，还非常夸张的表达了他们的惊讶。更有一个领导对我说“计算机图形学是一门很小的学科……”，她似乎觉得看过人月神话、软件工程之类的书，就是大牛了，才是真正的计算机科学。</p>
+<p>这些情况让我困惑了很久，我的师兄师弟师姐师妹，目前还在计算机图形学领域的人，已经屈指可数。回想这5 年来的所经所历，得出的结论是：中国的科学研究已然被功利化、制度化。</p>
+<p>被功利化的学术，失去了方向，变得鼠目寸光，无法容忍长时间的基础积累，一味幻想空中楼阁式的成功。是呀，没有学术的成功，哪有领奖的资格，哪有白花花的银子？我坚决认为，中国必然存在很多像爱迪生一样的天才，但是中国没有一个上位者可以容忍一千次的失败，所以中国的爱迪生无法发明电灯，也无法用智慧照亮别人和自己！</p>
+<p>被制度化的学术失去了灵性和创造性，而奴性则越来越重！处于这种氛围的人会从最初的挣扎到慢慢的习惯，到最后成了坚定的捍卫者，因为他们已然失去了活力，已然要依赖这种制度而生存，就好比长在大树上的寄生植物一般。这些人每天说着“假大空”的“真善美”，创造性实际上变成了嘴巴上的大跃进。也确实是嘴巴上的大跃进，从东吃到西，从南吃到北，从河鲜吃到海鲜，油乎乎的嘴巴中一个一个世界空白被填补。</p>
+<p>这种现状和柏林墙很像呀！曾看过一段关于柏林墙的评价，堪称经典：</p>
+<blockquote>
+<p>世界上的围墙都是防止外面的人闯进来，只有一种围墙是防止里面的人出去的，那是什么？那就是监狱的围墙！在这样的墙里面是什么地方？那不就是监狱吗？</p>
+</blockquote>
+<p>我无意去批评任何人，这种现状的产生并非一朝一夕，一人之力。在这个漩涡中的每个人都身不由己，被动或主动的去忽略科学，正视利益。</p>
+<p>科学工作者没有独立的人格和意愿，面对的只是官本位和市场经济的强烈压力，在这种情况下，中国想要获得诺贝尔奖实在是天方夜谭！</p>
+<p>请原谅我发这么多牢骚，不过此书正是在有点怨气的情况下写出的。我想让更多的人了解计算机图形学，了解GPU 编程，而不是认为那是很遥远很飘渺的事情。当我查询Cg 语言的文献时，NVIDIA 公司出的CgUsersManual 一书已经有了日文版的翻译，而中文版的却还未出现；当我研究体绘制算法时，到处寻找用于实验的体数据，在中文网站上未曾发现。</p>
+<p>虽然我一向要求自己做一块坚硬的石头，但是面对不确定的未来难免有惴惴不安之感。正所谓人生失意无南北，或许有一天我的职业生涯走到了无路可回的境地，不得不放弃自己的专业，今天留下点回忆也不错。</p>
+<p>最后，愿中国的学术可以“天地开辟，日月重光”！</p>
+<blockquote>
+<p>天地漫漫，浩瀚史诗<br>金黄，那神性灿烂的光芒<br>没有一种爱<br>没有一种情<br>可以在自由之上<br>星辰如海啊<br>请听我倾说<br>我的爱人很不一般<br>那是天地之外的逍遥自在</p>
+</blockquote>
+<br/>
+
+<h1 id="全书结构"><a href="#全书结构" class="headerlink" title="全书结构"></a>全书结构</h1><p>本书（康玉之著，2009年9月，半山工作室）共五部分十五章，另附三个附录：</p>
+<ol>
+<li><strong>GPU 基础</strong>（第1~3章）：GPU 发展历史、GPU 图形绘制管线、Shader Language 原理——GPU 编程的铸基之石。</li>
+<li><strong>Cg 语言</strong>（第4~8章）：以 The Cg Tutorial 和 Cg Toolkit User’s Manual 为基础，讲解 Cg 语法与编程方法。</li>
+<li><strong>光照模型</strong>（第9~11章）：经典光照模型、Cook-Torrance&#x2F;BRDF 高级光照模型、透明光照模型与环境贴图。</li>
+<li><strong>投影纹理映射与阴影</strong>（第12~13章）：既基础又重要，体绘制、软阴影等前沿课题的常用技术。</li>
+<li><strong>体绘制</strong>（第14~15章）：体绘制知识与 GPU 光线投射（Ray Casting）算法。</li>
+</ol>
+<p>附录：齐次坐标、体绘制的医学历程（CT）、模板阴影（Stencil Shadow）。</p>
+<br/>
+
+<h1 id="一、绪论"><a href="#一、绪论" class="headerlink" title="一、绪论"></a>一、绪论</h1><h2 id="1-1-GPU-发展历程"><a href="#1-1-GPU-发展历程" class="headerlink" title="1.1 GPU 发展历程"></a>1.1 GPU 发展历程</h2><ul>
+<li>20世纪70年代末~80年代初：GPU 概念提出，单片集成电路图形芯片，仅能快速合成几张图片。</li>
+<li>80年代末~90年代初：基于 DSP 芯片的 GPU，更快更贵。1991年 S3 推出第一个单芯片 2D 加速器，1995年主流厂商普遍支持。</li>
+<li><strong>1998年为分界</strong>：此前称 pre-GPU 时期（SGI、Evans &amp; Sutherland 等），此后称 modern GPU，分四代：<ul>
+<li>第一代（1998，NVIDIA TNT2、ATI Rage、3Dfx Voodoo3）：可独立于 CPU 更新像素缓存区、光栅化三角面片、纹理操作，但<strong>不能做三维顶点坐标变换</strong>。</li>
+<li>第二代（1999~2000，GeForce256、GeForce MAX、Radeon 7500）：硬件 T&amp;L（三维坐标变换和光照计算），OpenGL&#x2F;DX7 提供接口；纹理扩展到 cube map。此前只有高级工作站才支持快速顶点变换。</li>
+<li>第三代（2001，GeForce 3、GeForce 4Ti、ATI 8500）：提供 <strong>vertex programmability</strong>（顶点编程能力）——GPU 编程的本质，确立的编程思想延续至今；但尚不支持 fragment programmability。</li>
+<li>第四代（2002末~2003，GeForce FX、Radeon 9700）：同时支持顶点与片段可编程。<strong>2003年起可编程图形硬件正式诞生，GPU 编程宣告诞生。</strong></li>
+</ul>
+</li>
+<li>modern GPU 晶体管数远超 CPU（Pentium IV 5500万，GeForce FX 1.25亿，7800 GTX 3.02亿）。</li>
+</ul>
+<p><strong>最新可编程图形硬件的能力</strong>：顶点&#x2F;片段可编程；IEEE 32位浮点；4元向量、4阶矩阵；分支与循环指令；高带宽内存传输（&gt;27.1GB&#x2F;s）；1D&#x2F;2D&#x2F;3D 纹理查询且极快；支持 RTT（Render to Texture，绘制到纹理）。</p>
+<h2 id="1-2-GPU-VS-CPU"><a href="#1-2-GPU-VS-CPU" class="headerlink" title="1.2 GPU VS CPU"></a>1.2 GPU VS CPU</h2><ul>
+<li>结构差异：CPU 大部分面积为控制器和寄存器；GPU 拥有更多 ALU，适合<strong>密集型数据的并行处理</strong>。</li>
+<li>GPU 采用流式并行计算模式：“对数据进行独立计算”（流内任意元素的计算不依赖其它同类型数据，如一个顶点的世界位置不依赖其他顶点）+“多个数据同时运算，并行时间等于单个数据执行时间”。CPU 上用循环遍历像素的代码，GPU 上一条语句即可。</li>
+<li><strong>GPU 不能取代 CPU</strong> 的三点理由：<ol>
+<li>“元素计算相互独立”的特性，导致<strong>需要数据相关性信息的算法难以实现</strong>（如射线与不规则物体求交）。</li>
+<li>控制流弱：控制器少，早期 profile（OpenGL fp2.0&#x2F;fp3.0、DirectX ps_4_0 之前）不支持或不完全支持循环控制流。</li>
+<li>入门门槛高：必须掌握图形学知识和图形 API，学习周期长；早期只能用汇编编程。</li>
+</ol>
+</li>
+</ul>
+<h2 id="1-3-国内外研究现状"><a href="#1-3-国内外研究现状" class="headerlink" title="1.3 国内外研究现状"></a>1.3 国内外研究现状</h2><ul>
+<li>基于 GPU 的科学可视化计算已成为主流：体绘制中的光线投射等 CPU 上耗时的算法可成功移植到 GPU。</li>
+<li>GPGPU（GPU 通用计算）热点：线性代数、物理仿真、光线跟踪均已移植成功；国内中科院计算所做过基于 GPU 的串匹配算法。</li>
+<li>高级着色语言研究：斯坦福 BROOKGPU（类 C 流处理语言，实时编译器，后由 AMD 深入研发）；浙江大学研究高级着色语言编译系统。</li>
+</ul>
+<h1 id="二、GPU-图形绘制管线"><a href="#二、GPU-图形绘制管线" class="headerlink" title="二、GPU 图形绘制管线"></a>二、GPU 图形绘制管线</h1><p>图形绘制管线描述 GPU 渲染流程：给定视点、三维物体、光源、照明模式和纹理，如何绘制一幅二维图像。《实时计算机图形学》将其分为三个主要阶段：</p>
+<h2 id="2-1-三个阶段"><a href="#2-1-三个阶段" class="headerlink" title="2.1 三个阶段"></a>2.1 三个阶段</h2><ol>
+<li><strong>应用程序阶段</strong>（CPU、高级语言）：碰撞检测、场景图建立、空间八叉树更新、视锥裁剪等经典算法在此执行。阶段末端几何体数据（顶点坐标、法向量、纹理坐标、纹理）经<strong>数据总线</strong>传到图形硬件（时间瓶颈）。端口、总线、带宽概念：端口是两设备间的传送通道，总线是可共享通道，带宽描述吞吐量（b&#x2F;s）。</li>
+<li><strong>几何阶段</strong>（GPU）：顶点坐标变换、光照、裁剪、投影、屏幕映射。末端得到变换投影后的顶点坐标、颜色、纹理坐标。</li>
+<li><strong>光栅化阶段</strong>（GPU）：为像素正确配色，进行单个像素的操作，信息存入 color buffer&#x2F;frame buffer。</li>
+</ol>
+<p><strong>易混淆点</strong>：光照计算属于<strong>几何阶段</strong>（涉及视点、光源、物体世界坐标，通常在世界坐标系计算）；雾化和透明度计算属于<strong>光栅化阶段</strong>（需要深度值 Z，而 Z 在几何阶段算出并传入）。</p>
+<h2 id="2-2-几何阶段：四个坐标空间的变换"><a href="#2-2-几何阶段：四个坐标空间的变换" class="headerlink" title="2.2 几何阶段：四个坐标空间的变换"></a>2.2 几何阶段：四个坐标空间的变换</h2><p>显示屏是二维的，GPU 要把三维数据画到二维屏幕上并达到“跃然纸面”的效果——顶点变换的每个过程都为此服务。</p>
+<ol>
+<li><strong>object space → world space</strong><ul>
+<li>object space 坐标即模型文件中的顶点值（建模时得到，如 .max 文件），与其他物体没有任何参照关系——这是它与 world space 区分的关键。</li>
+<li>world space 是相对于固定坐标原点的位置，变换由四阶 world matrix 控制。</li>
+<li>光照计算通常在世界坐标空间进行（符合生活常识）。</li>
+<li><strong>重点</strong>：顶点法向量在模型文件中属于 object space，必须转换到 world space 才能使用，但转换矩阵<strong>不是 world matrix</strong>，而是 <strong>world matrix 转置矩阵的逆矩阵</strong>（worldMatrix_IT）。很多人把两者当同一个，产生难以查找的错误。</li>
+</ul>
+</li>
+<li><strong>world space → eye space</strong><ul>
+<li>eye space 以 camera 为原点，由视线方向、视角和远近平面组成梯形体 <strong>viewing frustum（视锥）</strong>。近平面为投影平面；梯形体内顶点可见，之外的被去除（Frustum Culling 视锥裁剪）。</li>
+</ul>
+</li>
+<li><strong>eye space → project and clip space</strong><ul>
+<li>常见误解是“先裁剪再投影”，实际是：在不规则视锥中裁剪困难，所以<strong>先经透视变换矩阵把顶点从视锥变换到规范立方体 CVV</strong>（Canonical view volume，对角顶点 (-1,-1,-1)~(1,1,1)），<strong>在 CVV 中完成裁剪，再做屏幕映射</strong>。CVV 近平面的 X、Y 对应屏幕像素坐标（左下角 0,0），Z 代表像素深度。</li>
+<li>投影方法两种：正投影（平行投影）和透视投影（更符合视觉习惯）。</li>
+<li>视锥剔除也可在 CPU 用高级语言实现：完全不在视锥中的实体网格不必传入 GPU，可极大减轻 GPU 负担（可参阅 OGRE 源码）。</li>
+</ul>
+</li>
+</ol>
+<h2 id="2-3-Primitive-Assembly-amp-amp-Triangle-Setup"><a href="#2-3-Primitive-Assembly-amp-amp-Triangle-Setup" class="headerlink" title="2.3 Primitive Assembly &amp;&amp; Triangle Setup"></a>2.3 Primitive Assembly &amp;&amp; Triangle Setup</h2><ul>
+<li><strong>图元装配</strong>：根据 primitive 连接关系，按索引把顶点还原成网格结构（线、面单元）；对超出屏幕的三角形裁剪（如一顶点在画面外、两点在内，屏幕上看到四边形，切成两个小三角形）。</li>
+<li><strong>Triangle Setup</strong>：处理三角形。根据顶点顺序（右手定则）决定法向量朝向，法向量朝向视点为正面（一般顶点按逆时针排列），反面进行<strong>背面剔除</strong>（Back-face Culling）。</li>
+<li>所有裁剪剔除的目的都是<strong>减少需要绘制的顶点个数</strong>。裁剪算法包括：视域剔除、背面剔除、遮挡剔除、视口裁剪。</li>
+</ul>
+<h2 id="2-4-光栅化阶段"><a href="#2-4-光栅化阶段" class="headerlink" title="2.4 光栅化阶段"></a>2.4 光栅化阶段</h2><ul>
+<li><strong>Rasterization</strong>：决定哪些像素被几何图元覆盖的过程。两个问题：①屏幕坐标是浮点数，像素是整数点——绘制位置只能接近实际位置，如 (10.48, 20.51) 转换为像素 (10, 21)；②如何画线&#x2F;填充三角形——画线算法有 DDA、Bresenham；区域填充有扫描线多边形填充、边界填充等。</li>
+<li><strong>Pixel Operation</strong>（Raster Operation）：更新帧缓存前最后一系列针对每个片段的操作：<ol>
+<li>消除遮挡面（深度测试）；</li>
+<li>纹理操作：按像素纹理坐标查询纹理值；</li>
+<li><strong>Blending 混色</strong>：按 alpha 值将已画颜色与正在计算的颜色混合（alpha 混合技术）。over 操作符：<code>C_d = α·C_s + (1-α)·C_d</code>（α 为透明度，Cs 透明物体颜色，Cd 混合前像素颜色；该过程称为合成 compositing，OGRE 中的 compositor 即此技术）。<strong>绘制透明物体需要排序</strong>：先画不透明物体，再按由后到前的顺序混合透明物体，任意顺序混合会严重失真；</li>
+<li>Filtering 滤波：颜色经某种数学运算后输出新颜色值。</li>
+</ol>
+</li>
+</ul>
+<h2 id="2-5-图形硬件"><a href="#2-5-图形硬件" class="headerlink" title="2.5 图形硬件"></a>2.5 图形硬件</h2><ul>
+<li><strong>寄存器 vs 内存</strong>：寄存器是 CPU&#x2F;GPU 内部的存储单元（嵌入其中），内存可独立存在；寄存器是有限容量的高速存储部件，暂存指令、数据和位址。</li>
+<li><strong>Z Buffer（深度缓冲区）</strong>：存放视点到每个像素对应空间点的距离衡量（Z 值&#x2F;深度值），范围 [0,1]：近裁减面为 0.0，远裁减面为 1.0。深度缓冲区算法（Z 缓冲区算法）即比较每个像素的 Z 值。<ul>
+<li>Z 值<strong>不是</strong>欧几里德距离，而是保留相对大小关系的“相对度量”。计算公式（Steve Baker）：<code>z_buffer_value = (a*z + b) &lt;&lt; N</code>，其中 <code>a = f/(f-n)</code>，<code>b = fn/(n-f)</code>（f、n 为到远&#x2F;近裁减面距离，N 为 Z 值精度）。</li>
+<li><strong>Z 值不一定是线性的</strong>：正投影中相邻像素 Z 值线性；透视投影中非线性，且离视点越远越明显——投影面等步长对应的空间步长随距离增加而变长，线性插值的 Z 值不能反映真实深度，会导致物体显示顺序错乱（游戏中远处面片交叠）。</li>
+<li>缓解方法：远&#x2F;近裁减面比值尽量小于 1000（近截面远离眼睛可降低比值，副作用是可能裁掉眼前物体）。Z buffer 有 16&#x2F;24&#x2F;32 位；精度不足时相距很近的物体会随机遮挡，称 <strong>flimmering &#x2F; Z-fighting</strong>。</li>
+</ul>
+</li>
+<li><strong>Stencil Buffer（模板缓冲区）</strong>：额外的“做记号”的 buffer，通常附加在 z buffer 中（如 24 位 z + 8 位 stencil 共 4 字节），两者常共享显存同一区域。如某像素 stencil 存 1 表示该点处于阴影体（shadow volume）中。</li>
+<li><strong>Frame Buffer（帧缓冲器）</strong>：存放显示输出数据（像素颜色值），有时被认为是 color buffer 和 z buffer 的组合。通常在显卡上；若显卡集成在主板上，则放在主内存。</li>
+</ul>
+<h1 id="三、Shader-Language"><a href="#三、Shader-Language" class="headerlink" title="三、Shader Language"></a>三、Shader Language</h1><ul>
+<li>shader language（着色语言）：基于物体本身属性和光照条件，计算每个像素的颜色值。早期目标是对图形处理算法的加强控制，现早已用于通用计算。</li>
+<li>定位为高级语言（GLSL 全称 High Level Shading Language、Cg 全称 C for Graphic，语法类似 C），但<strong>完全依赖 GPU 架构，不能独立于硬件</strong>——GPU 编程技术的发展本质上还是图形硬件的发展。</li>
+<li>三种主流语言：基于 OpenGL 的 <strong>GLSL</strong>、基于 Direct3D 的 <strong>HLSL</strong>、NVIDIA 的 <strong>Cg</strong>。</li>
+</ul>
+<h2 id="3-1-原理"><a href="#3-1-原理" class="headerlink" title="3.1 原理"></a>3.1 原理</h2><ul>
+<li>GPU 两个可编程组件：<strong>Programmable Vertex Processor</strong>（顶点着色器）运行顶点程序；<strong>Programmable Fragment Processor</strong>（片段着色器）运行片段程序。两者都擅长并行计算和不高于 4 阶的矩阵运算；片段处理器还可高速查询纹理（当时顶点处理器不能，这是其发展方向）。</li>
+<li>分工：<strong>Vertex program 负责顶点坐标变换；Fragment program 负责像素颜色计算；前者的输出是后者的输入。</strong></li>
+<li>可编程图形硬件输入&#x2F;输出：输入寄存器（图元信息）、输出寄存器、纹理 buffer（当时仅片段处理器可用）、常量寄存器（宿主程序传入常量）、临时寄存器（执行中临时数据）。</li>
+<li>GPU 并行处理：<strong>每个顶点数据都会执行一次顶点程序，每个片段都会执行一次片段程序。</strong></li>
+<li>可以只有顶点着色程序：此时只处理顶点，面片内部点按硬件默认插值（Gourand 明暗处理会出现马赫带效应；快速 phong 明暗处理较好）。片段程序对每个片段独立计算，可控性好、效果更好。</li>
+<li><strong>片段 vs 像素</strong>：片段是所有三维顶点光栅化之后的数据集合，<strong>还没经过深度值比较</strong>；屏幕显示的像素都经过深度比较。</li>
+</ul>
+<h2 id="3-2-Cg-VS-GLSL-VS-HLSL"><a href="#3-2-Cg-VS-GLSL-VS-HLSL" class="headerlink" title="3.2 Cg VS GLSL VS HLSL"></a>3.2 Cg VS GLSL VS HLSL</h2><ul>
+<li>GLSL 语法自成一家；HLSL 和 Cg 语法基本相同——学一种等于学两种。</li>
+<li>HLSL 移植性差，windows 平台一家独大，多用于游戏领域。</li>
+<li><strong>Cg 的两个优势</strong>：<ol>
+<li>Cg 可被 OpenGL 和 Direct3D 广泛支持，是两者<strong>上层</strong>的语言（Cg 程序运行在 OpenGL&#x2F;DX 标准顶点和像素着色的基础上），跨平台。</li>
+<li>Cg 是 Microsoft 与 NVIDIA 协作产物（与 HLSL 同源），HLSL 代码常可直接当 Cg 用。</li>
+</ol>
+</li>
+<li>Cg &#x3D; C for graphics，设计初衷是“让基于图形硬件的编程变得和 C 语言编程一样方便、自由”，语法基于 C，保留 C 的大部分语义。</li>
+</ul>
+<h1 id="四、Cg-语言概述"><a href="#四、Cg-语言概述" class="headerlink" title="四、Cg 语言概述"></a>四、Cg 语言概述</h1><ul>
+<li>Cg（C for Graphics）：NVIDIA 与 Microsoft 合作研发的高级语言，语法类似 C，着色程序默认后缀 <code>*.cg</code>。语言规范公开，编译器源码开放、免费无限制许可证。</li>
+<li>编译器 <code>cgc.exe</code>（Cg Toolkit，2009年10月版本 2.2）；无主流着色 IDE，可用 VS2008 插件 NShader。</li>
+</ul>
+<h2 id="4-1-编译原理"><a href="#4-1-编译原理" class="headerlink" title="4.1 编译原理"></a>4.1 编译原理</h2><ul>
+<li>静态编译：编译成可执行文件后运行期不再需要源码；动态编译：编译程序和源码都参与运行。</li>
+<li><strong>Cg 通常采用动态编译</strong>：宿主程序运行时用 Cg Runtime library 动态编译，Cg 程序可当脚本随时改随时跑（OGRE 即如此）；也支持静态编译（编译成汇编链接进可执行文件，不公开源码）。</li>
+<li>编译流程：Cg 程序 → 翻译成图形 API（OpenGL&#x2F;D3D）可接受的形式 → 驱动程序翻译成 GPU 硬件可执行格式。</li>
+<li>编译依赖宿主程序使用的三维编程接口<strong>和图形硬件环境</strong>：硬件不支持的语句无法通过编译。</li>
+<li><strong>Cg Profile</strong>：被特定图形硬件环境或 API 支持的 Cg 语言子集。分顶点 profile 和片段 profile（两者本就工作在不同硬件单元）。写着色程序首先要考虑“当前图形硬件支持哪个 profile”。</li>
+</ul>
+<h2 id="4-2-cgc-编译命令"><a href="#4-2-cgc-编译命令" class="headerlink" title="4.2 cgc 编译命令"></a>4.2 cgc 编译命令</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cgc -profile glslv -entry main_v test.cg</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>-profile</code> 指定 profile（如 glslv），<code>-entry</code> 指定入口函数名（默认 main；书中约定 main_v 顶点入口、main_f 片段入口），文件必须带 <code>.cg</code> 后缀。</li>
+<li>注意事项：<ol>
+<li>编译顶点程序必须用顶点 profile，片段同理——顶点、片段 profile 混用会出错。</li>
+<li>使用 profile 不支持的语句报错，如 tex2D 不被 fp20 支持：<code>error C3004: function &quot;tex2D&quot; not supported in this profile</code>，改用 fp30 可通过。<strong>循环语句 for&#x2F;while 只被 vs_2_x、vp30、vp40、fp40 等少量 profile 完全支持</strong>；其他 profile 中需编译器能完全展开（编译期确定迭代次数）才行，否则常报 <code>error c6003: instruction limit exceeded</code>——没把握就不要在低级 profile 中用循环。</li>
+<li><code>-o</code> 可将 Cg 程序转换为 GLSL&#x2F;HLSL 代码，如 <code>cgc -profile glslv -o direct.glsl -entry main_v test.cg</code>。</li>
+<li><strong>隐蔽行为</strong>：着色程序中未对最终输出做贡献的变量，编译时该部分代码被忽略（检查语法但不编译成汇编）；若这些变量是宿主程序传入的，宿主的接口函数可能报“找不到该变量”，问题难以查明。</li>
+</ol>
+</li>
+<li><strong>GPU 编程最令人崩溃的一点：无法跟踪调试着色程序</strong>。语法错误靠编译器，逻辑错误只能逐行人为分析。要注重逻辑严密性、代码组织结构，勤加注释。</li>
+</ul>
+<h2 id="4-3-常用-Profiles"><a href="#4-3-常用-Profiles" class="headerlink" title="4.3 常用 Profiles"></a>4.3 常用 Profiles</h2><ul>
+<li>OpenGL：arbvp1&#x2F;arbfp1（ARB）、vp40&#x2F;fp40（NV40）、vp30&#x2F;fp30（NV30）、vp20&#x2F;fp20（NV2X）。</li>
+<li>DirectX 9：vs_2_x、vs_2_0；ps_2_x、ps_2_0。DirectX 8：vs_1_1；ps_1_3、ps_1_2、ps_1_1。</li>
+</ul>
+<h1 id="五、Cg-数据类型"><a href="#五、Cg-数据类型" class="headerlink" title="五、Cg 数据类型"></a>五、Cg 数据类型</h1><h2 id="5-1-基本数据类型（7-种）"><a href="#5-1-基本数据类型（7-种）" class="headerlink" title="5.1 基本数据类型（7 种）"></a>5.1 基本数据类型（7 种）</h2><table>
+<thead>
+<tr>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>float</td>
+<td>32 位浮点，被所有 profile 支持（DX8 pixel profile 部分操作降低精度&#x2F;范围）</td>
+</tr>
+<tr>
+<td>half</td>
+<td>16 位浮点</td>
+</tr>
+<tr>
+<td>int</td>
+<td>32 位整型，有些 profile 将其按 float 使用</td>
+</tr>
+<tr>
+<td>fixed</td>
+<td>12 位定点数，被所有 fragment profiles 支持</td>
+</tr>
+<tr>
+<td>bool</td>
+<td>用于 if 和条件操作符</td>
+</tr>
+<tr>
+<td>sampler*</td>
+<td>纹理对象句柄，6 类：sampler、sampler1D、sampler2D、sampler3D、samplerCUBE、samplerRECT（DirectX profiles 不支持 RECT）</td>
+</tr>
+<tr>
+<td>string</td>
+<td>字符类型，不被现有 profile 支持，可通过 Cg runtime API 声明赋值，保存 Cg 文件信息</td>
+</tr>
+</tbody></table>
+<ul>
+<li><strong>内置向量类型</strong>：基于基本类型，如 float4、bool4；<strong>最长不超过 4 元</strong>（float5 报错）。初始化 <code>float4 a = float4(1.0,2.0,3.0,4.0)</code>；短向量可构建长向量 <code>float4 b = float4(a, 0.0, 0.0)</code>。</li>
+<li><strong>矩阵类型</strong>：最大 4×4 阶。<code>float1x1</code> 等价于 float；x 是字符不是乘号。初始化 <code>float2x3 m = &#123;1.0,2.0,3.0,4.0,5.0,6.0&#125;</code>。</li>
+<li><strong>关键区别</strong>：Cg 中向量、矩阵是<strong>内置数据类型</strong>（矩阵基于向量），数组是<strong>数据结构</strong>，不是内置类型——与 C&#x2F;C++ 中三者同属数据结构不同。</li>
+</ul>
+<h2 id="5-2-数组类型"><a href="#5-2-数组类型" class="headerlink" title="5.2 数组类型"></a>5.2 数组类型</h2><ul>
+<li>主要用途：作为从外部应用程序传入大量参数到顶点程序的<strong>形参接口</strong>（如蒙皮矩阵数组、光照参数数组）。</li>
+<li>声明如 <code>float a[10]</code>、<code>float4 b[10]</code>；初始化 <code>float a[4] = &#123;1.0,2.0,3.0,4.0&#125;</code>；取长度 <code>a.length</code>；多维数组 <code>float b[2][3]</code>，<code>b.length</code> 为 2、<code>b[0].length</code> 为 3。</li>
+<li>数组≠矩阵：4×4 数组是包含 16 个 float 的数据结构，float4x4 是 4 阶矩阵数据；<code>float4x4 M[4]</code> 是含 4 个 4 阶矩阵的数组。</li>
+<li>声明数组变量必须指定长度（<strong>形参数组除外</strong>）；当前 profiles 中数组长度和元素地址必须在<strong>编译时</strong>可知。</li>
+</ul>
+<h2 id="5-3-结构类型"><a href="#5-3-结构类型" class="headerlink" title="5.3 结构类型"></a>5.3 结构类型</h2><ul>
+<li>声明、使用类似 C++；成员变量+成员函数，用 <code>.</code> 引用；默认访问属性类似 public 的 struct。以封装为主，<strong>不支持继承</strong>。</li>
+<li>限制：当前所有 profile 下，成员函数若使用某成员变量，该变量必须<strong>声明在前</strong>；成员函数能否重载依赖 profile。</li>
+<li><strong>惯例</strong>：Cg 源码在文件首部定义两个结构体，分别定义输入和输出类型，成员还定义<strong>绑定语义类型</strong>（POSITION、COLOR、NORMAL、TEXCOORD 等），用于与宿主环境交换数据时识别类型。顶点程序向片段程序传递数据较多时，用结构体大大方便编写维护。</li>
+</ul>
+<h2 id="5-4-接口类型与类型转换"><a href="#5-4-接口类型与类型转换" class="headerlink" title="5.4 接口类型与类型转换"></a>5.4 接口类型与类型转换</h2><ul>
+<li>接口（Interfaces）类型尚不完善（不能被扩展和包含），GPU 编程规模小，很少使用。</li>
+<li>类型转换类似 C：隐式转换从低精度到高精度（<code>float c = a + b</code> 中 half 自动转 float）；有类型变量与无类型常量运算时，常量不做转换；常量可加类型后缀：<code>f</code>（float）、<code>h</code>（half）、<code>x</code>（fixed），如 <code>2.0h</code>。</li>
+</ul>
+<h1 id="六、Cg-表达式与控制语句"><a href="#六、Cg-表达式与控制语句" class="headerlink" title="六、Cg 表达式与控制语句"></a>六、Cg 表达式与控制语句</h1><h2 id="6-1-操作符"><a href="#6-1-操作符" class="headerlink" title="6.1 操作符"></a>6.1 操作符</h2><ul>
+<li><strong>关系操作符</strong>（&lt; &lt;&#x3D; !&#x3D; &#x3D;&#x3D; &gt;&#x3D; &gt;）和<strong>逻辑操作符</strong>（&amp;&amp; || !）都返回 bool，统称 boolean operator。<strong>可用于向量</strong>：二元操作要求两向量长度一致，逐分量运算，返回同长度 bool 向量，如 <code>bool3 c = a &lt; b</code>。</li>
+<li><strong>&amp;&amp; 和 || 不存在 C 中的短路现象</strong>：所有操作数都进行 bool 分析。</li>
+<li><strong>数学操作符</strong>（* &#x2F; - + % ++ – *&#x3D; &#x2F;&#x3D; +&#x3D; -&#x3D;）：对向量提供内置支持（++、– 等也可用于向量）；<code>%</code> 只能在 int 类型间进行（<code>error C1021: operands to &quot;%&quot; must be integral</code>）；标量与向量运算时，标量先复制成等长向量。</li>
+<li><strong>移位操作符</strong>（&gt;&gt; &lt;&lt;）：可用于向量，但向量必须是 int 类型。</li>
+<li><strong>Swizzle 操作符</strong>（.）：取出向量分量组成新向量；<code>xyzw</code> 与 <code>rgba</code> 等价（颜色向量建议用 rgba 增加可读性）；可重复、乱序：<code>float4(a,b,c,d).wzyx</code> 等价 <code>float4(d,c,b,a)</code>；标量也可用（<code>float a = 1.0; float4 b = a.xxxx;</code>）。<strong>只能对结构体和向量使用，不能对数组</strong>（取数组元素必须用 <code>[]</code>）。</li>
+<li><strong>条件操作符</strong> <code>expr1 ? expr2 : expr3</code>：独特性能是<strong>支持向量运算</strong>——expr1 为 bool 向量时逐分量选择，如 <code>k = (h &lt; float3(0,0,0)) ? i : g</code>。</li>
+<li>操作符优先级与 C 基本一致（() [] -&gt; . 最高；赋值、逗号最低；一元 &gt; 乘除 &gt; 加减 &gt; 移位 &gt; 关系 &gt; 相等 &gt; 位与 &gt; 异或 &gt; 位或 &gt; 逻辑与 &gt; 逻辑或 &gt; 条件 &gt; 赋值）。</li>
+</ul>
+<h2 id="6-2-控制流语句"><a href="#6-2-控制流语句" class="headerlink" title="6.2 控制流语句"></a>6.2 控制流语句</h2><ul>
+<li>条件语句 if、if-else；循环语句 while、for；break 可用于 for。</li>
+<li><strong>条件表达式必须返回 bool 类型</strong>（与 C 语言中可用 0&#x2F;1 不同）。</li>
+<li>return 只能作为最后一条语句；<strong>递归调用被禁止</strong>；switch&#x2F;case&#x2F;default 是保留关键字但<strong>不被任何 profile 支持</strong>。</li>
+<li>循环限制同第 4 章：vs_2_x、vp30、vp40 支持分支指令，for&#x2F;while 完全支持；其他 profile 需能完全展开。</li>
+</ul>
+<h1 id="七、输入-输出与语义绑定"><a href="#七、输入-输出与语义绑定" class="headerlink" title="七、输入\输出与语义绑定"></a>七、输入\输出与语义绑定</h1><p>本章回答三个问题：①图元信息数据与其他离散数据如何区分；②顶点程序如何识别数据类型（位置还是法向量）；③顶点与片段程序间如何传递数据。</p>
+<h2 id="7-1-关键字"><a href="#7-1-关键字" class="headerlink" title="7.1 关键字"></a>7.1 关键字</h2><ul>
+<li><strong>输入数据流两类</strong>：<ol>
+<li><strong>Varying inputs</strong>：图元信息各组成要素（顶点位置、法向量、纹理坐标等），由一组<strong>语义词</strong>标明参数由顶点哪些数据初始化；</li>
+<li><strong>Uniform inputs</strong>：与渲染有关的离散信息（材质反射信息、运动矩阵等），由外部应用程序初始化传入，不随图元变化。如 <code>uniform float4x4 modelViewProj</code>。</li>
+</ol>
+</li>
+<li><strong>uniform</strong>：除数据来源不同外，与其他变量完全一样；<strong>不允许声明 uniform 修饰的局部变量</strong>（<code>Error C5056: &#39;uniform&#39; not allowed on local variable</code>）。</li>
+<li><strong>const</strong>：与 C&#x2F;C++ 相同；与 uniform 相互独立，可同时使用。</li>
+<li><strong>in &#x2F; out &#x2F; inout</strong>：GPU 不支持指针机制，用修辞符区分参数传递方式：<ul>
+<li><code>in</code>：仅输入，值传递，形参改变不影响实参；</li>
+<li><code>out</code>：仅输出，进入函数体时未初始化，一般是函数运行结果；</li>
+<li><code>inout</code>：既输入又输出，典型引用传递。</li>
+<li>不写修饰符等价于 in；可用 return 代替 out。</li>
+</ul>
+</li>
+</ul>
+<h2 id="7-2-语义词（Semantic）与语义绑定（Binding-Semantics）"><a href="#7-2-语义词（Semantic）与语义绑定（Binding-Semantics）" class="headerlink" title="7.2 语义词（Semantic）与语义绑定（Binding Semantics）"></a>7.2 语义词（Semantic）与语义绑定（Binding Semantics）</h2><ul>
+<li>语义词表示输入图元的<strong>数据含义</strong>（位置还是法向量），也表明数据<strong>存放的硬件资源</strong>（寄存器或纹理缓冲区）。Varying inputs 类型的输入必须绑定语义词。</li>
+<li>本质：Cg 不支持指针、数据暂存寄存器，语义绑定就是<strong>把输入\输出数据和寄存器做映射</strong>（注意：<strong>OpenGL Cg profiles 中是寄存器映射；DirectX Cg profiles 中没有这种映射</strong>）。</li>
+<li>语义是两个处理阶段之间的输入\输出数据与寄存器之间的桥梁；<strong>只在入口函数中有效</strong>，内部函数中的语义被忽略。</li>
+<li><strong>输入语义 ≠ 输出语义</strong>：同名语义词对应流水线上不同寄存器。如顶点程序输入 POSITION 是应用程序传入的顶点位置；输出 POSITION 是反馈给硬件光栅器的裁剪空间位置。</li>
+</ul>
+<h2 id="7-3-各阶段语义"><a href="#7-3-各阶段语义" class="headerlink" title="7.3 各阶段语义"></a>7.3 各阶段语义</h2><ul>
+<li><strong>顶点输入语义</strong>（所有 vertex profile 支持）：POSITION、NORMAL、BINORMAL、BLENDWEIGHT、TANGENT、PSIZE、BLENDINDICES、TEXCOORD0~7。POSITION0 等价 POSITION，其他类推。<ul>
+<li>顶点位置和法向量通常声明为四元向量（齐次坐标）：位置第四元为 1，法向量第四元为 0。</li>
+</ul>
+</li>
+<li><strong>顶点输出语义</strong>（也是片段程序输入语义，POSITION 除外）：POSITION、PSIZE、FOG、COLOR0<del>COLOR1、TEXCOORD0</del>7。<ul>
+<li><strong>顶点程序必须声明一个绑定 POSITION 的输出变量</strong>，该数据只被用于光栅化！缺少时报 <code>error C6014: Required output &#39;HPOS&#39;/&#39;POSITION&#39; not written</code>。</li>
+<li>顶点程序向片段程序传数据（模型坐标、法向量、光照信息等）用 <strong>TEXCOORD 系列</strong>语义；推荐用相同的 struct 作为两个程序间的传递类型（顶点输出 struct 即片段输入 struct）。注意 struct 中绑定 POSITION 的成员不会被片段程序使用。</li>
+</ul>
+</li>
+<li><strong>片段输出语义</strong>：通常只有 <strong>COLOR</strong>——片段程序必须声明一个 out 向量（三元或四元）绑定 COLOR，作为该片断最终颜色。部分 profile 支持输出语义 DEPTH（设置片段深度值）和额外颜色输出（多渲染目标 MRT）。<ul>
+<li>片段输出少（一般就一个颜色），不必放 struct；顶点输出多（世界坐标、法向量、反射&#x2F;折射方向、投影纹理坐标等），放 struct 方便管理。</li>
+</ul>
+</li>
+</ul>
+<h2 id="7-4-语义绑定的-4-种方法"><a href="#7-4-语义绑定的-4-种方法" class="headerlink" title="7.4 语义绑定的 4 种方法"></a>7.4 语义绑定的 4 种方法</h2><ol>
+<li>函数参数列表的参数声明后：<code>[const][in|out|inout]&lt;type&gt;&lt;identifier&gt;[:&lt;binding-semantic&gt;][=&lt;initializer&gt;]</code>；</li>
+<li>结构体成员变量后：<code>&lt;type&gt;&lt;identifier&gt;[:&lt;binding-semantic&gt;];</code>；</li>
+<li>函数声明后（返回值上）：<code>&lt;type&gt;&lt;identifier&gt;(&lt;parameter-list&gt;)[:&lt;binding-semantic&gt;]</code>；</li>
+<li>全局非静态变量声明后——结构不紧凑，不建议使用。</li>
+</ol>
+<h1 id="八、函数与程序设计"><a href="#八、函数与程序设计" class="headerlink" title="八、函数与程序设计"></a>八、函数与程序设计</h1><h2 id="8-1-函数"><a href="#8-1-函数" class="headerlink" title="8.1 函数"></a>8.1 函数</h2><ul>
+<li>声明形式与 C&#x2F;C++ 相同（返回类型、函数名、形参列表、函数体）；<strong>没有返回值时返回类型必须是 void</strong>，否则报一堆语法错误。</li>
+<li><strong>数组形参</strong>：C&#x2F;C++ 中数组形参实际传首元素指针、忽略边界；Cg 无指针机制，<strong>数组作为形参传递的是数组的完整拷贝</strong>——Cg 中数组是“first-class types”（第一类数据类型：不可分解的、最高级别的，与基础数据类型概念近同），数组赋值即整体拷贝。<ul>
+<li>形参数组可一维或多维，<strong>不必声明长度</strong>（推荐，可适配任意长度实参）；若指定了长度，调用时实参长度必须一致，否则 <code>error C1102: incompatible type for parameter</code>。</li>
+</ul>
+</li>
+</ul>
+<h2 id="8-2-函数重载与入口函数"><a href="#8-2-函数重载与入口函数" class="headerlink" title="8.2 函数重载与入口函数"></a>8.2 函数重载与入口函数</h2><ul>
+<li>支持函数重载，方式与 C++ 基本一致（按形参个数和类型区分）；标准函数库绝大部分函数都被重载过。</li>
+<li><strong>入口函数</strong>：顶点程序和片段程序<strong>各有且只有一个</strong>入口函数（对应流水线不同阶段）；编译时需指定入口函数名（默认 main）。通过观察输入输出语义绑定可区分入口函数属于顶点还是片段程序：顶点程序接收应用程序传入的顶点数据、输出投影坐标和光照颜色；片段程序接收顶点程序输出，输入常带纹理形参。</li>
+</ul>
+<h2 id="8-3-Cg-标准函数库"><a href="#8-3-Cg-标准函数库" class="headerlink" title="8.3 Cg 标准函数库"></a>8.3 Cg 标准函数库</h2><p>有些函数直接和 GPU 指令对应，执行效率非常高；绝大多数被重载以支持标量和不同长度向量；随 GPU 硬件发展不断优化。分五类：</p>
+<p><strong>1. 数学函数</strong>：</p>
+<ul>
+<li>三角&#x2F;双曲：sin、cos、tan、asin、acos、atan、atan2（atan(x) &#x3D; atan2(x, 1)）、sinh、cosh、tanh——参数为弧度；</li>
+<li>指数对数：exp、exp2、log、log2、log10（x 必须大于 0）、sqrt、rsqrt（反平方根）、pow(x,y)；</li>
+<li>取整&#x2F;分解：ceil（向上取整）、floor（向下取整，floor(-1.3) &#x3D; -2.0）、round（四舍五入）、frac（小数部分）、fmod（x&#x2F;y 余数，y 为 0 结果不可预料）、modf、frexp（分解尾数和指数 x &#x3D; m·2^exp）、ldexp（x·2^n）；</li>
+<li>判断：all（全不为 0 返回 true，&amp;&amp; 运算）、any（有非 0 即 true，|| 运算）、isfinite、isinf、isnan；</li>
+<li>范围&#x2F;符号：abs、clamp(x,a,b)、saturate（截断到 [0,1]）、sign、step(a,x)（x&lt;a 返回 0 否则 1）、smoothstep(min,max,x)（三次平滑插值）；</li>
+<li>向量&#x2F;矩阵：dot（点积）、cross（叉积，<strong>输入必须是三元向量</strong>）、length 相关见几何函数、mul(M,N)&#x2F;mul(M,v)&#x2F;mul(v,M)（矩阵乘法）、determinant（行列式）、transpose（转置）；</li>
+<li>插值与光照辅助：lerp(a,b,f)（按权值 f 在 a、b 间插值）、noise（返回 0~1 间，同输入同输出，非真随机）、**lit(NdotL, NdotH, m)<strong>：一次计算环境光、散射光、镜面光贡献，返回 4 元向量（x 恒 1.0；y 为散射光，N·L&lt;0 则 0 否则 N·L；z 为镜面光，N·L&lt;0 或 N·H&lt;0 则 0 否则 (N·H)^m；w 恒 1.0）、</strong>sincos(x, out s, out c)**：同时算 sin 和 cos，比分别计算快很多；</li>
+<li>radians&#x2F;degrees（角度弧度互转）、max、min。</li>
+</ul>
+<p><strong>2. 几何函数</strong>：distance（欧几里德距离）、faceforward(N,I,Ng)（N·Ng… 若 Ng·I&lt;0 返回 N 否则 -N）、length(v)（模，sqrt(dot(v,v))）、normalize（归一化）、reflect(I,N)（反射方向）、refract(I,N,eta)（折射方向，eta 折射系数，夹角太大返回 (0,0,0)）。</p>
+<ul>
+<li><strong>必须牢记</strong>：①着色程序中的向量最好归一化后再使用，否则会出现难以预料的错误；②reflect&#x2F;refract 的入射光方向向量 I 是<strong>从外指向几何顶点的</strong>——平时课本上习惯把入射光方向定为从顶点出发，方向相反！③两函数只对三元向量有效。</li>
+</ul>
+<p><strong>3. 纹理映射函数</strong>（被 ps_2_0、ps_2_x、arbfp1、fp30、fp40 等完全支持；都返回四元向量）：</p>
+<ul>
+<li>tex1D &#x2F; tex2D &#x2F; tex3D &#x2F; texCUBE &#x2F; texRECT，各有一族重载：带导数版本（附加 dsdx、dsdy 参数）、带深度比较版本（float3 sz 中的 z 为深度比较值）、proj 版本（tex1Dproj、tex2Dproj、tex3Dproj、texCUBEproj、texRECTproj）。</li>
+<li>参数含义：s 纹理坐标；z 深度比较值；<strong>q 透视值</strong>（透视投影齐次坐标最后一位），使用前坐标除以 q 归一化到 [0,1]。</li>
+<li>**tex2Dproj(sampler, uvproj) 等价于：先 <code>uvproj /= uvproj.q</code>，再 tex2D(sampler, uvproj)**——普通查询与投影查询的唯一区别。</li>
+<li>texRECT 查询的实际也是二维纹理；<strong>3D 纹理即体纹理（volume texture）</strong>，用于体绘制，记录从里到外的空间体细节数据（二维纹理只记录面颜色）。</li>
+</ul>
+<p><strong>4. 偏导函数 ddx&#x2F;ddy</strong>：</p>
+<ul>
+<li>官方解释“返回关于屏幕坐标 x&#x2F;y 轴的偏导数”极易让人迷惑。准确含义：<strong>求相邻像素间某属性的差值</strong>——ddx(myVar) &#x3D; 当前像素 (i,j) 旁一像素 (i+1,j) 的值减当前值；ddy 同理 y 方向。输入参数通常是纹理坐标（也可是任意着色值）；输入常数则返回恒 0；二阶导（如 ddx(ddx(x))）恒 0（导数总是线性的）。</li>
+<li>依赖 GPU SIMD 架构（相邻像素同时计算）才高效；<strong>只被片段程序支持</strong>。</li>
+<li>用途：纹理滤镜（filtering）和抗锯齿——复杂过滤需要知道“这个值在像素间变化多少”；带导数版纹理查询函数（如 <code>tex2D(sampler2D, float3 sz, float2 dsdx, float2 dsdy)</code>）用它指定采样偏导，控制过滤量。</li>
+</ul>
+<p>**5. 调试函数 debug(float4 x)**：编译设置 DEBUG 时把 x 作为 COLOR 语义输出，否则什么也不做。十分鸡肋；顶点 profiles 不支持。所有 shader language 的调试功能都非常有限，导致难以查找逻辑错误。</p>
+<h2 id="8-4-未来将被解决的问题"><a href="#8-4-未来将被解决的问题" class="headerlink" title="8.4 未来将被解决的问题"></a>8.4 未来将被解决的问题</h2><p>通用计算编程不受数据独立性限制、控制语句加强、引入继承机制、加强调试功能、通用 IDE、顶点处理器支持纹理查询、更多领域被 GPU 编程介入。</p>
+<h1 id="九、经典光照模型（illumination-model）"><a href="#九、经典光照模型（illumination-model）" class="headerlink" title="九、经典光照模型（illumination model）"></a>九、经典光照模型（illumination model）</h1><p>开篇概念：光照模型（明暗模型）用于计算物体某点处的光强（颜色值）。</p>
+<ul>
+<li>按理论：<strong>基于物理理论</strong>（如 ward BRDF，参数需仪器测量，效果真实但计算复杂）vs <strong>基于经验模型</strong>（特定概率公式匹配表面类型，简洁、效果偏理想化）；界限并非非黑即白。</li>
+<li>按使用：<strong>局部光照模型</strong>（分解光照种类，计算时只考虑一种）vs <strong>全局光照模型</strong>（考虑所有光照种类）——类似力学中先无摩擦理想状态、再渐进叠加摩擦力等因素。</li>
+<li>面绘制 vs 体绘制：第 9<del>13 章算法用于面绘制（物体表面点颜色）；第 14</del>15 章体绘制表现物体<strong>内部</strong>结构（面绘制看房子外观，体绘制看墙体中的电缆水管）。</li>
+</ul>
+<h2 id="9-1-光的交互与光源"><a href="#9-1-光的交互与光源" class="headerlink" title="9.1 光的交互与光源"></a>9.1 光的交互与光源</h2><ul>
+<li>光照射到物体表面：一部分被吸收（转化为热量），一部分反射，透明物体还有透射光。只有反射光和透射光进入眼睛产生视觉；其强度决定亮度，波长比例决定色彩。<strong>物体表面光照颜色由入射光、物体材质、材质和光的交互规律共同决定。</strong></li>
+<li>最基本交互是反射，遵循反射定律：反射光与入射光位于表面法向两侧，理想反射面入射角等于反射角——但世界不存在真正的理想反射体。</li>
+<li>光源三种：<ul>
+<li><strong>环境光（Ambient Light）</strong>：无空间方向性，所有方向、所有表面强度统一恒定；只有环境光时物体各点明暗一样，<strong>不能产生真实感</strong>。</li>
+<li><strong>点光源</strong>：发光体最简单模型，光线向四周发散。</li>
+<li><strong>平行光</strong>：光线从同一方向照射。模拟方向光与表面的交互可渲染出高真实感场景。</li>
+</ul>
+</li>
+</ul>
+<h2 id="9-2-漫反射与-Lambert-模型"><a href="#9-2-漫反射与-Lambert-模型" class="headerlink" title="9.2 漫反射与 Lambert 模型"></a>9.2 漫反射与 Lambert 模型</h2><ul>
+<li>粗糙表面向各方向等强度反射光——漫反射（diffuse reflection）；理想漫反射体即朗伯（Lambert）反射体。</li>
+<li>环境光下：<code>I_ambdiff = Ka · Ia</code>（Ka 材质环境光反射系数）。</li>
+<li><strong>Lambert 定律</strong>：漫反射光强与入射光方向和入射点表面法向夹角的余弦成正比：<code>I_ldiff = Kd · Il · cosθ</code>（θ 为入射角，0≤θ≤90°；垂直入射光强最大，90° 接收不到光）。向量形式：<code>I_ldiff = Kd · Il · (N·L)</code>——<strong>N 为顶点单位法向量，L 是从顶点指向光源的单位向量</strong>（不要弄反）。</li>
+<li>综合：<code>I_diff = Ka·Ia + Kd·Il·(N·L)</code>。</li>
+<li>漫反射顶点着色程序要点（书中第一个 Hello Cg World）：<code>oPosition = mul(modelViewProj, position)</code>；世界坐标 <code>mul(worldMatrix, position)</code>；法向量 <code>N = normalize(mul(worldMatrix_IT, normal))</code>；<code>L = normalize(lightPosition - worldPos)</code>；<code>diffuseColor = Kd*lightColor*max(dot(N,L), 0)</code>；<code>ambientColor = Kd*globalAmbient</code>；最后 <code>color.xyz = diffuseColor + ambientColor, color.w = 1</code>。并给出 struct 版本（VertexIn &#x2F; VertexScreen），此后全书代码都用结构体形式。</li>
+</ul>
+<h2 id="9-3-镜面反射与-Phong-模型"><a href="#9-3-镜面反射与-Phong-模型" class="headerlink" title="9.3 镜面反射与 Phong 模型"></a>9.3 镜面反射与 Phong 模型</h2><ul>
+<li>Lambert 模型表现不出金属光泽（没考虑镜面反射）。镜面反射：光滑物体在接近镜面反射角的一个区域内反射入射光全部或绝大部分光强。</li>
+<li><strong>Phong 模型</strong>（Phong Bui Tuong 提出的经验模型）：镜面反射光强与反射光线和视线的夹角相关：<code>I_spec = Ks · Il · (V·R)^sn</code>——Ks 镜面反射系数，sn 高光指数，V 从顶点到视点的观察方向，R 反射光方向。</li>
+<li><strong>高光指数 sn</strong>：越大反射光越集中（亮而小的光斑，表面越光滑）；越小物体越粗糙，光斑区域大、强度弱。</li>
+<li>反射方向可由入射光方向 L 和法向量 N 求出：<code>R = 2(N·L)N - L</code>。很多公司笔试要求手写此公式（Cg 标准库有 reflect 函数，但原理要会）。</li>
+<li>渲染实现对比：<ul>
+<li><strong>顶点着色渲染</strong>：只处理几何顶点，低精度模型（面片少）效果差（书中马模型示例明暗不如其他模型）。</li>
+<li><strong>片段着色渲染</strong>：对每个片断独立计算，低精度模型也能高质量。结构体中用 objectPos&#x2F;objectNormal 绑定 TEXCOORD0&#x2F;1 把模型坐标和法向量传入片段程序；顶点程序只算投影坐标，光照计算全部放片段程序（光照信息也可在顶点程序算好再传递）。</li>
+</ul>
+</li>
+</ul>
+<h2 id="9-4-Blinn-Phong-光照模型"><a href="#9-4-Blinn-Phong-光照模型" class="headerlink" title="9.4 Blinn-Phong 光照模型"></a>9.4 Blinn-Phong 光照模型</h2><ul>
+<li>Jim Blinn 1977 年对 Phong 的修改；混合 Lambert 漫射部分和标准高光。渲染效果有时比 Phong 更柔和平滑，<strong>速度更快</strong>（省去计算反射向量的两个乘法），成为许多 CG 软件的默认光照方法——<strong>OpenGL 和 Direct3D 渲染管线中 Blinn-Phong 就是默认渲染模型</strong>。</li>
+<li>用 <code>N·H</code> 取代 <code>V·R</code>：<code>I_spec = Ks · Il · (N·H)^sn</code>，**半角向量 H &#x3D; normalize(L + V)**（光入射方向与视点方向的中间向量）。半角向量被广泛用于各类光照模型：信息价值高且计算简单耗时少。</li>
+<li>效果对比：作者实现对比过，Phong 确实比 Blinn-Phong 真实；同样高光系数下 Blinn-Phong 高光领域覆盖范围较大，明暗界限不明显。</li>
+</ul>
+<h2 id="9-5-全局光照模型与-Rendering-Equation"><a href="#9-5-全局光照模型与-Rendering-Equation" class="headerlink" title="9.5 全局光照模型与 Rendering Equation"></a>9.5 全局光照模型与 Rendering Equation</h2><ul>
+<li><p>Kajia 1986 年提出 rendering equation：</p>
+<p><code>Lo(x, wo) = Le(x, wo) + ∫Ω fr(x, wi, wo) · Li(x, wi) · (n·wi) dwi</code></p>
+<ul>
+<li>x 入射点；Lo 从表面 x 点沿 wo 方向反射的光强；Le 自发射光强（仅自发光体）；fr 为 BRDF（入射 wi、出射 wo）；Li 入射光强；n 法向量；对入射方向积分（光线来自四面八方，对每个方向计算后相加）。</li>
+</ul>
+</li>
+<li><p>该公式基于物理光学，对观察方向辐射率的本质量化。<strong>漫反射模型和 Phong 高光模型都是它在单一光源、特定 BRDF 下的推导。</strong></p>
+</li>
+<li><p>单个点光源、无自发光物体时简化为 <code>Lo = fr · Li · (n·wi)</code>；通常分解为漫反射表达式与镜面反射表达式之和：漫反射表面 BRDF 返回恒定值可忽略；<strong>Phong 高光即 rendering equation 在单一光源下针对理想镜面反射的特定推导</strong>（<code>(N·H)^sn</code> 对应 specular BRDF 部分）；BRDF 就是 fr 的一种函数类型。</p>
+</li>
+</ul>
+<h1 id="十、高级光照模型"><a href="#十、高级光照模型" class="headerlink" title="十、高级光照模型"></a>十、高级光照模型</h1><p>背景：理想漫反射&#x2F;镜面反射是材质与光交互的理想状态；真实反射依据材质特征和表面微平面特征（光盘上的扇面光带、圆柱炊具上的条纹）。BRDF（Bidirectional Reflectance Distribution Function）模型应运而生——扩展材质和光的交互方式，充分考虑材质微平面对光的影响。</p>
+<h2 id="10-1-Cook-Torrance-光照模型"><a href="#10-1-Cook-Torrance-光照模型" class="headerlink" title="10.1 Cook-Torrance 光照模型"></a>10.1 Cook-Torrance 光照模型</h2><ul>
+<li><p>Phong&#x2F;Blinn-Phong 效果过于艺术化、不太真实（未考虑材质细节）。Cook 和 Torrance 1981 年论文 “A Reflectance Model For Computer Graphics” 提出。</p>
+</li>
+<li><p><strong>微平面理论</strong>：物体粗糙表面由很多微平面组成，每个微平面是理想镜面反射体；表面粗糙度由微平面<strong>斜率的变化</strong>衡量（斜率变化大→粗糙，变化小→光滑）。</p>
+</li>
+<li><p>光强分漫反射和镜面反射两部分：<code>I_ct = I_diff + I_spec = Kd·Il·(N·L) + Ks·Il·Rs</code>。Cook-Torrance、Phong、Blinn-Phong 三种模型的<strong>本质区别都在于 specular term（Rs）的计算方法</strong>。</p>
+</li>
+<li><p>镜面反射项（作者查证原始论文，公式 10-3 正确）：</p>
+<p><code>Rs = (F · D · G) / ((N·V) · (N·L))</code></p>
+<ul>
+<li><strong>F</strong>（Fresnel reflect term）：Fresnel 反射系数，反射方向光强占原始光强的比率。用 Schlick 近似（精度 1% 内）：<code>F = f0 + (1-f0)·(1-(V·H))^5</code>，f0 为入射角接近 0 时的 Fresnel 反射系数。</li>
+<li><strong>D</strong>（Beckmann distribution factor）：微平面分布函数，返回给定方向上微平面的分数值。最常用 Beckmann 分布函数：<code>D = e^(-tan²α/m²) / (4·m⁴·cos⁴α)</code>——m 度量表面粗糙程度（m 大粗糙、小光滑），α 为法向量 N 与半角向量 H 的夹角。Beckmann 分布源自电磁学（《The Scattering of Electromagnetic Waves from Rough Surfaces》）；有的资料分母带 π 或去掉 π，属变体，只影响光强缩放。Cook-Torrance 之前微平面分布用高斯分布。</li>
+<li><strong>G</strong>（Geometric attenuation term）：几何衰减系数，衡量微平面自身遮蔽光强的影响。微平面反射光三种情况：入射光未被遮挡（强度 1）、入射光部分被遮挡、反射光部分被遮挡；G 取到达观察者光的最小强度：<code>G = min(1, G1, G2)</code>，其中 <code>G1 = 2(N·H)(N·L)/(V·H)</code>，<code>G2 = 2(N·H)(N·V)/(V·H)</code>。</li>
+</ul>
+</li>
+<li><p>顶点着色程序传世界坐标和法向量（TEXCOORD0&#x2F;1）；片段着色程序中 <code>roughness = exp((nh*nh-1)/(m*m*nh*nh)) / (m²·nh⁴)</code>（Beckmann），<code>geometric = min(1, 2nh·nv/vh, 2nh·nl/vh)</code>，<code>fresnelCoe = f + (1-f)·(1-vh)^5</code>，<code>rs = (F·G·D)/(nv·nl)</code>，<code>specular = rs * lightColor * nl * Ks</code>。</p>
+</li>
+</ul>
+<h2 id="10-2-BRDF-光照模型"><a href="#10-2-BRDF-光照模型" class="headerlink" title="10.2 BRDF 光照模型"></a>10.2 BRDF 光照模型</h2><ul>
+<li>Nicodemus 1965 年提出。BRDF 描述入射光线在<strong>非透明物体表面</strong>如何反射；结果是无单位数值，表示给定入射条件下某出射方向上反射光的相对能量，可理解为“入射光以特定方向离开的概率”。</li>
+<li>光学定义：<code>fr(wi, wo) = dLr(wo) / dEi(wi)</code>——出射方向辐射亮度（Radiance，单位立体角、单位正投影面积上的功率）与入射方向辐射照度（Irradiance，入射面元上的辐射通量除以面元面积）之比，即“特定反射方向的光强与入射光强的比例”。BRDF 数据可用仪器测量记录成图（polynomial texture map）。给出具体 BRDF 数学描述后即可放入 rendering equation 使用。</li>
+<li><strong>各向异性（anisotropy）</strong>：不同方向具有不同行为。特殊晶体结构、材质表面有组织的细小凹凸槽都会导致各向异性；生活中如光盘扇面光带、炊具条纹。分三种类型：线性各向异性、径向各向异性、圆柱形各向异性（线性各向异性映射为圆柱形）。</li>
+</ul>
+<h2 id="10-3-Bank-BRDF-经验模型"><a href="#10-3-Bank-BRDF-经验模型" class="headerlink" title="10.3 Bank BRDF 经验模型"></a>10.3 Bank BRDF 经验模型</h2><ul>
+<li><p>计算简单、效果良好，<strong>各向异性光照效果模拟</strong>非常有用。镜面反射部分：</p>
+<p><code>Rs = Ks · [ √(1-(L·T)²) · √(1-(V·T)²) − (L·T)·(V·T) ]^sn</code></p>
+<ul>
+<li>L 入射光方向、V 观察方向、T 该点切向量。</li>
+</ul>
+</li>
+<li><p><strong>切向量计算</strong>：一个三维空间点存在无数个切向量，通常采用<strong>顶点法向量和视线方向做叉积</strong>：<code>T = normalize(cross(N, V))</code>。</p>
+</li>
+<li><p>片段程序：<code>a = dot(L,T); b = dot(V,T); c = sqrt(1-a²)·sqrt(1-b²) - a*b; specular = Ks·pow(c, shininess) * lightColor * ln</code>。</p>
+</li>
+</ul>
+<h2 id="10-4-其他-BRDF-分支"><a href="#10-4-其他-BRDF-分支" class="headerlink" title="10.4 其他 BRDF 分支"></a>10.4 其他 BRDF 分支</h2><ul>
+<li>HTSG BRDF：擅长模拟多种物理现象，现今最完整的 BRDF 模型，但计算开销昂贵。</li>
+<li>Ward BRDF：各向异性表面的经验模型，较复杂，需要从实际物体表面获取 BRDF 数据（测角仪、图像双向反射计测量；国外有公开数据库）。</li>
+</ul>
+<h1 id="十一、透明光照模型与环境贴图"><a href="#十一、透明光照模型与环境贴图" class="headerlink" title="十一、透明光照模型与环境贴图"></a>十一、透明光照模型与环境贴图</h1><p>透射模拟复杂：至少计算两次透射方向（介质一→二、介质二→一）；光在透明体内穿越的距离和材质关系衰减；还有次表面散射。CPU 光线跟踪无法实时，且对次表面散射无能为力。</p>
+<h2 id="11-1-Snell-定律与-Fresnel-定律"><a href="#11-1-Snell-定律与-Fresnel-定律" class="headerlink" title="11.1 Snell 定律与 Fresnel 定律"></a>11.1 Snell 定律与 Fresnel 定律</h2><ul>
+<li><strong>折射率</strong>：<code>n = c/v</code>（光在真空速度与介质中速度之比）。真空 1.0、空气 1.0003、水 1.333、玻璃 1.5~1.7、钻石 2.417、冰 1.309。折射率大的叫光密介质，小的叫光疏介质。</li>
+<li><strong>Snell 定律</strong>：<code>ni · sinθi = nt · sinθt</code>（入射角、折射角与两介质折射率关系）；据此可由入射光方向求折射光方向。</li>
+<li><strong>色散</strong>：介质折射率随波长变化；1672 年牛顿三棱镜分解太阳光为光谱色带；彩虹即色散现象；柯西给出正常色散经验公式。计算机中用红绿蓝三分量的不同折射系数可近似模拟色散效果。</li>
+<li><strong>Fresnel 定律</strong>：光照射透明物体，一部分反射、一部分折射，两者光通量的比率由 Fresnel 定律计算。Fresnel 系数分反射系数 kr（通常所说）和折射系数 kt（&#x3D; 1 − kr）。<strong>注意：折射率与 fresnel 系数不是同一个东西</strong>——折射率反映光在介质中的运行速度和折射方向；fresnel 系数反映光在介质表面被折射的光通量比率。</li>
+<li><strong>Schlick 近似</strong>：<code>F = f0 + (1-f0)·(1-(V·H))^5</code>（f0 为入射角接近 0 时的反射系数）。结论：<strong>入射角趋近 90° 时反射系数趋近 1——擦地入射时所有入射光都被反射</strong>。</li>
+<li>f0 的计算：<code>f0 = ((ni-nt)/(ni+nt))²</code>，则 <code>kt = 1-f0 = 4ni·nt/(ni+nt)²</code>。</li>
+<li>完整公式（综合式 11-6）较耗时，程序常用快速近似 <code>F ≈ (1-(V·H))^4</code>（精度不高但快，利于硬件实现）。普通玻璃的反射系数约 4%。</li>
+</ul>
+<h2 id="11-2-环境贴图（Environment-Mapping）"><a href="#11-2-环境贴图（Environment-Mapping）" class="headerlink" title="11.2 环境贴图（Environment Mapping）"></a>11.2 环境贴图（Environment Mapping）</h2><ul>
+<li>又称反射贴图（Reflection Mapping），Blinn 和 Newell 1976 年提出；模拟光滑表面对周围场景的映射效果。</li>
+<li>两个假设：进行反射的光源和物体都位于很远的位置；反射体不反射自身。</li>
+<li><strong>立方体环境贴图</strong>（Greene 1986）最常用：相机放在环境正中央，从上、下、左、右、前、后 6 个方向拍摄，投影到立方体 6 个面。文件形式：DirectX 的 .dds 格式，或用 6 张二维纹理动态组成（OGRE 即如此）。另有球面贴图、抛物面贴图，相比无明显优势。</li>
+<li><strong>算法基本思想（倒推）</strong>：从视点发射射线到反射体上一点，射线以该点为基准反射，按<strong>反射光线方向向量</strong>检索环境图像的颜色。步骤：①由视线方向和法向量计算反射向量；②用反射向量检索环境贴图；③融合到像素颜色。</li>
+<li>Cg 中环境贴图是 samplerCUBE 类型，texCUBE 函数按反射方向检索。顶点程序算反射向量（<code>R = reflect(I, normalW)</code>，I &#x3D; positionW - eyePosition）传给片段程序，片段程序 <code>color = texCUBE(environmentMap, R)</code>。</li>
+</ul>
+<h2 id="11-3-简单透明光照模型"><a href="#11-3-简单透明光照模型" class="headerlink" title="11.3 简单透明光照模型"></a>11.3 简单透明光照模型</h2><ul>
+<li>不考虑第二次折射、次表面散射、强度衰减，只用<strong>颜色调和</strong>：透明物体不透明度为 t，A 点反射光强 ia，视线穿过透明体与另一物体相交处光强 ib，则 A 点最终光强：<code>i = t·ia + (1-t)·ib</code>。</li>
+<li>ia、bi 用前面的光照模型计算。<strong>为了实时性</strong>，透射光强不通过光线求交（那会演变为光线跟踪），而是<strong>根据折射光方向检索环境纹理</strong>作为 bi——注意与 11.2 节区别：环境映射用反射方向检索，透明模型用折射方向检索。</li>
+<li>片段程序：<code>T = refract(I, N, etaRatio)</code>（I &#x3D; normalize(worldPos - eyePosition)，注意 refract 输入参数的方向）；<code>refractedColor = texCUBE(environmentMap, T)</code>；<code>color.xyz = lerp(reflectColor, refractedColor, transmittance)</code>。</li>
+</ul>
+<h2 id="11-4-复杂透明光照模型与次表面散射"><a href="#11-4-复杂透明光照模型与次表面散射" class="headerlink" title="11.4 复杂透明光照模型与次表面散射"></a>11.4 复杂透明光照模型与次表面散射</h2><ul>
+<li>光射入透明物体一次反射折射，射出时又一次——简单模型只近似第一次。Wyman 2005（SIGGRAPH）提出 GPU 上近似实现两次折射的透明物体绘制算法（Interactive image-space refraction of nearby geometry）。</li>
+<li><strong>次表面散射（Subsurface Scattering）</strong>：光射入半透明物体后在内部发生散射，最后射出进入视野。是高质量渲染中最复杂的材质之一：物体内任一点的光照度取决于体内其他点的光照度和材质透光率——光照方程成为复杂微分方程，准确解极难；材质还可能各向异性、密度不均匀。GPU Gems 第一部第 16 章给出实时近似模拟算法。</li>
+</ul>
+<h1 id="十二、投影纹理映射（Projective-Texture-Mapping）"><a href="#十二、投影纹理映射（Projective-Texture-Mapping）" class="headerlink" title="十二、投影纹理映射（Projective Texture Mapping）"></a>十二、投影纹理映射（Projective Texture Mapping）</h1><ul>
+<li>Segal 在 “Fast shadows and lighting effects using texture mapping” 中提出；像把幻灯片投影到墙上一样把纹理映射到物体上。<strong>不需要在应用程序中指定顶点纹理坐标</strong>——投影纹理坐标在顶点着色程序中通过视点矩阵和投影矩阵计算得到（区别于建模软件中手工调整产生的普通纹理坐标）。</li>
+<li><strong>地位很高</strong>：shadow map、体绘制光线投射等都要用；只要涉及“纹理实时和空间顶点对应”，通常都用此技术。</li>
+</ul>
+<h2 id="12-1-两大优点"><a href="#12-1-两大优点" class="headerlink" title="12.1 两大优点"></a>12.1 两大优点</h2><ol>
+<li><strong>纹理与空间顶点实时对应</strong>，无需预先在建模软件中生成纹理坐标。典型场景：场景渲染两遍——第一遍获取场景信息存为纹理（如深度图），第二遍基于该纹理渲染出最终效果；第二遍使用无预先设置的纹理坐标，需要实时计算——这正是投影纹理映射最广泛的应用。</li>
+<li><strong>有效避免纹理扭曲</strong>：相同顶点纹理坐标贴到不同形状面片（正方形 vs 梯形）上，几何变换导致插值出的内部纹理坐标梯度（gradient）不同，普通纹理映射在梯形上出现明显扭曲；投影纹理映射可避免。</li>
+</ol>
+<h2 id="12-2-齐次纹理坐标与原理"><a href="#12-2-齐次纹理坐标与原理" class="headerlink" title="12.2 齐次纹理坐标与原理"></a>12.2 齐次纹理坐标与原理</h2><ul>
+<li>齐次纹理坐标 <code>(s,t,r,q)</code> 与物体位置齐次坐标 (x,y,z,w) 相对应（投影纹理坐标本质由三维顶点齐次坐标计算得到）。一维纹理用 s，二维用 (s,t)，忽略 r；q 作用类似 w，一般为 1。</li>
+<li><strong>实现流程与直觉相反</strong>：不是把纹理投影到墙上，而是<strong>把墙投影到纹理上</strong>！根据投影机（视点相机）的位置、投影角度和物体坐标，求出每个顶点对应的纹理坐标，再去查询纹理值。投影纹理坐标与纹理本身无关。</li>
+<li>本质：将顶点坐标投影到 NDC 平面，投影点的平面坐标即纹理坐标。把当前视点当投影机时，顶点程序通过 POSITION 输出的投影坐标就是未归一化的投影纹理坐标。</li>
+<li>流程对比：与正常顶点坐标空间转换（模型→世界→视点→裁剪→视锥近平面）基本一样，唯一区别是<strong>归一化到 [0,1] 空间</strong>：可左乘 normalMatrix（bias 矩阵，对角 0.5 加平移 0.5），或在着色程序中对每分量乘 1&#x2F;2 再加 1&#x2F;2。</li>
+<li>投影纹理矩阵：<code>ProjTexMatrix = biasMatrix × projectionMatrix × viewMatrix × worldMatrix</code>；投影纹理坐标 &#x3D; ProjTexMatrix × 模型坐标。<strong>使用前别忘了除以最后一个分量 q</strong>；<code>tex2DProj</code> 会自动做这一步。</li>
+<li><strong>“投影机”只是比喻，本质是视点相机</strong>：很多教程说“把灯光当投影机”是错误表达，准确说法是“在当前灯光位置放置一个相机，观察方向与光线投射方向一致”。阴影算法中从投影机角度渲染场景信息纹理（阴影纹理），再放到正常渲染相机中使用。</li>
+<li>投影纹理矩阵通常不需开发人员自己算（图形 API 提供获取视点&#x2F;投影矩阵的函数），<strong>偏移（bias）矩阵需要自己设置</strong>；应用程序获取后传给着色程序。</li>
+</ul>
+<h1 id="十三、Shadow-Map"><a href="#十三、Shadow-Map" class="headerlink" title="十三、Shadow Map"></a>十三、Shadow Map</h1><ul>
+<li>Lance Williams 1978 年 “Casting curved shadows on curved surfaces” 提出；基于深度图（depth map）的阴影生成方法。</li>
+<li><strong>depth map（深度图）</strong>：一张 2D 图片，每个像素记录从光源到遮挡物的距离，且这些像素对光源是“可见的”（以光源为观察点、光的方向为观察方向渲染遮挡物，出现在渲染表面上的像素）。</li>
+<li><strong>depth map ≠ shadow texture（阴影贴图）</strong>：很多教程混为一谈。shadow texture 是把日常所见的阴影图形保存为纹理，再作为投影纹理贴到物体（阴影接收体）上——需要设计者确认哪个是遮挡物哪个是接受体，且不能产生自阴影。Shadow map 以 depth map 为基础，通过比较“光源可见点到光源的深度”和“任何点到光源的深度”判断点是否被遮挡。</li>
+</ul>
+<h2 id="13-1-原理与实现流程（两遍渲染）"><a href="#13-1-原理与实现流程（两遍渲染）" class="headerlink" title="13.1 原理与实现流程（两遍渲染）"></a>13.1 原理与实现流程（两遍渲染）</h2><p><strong>第一遍：生成 depth map</strong></p>
+<ol>
+<li>以光源位置为相机位置、光线发射方向为观察方向设置相机参数；</li>
+<li>worldViewProj 矩阵传入顶点程序计算投影坐标，投影坐标 Z 值即深度值；片段程序将深度值归一化到 [0,1] 赋给颜色值；</li>
+<li>从 frame buffer 读取颜色渲染到纹理 → depth map。动态光影需实时计算，即每帧渲染两次。</li>
+</ol>
+<ul>
+<li><strong>深度值的本质</strong>：很多文献说是 Z Buffer 的 Z 值，作者认为以偏概全——重点是它是衡量“顶点到视点距离”<strong>相对关系</strong>的数据，直接计算顶点到视点距离再归一化同样有效；计算深度值的重点在于<strong>保证距离间相对关系的正确性</strong>。</li>
+<li>实现代码要点：顶点程序输出 <code>depth.x = oPosition.z; depth.y = oPosition.w</code>；片段程序 <code>depthNum = (depth.x - pNear) / (pFar - pNear)</code>，加 depthOffset（深度写入纹理有精度损失，需加微小偏移如 0.01 弥补）。</li>
+</ul>
+<p><strong>第二遍：使用 depth map 做阴影渲染</strong></p>
+<ol>
+<li>纹理投影矩阵（&#x3D; 产生深度图时的 worldViewProjMatrix × 偏移矩阵）传入顶点程序，计算投影纹理坐标和当前顶点到光源的深度值 length2（<strong>计算方法必须与渲染深度图时一致</strong>）；</li>
+<li>depth map 传入片段程序，按投影纹理坐标取出颜色即 depth map 中保存的深度值 length1；</li>
+<li>若 length2 &gt; length1，说明 depth map 对应像素记录的是顶点 v 与光源之间某个点的距离——<strong>v 被遮挡</strong>，处于阴影区。</li>
+</ol>
+<ul>
+<li>实现细节：<code>shadowUV.xy /= shadowUV.w</code>；多重采样（中心 + 四邻域 pixelOffset 各采一次深度，比较结果累加后 ×0.2）减小误差。</li>
+</ul>
+<h2 id="13-2-优缺点"><a href="#13-2-优缺点" class="headerlink" title="13.2 优缺点"></a>13.2 优缺点</h2><ul>
+<li><strong>优点</strong>：一般用途图形硬件即可绘制任意阴影；创建阴影图代价与图元数量成线性关系；访问时间固定；可改进创建软阴影（光学半影区域）——实时软阴影是热门研究方向。</li>
+<li><strong>缺点</strong>：<ol>
+<li>阴影质量与阴影图分辨率有关，易出现阴影边缘锯齿；</li>
+<li>深度值写入纹理必然损失精度（归一化到 0~1 后很小损失也影响比较），两点很近时出现 z-fighting，需加偏移量人为弥补；</li>
+<li><strong>自阴影走样（Self-shadow Aliasing）</strong>：光源采样与屏幕采样位置不完全相同，深度比较出现误差导致错误效果，引入偏移因子避免；</li>
+<li>只适合聚光灯（Spot light）：点光源需生成立方深度纹理（cube texture）；方向光需使用平行投影坐标系下的 worldViewProjMatrix。</li>
+</ol>
+</li>
+<li>另一主流阴影算法是模板阴影（stencil shadow），见附录 C。</li>
+</ul>
+<h1 id="十四、体绘制（Volume-Rendering）概述"><a href="#十四、体绘制（Volume-Rendering）概述" class="headerlink" title="十四、体绘制（Volume Rendering）概述"></a>十四、体绘制（Volume Rendering）概述</h1><ul>
+<li>起源：20 世纪 80 年代科学计算可视化（Visualization in Scientific Computing）提出后，三维体数据可视化形成体绘制技术领域。</li>
+<li><strong>体绘制的核心在于“展示体细节！而不是表面细节”</strong>。作者定义：依据三维体数据，<strong>将所有体细节同时展现在二维图片上</strong>的技术；可在一幅图像中显示多种物质的综合分布情况，并通过不透明度控制反映等值面情况。</li>
+<li>直观比喻：普通照相机照片 vs CT 照片——都是二维图片，但展现对象不同（照片是表面，CT 是肌肉骨骼等内部信息）。“根据三维体数据场随便产生一张图像也是体绘制”的说法是对国外文献的误译。</li>
+<li>应用：医疗诊断（CT，西门子&#x2F;东芝&#x2F;GE 均将体绘制用于医疗器材）；地质勘探、气象分析（每个气压面上温度湿度风力等格点数据，同时观察多个气压面切面）、分子模型构造；强化视觉效果（流体、云、烟等不规则体，常规几何元素和粒子系统难以模拟）。</li>
+<li><strong>体绘制 vs 透明光照模型</strong>：透明光照模型侧重分析光在透明介质中的传播方式（折射、发散、散射、衰减），偏艺术化；体绘制偏重物体内部层次细节的真实展现，要求真实。实现上：透明模型跟踪光线交互过程计算颜色；体绘制在同一射线方向对体数据采样获取多个体素颜色值，按透明度合成。两者共融（ray-cast 方法可用于绘制烟雾等）。</li>
+</ul>
+<h2 id="14-1-体数据（Volume-Data）"><a href="#14-1-体数据（Volume-Data）" class="headerlink" title="14.1 体数据（Volume Data）"></a>14.1 体数据（Volume Data）</h2><ul>
+<li>体数据 &#x3D; 包含体细节的数据（面数据是只有表面细节的数据——本质区别在是否含体细节，不在维度）。</li>
+<li>来源两种：①科学计算结果（有限元、流体物理计算）；②仪器测量数据（CT&#x2F;MRI 扫描、地震勘测、气象检测）。</li>
+<li><strong>体素（Voxel）</strong>：组成体数据的最小单元，表示三维空间规则网格上某部分的值，相当于二维的像素；<strong>没有绝对空间位置概念，只有体空间中的相对位置</strong>。体数据用 n×m×t 描述体素分布（X&#x2F;Y&#x2F;Z 方向各 n、m、t 个），用三维数组表示时每维分配相应空间；仪器采样还给出体素间隔（单位毫米，如 0.412mm）。</li>
+<li><strong>体纹理（Volume Texture）&#x3D; 3D 纹理</strong>：传统 2D 纹理的逻辑扩展——2D 纹理是一张位图为模型提供表面颜色；3D 纹理由很多张 2D 纹理组成，描述三维空间数据，<strong>通过三维纹理坐标访问</strong>。平面图片按一定规则存放三维数据即可（如一维数组存放三维数组数据）。常用格式：基于 DirectX 的 .dds 和 .raw（体纹理 .raw 存三维数据，与相机 .raw 二维图片格式不同）。</li>
+<li>国内体数据匮乏，作者给出三个国外教学研究用数据网址（uni-stuttgart、uni-erlangen vollib、volren.org）。</li>
+</ul>
+<h2 id="14-2-体绘制算法"><a href="#14-2-体绘制算法" class="headerlink" title="14.2 体绘制算法"></a>14.2 体绘制算法</h2><p>四大类：<strong>光线投射（Ray-casting）</strong>、错切-变形（Shear-warp）、频域体绘制（Frequency Domain）、抛雪球（Splatting）。<strong>光线投射最重要最通用</strong>：①基于射线扫描，符合生活常识易理解；②绘制效果好；③易移植到 GPU 达到实时要求。</p>
+<h1 id="十五、光线投射算法（Ray-Casting）"><a href="#十五、光线投射算法（Ray-Casting）" class="headerlink" title="十五、光线投射算法（Ray Casting）"></a>十五、光线投射算法（Ray Casting）</h1><h2 id="15-1-原理"><a href="#15-1-原理" class="headerlink" title="15.1 原理"></a>15.1 原理</h2><ul>
+<li>从图像的每一个像素沿固定方向（通常是视线方向）发射一条光线，光线穿越整个<strong>图像序列</strong>（切片数据；GPU 着色程序中必须用体纹理），穿越过程中对图像序列<strong>等距采样</strong>获取颜色信息，依据光线吸收模型将颜色值累加，最后得到的颜色值就是渲染图像颜色。</li>
+<li><strong>易以讹传讹之处</strong>：是从视点到“图像序列最表面的外层像素”引射线，而不是“从屏幕像素出发”——从屏幕像素引射线是<strong>光线跟踪</strong>算法。</li>
+<li><strong>与光线跟踪的区别</strong>：①光线投射直线穿越数据场，光线跟踪要计算反射折射；②光线投射沿路径采样并按色彩合成算子累计色彩，光线跟踪只考虑光线与几何体相交处；③光线投射从视点到物体上一点引射线，不进行射线与物体求交判断，光线跟踪要引到屏幕像素并做求交。</li>
+</ul>
+<h2 id="15-2-光学模型（Optical-Models）"><a href="#15-2-光学模型（Optical-Models）" class="headerlink" title="15.2 光学模型（Optical Models）"></a>15.2 光学模型（Optical Models）</h2><ol>
+<li>吸收模型（Absorption only）：体素只吸收光线，不发射不反射不透射；</li>
+<li>发射模型（Emission only）：体素只发射光线；</li>
+<li><strong>吸收和发射模型（Absorption plus emission）</strong>：使用最广泛，体素发射并可吸收光线，不反射不透射；</li>
+<li>散射和阴影模型：体素可散射（反射和折射）外部光源光线，体素间遮挡产生阴影；</li>
+<li>多散射模型：光线被多个体素散射后进入眼睛。</li>
+</ol>
+<p>通常用吸收和发射模型；为增强真实感可加阴影（含自阴影）计算。</p>
+<h2 id="15-3-关键细节"><a href="#15-3-关键细节" class="headerlink" title="15.3 关键细节"></a>15.3 关键细节</h2><ul>
+<li><strong>光线如何穿越体纹理</strong>：体纹理不是空间模型数据，<strong>空间体模型（通常是规则立方体或圆柱体）+ 体纹理相互结合</strong>才能体渲染——类比二维纹理需要面片作载体。体纹理通过（三维）纹理坐标与模型对应；由视点向模型上的点引射线，射线穿越模型空间等价于穿越体纹理。立方体 8 个顶点的体纹理坐标（三元向量）在宿主程序中确定后传入 GPU，面片内部点坐标 GPU 自动插值。<strong>OpenGL 和 Direct3D 的体纹理坐标分布不同</strong>，写程序时要注意。</li>
+<li><strong>透明度与合成</strong>：透明度代表光穿透物体的能力，穿越多个物体时变化累加；透明渲染本质是 alpha 混合（over 操作符）：<code>C0 = As·Cs + (1-As)·Cd</code>。多透明物体需排序（依赖 Z 缓冲）；射线穿越体纹理的过程就是透明度的排序过程，存在合成顺序问题：<ul>
+<li><strong>前→后合成</strong>：<code>CΔi = CΔi-1 + (1-AΔi-1)·Ai·Ci</code>；<code>AΔi = AΔi-1 + (1-AΔi-1)·Ai</code>（Ci、Ai 为采样所得颜色与不透明度，Δ 为累加值）；</li>
+<li><strong>后→前合成</strong>：<code>CΔi = (1-Ai)·CΔi+1 + Ai·Ci</code>；<code>AΔi = Ai + (1-Ai)·AΔi+1</code>。</li>
+<li>很多体纹理不含透明度，需自定义初始透明度再累加。</li>
+</ul>
+</li>
+<li><strong>沿射线采样</strong>：<code>t = tstart + d·delta</code>——tstart 立方体表面投射点的体纹理坐标，d 投射方向，delta 采样间隔（随穿越距离 n 递增）。<strong>纹理坐标是联系三维模型和体纹理数据之间的桥梁</strong>（类比“加速度是联系力和运动状态的桥梁”）。采样直到 n &gt; m（射出立方体）或透明度累加超过 1。</li>
+<li><strong>如何判断光线投射出立方体（求穿越距离 m）</strong>：GPU 上光线与几何体求交是老大难（不规则体尤甚，规则体也耗时），不予采用。改用<strong>深度值</strong>：<ol>
+<li>正常渲染状态（剔除深度值大的片段）渲染场景深度图 frontDepth——每像素为该方向上离视点最近点的距离；</li>
+<li>剔除深度值小的片段（保留最远片段），渲染背面深度图 backDepth——须<strong>关闭按逆\顺时针的面片剔除功能</strong>才能渲染出背面；</li>
+<li>两张深度图相减即光线投射距离 m。</li>
+</ol>
+<ul>
+<li>作者改进：不把方向向量存成方向纹理（方向向量有负值，颜色通道只能存正值，归一化到 [0,1] 损失精度），方向向量放到片段着色程序中由视点和顶点位置直接计算。</li>
+</ul>
+</li>
+</ul>
+<h2 id="15-4-算法流程与实现"><a href="#15-4-算法流程与实现" class="headerlink" title="15.4 算法流程与实现"></a>15.4 算法流程与实现</h2><p>流程：渲染正向面深度图 → 渲染背向面深度图 →（顶点程序）计算顶点位置、射线方向 →（片段程序）检索 front face 得近距离 → 检索 back face 得远距离 → 计算最大穿越距离 → 计算采样纹理坐标 → 体纹理采样 → 颜色合成与透明度累加 → 判断超过最大距离或透明度超过 1 → 输出颜色值。</p>
+<p>片段程序要点（书中代码）：三张纹理 <code>sampler3D volumeTex</code>、<code>sampler2D frontDepthTex</code>、<code>sampler2D backDepthTex</code>；<code>len = backDis - frontDis</code> 为最大穿越距离；<code>stepsize = 0.01</code>；循环 800 次：<code>color_sample = tex3D(volumeTex, vec)</code>，<code>alpha_sample = color_sample.a * stepsize</code>，<code>col_acc += (1.0-alpha_acc)*color_sample*alpha_sample*3</code>，<code>alpha_acc += alpha_sample</code>，<code>vec += delta_dir</code>，<code>length_acc += delta_dir_len</code>，<code>if(length_acc &gt;= len || alpha_acc &gt; 1.0) break</code>。</p>
+<h2 id="15-5-扩展与推荐资料"><a href="#15-5-扩展与推荐资料" class="headerlink" title="15.5 扩展与推荐资料"></a>15.5 扩展与推荐资料</h2><ul>
+<li>光线投射可与阴影绘制算法结合，真实感更强。</li>
+<li>中间为空的体数据，射线采样时需跳过空区域（Object-Order Empty Space Skipping）。</li>
+<li>作者推荐最佳教材：Markus Hadwiger 等 “Advanced Illumination Techniques for GPU-Based Volume Raycasting”（SIGGRAPH ASIA 2008，166 页）。</li>
+</ul>
+<h1 id="附录"><a href="#附录" class="headerlink" title="附录"></a>附录</h1><h2 id="附录A-齐次坐标"><a href="#附录A-齐次坐标" class="headerlink" title="附录A 齐次坐标"></a>附录A 齐次坐标</h2><ul>
+<li>作用：①明确区分向量和点；②使仿射（线性）几何变换更易进行。</li>
+<li>第四元为 <strong>1 表示点</strong>（相对坐标原点，含位置偏移），为 <strong>0 表示向量</strong>（代表方向，平移缩放不改变方向性）：<code>(100,100,100,1)</code> 是空间点，<code>(100,100,100,0)</code> 是空间向量。</li>
+<li>数学依据：向量可表示为基向量线性组合 v &#x3D; a·v1 + b·v2 + c·v3，即 (a,b,c,0)·(v1,v2,v3,0)；点在此基础上加坐标原点 p &#x3D; a·p1 + b·p2 + c·p3 + op，即 (a,b,c,1)·(p1,p2,p3,1)。</li>
+<li>引入四元数后，<strong>平移、旋转、缩放全部统一到四阶矩阵乘法</strong>（如绕 Z 轴旋转矩阵、平移矩阵）。</li>
+</ul>
+<h2 id="附录B-体绘制的医学历程（CT）"><a href="#附录B-体绘制的医学历程（CT）" class="headerlink" title="附录B 体绘制的医学历程（CT）"></a>附录B 体绘制的医学历程（CT）</h2><ul>
+<li><strong>发明史</strong>：1963 年美国物理学家科马克发现人体不同组织对 X 线透过率不同并得出计算公式（理论基础）；1967 年英国电子工程师亨斯费尔德独立研制扫描装置；1971 年 9 月装机，10 月 4 日检查第一例病人成功；1972 年 4 月英国放射学会年会正式宣告 CT 诞生；两人共获 <strong>1979 年诺贝尔生理学或医学奖</strong>。被誉为自伦琴发现 X 射线后放射诊断学最重要的成就。</li>
+<li><strong>工作原理</strong>：X线束对人体某部一定厚度的层面扫描，探测器接收透过层面的 X 线 → 可见光 → 电信号 → A&#x2F;D 转换 → 计算机处理。体素（voxel，三维概念）是被成像体层分成矩形排列的基本单元，每个体素以一个 CT 值综合代表物质密度；像素（pixel，二维概念）是组成图像的基本单元，是体素成像时的表现；像素越小图像越清晰。</li>
+<li><strong>成像原理</strong>：X 射线衰减符合 <code>I = I0 · e^(-μd)</code>（μ 吸收系数，d 厚度）；人体 μ 不均匀，但分成足够小的体素后每个体素 μ 可看作均匀。不断改变投射角度得到数万~数十万个投影数据，计算机按一定算法求得每个体素的 μ，经 D&#x2F;A 转换重建层面图像。CT 值 &#x3D; (μ组织 - μ水)&#x2F;μ水 × 1000。CT 能区分 2000 级以上密度（传统 X 线片约 20 级），可分辨软组织密度等级。</li>
+</ul>
+<h2 id="附录C-模板阴影（Stencil-Shadow）"><a href="#附录C-模板阴影（Stencil-Shadow）" class="headerlink" title="附录C 模板阴影（Stencil Shadow）"></a>附录C 模板阴影（Stencil Shadow）</h2><ul>
+<li>基于网格几何体和模板缓冲区（stencil buffer）的阴影渲染算法。<strong>优势</strong>：不需要高端显卡（只需基本模板缓冲区）；阴影精度高、边缘清晰（也是缺点）、无锯齿；光源类型和位置对性能没有影响（shadow map 会受影响）。游戏中广泛使用（OGRE、Doom3）。</li>
+<li><strong>阴影体（shadow volume，阴影锥）</strong>：Frank Crow 1977 年提出；本质是描述光线被遮挡空间的几何区域——遮挡三角形（ABC）与其在地面投影（DEF）之间的空间体。</li>
+<li><strong>基本原理</strong>：找出场景中处于阴影体中的点，其对应像素绘制暗色调。两个关键：①计算空间点与阴影体的包含关系；②标记对应像素并绘制暗色。</li>
+<li><strong>判断方法</strong>：直线穿越次数——从视点到该点连线穿越阴影体面的次数。只有“射线射入阴影体后终止于阴影体中”才表示该点在阴影体内。</li>
+<li><strong>Z Pass 算法</strong>：射线进入阴影体 stencil+1，离开 stencil-1（stencil 存于模板缓冲，初始为 0）；stencil&gt;0 则点在阴影体中（不可能为负——只有进入才可能离开）。流程：<ol>
+<li>开深度写、<strong>关光源</strong>（只为获取深度值，省时）渲染整个场景；</li>
+<li>关深度写，只渲染阴影体<strong>正面</strong>，深度测试通过则 stencil+1（射线进入）；</li>
+<li>渲染阴影体<strong>背面</strong>，深度测试通过则 stencil-1（射线离开）；</li>
+<li>stencil&gt;0 的像素对应空间点在阴影体中；开深度写、开光源重新渲染场景，stencil&gt;0 的像素涂暗色调。</li>
+</ol>
+<ul>
+<li><strong>缺点</strong>：视点在阴影体中时失效（视线失去一次进入机会）。</li>
+</ul>
+</li>
+<li><strong>Z Fail 算法</strong>：弥补 Z Pass 缺点。渲染阴影体<strong>背面</strong>、深度测试<strong>失败</strong>（场景像素更近）则 stencil+1；渲染<strong>正面</strong>、深度测试失败则 stencil-1；最后 stencil 不为 0 的像素在阴影体中。<strong>要求阴影体是闭合的</strong>（视锥裁剪可能导致敞开）。</li>
+<li><strong>不足</strong>：确立阴影体需提前对实体做物体勾边（object outlining，计算网格轮廓）；阴影较硬，无法渲染软阴影。</li>
+</ul>
+<br/>
+
+<h1 id="请记住"><a href="#请记住" class="headerlink" title="请记住"></a>请记住</h1><ul>
+<li>GPU 编程的地基是图形绘制管线：应用程序阶段（CPU）→ 几何阶段（object→world→eye→CVV 投影裁剪，光照在此）→ 光栅化阶段（像素操作、雾化透明在此）；顶点程序管坐标变换，片段程序管像素颜色，前者输出是后者输入。</li>
+<li>Cg 语法类 C，但一切建立在 profile 之上——先确认硬件支持的 profile 再写代码；着色程序无法调试，逻辑严密性和注释是唯一防线。</li>
+<li>语义绑定是 Cg 的灵魂：varying 数据用语义词绑定寄存器，uniform 数据从宿主程序传入；顶点必须输出 POSITION，片段必须输出 COLOR，顶点传片段的数据走 TEXCOORD。</li>
+<li>光照模型的演进线：Lambert 漫反射（N·L）→ Phong 高光（(V·R)^sn）→ Blinn-Phong（(N·H)^sn，更快更柔和，是 OpenGL&#x2F;D3D 默认）→ Cook-Torrance（微平面理论，Rs &#x3D; F·D·G&#x2F;((N·V)(N·L))）→ BRDF&#x2F;rendering equation（一切经典模型都是它的特例）。</li>
+<li>Shadow Map 和投影纹理映射是阴影与体绘制的基础：两遍渲染、深度比较、纹理投影矩阵 &#x3D; bias × projection × view × world、记得除以 q。</li>
+<li>光线投射三要素：体纹理以三维模型（立方体）为载体、沿射线等距采样（纹理坐标是模型与体数据的桥梁）、前&#x2F;背深度图相减得穿越距离，采样合成直到射出或 alpha 累加到 1。</li>
+</ul>
+
+    </div>
+    
+    <div class="post-footer">
+        <div>
+            
+            转载声明：
+            商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">cxx</a>
+            
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+<div class="article-nav prev-next-wrap clearfix">
+    
+    
+    <a href="/2026/11/25/notes/UE5.9%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" class="next-post btn btn-default" title='UE5.9读书笔记'>
+        <span class="hidden-lg">下一篇</span>
+        <span class="hidden-xs">
+            UE5.9读书笔记</span><i class="fa fa-angle-right fa-fw"></i>
+    </a>
+    
+</div>
+
+<div id="comments">
+    
+    <script src="https://giscus.app/client.js"
+        data-repo="cxxlog/myblog-comment"
+        data-repo-id="R_kgDOVzxsBw"
+        data-category="Announcements"
+        data-category-id="DIC_kwDOVzxsB84DLdxb"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="bottom"
+        data-theme="light"
+        data-lang="zh-CN"
+        crossorigin="anonymous"
+        async>
+    </script>
+
+</div>
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">
+            文章目录
+        </h3>
+        
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BA%8F"><span class="toc-text">序</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%85%A8%E4%B9%A6%E7%BB%93%E6%9E%84"><span class="toc-text">全书结构</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E7%BB%AA%E8%AE%BA"><span class="toc-text">一、绪论</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-GPU-%E5%8F%91%E5%B1%95%E5%8E%86%E7%A8%8B"><span class="toc-text">1.1 GPU 发展历程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-GPU-VS-CPU"><span class="toc-text">1.2 GPU VS CPU</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-3-%E5%9B%BD%E5%86%85%E5%A4%96%E7%A0%94%E7%A9%B6%E7%8E%B0%E7%8A%B6"><span class="toc-text">1.3 国内外研究现状</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%8C%E3%80%81GPU-%E5%9B%BE%E5%BD%A2%E7%BB%98%E5%88%B6%E7%AE%A1%E7%BA%BF"><span class="toc-text">二、GPU 图形绘制管线</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-%E4%B8%89%E4%B8%AA%E9%98%B6%E6%AE%B5"><span class="toc-text">2.1 三个阶段</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2-%E5%87%A0%E4%BD%95%E9%98%B6%E6%AE%B5%EF%BC%9A%E5%9B%9B%E4%B8%AA%E5%9D%90%E6%A0%87%E7%A9%BA%E9%97%B4%E7%9A%84%E5%8F%98%E6%8D%A2"><span class="toc-text">2.2 几何阶段：四个坐标空间的变换</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-3-Primitive-Assembly-amp-amp-Triangle-Setup"><span class="toc-text">2.3 Primitive Assembly &amp;&amp; Triangle Setup</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-4-%E5%85%89%E6%A0%85%E5%8C%96%E9%98%B6%E6%AE%B5"><span class="toc-text">2.4 光栅化阶段</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-5-%E5%9B%BE%E5%BD%A2%E7%A1%AC%E4%BB%B6"><span class="toc-text">2.5 图形硬件</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%89%E3%80%81Shader-Language"><span class="toc-text">三、Shader Language</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#3-1-%E5%8E%9F%E7%90%86"><span class="toc-text">3.1 原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-2-Cg-VS-GLSL-VS-HLSL"><span class="toc-text">3.2 Cg VS GLSL VS HLSL</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9B%9B%E3%80%81Cg-%E8%AF%AD%E8%A8%80%E6%A6%82%E8%BF%B0"><span class="toc-text">四、Cg 语言概述</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#4-1-%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86"><span class="toc-text">4.1 编译原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-2-cgc-%E7%BC%96%E8%AF%91%E5%91%BD%E4%BB%A4"><span class="toc-text">4.2 cgc 编译命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-3-%E5%B8%B8%E7%94%A8-Profiles"><span class="toc-text">4.3 常用 Profiles</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%94%E3%80%81Cg-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="toc-text">五、Cg 数据类型</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#5-1-%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%EF%BC%887-%E7%A7%8D%EF%BC%89"><span class="toc-text">5.1 基本数据类型（7 种）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-2-%E6%95%B0%E7%BB%84%E7%B1%BB%E5%9E%8B"><span class="toc-text">5.2 数组类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-3-%E7%BB%93%E6%9E%84%E7%B1%BB%E5%9E%8B"><span class="toc-text">5.3 结构类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-4-%E6%8E%A5%E5%8F%A3%E7%B1%BB%E5%9E%8B%E4%B8%8E%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2"><span class="toc-text">5.4 接口类型与类型转换</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%85%AD%E3%80%81Cg-%E8%A1%A8%E8%BE%BE%E5%BC%8F%E4%B8%8E%E6%8E%A7%E5%88%B6%E8%AF%AD%E5%8F%A5"><span class="toc-text">六、Cg 表达式与控制语句</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#6-1-%E6%93%8D%E4%BD%9C%E7%AC%A6"><span class="toc-text">6.1 操作符</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-2-%E6%8E%A7%E5%88%B6%E6%B5%81%E8%AF%AD%E5%8F%A5"><span class="toc-text">6.2 控制流语句</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%83%E3%80%81%E8%BE%93%E5%85%A5-%E8%BE%93%E5%87%BA%E4%B8%8E%E8%AF%AD%E4%B9%89%E7%BB%91%E5%AE%9A"><span class="toc-text">七、输入\输出与语义绑定</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#7-1-%E5%85%B3%E9%94%AE%E5%AD%97"><span class="toc-text">7.1 关键字</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-2-%E8%AF%AD%E4%B9%89%E8%AF%8D%EF%BC%88Semantic%EF%BC%89%E4%B8%8E%E8%AF%AD%E4%B9%89%E7%BB%91%E5%AE%9A%EF%BC%88Binding-Semantics%EF%BC%89"><span class="toc-text">7.2 语义词（Semantic）与语义绑定（Binding Semantics）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-3-%E5%90%84%E9%98%B6%E6%AE%B5%E8%AF%AD%E4%B9%89"><span class="toc-text">7.3 各阶段语义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-4-%E8%AF%AD%E4%B9%89%E7%BB%91%E5%AE%9A%E7%9A%84-4-%E7%A7%8D%E6%96%B9%E6%B3%95"><span class="toc-text">7.4 语义绑定的 4 种方法</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%85%AB%E3%80%81%E5%87%BD%E6%95%B0%E4%B8%8E%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1"><span class="toc-text">八、函数与程序设计</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#8-1-%E5%87%BD%E6%95%B0"><span class="toc-text">8.1 函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-2-%E5%87%BD%E6%95%B0%E9%87%8D%E8%BD%BD%E4%B8%8E%E5%85%A5%E5%8F%A3%E5%87%BD%E6%95%B0"><span class="toc-text">8.2 函数重载与入口函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-3-Cg-%E6%A0%87%E5%87%86%E5%87%BD%E6%95%B0%E5%BA%93"><span class="toc-text">8.3 Cg 标准函数库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-4-%E6%9C%AA%E6%9D%A5%E5%B0%86%E8%A2%AB%E8%A7%A3%E5%86%B3%E7%9A%84%E9%97%AE%E9%A2%98"><span class="toc-text">8.4 未来将被解决的问题</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B9%9D%E3%80%81%E7%BB%8F%E5%85%B8%E5%85%89%E7%85%A7%E6%A8%A1%E5%9E%8B%EF%BC%88illumination-model%EF%BC%89"><span class="toc-text">九、经典光照模型（illumination model）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#9-1-%E5%85%89%E7%9A%84%E4%BA%A4%E4%BA%92%E4%B8%8E%E5%85%89%E6%BA%90"><span class="toc-text">9.1 光的交互与光源</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9-2-%E6%BC%AB%E5%8F%8D%E5%B0%84%E4%B8%8E-Lambert-%E6%A8%A1%E5%9E%8B"><span class="toc-text">9.2 漫反射与 Lambert 模型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9-3-%E9%95%9C%E9%9D%A2%E5%8F%8D%E5%B0%84%E4%B8%8E-Phong-%E6%A8%A1%E5%9E%8B"><span class="toc-text">9.3 镜面反射与 Phong 模型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9-4-Blinn-Phong-%E5%85%89%E7%85%A7%E6%A8%A1%E5%9E%8B"><span class="toc-text">9.4 Blinn-Phong 光照模型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9-5-%E5%85%A8%E5%B1%80%E5%85%89%E7%85%A7%E6%A8%A1%E5%9E%8B%E4%B8%8E-Rendering-Equation"><span class="toc-text">9.5 全局光照模型与 Rendering Equation</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8D%81%E3%80%81%E9%AB%98%E7%BA%A7%E5%85%89%E7%85%A7%E6%A8%A1%E5%9E%8B"><span class="toc-text">十、高级光照模型</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#10-1-Cook-Torrance-%E5%85%89%E7%85%A7%E6%A8%A1%E5%9E%8B"><span class="toc-text">10.1 Cook-Torrance 光照模型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10-2-BRDF-%E5%85%89%E7%85%A7%E6%A8%A1%E5%9E%8B"><span class="toc-text">10.2 BRDF 光照模型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10-3-Bank-BRDF-%E7%BB%8F%E9%AA%8C%E6%A8%A1%E5%9E%8B"><span class="toc-text">10.3 Bank BRDF 经验模型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10-4-%E5%85%B6%E4%BB%96-BRDF-%E5%88%86%E6%94%AF"><span class="toc-text">10.4 其他 BRDF 分支</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8D%81%E4%B8%80%E3%80%81%E9%80%8F%E6%98%8E%E5%85%89%E7%85%A7%E6%A8%A1%E5%9E%8B%E4%B8%8E%E7%8E%AF%E5%A2%83%E8%B4%B4%E5%9B%BE"><span class="toc-text">十一、透明光照模型与环境贴图</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#11-1-Snell-%E5%AE%9A%E5%BE%8B%E4%B8%8E-Fresnel-%E5%AE%9A%E5%BE%8B"><span class="toc-text">11.1 Snell 定律与 Fresnel 定律</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#11-2-%E7%8E%AF%E5%A2%83%E8%B4%B4%E5%9B%BE%EF%BC%88Environment-Mapping%EF%BC%89"><span class="toc-text">11.2 环境贴图（Environment Mapping）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#11-3-%E7%AE%80%E5%8D%95%E9%80%8F%E6%98%8E%E5%85%89%E7%85%A7%E6%A8%A1%E5%9E%8B"><span class="toc-text">11.3 简单透明光照模型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#11-4-%E5%A4%8D%E6%9D%82%E9%80%8F%E6%98%8E%E5%85%89%E7%85%A7%E6%A8%A1%E5%9E%8B%E4%B8%8E%E6%AC%A1%E8%A1%A8%E9%9D%A2%E6%95%A3%E5%B0%84"><span class="toc-text">11.4 复杂透明光照模型与次表面散射</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8D%81%E4%BA%8C%E3%80%81%E6%8A%95%E5%BD%B1%E7%BA%B9%E7%90%86%E6%98%A0%E5%B0%84%EF%BC%88Projective-Texture-Mapping%EF%BC%89"><span class="toc-text">十二、投影纹理映射（Projective Texture Mapping）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#12-1-%E4%B8%A4%E5%A4%A7%E4%BC%98%E7%82%B9"><span class="toc-text">12.1 两大优点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#12-2-%E9%BD%90%E6%AC%A1%E7%BA%B9%E7%90%86%E5%9D%90%E6%A0%87%E4%B8%8E%E5%8E%9F%E7%90%86"><span class="toc-text">12.2 齐次纹理坐标与原理</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8D%81%E4%B8%89%E3%80%81Shadow-Map"><span class="toc-text">十三、Shadow Map</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#13-1-%E5%8E%9F%E7%90%86%E4%B8%8E%E5%AE%9E%E7%8E%B0%E6%B5%81%E7%A8%8B%EF%BC%88%E4%B8%A4%E9%81%8D%E6%B8%B2%E6%9F%93%EF%BC%89"><span class="toc-text">13.1 原理与实现流程（两遍渲染）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#13-2-%E4%BC%98%E7%BC%BA%E7%82%B9"><span class="toc-text">13.2 优缺点</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8D%81%E5%9B%9B%E3%80%81%E4%BD%93%E7%BB%98%E5%88%B6%EF%BC%88Volume-Rendering%EF%BC%89%E6%A6%82%E8%BF%B0"><span class="toc-text">十四、体绘制（Volume Rendering）概述</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#14-1-%E4%BD%93%E6%95%B0%E6%8D%AE%EF%BC%88Volume-Data%EF%BC%89"><span class="toc-text">14.1 体数据（Volume Data）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#14-2-%E4%BD%93%E7%BB%98%E5%88%B6%E7%AE%97%E6%B3%95"><span class="toc-text">14.2 体绘制算法</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8D%81%E4%BA%94%E3%80%81%E5%85%89%E7%BA%BF%E6%8A%95%E5%B0%84%E7%AE%97%E6%B3%95%EF%BC%88Ray-Casting%EF%BC%89"><span class="toc-text">十五、光线投射算法（Ray Casting）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#15-1-%E5%8E%9F%E7%90%86"><span class="toc-text">15.1 原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#15-2-%E5%85%89%E5%AD%A6%E6%A8%A1%E5%9E%8B%EF%BC%88Optical-Models%EF%BC%89"><span class="toc-text">15.2 光学模型（Optical Models）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#15-3-%E5%85%B3%E9%94%AE%E7%BB%86%E8%8A%82"><span class="toc-text">15.3 关键细节</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#15-4-%E7%AE%97%E6%B3%95%E6%B5%81%E7%A8%8B%E4%B8%8E%E5%AE%9E%E7%8E%B0"><span class="toc-text">15.4 算法流程与实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#15-5-%E6%89%A9%E5%B1%95%E4%B8%8E%E6%8E%A8%E8%8D%90%E8%B5%84%E6%96%99"><span class="toc-text">15.5 扩展与推荐资料</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%99%84%E5%BD%95"><span class="toc-text">附录</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%99%84%E5%BD%95A-%E9%BD%90%E6%AC%A1%E5%9D%90%E6%A0%87"><span class="toc-text">附录A 齐次坐标</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%99%84%E5%BD%95B-%E4%BD%93%E7%BB%98%E5%88%B6%E7%9A%84%E5%8C%BB%E5%AD%A6%E5%8E%86%E7%A8%8B%EF%BC%88CT%EF%BC%89"><span class="toc-text">附录B 体绘制的医学历程（CT）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%99%84%E5%BD%95C-%E6%A8%A1%E6%9D%BF%E9%98%B4%E5%BD%B1%EF%BC%88Stencil-Shadow%EF%BC%89"><span class="toc-text">附录C 模板阴影（Stencil Shadow）</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%AF%B7%E8%AE%B0%E4%BD%8F"><span class="toc-text">请记住</span></a></li></ol>
+        
+    </div>
+</aside>
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+<a id="back-to-top" class="icon-btn hide">
+    <i class="fa fa-chevron-up"></i>
+</a>
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+    访问量:
+    <strong id="busuanzi_value_site_pv">
+        <i class="fa fa-spinner fa-spin"></i>
+    </strong>
+    &nbsp; | &nbsp;
+    访客数:
+    <strong id="busuanzi_value_site_uv">
+        <i class="fa fa-spinner fa-spin"></i>
+    </strong>
+    
+</div>
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy;
+                    2022
+                    
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script async src="//vercount.one/js"></script>
+
+
+<script src="/js/app.js?rev=@@hash.js"></script>
+
+
+<div class="hide">
+    <script type="text/javascript">
+    var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+    document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+</div>
+
+
+
+
+</body>
+</html>
